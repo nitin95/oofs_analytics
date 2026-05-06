@@ -99,7 +99,6 @@ DRIVER_REPLACEMENTS = {
     'John P': 'John Pflibsen',
     'Ayrton Senna': 'Ayrton Torres',
     'Avi Ganti': 'Avinash Ganti',
-    'DAN POULIN': 'Dan Jr Poulin',
 }
 
 # TRACK_NAMES = ['Portimao', 'Le Mans', 'Interlagos', 'Monza', 'Sebring', 'Paul Ricard', 'COTA', 'Spa']
@@ -558,7 +557,7 @@ def create_plotly_json(df_display_renamed, comparison_df, avg_pace_cols, stdev_p
     
     # Build column mapping from renamed columns back to track names
     col_mapping = {}
-    for _, (track, col) in enumerate(zip(track_names, pace_col_names)):
+    for i, (track, col) in enumerate(zip(track_names, pace_col_names)):
         col_mapping[col] = track
     
     # Extract fastest lap columns from comparison_df
@@ -1440,7 +1439,83 @@ def main():
     
     # Create top-level docs folder
     os.makedirs('docs', exist_ok=True)
-    
+
+    # Generate top-level season index page
+    print("\n[Index] Generating docs/index.html...")
+    _card_html = ''
+    for _s_id, _s_info in SEASONS.items():
+        _card_html += (
+            f'\n        <a class="season-card" href="{_s_id}/index.html">'
+            f'\n            <span class="season-label">Season</span>'
+            f'\n            <span class="season-name">{_s_info["name"]}</span>'
+            f'\n            <span class="season-year">{_s_info["year"]}</span>'
+            f'\n            <span class="season-desc">{_s_info["description"]}</span>'
+            f'\n        </a>'
+        )
+
+    _index_parts = [
+        '<!DOCTYPE html>\n<html lang="en">\n<head>\n'
+        '    <meta charset="UTF-8">\n'
+        '    <meta name="viewport" content="width=device-width, initial-scale=1.0">\n'
+        '    <title>OOFS Analytics</title>\n'
+        '    <style>\n'
+        '        * { margin: 0; padding: 0; box-sizing: border-box; }\n'
+        '        body {\n'
+        '            font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;\n'
+        '            background: #14161ff2; color: white; min-height: 100vh;\n'
+        '            display: flex; flex-direction: column; align-items: center; padding: 40px 20px;\n'
+        '        }\n'
+        '        header { display: flex; flex-direction: column; align-items: center; text-align: center; margin-bottom: 50px; }\n'
+        '        header img { max-width: 180px; max-height: 180px; width: auto; height: auto; object-fit: contain; margin-bottom: 24px; }\n'
+        '        header h1 { color: #ccfc00; font-size: 2.8em; margin-bottom: 10px; }\n'
+        '        header p { color: rgba(255,255,255,0.6); font-size: 1em; }\n'
+        '        @media (min-width: 600px) {\n'
+        '            header { flex-direction: row; text-align: left; gap: 30px; }\n'
+        '            header img { margin-bottom: 0; flex-shrink: 0; }\n'
+        '        }\n'
+        '        h2.section-label {\n'
+        '            color: rgba(255,255,255,0.4); font-size: 0.75em; font-weight: 600;\n'
+        '            letter-spacing: 2px; text-transform: uppercase; margin-bottom: 20px;\n'
+        '            align-self: flex-start; width: 100%; max-width: 700px;\n'
+        '        }\n'
+        '        .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; width: 100%; max-width: 700px; }\n'
+        '        .season-card {\n'
+        '            display: flex; flex-direction: column; justify-content: center; align-items: center;\n'
+        '            aspect-ratio: 1 / 1; background: black; border: 2px solid transparent;\n'
+        '            border-radius: 12px; text-decoration: none; color: white;\n'
+        '            transition: border-color 0.2s ease, background 0.2s ease, transform 0.15s ease;\n'
+        '            padding: 24px; cursor: pointer; user-select: none;\n'
+        '        }\n'
+        '        .season-card:hover, .season-card:focus { border-color: #ccfc00; background: #0e1014; transform: translateY(-3px); outline: none; }\n'
+        '        .season-card:active { background: #512f89; transform: translateY(0); }\n'
+        '        .season-card .season-label { color: #ccfc00; font-size: 0.75em; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 10px; }\n'
+        '        .season-card .season-name { font-size: 1.6em; font-weight: 700; margin-bottom: 6px; }\n'
+        '        .season-card .season-year { color: rgba(255,255,255,0.45); font-size: 0.85em; }\n'
+        '        .season-card .season-desc { color: rgba(255,255,255,0.35); font-size: 0.75em; margin-top: 12px; text-align: center; }\n'
+        '        footer { margin-top: 60px; color: rgba(255,255,255,0.25); font-size: 0.8em; text-align: center; }\n'
+        '    </style>\n'
+        '</head>\n<body>\n'
+        '    <header>\n'
+        '        <img src="logo.png" alt="OOFS Logo">\n'
+        '        <div>\n'
+        '            <h1>OOFS Analytics</h1>\n'
+        '            <p>Race pace statistics &amp; driver performance</p>\n'
+        '        </div>\n'
+        '    </header>\n'
+        '    <h2 class="section-label">Select a Season</h2>\n'
+        '    <div class="card-grid">',
+        _card_html,
+        '\n    </div>\n'
+        '    <footer><p>Generated from OOFS XML Race Data</p></footer>\n'
+        '</body>\n</html>'
+    ]
+    _index_html = ''.join(_index_parts)
+
+    import os as _os
+    with open(_os.path.join('docs', 'index.html'), 'w', encoding='utf-8-sig') as _f:
+        _f.write(_index_html)
+    print("  Generated docs/index.html")
+
     # Loop through all configured seasons
     for season_id, season_info in SEASONS.items():
         print(f"\n[Season] Processing {season_info['name']}...")
