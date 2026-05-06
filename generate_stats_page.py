@@ -1445,7 +1445,7 @@ def main():
     _card_html = ''
     for _s_id, _s_info in SEASONS.items():
         _card_html += (
-            f'\n        <a class="season-card" href="{_s_id}/index.html">'
+            f'\n        <a class="season-card" href="{_s_id}/sprint_race.html">'
             f'\n            <span class="season-label">Season</span>'
             f'\n            <span class="season-name">{_s_info["name"]}</span>'
             f'\n            <span class="season-year">{_s_info["year"]}</span>'
