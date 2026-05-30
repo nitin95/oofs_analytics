@@ -586,12 +586,9 @@ def create_plotly_json(df_display_renamed, comparison_df, avg_pace_cols, stdev_p
     # Build plot_df using average pace columns, standard deviation columns, and fastest lap columns
     plot_df = comparison_df[['Driver_name'] + avg_pace_cols + stdev_pace_cols + fastest_lap_cols].copy()
     
-    # Filter drivers who either attended the last race OR attended more than 3 races
-    last_avg_pace_col = avg_pace_cols[-1]
-    attended_last_race = plot_df[last_avg_pace_col].notna()
+    # Filter drivers who attended more than 2 races
     races_attended = plot_df[avg_pace_cols].notna().sum(axis=1)
-    attended_3_plus_races = races_attended > 3
-    plot_df = plot_df[attended_last_race | attended_3_plus_races].reset_index(drop=True)
+    plot_df = plot_df[races_attended > 1].reset_index(drop=True)
     
     # Calculate best average pace
     plot_df['best'] = plot_df[avg_pace_cols].min(axis=1, skipna=True)
@@ -621,10 +618,12 @@ def create_plotly_json(df_display_renamed, comparison_df, avg_pace_cols, stdev_p
                 for fl in ys_fl
             ]
 
+            # Display lines if more than 2 points, regardless of NaN at the end
+            mode_fl = 'lines+markers'
             trace = {
                 'x': list(xs_fl),
                 'y': list(ys_fl),
-                'mode': 'lines+markers',
+                'mode': mode_fl,
                 'name': driver_name,
                 'hovertemplate': "%{customdata}<extra></extra>",
                 'customdata': hover_data,
@@ -670,10 +669,12 @@ def create_plotly_json(df_display_renamed, comparison_df, avg_pace_cols, stdev_p
                     fastest_lap_str = f"{fastest_lap:.2f}%"
                 hover_data.append(f"{driver_name}<br>Avg Pace: {avg_pace:.2f}%<br>Fastest Lap: {fastest_lap_str}")
 
+            # Display lines if more than 2 points, regardless of NaN at the end
+            mode_race = 'lines+markers' 
             trace = {
                 'x': list(xs),
                 'y': list(ys),
-                'mode': 'lines+markers',
+                'mode': mode_race,
                 'name': driver_name,
                 'hovertemplate': "%{customdata}<extra></extra>",
                 'customdata': hover_data,
