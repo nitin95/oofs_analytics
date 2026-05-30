@@ -775,12 +775,20 @@ def generate_page(title, sidebar_file, season_id, pace_html, improvement_html, p
 
 
 def main():
+    import shutil
     """Main execution function - process all seasons and generate pages"""
     print("[*] OOFS S3 Stats Page Generator\n")
     print("=" * 60)
     
     # Create top-level docs folder
     os.makedirs('docs', exist_ok=True)
+
+    # NEW: Copy the CSS file into the docs folder so GitHub Pages can see it
+    try:
+        shutil.copy(os.path.join(TEMPLATES_DIR, 'styles.css'), os.path.join('docs', 'styles.css'))
+        print("  Copied styles.css to docs/")
+    except FileNotFoundError:
+        print("  WARNING: templates/styles.css not found!")
 
     # Generate top-level season index page
     print("\n[Index] Generating docs/index.html...")
