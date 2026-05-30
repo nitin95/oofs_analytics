@@ -72,18 +72,30 @@ SEASON_CONFIG = {
         'sprint_qualis': {
             's4-sc1.xml': {'name': 'Imola', 'ref_time': 101.82},
             's4-sc2.xml': {'name': 'Barcelona', 'ref_time': 100.60},
+            's4-sc3.xml': {'name': 'Silverstone', 'ref_time': 117.76},
+            's4-sc4.xml': {'name': 'Fuji', 'ref_time': 105.0},
+            's4-sc5.xml': {'name': 'Bahrain (outer)', 'ref_time': 72.01}
         },
         'sprint_races': {
             's4-sc1-r.xml': {'name': 'Imola', 'ref_time': 102.33},
             's4-sc2-r.xml': {'name': 'Barcelona', 'ref_time': 101.10},
+            's4-sc3-r.xml': {'name': 'Silverstone', 'ref_time': 133.72},
+            's4-sc4-r.xml': {'name': 'Fuji', 'ref_time': 106.5},
+            's4-sc5-r.xml': {'name': 'Bahrain (outer)', 'ref_time': 72.37}
         },
         'multiclass_qualis': {
             's4-mc1.xml': {'name': 'Imola', 'ref_time_hyper': 89.45, 'ref_time_gt3': 101.82},
             's4-mc2.xml': {'name': 'Barcelona', 'ref_time_hyper': 88.59, 'ref_time_gt3': 100.60},
+            's4-mc3.xml': {'name': 'Silverstone', 'ref_time_hyper': 102.23, 'ref_time_gt3': 117.76},
+            's4-mc4.xml': {'name': 'Fuji', 'ref_time_hyper': 93.4, 'ref_time_gt3': 105.0},
+            's4-mc5.xml': {'name': 'Bahrain (outer)', 'ref_time_hyper': 63.94, 'ref_time_gt3': 72.01}
         },
         'multiclass_races': {
             's4-mc1-r.xml': {'name': 'Imola', 'ref_time_hyper': 89.89, 'ref_time_gt3': 102.33},
             's4-mc2-r.xml': {'name': 'Barcelona', 'ref_time_hyper': 89.04, 'ref_time_gt3': 101.10},
+            's4-mc3-r.xml': {'name': 'Silverstone', 'ref_time_hyper': 111.20, 'ref_time_gt3': 127.40},
+            's4-mc4-r.xml': {'name': 'Fuji', 'ref_time_hyper': 91.0, 'ref_time_gt3': 103.5},
+            's4-mc5-r.xml': {'name': 'Bahrain (outer)', 'ref_time_hyper': 64.26, 'ref_time_gt3': 72.37}
         }
     },
     # Add more seasons here as needed
@@ -99,6 +111,8 @@ DRIVER_REPLACEMENTS = {
     'John P': 'John Pflibsen',
     'Ayrton Senna': 'Ayrton Torres',
     'Avi Ganti': 'Avinash Ganti',
+    'p thom': 'Parker Thomas',
+    'J P#2423': 'J.P.',
 }
 
 # TRACK_NAMES = ['Portimao', 'Le Mans', 'Interlagos', 'Monza', 'Sebring', 'Paul Ricard', 'COTA', 'Spa']
@@ -501,20 +515,25 @@ def create_display_df(comparison_df, avg_pace_cols, stdev_pace_cols, track_names
     return display_df_renamed, list(rename_map.values())[1:]  # Return column names minus Driver_name
 
 
-def generate_html_tables(comparison_df, improvement_df, avg_pace_cols, track_names):
+def generate_html_tables(comparison_df, improvement_df, avg_pace_cols, track_names, mode='race'):
     """Generate HTML table representations of dataframes with average pace and stats"""
-    # Pace vs Alien table (using average pace)
-    pace_table_df = comparison_df[['Driver_name'] + avg_pace_cols].copy()
+    if mode == 'race':  # Pace vs Alien table (using average pace)
+        pace_table_df = comparison_df[['Driver_name'] + avg_pace_cols].copy()
+        table_cols = avg_pace_cols
+    else:  # quali: Pace vs Alien table (using fastest lap pace)
+        fastest_lap_cols = [col.replace('avg_pace_pct_alien_', 'laptime_pct_alien_') for col in avg_pace_cols]
+        pace_table_df = comparison_df[['Driver_name'] + fastest_lap_cols].copy()
+        table_cols = fastest_lap_cols
     full_driver_names_pace = pace_table_df['Driver_name'].copy()
     
     # Convert driver names to "F. Lastname" format for space efficiency
-    pace_table_df['Driver_name'] = pace_table_df['Driver_name'].apply(
-        lambda x: f"{x.split()[0][0]}. {' '.join(x.split()[1:])}" if len(x.split()) > 1 else x
-    )
+    # pace_table_df['Driver_name'] = pace_table_df['Driver_name'].apply(
+    #     lambda x: f"{x.split()[0][0]}. {' '.join(x.split()[1:])}" if len(x.split()) > 1 else x
+    # )
     
     # Build rename mapping for pace table
     pace_rename = {'Driver_name': 'Driver'}
-    for track, col in zip(track_names, avg_pace_cols):
+    for track, col in zip(track_names, table_cols):
         pace_rename[col] = track
     
     pace_table_df = pace_table_df.rename(columns=pace_rename).dropna(subset=track_names, how='all')
@@ -557,7 +576,7 @@ def create_plotly_json(df_display_renamed, comparison_df, avg_pace_cols, stdev_p
     
     # Build column mapping from renamed columns back to track names
     col_mapping = {}
-    for i, (track, col) in enumerate(zip(track_names, pace_col_names)):
+    for _, (track, col) in enumerate(zip(track_names, pace_col_names)):
         col_mapping[col] = track
     
     # Extract fastest lap columns from comparison_df
@@ -1591,7 +1610,7 @@ def main():
                 improvement_df = build_improvement_df(comparison_df, avg_pace_cols)
                 stdev_pace_cols = [f'stdev_pace_pct_{code}' for code in race_codes]
                 df_display_renamed, _ = create_display_df(comparison_df, avg_pace_cols, stdev_pace_cols, track_names, mode='quali')
-                pace_html, improvement_html = generate_html_tables(comparison_df, improvement_df, avg_pace_cols, track_names)
+                pace_html, improvement_html = generate_html_tables(comparison_df, improvement_df, avg_pace_cols, track_names, mode='quali')
                 
                 num_rounds = len(track_names)
                 plotly_data = create_plotly_json(df_display_renamed, comparison_df, avg_pace_cols, stdev_pace_cols, track_names,
@@ -1677,7 +1696,7 @@ def main():
                 improvement_df = build_improvement_df(comparison_df, avg_pace_cols)
                 stdev_pace_cols = [f'stdev_pace_pct_{code}' for code in race_codes]
                 df_display_renamed, _ = create_display_df(comparison_df, avg_pace_cols, stdev_pace_cols, track_names, mode='quali')
-                pace_html, improvement_html = generate_html_tables(comparison_df, improvement_df, avg_pace_cols, track_names)
+                pace_html, improvement_html = generate_html_tables(comparison_df, improvement_df, avg_pace_cols, track_names, mode='quali')
                 
                 num_rounds = len(track_names)
                 proto_class = 'P2UR' if season_id == 'season1' else 'Hyper'
@@ -1748,7 +1767,7 @@ def main():
                 improvement_df = build_improvement_df(comparison_df, avg_pace_cols)
                 stdev_pace_cols = [f'stdev_pace_pct_{code}' for code in race_codes]
                 df_display_renamed, _ = create_display_df(comparison_df, avg_pace_cols, stdev_pace_cols, track_names, mode='quali')
-                pace_html, improvement_html = generate_html_tables(comparison_df, improvement_df, avg_pace_cols, track_names)
+                pace_html, improvement_html = generate_html_tables(comparison_df, improvement_df, avg_pace_cols, track_names, mode='quali')
                 
                 num_rounds = len(track_names)
                 plotly_data = create_plotly_json(df_display_renamed, comparison_df, avg_pace_cols, stdev_pace_cols, track_names,

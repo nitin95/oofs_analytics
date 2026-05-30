@@ -8,6 +8,7 @@ _site/
 .jekyll-metadata
 .vscode/
 __pycache__/
+archive/
 # Additional Ruby/bundler ignore for when you run: bundle install
 /vendor
 
