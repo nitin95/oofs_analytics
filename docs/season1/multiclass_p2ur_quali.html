@@ -5,464 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>🏆 Multiclass P2UR Quali Pace Data</title>
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background: #14161ff2;
-            color: white;
-            line-height: 1;
-            padding: 20px;
-            display: flex;
-        }
-        
-        .main-wrapper {
-            display: flex;
-            width: 100%;
-            gap: 20px;
-            max-width: 1600px;
-            margin: 0 auto;
-        }
-        
-        .sidebar {
-            width: 250px;
-            background: black;
-            border-radius: 10px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
-            padding: 20px;
-            height: fit-content;
-            position: sticky;
-            top: 20px;
-        }
-        
-        .season-selector-wrapper {
-            margin-bottom: 15px;
-        }
-        
-        .season-selector-wrapper select {
-            width: 100%;
-            padding: 8px;
-            background: #333;
-            color: #ccfc00;
-            border: 1px solid #ccfc00;
-            border-radius: 5px;
-            font-size: 0.9em;
-            cursor: pointer;
-        }
-        
-        .season-selector-wrapper select:hover {
-            background: #444;
-        }
-        
-        .sidebar-toggle {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-            padding: 10px;
-            background: none;
-            border: none;
-        }
-        
-        .sidebar-toggle span {
-            width: 25px;
-            height: 3px;
-            background: #667eea;
-            margin: 5px 0;
-            transition: 0.3s;
-        }
-        
-        .sidebar-content h3 {
-            color: #ccfc00;
-            margin-bottom: 20px;
-            font-size: 1.2em;
-        }
-        
-        .section-group {
-            margin-bottom: 20px;
-        }
-        
-        .section-group h4 {
-            color: #ccfc00;
-            font-size: 0.95em;
-            margin-bottom: 10px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-        
-        .section-group ul {
-            list-style: none;
-        }
-        
-        .section-group li {
-            margin-bottom: 8px;
-        }
-        
-        .section-group a {
-            color: white;
-            text-decoration: none;
-            padding: 8px 12px;
-            border-radius: 5px;
-            display: block;
-            transition: all 0.3s ease;
-            font-size: 0.95em;
-        }
-        
-        .section-group a:hover {
-            background: #512f89;
-            color: #ccfc00;
-        }
-        
-        .section-group a.active {
-            background: #512f89;
-            color: #ccfc00;
-            font-weight: 600;
-        }
-        
-        .container {
-            flex: 1;
-            background: transparent;
-            border-radius: 10px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
-            overflow: hidden;
-        }
-        
-        header {
-            background: transparent;
-            color: #ccfc00;
-            padding: 30px 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-        }
-        
-        header h1 {
-            font-size: 3em;
-            margin: 0;
-        }
-        
-        header p {
-            font-size: 1em;
-            opacity: 0.9;
-        }
-        
-        .header-logo {
-            max-width: 250px;
-            max-height: 250px;
-            width: auto;
-            height: auto;
-            object-fit: contain;
-            display: block;
-            margin: 0 auto 20px;
-        }
-        
-        @media (min-width: 768px) {
-            header {
-                flex-direction: row;
-                justify-content: center;
-                align-items: center;
-                gap: 30px;
-            }
-            
-            .header-logo {
-                margin: 0;
-                flex-shrink: 0;
-            }
-            
-            header h1 {
-                margin: 0;
-            }
-        }
-        
-        .content {
-            padding: 30px 20px;
-        }
-        
-        .section {
-            margin-bottom: 40px;
-        }
-        
-        .section h2 {
-            color: #ccfc00;
-            font-size: 1.6em;
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 3px solid gray;
-        }
-        
-        .chart-container {
-            background: #f8f9fa;
-            border-radius: 8px;
-            padding: 20px;
-            margin-bottom: 30px;
-            width: 100%;
-            overflow-x: auto;
-        }
-        
-        .chart-container > div {
-            width: 100% !important;
-            height: 500px !important;
-        }
-        
-        .table-container {
-            overflow-x: auto;
-            background: #14161ff2;
-            border-radius: 8px;
-            padding: 20px;
-            margin-bottom: 30px;
-        }
-        
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 0.95em;
-        }
-        
-        table thead {
-            background: #14161ff2;
-            color: white;
-        }
-        
-        table th {
-            padding: 12px;
-            text-align: left;
-            font-weight: 600;
-        }
-        
-        table td {
-            padding: 12px;
-            border-bottom: 1px solid #e0e0e0;
-        }
-        
-        table tbody tr:hover {
-            background: #e8eaf6 !important;
-            color: black;
-        }
-        
-        table tbody tr:nth-child(even) {
-            background: #444;
-        }
-        
-        .footer {
-            background: transparent;
-            padding: 20px;
-            text-align: center;
-            color: #666;
-            border-top: 1px solid #e0e0e0;
-        }
-        
-        @media (max-width: 1024px) {
-            .main-wrapper {
-                flex-direction: column;
-            }
-            
-            .sidebar {
-                width: 100%;
-                position: static;
-                max-height: none;
-            }
-            
-            header h1 {
-                font-size: 2em;
-            }
-            
-            .header-logo {
-                width: 200px;
-                height: 200px;
-            }
-            
-            table {
-                font-size: 0.85em;
-            }
-            
-            table th, table td {
-                padding: 8px;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            body {
-                padding: 12px;
-            }
-            
-            .main-wrapper {
-                gap: 12px;
-            }
-            
-            .sidebar {
-                max-height: 0;
-                overflow: hidden;
-                transition: max-height 0.3s ease;
-            }
-            
-            .sidebar.active {
-                max-height: 600px;
-            }
-            
-            .sidebar-toggle {
-                display: flex;
-            }
-            
-            header {
-                padding: 20px 15px;
-            }
-            
-            header h1 {
-                font-size: 1.5em;
-                margin-bottom: 5px;
-            }
-            
-            header p {
-                font-size: 0.9em;
-            }
-            
-            .header-logo {
-                width: 150px;
-                height: 150px;
-                margin-bottom: 15px;
-            }
-            
-            .content {
-                padding: 20px 15px;
-            }
-            
-            .section h2 {
-                font-size: 1.3em;
-                margin-bottom: 15px;
-            }
-            
-            .chart-container {
-                padding: 15px;
-                margin-bottom: 20px;
-            }
-            
-            .table-container {
-                padding: 15px;
-                margin-bottom: 20px;
-            }
-            
-            table {
-                font-size: 0.75em;
-            }
-            
-            table th, table td {
-                padding: 6px;
-            }
-            
-            .sidebar-content h3 {
-                font-size: 1em;
-            }
-            
-            .section-group a {
-                font-size: 0.85em;
-                padding: 6px 10px;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            body {
-                padding: 8px;
-            }
-            
-            .main-wrapper {
-                gap: 8px;
-            }
-            
-            header {
-                color: #ccfc00;
-                padding: 15px 10px;
-                border-radius: 8px 8px 0 0;
-            }
-            
-            header h1 {
-                color: #ccfc00;
-                font-size: 1.1em;
-                margin-bottom: 3px;
-            }
-            
-            header p {
-                font-size: 0.8em;
-            }
-            
-            .header-logo {
-                width: 100px;
-                height: 100px;
-                margin-bottom: 10px;
-            }
-            
-            .container {
-                border-radius: 8px;
-            }
-            
-            .content {
-                padding: 15px 10px;
-            }
-            
-            .section {
-                margin-bottom: 25px;
-            }
-            
-            .section h2 {
-                color: #ccfc00;
-                font-size: 1.1em;
-                margin-bottom: 12px;
-                padding-bottom: 8px;
-            }
-            
-            .chart-container {
-                padding: 10px;
-                margin-bottom: 15px;
-            }
-            
-            .table-container {
-                padding: 10px;
-                margin-bottom: 15px;
-                overflow-x: auto;
-            }
-            
-            table {
-                font-size: 0.65em;
-                min-width: 100%;
-            }
-            
-            table th, table td {
-                padding: 4px;
-            }
-            
-            .sidebar-content h3 {
-                font-size: 0.9em;
-                margin-bottom: 15px;
-            }
-            
-            .section-group h4 {
-                font-size: 0.75em;
-                margin-bottom: 8px;
-            }
-            
-            .section-group a {
-                font-size: 0.75em;
-                padding: 5px 8px;
-                margin-bottom: 5px;
-            }
-            
-            .footer {
-                background: transparent;
-                padding: 15px 10px;
-                font-size: 0.75em;
-            }
-            
-            table tbody tr.highlighted {
-                background: #ccfc00 !important;
-                color: black !important;
-                font-weight: 600;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="../../templates/styles.css">
 </head>
 <body>
     <div class="main-wrapper">
@@ -479,16 +22,16 @@
                 <img src="../logo.png" alt="Logo" class="header-logo">
                 <h1>🏆 Multiclass P2UR Quali Pace Data</h1>
             </header>
-            
+
             <div class="content">
                 <!-- Pace Trend Chart -->
                 <div class="section">
-                    <h2>Pace Trend by Round (Average Pace with ±1 SD Confidence Intervals)</h2>
+                    <h2>Pace Trend by Round (Average Pace with &plusmn;1 SD Confidence Intervals)</h2>
                     <div class="chart-container">
                         <div id="paceChart" style="width:100%;"></div>
                     </div>
                 </div>
-                
+
                 <!-- Pace vs Alien Table -->
                 <div class="section">
                     <h2>Average Pace vs Alien - All Rounds</h2>
@@ -509,7 +52,7 @@
   </thead>
   <tbody>
     <tr data-driver="Abe Wozniak">
-      <td>Abe Wozniak</td>
+      <td>Abe W.</td>
       <td>102.71</td>
       <td>101.99</td>
       <td>103.28</td>
@@ -520,7 +63,7 @@
       <td>NaN</td>
     </tr>
     <tr data-driver="Brian Crane">
-      <td>Brian Crane</td>
+      <td>Brian C.</td>
       <td>103.81</td>
       <td>102.70</td>
       <td>NaN</td>
@@ -531,7 +74,7 @@
       <td>NaN</td>
     </tr>
     <tr data-driver="Chris MacLennan">
-      <td>Chris MacLennan</td>
+      <td>Chris M.</td>
       <td>105.50</td>
       <td>103.56</td>
       <td>104.69</td>
@@ -542,7 +85,7 @@
       <td>103.77</td>
     </tr>
     <tr data-driver="Donovan Bailey">
-      <td>Donovan Bailey</td>
+      <td>Donovan B.</td>
       <td>101.68</td>
       <td>100.93</td>
       <td>100.80</td>
@@ -553,7 +96,7 @@
       <td>NaN</td>
     </tr>
     <tr data-driver="Greg Kachadurian">
-      <td>Greg Kachadurian</td>
+      <td>Greg K.</td>
       <td>101.67</td>
       <td>100.85</td>
       <td>101.15</td>
@@ -564,7 +107,7 @@
       <td>NaN</td>
     </tr>
     <tr data-driver="Hans Montes">
-      <td>Hans Montes</td>
+      <td>Hans M.</td>
       <td>103.02</td>
       <td>103.19</td>
       <td>102.97</td>
@@ -575,7 +118,7 @@
       <td>102.91</td>
     </tr>
     <tr data-driver="James Rubio">
-      <td>James Rubio</td>
+      <td>James R.</td>
       <td>103.33</td>
       <td>102.54</td>
       <td>102.54</td>
@@ -586,7 +129,7 @@
       <td>102.17</td>
     </tr>
     <tr data-driver="Joris Butkus">
-      <td>Joris Butkus</td>
+      <td>Joris B.</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>100.64</td>
@@ -597,7 +140,7 @@
       <td>NaN</td>
     </tr>
     <tr data-driver="Michael Landry">
-      <td>Michael Landry</td>
+      <td>Michael L.</td>
       <td>101.62</td>
       <td>100.85</td>
       <td>100.93</td>
@@ -608,7 +151,7 @@
       <td>NaN</td>
     </tr>
     <tr data-driver="Michael Quandt">
-      <td>Michael Quandt</td>
+      <td>Michael Q.</td>
       <td>102.61</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -619,7 +162,7 @@
       <td>NaN</td>
     </tr>
     <tr data-driver="Nathan Sides">
-      <td>Nathan Sides</td>
+      <td>Nathan S.</td>
       <td>102.65</td>
       <td>NaN</td>
       <td>102.30</td>
@@ -630,7 +173,7 @@
       <td>102.22</td>
     </tr>
     <tr data-driver="Ryan Bellune">
-      <td>Ryan Bellune</td>
+      <td>Ryan B.</td>
       <td>103.19</td>
       <td>102.06</td>
       <td>103.56</td>
@@ -644,7 +187,7 @@
 </table>
                     </div>
                 </div>
-                
+
                 <!-- Improvement Comparison -->
                 <div class="section">
                     <h2>Driver Improvement Comparison (Average Pace)</h2>
@@ -660,81 +203,87 @@
   </thead>
   <tbody>
     <tr data-driver="Ryan Bellune">
-      <td>Ryan Bellune</td>
-      <td>102.77</td>
-      <td>101.80</td>
-      <td>0.97</td>
+      <td>Ryan B.</td>
+      <td>102.06</td>
+      <td>101.29</td>
+      <td>0.77</td>
     </tr>
     <tr data-driver="Nathan Sides">
-      <td>Nathan Sides</td>
-      <td>103.97</td>
-      <td>103.36</td>
-      <td>0.61</td>
-    </tr>
-    <tr data-driver="Hans Montes">
-      <td>Hans Montes</td>
-      <td>104.41</td>
-      <td>104.36</td>
-      <td>0.05</td>
-    </tr>
-    <tr data-driver="Chris MacLennan">
-      <td>Chris MacLennan</td>
-      <td>104.00</td>
-      <td>104.11</td>
-      <td>-0.11</td>
-    </tr>
-    <tr data-driver="Greg Kachadurian">
-      <td>Greg Kachadurian</td>
-      <td>101.10</td>
-      <td>101.64</td>
-      <td>-0.54</td>
+      <td>Nathan S.</td>
+      <td>102.65</td>
+      <td>102.22</td>
+      <td>0.43</td>
     </tr>
     <tr data-driver="James Rubio">
-      <td>James Rubio</td>
-      <td>102.81</td>
-      <td>103.68</td>
-      <td>-0.87</td>
+      <td>James R.</td>
+      <td>102.54</td>
+      <td>102.17</td>
+      <td>0.37</td>
+    </tr>
+    <tr data-driver="Chris MacLennan">
+      <td>Chris M.</td>
+      <td>103.56</td>
+      <td>103.41</td>
+      <td>0.15</td>
+    </tr>
+    <tr data-driver="Greg Kachadurian">
+      <td>Greg K.</td>
+      <td>100.85</td>
+      <td>100.73</td>
+      <td>0.12</td>
+    </tr>
+    <tr data-driver="Hans Montes">
+      <td>Hans M.</td>
+      <td>103.02</td>
+      <td>102.91</td>
+      <td>0.11</td>
     </tr>
     <tr data-driver="Donovan Bailey">
-      <td>Donovan Bailey</td>
-      <td>101.27</td>
-      <td>102.72</td>
-      <td>-1.45</td>
+      <td>Donovan B.</td>
+      <td>100.93</td>
+      <td>101.38</td>
+      <td>-0.45</td>
+    </tr>
+    <tr data-driver="Brian Crane">
+      <td>Brian C.</td>
+      <td>102.70</td>
+      <td>103.28</td>
+      <td>-0.58</td>
     </tr>
   </tbody>
 </table>
                     </div>
                 </div>
             </div>
-            
+
             <div class="footer">
                 <p>Generated from OOFS XML Race Data</p>
-                <p style="font-size: 0.9em; margin-top: 10px;">Last updated: 2026-05-30 07:48:37</p>
+                <p style="font-size: 0.9em; margin-top: 10px;">Last updated: 2026-05-30 11:23:17</p>
             </div>
         </div>
     </div>
-    
+
     <svg id="confidenceIntervalSVG" style="position: absolute; top: 0; left: 0; pointer-events: none; display: none;"></svg>
-    
+
     <script>
         // Season selector functionality
         const seasonSelector = document.getElementById('seasonSelector');
         if (seasonSelector) {
             seasonSelector.addEventListener('change', function() {
                 const season = this.value;
-                window.location.href = `../${season}/` + window.location.pathname.split('/').pop();
+                window.location.href = `../../${season}/` + window.location.pathname.split('/').pop();
             });
         }
-        
+
         // Sidebar toggle functionality
         const sidebarToggle = document.getElementById('sidebarToggle');
         const sidebar = document.querySelector('.sidebar');
-        
+
         if (sidebarToggle && sidebar) {
             sidebarToggle.addEventListener('click', function() {
                 sidebar.classList.toggle('active');
             });
-            
+
             // Close sidebar when a link is clicked
             const sidebarLinks = sidebar.querySelectorAll('a');
             sidebarLinks.forEach(link => {
@@ -743,29 +292,29 @@
                 });
             });
         }
-        
+
         // Plotly chart initialization
         const plotData = [{"x": [0, 1, 2, 3, 4, 5, 6], "y": [101.67, 100.85, 101.15, 101.0, 101.37, 100.84, 100.73], "mode": "lines+markers", "name": "Greg Kachadurian", "hovertemplate": "%{customdata}<extra></extra>", "customdata": ["Greg Kachadurian<br>Fastest Lap: 101.67%", "Greg Kachadurian<br>Fastest Lap: 100.85%", "Greg Kachadurian<br>Fastest Lap: 101.15%", "Greg Kachadurian<br>Fastest Lap: 101.00%", "Greg Kachadurian<br>Fastest Lap: 101.37%", "Greg Kachadurian<br>Fastest Lap: 100.84%", "Greg Kachadurian<br>Fastest Lap: 100.73%"], "line": {"width": 2}, "marker": {"size": 8}, "opacity": 1.0}, {"x": [0, 1, 2, 4, 5], "y": [101.62, 100.85, 100.93, 101.87, 101.21], "mode": "lines+markers", "name": "Michael Landry", "hovertemplate": "%{customdata}<extra></extra>", "customdata": ["Michael Landry<br>Fastest Lap: 101.62%", "Michael Landry<br>Fastest Lap: 100.85%", "Michael Landry<br>Fastest Lap: 100.93%", "Michael Landry<br>Fastest Lap: 101.87%", "Michael Landry<br>Fastest Lap: 101.21%"], "line": {"width": 2}, "marker": {"size": 8}, "opacity": 1.0}, {"x": [0, 1, 2, 3, 4, 6], "y": [101.68, 100.93, 100.8, 100.84, 101.52, 101.38], "mode": "lines+markers", "name": "Donovan Bailey", "hovertemplate": "%{customdata}<extra></extra>", "customdata": ["Donovan Bailey<br>Fastest Lap: 101.68%", "Donovan Bailey<br>Fastest Lap: 100.93%", "Donovan Bailey<br>Fastest Lap: 100.80%", "Donovan Bailey<br>Fastest Lap: 100.84%", "Donovan Bailey<br>Fastest Lap: 101.52%", "Donovan Bailey<br>Fastest Lap: 101.38%"], "line": {"width": 2}, "marker": {"size": 8}, "opacity": 1.0}, {"x": [0, 1, 2, 4, 5, 6, 7], "y": [103.19, 102.06, 103.56, 102.33, 103.83, 101.29, 101.9], "mode": "lines+markers", "name": "Ryan Bellune", "hovertemplate": "%{customdata}<extra></extra>", "customdata": ["Ryan Bellune<br>Fastest Lap: 103.19%", "Ryan Bellune<br>Fastest Lap: 102.06%", "Ryan Bellune<br>Fastest Lap: 103.56%", "Ryan Bellune<br>Fastest Lap: 102.33%", "Ryan Bellune<br>Fastest Lap: 103.83%", "Ryan Bellune<br>Fastest Lap: 101.29%", "Ryan Bellune<br>Fastest Lap: 101.90%"], "line": {"width": 2}, "marker": {"size": 8}, "opacity": 1.0}, {"x": [0, 1, 2, 3, 4, 5, 6, 7], "y": [103.33, 102.54, 102.54, 101.32, 102.72, 102.58, 102.32, 102.17], "mode": "lines+markers", "name": "James Rubio", "hovertemplate": "%{customdata}<extra></extra>", "customdata": ["James Rubio<br>Fastest Lap: 103.33%", "James Rubio<br>Fastest Lap: 102.54%", "James Rubio<br>Fastest Lap: 102.54%", "James Rubio<br>Fastest Lap: 101.32%", "James Rubio<br>Fastest Lap: 102.72%", "James Rubio<br>Fastest Lap: 102.58%", "James Rubio<br>Fastest Lap: 102.32%", "James Rubio<br>Fastest Lap: 102.17%"], "line": {"width": 2}, "marker": {"size": 8}, "opacity": 1.0}, {"x": [0, 1, 2, 3, 4], "y": [102.71, 101.99, 103.28, 101.66, 102.73], "mode": "lines+markers", "name": "Abe Wozniak", "hovertemplate": "%{customdata}<extra></extra>", "customdata": ["Abe Wozniak<br>Fastest Lap: 102.71%", "Abe Wozniak<br>Fastest Lap: 101.99%", "Abe Wozniak<br>Fastest Lap: 103.28%", "Abe Wozniak<br>Fastest Lap: 101.66%", "Abe Wozniak<br>Fastest Lap: 102.73%"], "line": {"width": 2}, "marker": {"size": 8}, "opacity": 1.0}, {"x": [2, 5], "y": [100.64, 100.81], "mode": "lines+markers", "name": "Joris Butkus", "hovertemplate": "%{customdata}<extra></extra>", "customdata": ["Joris Butkus<br>Fastest Lap: 100.64%", "Joris Butkus<br>Fastest Lap: 100.81%"], "line": {"width": 2}, "marker": {"size": 8}, "opacity": 1.0}, {"x": [0, 3, 4], "y": [102.61, 101.84, 102.09], "mode": "lines+markers", "name": "Michael Quandt", "hovertemplate": "%{customdata}<extra></extra>", "customdata": ["Michael Quandt<br>Fastest Lap: 102.61%", "Michael Quandt<br>Fastest Lap: 101.84%", "Michael Quandt<br>Fastest Lap: 102.09%"], "line": {"width": 2}, "marker": {"size": 8}, "opacity": 1.0}, {"x": [0, 2, 3, 4, 5, 6, 7], "y": [102.65, 102.3, 101.9, 102.56, 101.95, 103.09, 102.22], "mode": "lines+markers", "name": "Nathan Sides", "hovertemplate": "%{customdata}<extra></extra>", "customdata": ["Nathan Sides<br>Fastest Lap: 102.65%", "Nathan Sides<br>Fastest Lap: 102.30%", "Nathan Sides<br>Fastest Lap: 101.90%", "Nathan Sides<br>Fastest Lap: 102.56%", "Nathan Sides<br>Fastest Lap: 101.95%", "Nathan Sides<br>Fastest Lap: 103.09%", "Nathan Sides<br>Fastest Lap: 102.22%"], "line": {"width": 2}, "marker": {"size": 8}, "opacity": 1.0}, {"x": [0, 1, 2, 3, 4, 6, 7], "y": [103.02, 103.19, 102.97, 101.8, 103.25, 103.27, 102.91], "mode": "lines+markers", "name": "Hans Montes", "hovertemplate": "%{customdata}<extra></extra>", "customdata": ["Hans Montes<br>Fastest Lap: 103.02%", "Hans Montes<br>Fastest Lap: 103.19%", "Hans Montes<br>Fastest Lap: 102.97%", "Hans Montes<br>Fastest Lap: 101.80%", "Hans Montes<br>Fastest Lap: 103.25%", "Hans Montes<br>Fastest Lap: 103.27%", "Hans Montes<br>Fastest Lap: 102.91%"], "line": {"width": 2}, "marker": {"size": 8}, "opacity": 1.0}, {"x": [0, 1, 3, 4, 5, 6], "y": [103.81, 102.7, 102.94, 103.09, 104.46, 103.28], "mode": "lines+markers", "name": "Brian Crane", "hovertemplate": "%{customdata}<extra></extra>", "customdata": ["Brian Crane<br>Fastest Lap: 103.81%", "Brian Crane<br>Fastest Lap: 102.70%", "Brian Crane<br>Fastest Lap: 102.94%", "Brian Crane<br>Fastest Lap: 103.09%", "Brian Crane<br>Fastest Lap: 104.46%", "Brian Crane<br>Fastest Lap: 103.28%"], "line": {"width": 2}, "marker": {"size": 8}, "opacity": 1.0}, {"x": [0, 1, 2, 3, 4, 5, 6, 7], "y": [105.5, 103.56, 104.69, 102.73, 103.79, 108.43, 103.41, 103.77], "mode": "lines+markers", "name": "Chris MacLennan", "hovertemplate": "%{customdata}<extra></extra>", "customdata": ["Chris MacLennan<br>Fastest Lap: 105.50%", "Chris MacLennan<br>Fastest Lap: 103.56%", "Chris MacLennan<br>Fastest Lap: 104.69%", "Chris MacLennan<br>Fastest Lap: 102.73%", "Chris MacLennan<br>Fastest Lap: 103.79%", "Chris MacLennan<br>Fastest Lap: 108.43%", "Chris MacLennan<br>Fastest Lap: 103.41%", "Chris MacLennan<br>Fastest Lap: 103.77%"], "line": {"width": 2}, "marker": {"size": 8}, "opacity": 1.0}];
         const plotLayout = {"title": "Multiclass P2UR Quali Pace Trend: After 8 Rounds", "xaxis": {"tickmode": "array", "ticktext": ["Portimao", "Le Mans", "Interlagos", "Monza", "Sebring", "Paul Ricard", "COTA", "Spa"], "tickvals": [0, 1, 2, 3, 4, 5, 6, 7]}, "yaxis": {"title": "Quali Pace % (vs Alien)", "range": [100.0, 107.0]}, "hovermode": "closest", "plot_bgcolor": "rgba(240, 240, 240, 0.5)", "height": 500, "autosize": true, "showlegend": false, "xaxis_range": [-0.6, 7.6], "margin": {"l": 50, "r": 20, "b": 50, "t": 60}};
-        
+
         Plotly.newPlot('paceChart', plotData, plotLayout, {responsive: true, displayModeBar: false});
-        
+
         // Confidence interval visualization using Plotly shapes
         const paceChart = document.getElementById('paceChart');
-        
+
         function drawConfidenceInterval(traceIndex) {
             try {
                 const trace = plotData[traceIndex];
                 if (!trace.ci_lower || !trace.ci_upper || !trace.x || !trace.y) return;
-                
+
                 // Build shapes for confidence intervals
                 const shapes = [];
-                
+
                 for (let i = 0; i < trace.x.length; i++) {
                     const x_val = trace.x[i];
                     const lower = trace.ci_lower[i];
                     const upper = trace.ci_upper[i];
-                    
+
                     if (lower !== null && upper !== null) {
                         // Add a filled rectangle for the confidence interval band
                         shapes.push({
@@ -778,7 +327,7 @@
                             line: {color: 'rgba(100, 150, 255, 0.3)', width: 1},
                             layer: 'below'
                         });
-                        
+
                         // Add a line at the center (average pace)
                         shapes.push({
                             type: 'line',
@@ -790,14 +339,14 @@
                         });
                     }
                 }
-                
+
                 // Update layout with shapes
                 Plotly.relayout('paceChart', {shapes: shapes});
             } catch (e) {
                 console.error('Error drawing confidence interval:', e);
             }
         }
-        
+
         function clearConfidenceInterval() {
             try {
                 Plotly.relayout('paceChart', {shapes: []});
@@ -805,7 +354,7 @@
                 // Silently fail
             }
         }
-        
+
         // Function to highlight table rows by driver name
         function highlightTableRows(driverName) {
             try {
@@ -820,7 +369,7 @@
                 // Ignore errors if driver not found in tables
             }
         }
-        
+
         // Function to clear table row highlights
         function clearTableHighlights() {
             try {
@@ -831,7 +380,7 @@
                 // Ignore errors
             }
         }
-        
+
         // Function to highlight trace by driver name
         function highlightTrace(driverName) {
             try {
@@ -839,11 +388,11 @@
                 if (traceIndex === -1) {
                     return; // Driver not in graph, silently pass
                 }
-                
+
                 const numTraces = plotData.length;
                 const opacities = [];
                 const lineWidths = [];
-                
+
                 for (let i = 0; i < numTraces; i++) {
                     if (i === traceIndex) {
                         opacities.push(1.0);
@@ -853,13 +402,13 @@
                         lineWidths.push({width: 1});
                     }
                 }
-                
+
                 Plotly.restyle('paceChart', {'opacity': opacities, 'line': lineWidths});
             } catch (e) {
                 // Ignore errors if driver not found
             }
         }
-        
+
         // Function to clear trace highlights
         function clearTraceHighlights() {
             try {
@@ -871,14 +420,14 @@
                 // Ignore errors
             }
         }
-        
+
         // Add hover effect to grey out non-hovered lines in graph
         paceChart.on('plotly_hover', function(data) {
             const driverName = data.points[0].name;
             const numTraces = plotData.length;
             const opacities = [];
             const lineWidths = [];
-            
+
             for (let i = 0; i < numTraces; i++) {
                 if (i === data.points[0].curveNumber) {
                     opacities.push(1.0);
@@ -888,18 +437,18 @@
                     lineWidths.push({width: 1});
                 }
             }
-            
+
             Plotly.restyle('paceChart', {'opacity': opacities, 'line': lineWidths});
             highlightTableRows(driverName);
             drawConfidenceInterval(data.points[0].curveNumber);
         });
-        
+
         paceChart.on('plotly_unhover', function(data) {
             clearTraceHighlights();
             clearTableHighlights();
             clearConfidenceInterval();
         });
-        
+
         // Add hover effect to table rows
         document.addEventListener('DOMContentLoaded', function() {
             const rows = document.querySelectorAll('table tbody tr');
@@ -911,14 +460,14 @@
                         highlightTrace(driverName);
                     }
                 });
-                
+
                 row.addEventListener('mouseleave', function() {
                     this.classList.remove('highlighted');
                     clearTraceHighlights();
                 });
             });
         });
-        
+
         // Handle responsive resizing
         window.addEventListener('resize', function() {
             Plotly.Plots.resize('paceChart');

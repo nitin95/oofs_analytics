@@ -113,6 +113,8 @@ DRIVER_REPLACEMENTS = {
     'Avi Ganti': 'Avinash Ganti',
     'p thom': 'Parker Thomas',
     'J P#2423': 'J.P.',
+    'G Wulf': 'Gene Wulf',
+    'C M Wilson': 'Chris Wilson',
 }
 
 # TRACK_NAMES = ['Portimao', 'Le Mans', 'Interlagos', 'Monza', 'Sebring', 'Paul Ricard', 'COTA', 'Spa']
@@ -482,19 +484,33 @@ def process_races_into_comparison_df(dfs_dict, race_codes, code_to_track):
     return comparison_df, pace_cols, avg_pace_cols
 
 
-def build_improvement_df(comparison_df, avg_pace_cols):
-    """Build improvement dataframe from comparison df using average pace"""
-    improvement_df = comparison_df[['Driver_name'] + avg_pace_cols].copy()
-    improvement_df = improvement_df.replace(0.00, np.nan).dropna(subset=avg_pace_cols, how='all')
+def build_improvement_df(comparison_df, pace_cols):
+    """Build improvement dataframe by comparing the season's early races vs late races"""
+    improvement_df = comparison_df[['Driver_name'] + pace_cols].copy()
+    improvement_df = improvement_df.replace(0.00, np.nan).dropna(subset=pace_cols, how='all')
     
-    # Calculate improvement only if we have at least 2 races
-    if len(avg_pace_cols) >= 2:
-        improvement_df['best_first_two'] = improvement_df[avg_pace_cols[:2]].min(axis=1)
-        improvement_df['best_last_two'] = improvement_df[avg_pace_cols[-2:]].min(axis=1)
-        improvement_df['improvement'] = improvement_df['best_first_two'] - improvement_df['best_last_two']
-        improvement_df = improvement_df.sort_values('improvement', ascending=False)
+    n_races = len(pace_cols)
     
-    return improvement_df
+    def calculate_improvement(row):
+        # For very short seasons (<= 3), compare the absolute first round to the absolute last round
+        if n_races <= 3:
+            best_early = row[pace_cols[0]]
+            best_late = row[pace_cols[-1]]
+        # Standard: Compare the best of Rounds 1 & 2 vs the best of the Penultimate & Final Rounds
+        else:
+            best_early = row[pace_cols[:2]].min()
+            best_late = row[pace_cols[-2:]].min()
+            
+        return pd.Series({
+            'best_first_two': best_early, 
+            'best_last_two': best_late, 
+            'improvement': best_early - best_late
+        })
+
+    stats = improvement_df.apply(calculate_improvement, axis=1)
+    
+    final_improvement_df = pd.concat([improvement_df[['Driver_name']], stats], axis=1)
+    return final_improvement_df.dropna(subset=['improvement']).sort_values('improvement', ascending=False)
 
 
 def create_display_df(comparison_df, avg_pace_cols, stdev_pace_cols, track_names, mode='race'):
@@ -526,10 +542,10 @@ def generate_html_tables(comparison_df, improvement_df, avg_pace_cols, track_nam
         table_cols = fastest_lap_cols
     full_driver_names_pace = pace_table_df['Driver_name'].copy()
     
-    # Convert driver names to "F. Lastname" format for space efficiency
-    # pace_table_df['Driver_name'] = pace_table_df['Driver_name'].apply(
-    #     lambda x: f"{x.split()[0][0]}. {' '.join(x.split()[1:])}" if len(x.split()) > 1 else x
-    # )
+    # Convert driver names to "Firstname L." format for space efficiency
+    pace_table_df['Driver_name'] = pace_table_df['Driver_name'].apply(
+        lambda x: f"{x.split()[0]} {x.split()[-1][0]}." if len(x.split()) > 1 else x
+    )
     
     # Build rename mapping for pace table
     pace_rename = {'Driver_name': 'Driver'}
@@ -548,6 +564,11 @@ def generate_html_tables(comparison_df, improvement_df, avg_pace_cols, track_nam
     improvement_cols = ['Driver_name', 'best_first_two', 'best_last_two', 'improvement']
     improvement_table_df = improvement_df[improvement_cols].dropna(subset=['improvement'])
     full_driver_names_improvement = improvement_table_df['Driver_name'].copy()
+    
+    # Convert driver names to "Firstname L." format for space efficiency
+    improvement_table_df['Driver_name'] = improvement_table_df['Driver_name'].apply(
+        lambda x: f"{x.split()[0]} {x.split()[-1][0]}." if len(x.split()) > 1 else x
+    )
     
     improvement_table_df = improvement_table_df.rename(columns={
         'Driver_name': 'Driver',
@@ -711,473 +732,21 @@ def create_plotly_json(df_display_renamed, comparison_df, avg_pace_cols, stdev_p
     }
 
 
+TEMPLATES_DIR = os.path.join(os.path.dirname(__file__), 'templates')
+
+
 def get_css_styles():
-    """Return shared CSS styles for all pages"""
-    return """
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background: #14161ff2;
-            color: white;
-            line-height: 1;
-            padding: 20px;
-            display: flex;
-        }
-        
-        .main-wrapper {
-            display: flex;
-            width: 100%;
-            gap: 20px;
-            max-width: 1600px;
-            margin: 0 auto;
-        }
-        
-        .sidebar {
-            width: 250px;
-            background: black;
-            border-radius: 10px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
-            padding: 20px;
-            height: fit-content;
-            position: sticky;
-            top: 20px;
-        }
-        
-        .season-selector-wrapper {
-            margin-bottom: 15px;
-        }
-        
-        .season-selector-wrapper select {
-            width: 100%;
-            padding: 8px;
-            background: #333;
-            color: #ccfc00;
-            border: 1px solid #ccfc00;
-            border-radius: 5px;
-            font-size: 0.9em;
-            cursor: pointer;
-        }
-        
-        .season-selector-wrapper select:hover {
-            background: #444;
-        }
-        
-        .sidebar-toggle {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-            padding: 10px;
-            background: none;
-            border: none;
-        }
-        
-        .sidebar-toggle span {
-            width: 25px;
-            height: 3px;
-            background: #667eea;
-            margin: 5px 0;
-            transition: 0.3s;
-        }
-        
-        .sidebar-content h3 {
-            color: #ccfc00;
-            margin-bottom: 20px;
-            font-size: 1.2em;
-        }
-        
-        .section-group {
-            margin-bottom: 20px;
-        }
-        
-        .section-group h4 {
-            color: #ccfc00;
-            font-size: 0.95em;
-            margin-bottom: 10px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-        
-        .section-group ul {
-            list-style: none;
-        }
-        
-        .section-group li {
-            margin-bottom: 8px;
-        }
-        
-        .section-group a {
-            color: white;
-            text-decoration: none;
-            padding: 8px 12px;
-            border-radius: 5px;
-            display: block;
-            transition: all 0.3s ease;
-            font-size: 0.95em;
-        }
-        
-        .section-group a:hover {
-            background: #512f89;
-            color: #ccfc00;
-        }
-        
-        .section-group a.active {
-            background: #512f89;
-            color: #ccfc00;
-            font-weight: 600;
-        }
-        
-        .container {
-            flex: 1;
-            background: transparent;
-            border-radius: 10px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
-            overflow: hidden;
-        }
-        
-        header {
-            background: transparent;
-            color: #ccfc00;
-            padding: 30px 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-        }
-        
-        header h1 {
-            font-size: 3em;
-            margin: 0;
-        }
-        
-        header p {
-            font-size: 1em;
-            opacity: 0.9;
-        }
-        
-        .header-logo {
-            max-width: 250px;
-            max-height: 250px;
-            width: auto;
-            height: auto;
-            object-fit: contain;
-            display: block;
-            margin: 0 auto 20px;
-        }
-        
-        @media (min-width: 768px) {
-            header {
-                flex-direction: row;
-                justify-content: center;
-                align-items: center;
-                gap: 30px;
-            }
-            
-            .header-logo {
-                margin: 0;
-                flex-shrink: 0;
-            }
-            
-            header h1 {
-                margin: 0;
-            }
-        }
-        
-        .content {
-            padding: 30px 20px;
-        }
-        
-        .section {
-            margin-bottom: 40px;
-        }
-        
-        .section h2 {
-            color: #ccfc00;
-            font-size: 1.6em;
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 3px solid gray;
-        }
-        
-        .chart-container {
-            background: #f8f9fa;
-            border-radius: 8px;
-            padding: 20px;
-            margin-bottom: 30px;
-            width: 100%;
-            overflow-x: auto;
-        }
-        
-        .chart-container > div {
-            width: 100% !important;
-            height: 500px !important;
-        }
-        
-        .table-container {
-            overflow-x: auto;
-            background: #14161ff2;
-            border-radius: 8px;
-            padding: 20px;
-            margin-bottom: 30px;
-        }
-        
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 0.95em;
-        }
-        
-        table thead {
-            background: #14161ff2;
-            color: white;
-        }
-        
-        table th {
-            padding: 12px;
-            text-align: left;
-            font-weight: 600;
-        }
-        
-        table td {
-            padding: 12px;
-            border-bottom: 1px solid #e0e0e0;
-        }
-        
-        table tbody tr:hover {
-            background: #e8eaf6 !important;
-            color: black;
-        }
-        
-        table tbody tr:nth-child(even) {
-            background: #444;
-        }
-        
-        .footer {
-            background: transparent;
-            padding: 20px;
-            text-align: center;
-            color: #666;
-            border-top: 1px solid #e0e0e0;
-        }
-        
-        @media (max-width: 1024px) {
-            .main-wrapper {
-                flex-direction: column;
-            }
-            
-            .sidebar {
-                width: 100%;
-                position: static;
-                max-height: none;
-            }
-            
-            header h1 {
-                font-size: 2em;
-            }
-            
-            .header-logo {
-                width: 200px;
-                height: 200px;
-            }
-            
-            table {
-                font-size: 0.85em;
-            }
-            
-            table th, table td {
-                padding: 8px;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            body {
-                padding: 12px;
-            }
-            
-            .main-wrapper {
-                gap: 12px;
-            }
-            
-            .sidebar {
-                max-height: 0;
-                overflow: hidden;
-                transition: max-height 0.3s ease;
-            }
-            
-            .sidebar.active {
-                max-height: 600px;
-            }
-            
-            .sidebar-toggle {
-                display: flex;
-            }
-            
-            header {
-                padding: 20px 15px;
-            }
-            
-            header h1 {
-                font-size: 1.5em;
-                margin-bottom: 5px;
-            }
-            
-            header p {
-                font-size: 0.9em;
-            }
-            
-            .header-logo {
-                width: 150px;
-                height: 150px;
-                margin-bottom: 15px;
-            }
-            
-            .content {
-                padding: 20px 15px;
-            }
-            
-            .section h2 {
-                font-size: 1.3em;
-                margin-bottom: 15px;
-            }
-            
-            .chart-container {
-                padding: 15px;
-                margin-bottom: 20px;
-            }
-            
-            .table-container {
-                padding: 15px;
-                margin-bottom: 20px;
-            }
-            
-            table {
-                font-size: 0.75em;
-            }
-            
-            table th, table td {
-                padding: 6px;
-            }
-            
-            .sidebar-content h3 {
-                font-size: 1em;
-            }
-            
-            .section-group a {
-                font-size: 0.85em;
-                padding: 6px 10px;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            body {
-                padding: 8px;
-            }
-            
-            .main-wrapper {
-                gap: 8px;
-            }
-            
-            header {
-                color: #ccfc00;
-                padding: 15px 10px;
-                border-radius: 8px 8px 0 0;
-            }
-            
-            header h1 {
-                color: #ccfc00;
-                font-size: 1.1em;
-                margin-bottom: 3px;
-            }
-            
-            header p {
-                font-size: 0.8em;
-            }
-            
-            .header-logo {
-                width: 100px;
-                height: 100px;
-                margin-bottom: 10px;
-            }
-            
-            .container {
-                border-radius: 8px;
-            }
-            
-            .content {
-                padding: 15px 10px;
-            }
-            
-            .section {
-                margin-bottom: 25px;
-            }
-            
-            .section h2 {
-                color: #ccfc00;
-                font-size: 1.1em;
-                margin-bottom: 12px;
-                padding-bottom: 8px;
-            }
-            
-            .chart-container {
-                padding: 10px;
-                margin-bottom: 15px;
-            }
-            
-            .table-container {
-                padding: 10px;
-                margin-bottom: 15px;
-                overflow-x: auto;
-            }
-            
-            table {
-                font-size: 0.65em;
-                min-width: 100%;
-            }
-            
-            table th, table td {
-                padding: 4px;
-            }
-            
-            .sidebar-content h3 {
-                font-size: 0.9em;
-                margin-bottom: 15px;
-            }
-            
-            .section-group h4 {
-                font-size: 0.75em;
-                margin-bottom: 8px;
-            }
-            
-            .section-group a {
-                font-size: 0.75em;
-                padding: 5px 8px;
-                margin-bottom: 5px;
-            }
-            
-            .footer {
-                background: transparent;
-                padding: 15px 10px;
-                font-size: 0.75em;
-            }
-            
-            table tbody tr.highlighted {
-                background: #ccfc00 !important;
-                color: black !important;
-                font-weight: 600;
-            }
-        }
-    """
+    """Return shared CSS styles for all pages (loaded from templates/styles.css)"""
+    css_path = os.path.join(TEMPLATES_DIR, 'styles.css')
+    with open(css_path, 'r', encoding='utf-8') as f:
+        return f.read()
+
+
 
 def generate_page(title, sidebar_file, season_id, pace_html, improvement_html, plotly_data):
-    """Generate an HTML page with sidebar and season selector"""
+    """Generate an HTML page with sidebar and season selector (loaded from templates/page.html)"""
     sidebar = get_sidebar_html(sidebar_file, season_id)
-    css = get_css_styles()
-    
-    # Create sidebar HTML with toggle button
+
     sidebar_section = f"""
     <button class="sidebar-toggle" id="sidebarToggle" aria-label="Toggle menu">
         <span></span>
@@ -1186,270 +755,23 @@ def generate_page(title, sidebar_file, season_id, pace_html, improvement_html, p
     </button>
     {sidebar}
     """
-    return f"""<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{title}</title>
-    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-    <style>{css}</style>
-</head>
-<body>
-    <div class="main-wrapper">
-        {sidebar_section}
-        <div class="container">
-            <header>
-                <img src="../logo.png" alt="Logo" class="header-logo">
-                <h1>{title}</h1>
-            </header>
-            
-            <div class="content">
-                <!-- Pace Trend Chart -->
-                <div class="section">
-                    <h2>Pace Trend by Round (Average Pace with ±1 SD Confidence Intervals)</h2>
-                    <div class="chart-container">
-                        <div id="paceChart" style="width:100%;"></div>
-                    </div>
-                </div>
-                
-                <!-- Pace vs Alien Table -->
-                <div class="section">
-                    <h2>Average Pace vs Alien - All Rounds</h2>
-                    <div class="table-container">
-                        {pace_html}
-                    </div>
-                </div>
-                
-                <!-- Improvement Comparison -->
-                <div class="section">
-                    <h2>Driver Improvement Comparison (Average Pace)</h2>
-                    <div class="table-container">
-                        {improvement_html}
-                    </div>
-                </div>
-            </div>
-            
-            <div class="footer">
-                <p>Generated from OOFS XML Race Data</p>
-                <p style="font-size: 0.9em; margin-top: 10px;">Last updated: {pd.Timestamp.now().strftime('%Y-%m-%d %H:%M:%S')}</p>
-            </div>
-        </div>
-    </div>
-    
-    <svg id="confidenceIntervalSVG" style="position: absolute; top: 0; left: 0; pointer-events: none; display: none;"></svg>
-    
-    <script>
-        // Season selector functionality
-        const seasonSelector = document.getElementById('seasonSelector');
-        if (seasonSelector) {{
-            seasonSelector.addEventListener('change', function() {{
-                const season = this.value;
-                window.location.href = `../${{season}}/` + window.location.pathname.split('/').pop();
-            }});
-        }}
-        
-        // Sidebar toggle functionality
-        const sidebarToggle = document.getElementById('sidebarToggle');
-        const sidebar = document.querySelector('.sidebar');
-        
-        if (sidebarToggle && sidebar) {{
-            sidebarToggle.addEventListener('click', function() {{
-                sidebar.classList.toggle('active');
-            }});
-            
-            // Close sidebar when a link is clicked
-            const sidebarLinks = sidebar.querySelectorAll('a');
-            sidebarLinks.forEach(link => {{
-                link.addEventListener('click', function() {{
-                    sidebar.classList.remove('active');
-                }});
-            }});
-        }}
-        
-        // Plotly chart initialization
-        const plotData = {json.dumps(plotly_data['traces'])};
-        const plotLayout = {json.dumps(plotly_data['layout'])};
-        
-        Plotly.newPlot('paceChart', plotData, plotLayout, {{responsive: true, displayModeBar: false}});
-        
-        // Confidence interval visualization using Plotly shapes
-        const paceChart = document.getElementById('paceChart');
-        
-        function drawConfidenceInterval(traceIndex) {{
-            try {{
-                const trace = plotData[traceIndex];
-                if (!trace.ci_lower || !trace.ci_upper || !trace.x || !trace.y) return;
-                
-                // Build shapes for confidence intervals
-                const shapes = [];
-                
-                for (let i = 0; i < trace.x.length; i++) {{
-                    const x_val = trace.x[i];
-                    const lower = trace.ci_lower[i];
-                    const upper = trace.ci_upper[i];
-                    
-                    if (lower !== null && upper !== null) {{
-                        // Add a filled rectangle for the confidence interval band
-                        shapes.push({{
-                            type: 'rect',
-                            x0: x_val - 0.2,
-                            x1: x_val + 0.2,
-                            y0: lower,
-                            y1: upper,
-                            fillcolor: 'rgba(100, 150, 255, 0.15)',
-                            line: {{color: 'rgba(100, 150, 255, 0.3)', width: 1}},
-                            layer: 'below'
-                        }});
-                        
-                        // Add a line at the center (average pace)
-                        shapes.push({{
-                            type: 'line',
-                            x0: x_val - 0.1,
-                            x1: x_val + 0.1,
-                            y0: trace.y[i],
-                            y1: trace.y[i],
-                            line: {{color: 'rgba(50, 100, 200, 0.6)', width: 2}}
-                        }});
-                    }}
-                }}
-                
-                // Update layout with shapes
-                Plotly.relayout('paceChart', {{shapes: shapes}});
-            }} catch (e) {{
-                console.error('Error drawing confidence interval:', e);
-            }}
-        }}
-        
-        function clearConfidenceInterval() {{
-            try {{
-                Plotly.relayout('paceChart', {{shapes: []}});
-            }} catch (e) {{
-                // Silently fail
-            }}
-        }}
-        
-        // Function to highlight table rows by driver name
-        function highlightTableRows(driverName) {{
-            try {{
-                const rows = document.querySelectorAll('table tbody tr');
-                rows.forEach(row => {{
-                    const firstCell = row.cells[0].textContent.trim();
-                    if (firstCell === driverName) {{
-                        row.classList.add('highlighted');
-                    }}
-                }});
-            }} catch (e) {{
-                // Ignore errors if driver not found in tables
-            }}
-        }}
-        
-        // Function to clear table row highlights
-        function clearTableHighlights() {{
-            try {{
-                document.querySelectorAll('table tbody tr.highlighted').forEach(row => {{
-                    row.classList.remove('highlighted');
-                }});
-            }} catch (e) {{
-                // Ignore errors
-            }}
-        }}
-        
-        // Function to highlight trace by driver name
-        function highlightTrace(driverName) {{
-            try {{
-                const traceIndex = plotData.findIndex(trace => trace.name === driverName);
-                if (traceIndex === -1) {{
-                    return; // Driver not in graph, silently pass
-                }}
-                
-                const numTraces = plotData.length;
-                const opacities = [];
-                const lineWidths = [];
-                
-                for (let i = 0; i < numTraces; i++) {{
-                    if (i === traceIndex) {{
-                        opacities.push(1.0);
-                        lineWidths.push({{width: 3}});
-                    }} else {{
-                        opacities.push(0.2);
-                        lineWidths.push({{width: 1}});
-                    }}
-                }}
-                
-                Plotly.restyle('paceChart', {{'opacity': opacities, 'line': lineWidths}});
-            }} catch (e) {{
-                // Ignore errors if driver not found
-            }}
-        }}
-        
-        // Function to clear trace highlights
-        function clearTraceHighlights() {{
-            try {{
-                const numTraces = plotData.length;
-                const opacities = Array(numTraces).fill(1.0);
-                const lineWidths = Array(numTraces).fill({{width: 2}});
-                Plotly.restyle('paceChart', {{'opacity': opacities, 'line': lineWidths}});
-            }} catch (e) {{
-                // Ignore errors
-            }}
-        }}
-        
-        // Add hover effect to grey out non-hovered lines in graph
-        paceChart.on('plotly_hover', function(data) {{
-            const driverName = data.points[0].name;
-            const numTraces = plotData.length;
-            const opacities = [];
-            const lineWidths = [];
-            
-            for (let i = 0; i < numTraces; i++) {{
-                if (i === data.points[0].curveNumber) {{
-                    opacities.push(1.0);
-                    lineWidths.push({{width: 3}});
-                }} else {{
-                    opacities.push(0.2);
-                    lineWidths.push({{width: 1}});
-                }}
-            }}
-            
-            Plotly.restyle('paceChart', {{'opacity': opacities, 'line': lineWidths}});
-            highlightTableRows(driverName);
-            drawConfidenceInterval(data.points[0].curveNumber);
-        }});
-        
-        paceChart.on('plotly_unhover', function(data) {{
-            clearTraceHighlights();
-            clearTableHighlights();
-            clearConfidenceInterval();
-        }});
-        
-        // Add hover effect to table rows
-        document.addEventListener('DOMContentLoaded', function() {{
-            const rows = document.querySelectorAll('table tbody tr');
-            rows.forEach(row => {{
-                row.addEventListener('mouseenter', function() {{
-                    const driverName = this.getAttribute('data-driver');
-                    if (driverName) {{
-                        this.classList.add('highlighted');
-                        highlightTrace(driverName);
-                    }}
-                }});
-                
-                row.addEventListener('mouseleave', function() {{
-                    this.classList.remove('highlighted');
-                    clearTraceHighlights();
-                }});
-            }});
-        }});
-        
-        // Handle responsive resizing
-        window.addEventListener('resize', function() {{
-            Plotly.Plots.resize('paceChart');
-        }});
-    </script>
-</body>
-</html>
-"""
+
+    template_path = os.path.join(TEMPLATES_DIR, 'page.html')
+    with open(template_path, 'r', encoding='utf-8') as f:
+        template = f.read()
+
+    replacements = {
+        '{title}': title,
+        '{sidebar_section}': sidebar_section,
+        '{pace_html}': pace_html,
+        '{improvement_html}': improvement_html,
+        '{plot_traces_json}': json.dumps(plotly_data['traces']),
+        '{plot_layout_json}': json.dumps(plotly_data['layout']),
+        '{generated_at}': pd.Timestamp.now().strftime('%Y-%m-%d %H:%M:%S'),
+    }
+    for placeholder, value in replacements.items():
+        template = template.replace(placeholder, value)
+    return template
 
 
 def main():
@@ -1462,78 +784,24 @@ def main():
 
     # Generate top-level season index page
     print("\n[Index] Generating docs/index.html...")
-    _card_html = ''
-    for _s_id, _s_info in SEASONS.items():
-        _card_html += (
-            f'\n        <a class="season-card" href="{_s_id}/sprint_race.html">'
+    card_html = ''
+    for s_id, s_info in SEASONS.items():
+        card_html += (
+            f'\n        <a class="season-card" href="{s_id}/sprint_race.html">'
             f'\n            <span class="season-label">Season</span>'
-            f'\n            <span class="season-name">{_s_info["name"]}</span>'
-            f'\n            <span class="season-year">{_s_info["year"]}</span>'
-            f'\n            <span class="season-desc">{_s_info["description"]}</span>'
+            f'\n            <span class="season-name">{s_info["name"]}</span>'
+            f'\n            <span class="season-year">{s_info["year"]}</span>'
+            f'\n            <span class="season-desc">{s_info["description"]}</span>'
             f'\n        </a>'
         )
 
-    _index_parts = [
-        '<!DOCTYPE html>\n<html lang="en">\n<head>\n'
-        '    <meta charset="UTF-8">\n'
-        '    <meta name="viewport" content="width=device-width, initial-scale=1.0">\n'
-        '    <title>OOFS Analytics</title>\n'
-        '    <style>\n'
-        '        * { margin: 0; padding: 0; box-sizing: border-box; }\n'
-        '        body {\n'
-        '            font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;\n'
-        '            background: #14161ff2; color: white; min-height: 100vh;\n'
-        '            display: flex; flex-direction: column; align-items: center; padding: 40px 20px;\n'
-        '        }\n'
-        '        header { display: flex; flex-direction: column; align-items: center; text-align: center; margin-bottom: 50px; }\n'
-        '        header img { max-width: 180px; max-height: 180px; width: auto; height: auto; object-fit: contain; margin-bottom: 24px; }\n'
-        '        header h1 { color: #ccfc00; font-size: 2.8em; margin-bottom: 10px; }\n'
-        '        header p { color: rgba(255,255,255,0.6); font-size: 1em; }\n'
-        '        @media (min-width: 600px) {\n'
-        '            header { flex-direction: row; text-align: left; gap: 30px; }\n'
-        '            header img { margin-bottom: 0; flex-shrink: 0; }\n'
-        '        }\n'
-        '        h2.section-label {\n'
-        '            color: rgba(255,255,255,0.4); font-size: 0.75em; font-weight: 600;\n'
-        '            letter-spacing: 2px; text-transform: uppercase; margin-bottom: 20px;\n'
-        '            align-self: flex-start; width: 100%; max-width: 700px;\n'
-        '        }\n'
-        '        .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; width: 100%; max-width: 700px; }\n'
-        '        .season-card {\n'
-        '            display: flex; flex-direction: column; justify-content: center; align-items: center;\n'
-        '            aspect-ratio: 1 / 1; background: black; border: 2px solid transparent;\n'
-        '            border-radius: 12px; text-decoration: none; color: white;\n'
-        '            transition: border-color 0.2s ease, background 0.2s ease, transform 0.15s ease;\n'
-        '            padding: 24px; cursor: pointer; user-select: none;\n'
-        '        }\n'
-        '        .season-card:hover, .season-card:focus { border-color: #ccfc00; background: #0e1014; transform: translateY(-3px); outline: none; }\n'
-        '        .season-card:active { background: #512f89; transform: translateY(0); }\n'
-        '        .season-card .season-label { color: #ccfc00; font-size: 0.75em; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 10px; }\n'
-        '        .season-card .season-name { font-size: 1.6em; font-weight: 700; margin-bottom: 6px; }\n'
-        '        .season-card .season-year { color: rgba(255,255,255,0.45); font-size: 0.85em; }\n'
-        '        .season-card .season-desc { color: rgba(255,255,255,0.35); font-size: 0.75em; margin-top: 12px; text-align: center; }\n'
-        '        footer { margin-top: 60px; color: rgba(255,255,255,0.25); font-size: 0.8em; text-align: center; }\n'
-        '    </style>\n'
-        '</head>\n<body>\n'
-        '    <header>\n'
-        '        <img src="logo.png" alt="OOFS Logo">\n'
-        '        <div>\n'
-        '            <h1>OOFS Analytics</h1>\n'
-        '            <p>Race pace statistics &amp; driver performance</p>\n'
-        '        </div>\n'
-        '    </header>\n'
-        '    <h2 class="section-label">Select a Season</h2>\n'
-        '    <div class="card-grid">',
-        _card_html,
-        '\n    </div>\n'
-        '    <footer><p>Generated from OOFS XML Race Data</p></footer>\n'
-        '</body>\n</html>'
-    ]
-    _index_html = ''.join(_index_parts)
+    index_template_path = os.path.join(TEMPLATES_DIR, 'index.html')
+    with open(index_template_path, 'r', encoding='utf-8') as f:
+        index_template = f.read()
+    index_html = index_template.replace('{season_cards}', card_html)
 
-    import os as _os
-    with open(_os.path.join('docs', 'index.html'), 'w', encoding='utf-8-sig') as _f:
-        _f.write(_index_html)
+    with open(os.path.join('docs', 'index.html'), 'w', encoding='utf-8-sig') as f:
+        f.write(index_html)
     print("  Generated docs/index.html")
 
     # Loop through all configured seasons
@@ -1608,7 +876,10 @@ def main():
             comparison_df, _, avg_pace_cols = process_races_into_comparison_df(sprint_quali_dfs, race_codes, code_to_track)
             
             if comparison_df is not None:
-                improvement_df = build_improvement_df(comparison_df, avg_pace_cols)
+                # Create fastest lap column names and pass instead of average pace 
+                fastest_lap_cols = [col.replace('avg_pace_pct_alien_', 'laptime_pct_alien_') for col in avg_pace_cols]
+                improvement_df = build_improvement_df(comparison_df, fastest_lap_cols)
+                # improvement_df = build_improvement_df(comparison_df, avg_pace_cols)
                 stdev_pace_cols = [f'stdev_pace_pct_{code}' for code in race_codes]
                 df_display_renamed, _ = create_display_df(comparison_df, avg_pace_cols, stdev_pace_cols, track_names, mode='quali')
                 pace_html, improvement_html = generate_html_tables(comparison_df, improvement_df, avg_pace_cols, track_names, mode='quali')
@@ -1694,7 +965,11 @@ def main():
             comparison_df, _, avg_pace_cols = process_races_into_comparison_df(mc_p2ur_quali_dfs, race_codes, code_to_track)
             
             if comparison_df is not None:
-                improvement_df = build_improvement_df(comparison_df, avg_pace_cols)
+                # Create fastest lap column names and pass instead of average pace
+                fastest_lap_cols = [col.replace('avg_pace_pct_alien_', 'laptime_pct_alien_') for col in avg_pace_cols]
+                improvement_df = build_improvement_df(comparison_df, fastest_lap_cols)
+
+                # improvement_df = build_improvement_df(comparison_df, avg_pace_cols)
                 stdev_pace_cols = [f'stdev_pace_pct_{code}' for code in race_codes]
                 df_display_renamed, _ = create_display_df(comparison_df, avg_pace_cols, stdev_pace_cols, track_names, mode='quali')
                 pace_html, improvement_html = generate_html_tables(comparison_df, improvement_df, avg_pace_cols, track_names, mode='quali')
@@ -1765,7 +1040,12 @@ def main():
             comparison_df, _, avg_pace_cols = process_races_into_comparison_df(mc_gt3_quali_dfs, race_codes, code_to_track)
             
             if comparison_df is not None:
-                improvement_df = build_improvement_df(comparison_df, avg_pace_cols)
+
+                # Create fastest lap column names and pass instead of average pace
+                fastest_lap_cols = [col.replace('avg_pace_pct_alien_', 'laptime_pct_alien_') for col in avg_pace_cols]
+                improvement_df = build_improvement_df(comparison_df, fastest_lap_cols)
+
+                # improvement_df = build_improvement_df(comparison_df, avg_pace_cols)
                 stdev_pace_cols = [f'stdev_pace_pct_{code}' for code in race_codes]
                 df_display_renamed, _ = create_display_df(comparison_df, avg_pace_cols, stdev_pace_cols, track_names, mode='quali')
                 pace_html, improvement_html = generate_html_tables(comparison_df, improvement_df, avg_pace_cols, track_names, mode='quali')
@@ -1788,22 +1068,6 @@ def main():
     # All seasons processed - print summary
     print("\n" + "=" * 60)
     print("All pages generated successfully!")
-    print("\nDirectory structure created:")
-    for season_id in SEASONS.keys():
-        print(f"docs/{season_id}/")
-        print("     ├── index.html")
-        print("     ├── sprint_race.html")
-        print("     ├── sprint_quali.html")
-        print("     ├── multiclass_p2ur_race.html")
-        print("     ├── multiclass_p2ur_quali.html")
-        print("     ├── multiclass_gt3_race.html")
-        print("     └── multiclass_gt3_quali.html")
-    print("\nTo publish on GitHub Pages:")
-    print("1. Commit and push changes to GitHub")
-    print("2. Go to repository Settings > Pages")
-    print("3. Select 'Deploy from a branch'")
-    print("4. Choose 'main' branch and '/docs' folder")
-    print("5. Your page will be published at: https://nitin95.github.io/oofs_analytics/")
 
 
 if __name__ == '__main__':

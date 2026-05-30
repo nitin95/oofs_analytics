@@ -5,464 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>🏆 Multiclass GT3 Quali Pace Data</title>
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background: #14161ff2;
-            color: white;
-            line-height: 1;
-            padding: 20px;
-            display: flex;
-        }
-        
-        .main-wrapper {
-            display: flex;
-            width: 100%;
-            gap: 20px;
-            max-width: 1600px;
-            margin: 0 auto;
-        }
-        
-        .sidebar {
-            width: 250px;
-            background: black;
-            border-radius: 10px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
-            padding: 20px;
-            height: fit-content;
-            position: sticky;
-            top: 20px;
-        }
-        
-        .season-selector-wrapper {
-            margin-bottom: 15px;
-        }
-        
-        .season-selector-wrapper select {
-            width: 100%;
-            padding: 8px;
-            background: #333;
-            color: #ccfc00;
-            border: 1px solid #ccfc00;
-            border-radius: 5px;
-            font-size: 0.9em;
-            cursor: pointer;
-        }
-        
-        .season-selector-wrapper select:hover {
-            background: #444;
-        }
-        
-        .sidebar-toggle {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-            padding: 10px;
-            background: none;
-            border: none;
-        }
-        
-        .sidebar-toggle span {
-            width: 25px;
-            height: 3px;
-            background: #667eea;
-            margin: 5px 0;
-            transition: 0.3s;
-        }
-        
-        .sidebar-content h3 {
-            color: #ccfc00;
-            margin-bottom: 20px;
-            font-size: 1.2em;
-        }
-        
-        .section-group {
-            margin-bottom: 20px;
-        }
-        
-        .section-group h4 {
-            color: #ccfc00;
-            font-size: 0.95em;
-            margin-bottom: 10px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-        
-        .section-group ul {
-            list-style: none;
-        }
-        
-        .section-group li {
-            margin-bottom: 8px;
-        }
-        
-        .section-group a {
-            color: white;
-            text-decoration: none;
-            padding: 8px 12px;
-            border-radius: 5px;
-            display: block;
-            transition: all 0.3s ease;
-            font-size: 0.95em;
-        }
-        
-        .section-group a:hover {
-            background: #512f89;
-            color: #ccfc00;
-        }
-        
-        .section-group a.active {
-            background: #512f89;
-            color: #ccfc00;
-            font-weight: 600;
-        }
-        
-        .container {
-            flex: 1;
-            background: transparent;
-            border-radius: 10px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
-            overflow: hidden;
-        }
-        
-        header {
-            background: transparent;
-            color: #ccfc00;
-            padding: 30px 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-        }
-        
-        header h1 {
-            font-size: 3em;
-            margin: 0;
-        }
-        
-        header p {
-            font-size: 1em;
-            opacity: 0.9;
-        }
-        
-        .header-logo {
-            max-width: 250px;
-            max-height: 250px;
-            width: auto;
-            height: auto;
-            object-fit: contain;
-            display: block;
-            margin: 0 auto 20px;
-        }
-        
-        @media (min-width: 768px) {
-            header {
-                flex-direction: row;
-                justify-content: center;
-                align-items: center;
-                gap: 30px;
-            }
-            
-            .header-logo {
-                margin: 0;
-                flex-shrink: 0;
-            }
-            
-            header h1 {
-                margin: 0;
-            }
-        }
-        
-        .content {
-            padding: 30px 20px;
-        }
-        
-        .section {
-            margin-bottom: 40px;
-        }
-        
-        .section h2 {
-            color: #ccfc00;
-            font-size: 1.6em;
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 3px solid gray;
-        }
-        
-        .chart-container {
-            background: #f8f9fa;
-            border-radius: 8px;
-            padding: 20px;
-            margin-bottom: 30px;
-            width: 100%;
-            overflow-x: auto;
-        }
-        
-        .chart-container > div {
-            width: 100% !important;
-            height: 500px !important;
-        }
-        
-        .table-container {
-            overflow-x: auto;
-            background: #14161ff2;
-            border-radius: 8px;
-            padding: 20px;
-            margin-bottom: 30px;
-        }
-        
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 0.95em;
-        }
-        
-        table thead {
-            background: #14161ff2;
-            color: white;
-        }
-        
-        table th {
-            padding: 12px;
-            text-align: left;
-            font-weight: 600;
-        }
-        
-        table td {
-            padding: 12px;
-            border-bottom: 1px solid #e0e0e0;
-        }
-        
-        table tbody tr:hover {
-            background: #e8eaf6 !important;
-            color: black;
-        }
-        
-        table tbody tr:nth-child(even) {
-            background: #444;
-        }
-        
-        .footer {
-            background: transparent;
-            padding: 20px;
-            text-align: center;
-            color: #666;
-            border-top: 1px solid #e0e0e0;
-        }
-        
-        @media (max-width: 1024px) {
-            .main-wrapper {
-                flex-direction: column;
-            }
-            
-            .sidebar {
-                width: 100%;
-                position: static;
-                max-height: none;
-            }
-            
-            header h1 {
-                font-size: 2em;
-            }
-            
-            .header-logo {
-                width: 200px;
-                height: 200px;
-            }
-            
-            table {
-                font-size: 0.85em;
-            }
-            
-            table th, table td {
-                padding: 8px;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            body {
-                padding: 12px;
-            }
-            
-            .main-wrapper {
-                gap: 12px;
-            }
-            
-            .sidebar {
-                max-height: 0;
-                overflow: hidden;
-                transition: max-height 0.3s ease;
-            }
-            
-            .sidebar.active {
-                max-height: 600px;
-            }
-            
-            .sidebar-toggle {
-                display: flex;
-            }
-            
-            header {
-                padding: 20px 15px;
-            }
-            
-            header h1 {
-                font-size: 1.5em;
-                margin-bottom: 5px;
-            }
-            
-            header p {
-                font-size: 0.9em;
-            }
-            
-            .header-logo {
-                width: 150px;
-                height: 150px;
-                margin-bottom: 15px;
-            }
-            
-            .content {
-                padding: 20px 15px;
-            }
-            
-            .section h2 {
-                font-size: 1.3em;
-                margin-bottom: 15px;
-            }
-            
-            .chart-container {
-                padding: 15px;
-                margin-bottom: 20px;
-            }
-            
-            .table-container {
-                padding: 15px;
-                margin-bottom: 20px;
-            }
-            
-            table {
-                font-size: 0.75em;
-            }
-            
-            table th, table td {
-                padding: 6px;
-            }
-            
-            .sidebar-content h3 {
-                font-size: 1em;
-            }
-            
-            .section-group a {
-                font-size: 0.85em;
-                padding: 6px 10px;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            body {
-                padding: 8px;
-            }
-            
-            .main-wrapper {
-                gap: 8px;
-            }
-            
-            header {
-                color: #ccfc00;
-                padding: 15px 10px;
-                border-radius: 8px 8px 0 0;
-            }
-            
-            header h1 {
-                color: #ccfc00;
-                font-size: 1.1em;
-                margin-bottom: 3px;
-            }
-            
-            header p {
-                font-size: 0.8em;
-            }
-            
-            .header-logo {
-                width: 100px;
-                height: 100px;
-                margin-bottom: 10px;
-            }
-            
-            .container {
-                border-radius: 8px;
-            }
-            
-            .content {
-                padding: 15px 10px;
-            }
-            
-            .section {
-                margin-bottom: 25px;
-            }
-            
-            .section h2 {
-                color: #ccfc00;
-                font-size: 1.1em;
-                margin-bottom: 12px;
-                padding-bottom: 8px;
-            }
-            
-            .chart-container {
-                padding: 10px;
-                margin-bottom: 15px;
-            }
-            
-            .table-container {
-                padding: 10px;
-                margin-bottom: 15px;
-                overflow-x: auto;
-            }
-            
-            table {
-                font-size: 0.65em;
-                min-width: 100%;
-            }
-            
-            table th, table td {
-                padding: 4px;
-            }
-            
-            .sidebar-content h3 {
-                font-size: 0.9em;
-                margin-bottom: 15px;
-            }
-            
-            .section-group h4 {
-                font-size: 0.75em;
-                margin-bottom: 8px;
-            }
-            
-            .section-group a {
-                font-size: 0.75em;
-                padding: 5px 8px;
-                margin-bottom: 5px;
-            }
-            
-            .footer {
-                background: transparent;
-                padding: 15px 10px;
-                font-size: 0.75em;
-            }
-            
-            table tbody tr.highlighted {
-                background: #ccfc00 !important;
-                color: black !important;
-                font-weight: 600;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="../../templates/styles.css">
 </head>
 <body>
     <div class="main-wrapper">
@@ -479,16 +22,16 @@
                 <img src="../logo.png" alt="Logo" class="header-logo">
                 <h1>🏆 Multiclass GT3 Quali Pace Data</h1>
             </header>
-            
+
             <div class="content">
                 <!-- Pace Trend Chart -->
                 <div class="section">
-                    <h2>Pace Trend by Round (Average Pace with ±1 SD Confidence Intervals)</h2>
+                    <h2>Pace Trend by Round (Average Pace with &plusmn;1 SD Confidence Intervals)</h2>
                     <div class="chart-container">
                         <div id="paceChart" style="width:100%;"></div>
                     </div>
                 </div>
-                
+
                 <!-- Pace vs Alien Table -->
                 <div class="section">
                     <h2>Average Pace vs Alien - All Rounds</h2>
@@ -509,7 +52,7 @@
   </thead>
   <tbody>
     <tr data-driver="Abe Wozniak">
-      <td>Abe Wozniak</td>
+      <td>Abe W.</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -520,7 +63,7 @@
       <td>102.62</td>
     </tr>
     <tr data-driver="Avinash Ganti">
-      <td>Avinash Ganti</td>
+      <td>Avinash G.</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>100.47</td>
@@ -531,7 +74,7 @@
       <td>101.15</td>
     </tr>
     <tr data-driver="DAN POULIN">
-      <td>DAN POULIN</td>
+      <td>DAN P.</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -542,7 +85,7 @@
       <td>102.49</td>
     </tr>
     <tr data-driver="Dakota Botello">
-      <td>Dakota Botello</td>
+      <td>Dakota B.</td>
       <td>101.81</td>
       <td>101.92</td>
       <td>101.34</td>
@@ -553,7 +96,7 @@
       <td>NaN</td>
     </tr>
     <tr data-driver="Dave Carter">
-      <td>Dave Carter</td>
+      <td>Dave C.</td>
       <td>103.74</td>
       <td>105.57</td>
       <td>NaN</td>
@@ -564,7 +107,7 @@
       <td>103.28</td>
     </tr>
     <tr data-driver="Dave Harris">
-      <td>Dave Harris</td>
+      <td>Dave H.</td>
       <td>103.14</td>
       <td>NaN</td>
       <td>103.75</td>
@@ -575,7 +118,7 @@
       <td>103.90</td>
     </tr>
     <tr data-driver="Dave Paccagnini">
-      <td>Dave Paccagnini</td>
+      <td>Dave P.</td>
       <td>103.10</td>
       <td>103.07</td>
       <td>103.46</td>
@@ -586,7 +129,7 @@
       <td>NaN</td>
     </tr>
     <tr data-driver="Donnie Greathouse">
-      <td>Donnie Greathouse</td>
+      <td>Donnie G.</td>
       <td>104.15</td>
       <td>105.29</td>
       <td>104.81</td>
@@ -597,7 +140,7 @@
       <td>NaN</td>
     </tr>
     <tr data-driver="Dustin Rand">
-      <td>Dustin Rand</td>
+      <td>Dustin R.</td>
       <td>104.31</td>
       <td>103.79</td>
       <td>104.55</td>
@@ -608,7 +151,7 @@
       <td>103.93</td>
     </tr>
     <tr data-driver="Edriel Lugo-Ortiz">
-      <td>Edriel Lugo-Ortiz</td>
+      <td>Edriel L.</td>
       <td>103.19</td>
       <td>102.07</td>
       <td>NaN</td>
@@ -619,7 +162,7 @@
       <td>NaN</td>
     </tr>
     <tr data-driver="Gage Galvin">
-      <td>Gage Galvin</td>
+      <td>Gage G.</td>
       <td>105.04</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -630,7 +173,7 @@
       <td>105.46</td>
     </tr>
     <tr data-driver="Grayson Head">
-      <td>Grayson Head</td>
+      <td>Grayson H.</td>
       <td>104.12</td>
       <td>102.55</td>
       <td>103.59</td>
@@ -641,7 +184,7 @@
       <td>NaN</td>
     </tr>
     <tr data-driver="Guillermo Paret">
-      <td>Guillermo Paret</td>
+      <td>Guillermo P.</td>
       <td>102.27</td>
       <td>102.17</td>
       <td>101.42</td>
@@ -652,7 +195,7 @@
       <td>101.48</td>
     </tr>
     <tr data-driver="Harrison Miller">
-      <td>Harrison Miller</td>
+      <td>Harrison M.</td>
       <td>103.24</td>
       <td>108.02</td>
       <td>102.05</td>
@@ -674,7 +217,7 @@
       <td>NaN</td>
     </tr>
     <tr data-driver="Javier Tellez">
-      <td>Javier Tellez</td>
+      <td>Javier T.</td>
       <td>103.85</td>
       <td>103.93</td>
       <td>NaN</td>
@@ -685,7 +228,7 @@
       <td>104.10</td>
     </tr>
     <tr data-driver="Jesse Olsen">
-      <td>Jesse Olsen</td>
+      <td>Jesse O.</td>
       <td>101.85</td>
       <td>102.68</td>
       <td>102.58</td>
@@ -696,7 +239,7 @@
       <td>NaN</td>
     </tr>
     <tr data-driver="Josh Popov">
-      <td>Josh Popov</td>
+      <td>Josh P.</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -707,7 +250,7 @@
       <td>NaN</td>
     </tr>
     <tr data-driver="Justin Fortuna">
-      <td>Justin Fortuna</td>
+      <td>Justin F.</td>
       <td>104.35</td>
       <td>103.37</td>
       <td>102.73</td>
@@ -718,7 +261,7 @@
       <td>NaN</td>
     </tr>
     <tr data-driver="Kasi Jackman">
-      <td>Kasi Jackman</td>
+      <td>Kasi J.</td>
       <td>101.78</td>
       <td>102.47</td>
       <td>102.64</td>
@@ -729,7 +272,7 @@
       <td>102.11</td>
     </tr>
     <tr data-driver="Macaronie Tout Garni">
-      <td>Macaronie Tout Garni</td>
+      <td>Macaronie G.</td>
       <td>105.53</td>
       <td>104.11</td>
       <td>103.89</td>
@@ -740,7 +283,7 @@
       <td>104.45</td>
     </tr>
     <tr data-driver="Matthew Canelli">
-      <td>Matthew Canelli</td>
+      <td>Matthew C.</td>
       <td>105.25</td>
       <td>103.33</td>
       <td>NaN</td>
@@ -751,7 +294,7 @@
       <td>104.83</td>
     </tr>
     <tr data-driver="Nick Johnson">
-      <td>Nick Johnson</td>
+      <td>Nick J.</td>
       <td>NaN</td>
       <td>102.86</td>
       <td>NaN</td>
@@ -762,7 +305,7 @@
       <td>NaN</td>
     </tr>
     <tr data-driver="Parker Thomas">
-      <td>Parker Thomas</td>
+      <td>Parker T.</td>
       <td>NaN</td>
       <td>111.54</td>
       <td>102.44</td>
@@ -773,7 +316,7 @@
       <td>102.14</td>
     </tr>
     <tr data-driver="Patricio Fernandez">
-      <td>Patricio Fernandez</td>
+      <td>Patricio F.</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>102.56</td>
@@ -784,7 +327,7 @@
       <td>NaN</td>
     </tr>
     <tr data-driver="Preston Parenti">
-      <td>Preston Parenti</td>
+      <td>Preston P.</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -795,7 +338,7 @@
       <td>110.21</td>
     </tr>
     <tr data-driver="Rich Spoon">
-      <td>Rich Spoon</td>
+      <td>Rich S.</td>
       <td>107.08</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -806,7 +349,7 @@
       <td>NaN</td>
     </tr>
     <tr data-driver="Richie Wood">
-      <td>Richie Wood</td>
+      <td>Richie W.</td>
       <td>102.79</td>
       <td>103.35</td>
       <td>103.54</td>
@@ -817,7 +360,7 @@
       <td>103.26</td>
     </tr>
     <tr data-driver="Ron Heslop">
-      <td>Ron Heslop</td>
+      <td>Ron H.</td>
       <td>104.51</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -828,7 +371,7 @@
       <td>NaN</td>
     </tr>
     <tr data-driver="Ross McLean">
-      <td>Ross McLean</td>
+      <td>Ross M.</td>
       <td>103.17</td>
       <td>102.97</td>
       <td>NaN</td>
@@ -839,7 +382,7 @@
       <td>NaN</td>
     </tr>
     <tr data-driver="Willie Mangram">
-      <td>Willie Mangram</td>
+      <td>Willie M.</td>
       <td>102.21</td>
       <td>101.97</td>
       <td>101.85</td>
@@ -853,7 +396,7 @@
 </table>
                     </div>
                 </div>
-                
+
                 <!-- Improvement Comparison -->
                 <div class="section">
                     <h2>Driver Improvement Comparison (Average Pace)</h2>
@@ -868,106 +411,130 @@
     </tr>
   </thead>
   <tbody>
-    <tr data-driver="Dave Harris">
-      <td>Dave Harris</td>
-      <td>105.09</td>
-      <td>104.36</td>
-      <td>0.73</td>
-    </tr>
-    <tr data-driver="Dave Carter">
-      <td>Dave Carter</td>
-      <td>104.06</td>
-      <td>103.40</td>
-      <td>0.66</td>
-    </tr>
-    <tr data-driver="Richie Wood">
-      <td>Richie Wood</td>
-      <td>103.35</td>
-      <td>103.16</td>
-      <td>0.19</td>
-    </tr>
-    <tr data-driver="Willie Mangram">
-      <td>Willie Mangram</td>
-      <td>101.96</td>
-      <td>101.99</td>
-      <td>-0.03</td>
+    <tr data-driver="Parker Thomas">
+      <td>Parker T.</td>
+      <td>111.54</td>
+      <td>102.14</td>
+      <td>9.40</td>
     </tr>
     <tr data-driver="Guillermo Paret">
-      <td>Guillermo Paret</td>
-      <td>102.50</td>
-      <td>102.57</td>
-      <td>-0.07</td>
+      <td>Guillermo P.</td>
+      <td>102.17</td>
+      <td>101.48</td>
+      <td>0.69</td>
     </tr>
-    <tr data-driver="Kasi Jackman">
-      <td>Kasi Jackman</td>
-      <td>102.47</td>
-      <td>102.57</td>
-      <td>-0.10</td>
+    <tr data-driver="Willie Mangram">
+      <td>Willie M.</td>
+      <td>101.97</td>
+      <td>101.41</td>
+      <td>0.56</td>
+    </tr>
+    <tr data-driver="Dave Carter">
+      <td>Dave C.</td>
+      <td>103.74</td>
+      <td>103.28</td>
+      <td>0.46</td>
+    </tr>
+    <tr data-driver="Richie Wood">
+      <td>Richie W.</td>
+      <td>102.79</td>
+      <td>102.74</td>
+      <td>0.05</td>
     </tr>
     <tr data-driver="Dustin Rand">
-      <td>Dustin Rand</td>
+      <td>Dustin R.</td>
       <td>103.79</td>
       <td>103.93</td>
       <td>-0.14</td>
     </tr>
-    <tr data-driver="Dakota Botello">
-      <td>Dakota Botello</td>
-      <td>101.92</td>
-      <td>102.55</td>
-      <td>-0.63</td>
+    <tr data-driver="Nick Johnson">
+      <td>Nick J.</td>
+      <td>102.86</td>
+      <td>103.02</td>
+      <td>-0.16</td>
     </tr>
     <tr data-driver="Javier Tellez">
-      <td>Javier Tellez</td>
-      <td>104.20</td>
-      <td>105.02</td>
-      <td>-0.82</td>
+      <td>Javier T.</td>
+      <td>103.85</td>
+      <td>104.10</td>
+      <td>-0.25</td>
+    </tr>
+    <tr data-driver="Kasi Jackman">
+      <td>Kasi J.</td>
+      <td>101.78</td>
+      <td>102.11</td>
+      <td>-0.33</td>
+    </tr>
+    <tr data-driver="Macaronie Tout Garni">
+      <td>Macaronie G.</td>
+      <td>104.11</td>
+      <td>104.45</td>
+      <td>-0.34</td>
+    </tr>
+    <tr data-driver="Gage Galvin">
+      <td>Gage G.</td>
+      <td>105.04</td>
+      <td>105.46</td>
+      <td>-0.42</td>
+    </tr>
+    <tr data-driver="Dakota Botello">
+      <td>Dakota B.</td>
+      <td>101.81</td>
+      <td>102.47</td>
+      <td>-0.66</td>
+    </tr>
+    <tr data-driver="Dave Harris">
+      <td>Dave H.</td>
+      <td>103.14</td>
+      <td>103.90</td>
+      <td>-0.76</td>
     </tr>
     <tr data-driver="Ross McLean">
-      <td>Ross McLean</td>
+      <td>Ross M.</td>
       <td>102.97</td>
       <td>104.30</td>
       <td>-1.33</td>
     </tr>
     <tr data-driver="Matthew Canelli">
-      <td>Matthew Canelli</td>
-      <td>103.36</td>
-      <td>105.45</td>
-      <td>-2.09</td>
+      <td>Matthew C.</td>
+      <td>103.33</td>
+      <td>104.83</td>
+      <td>-1.50</td>
     </tr>
   </tbody>
 </table>
                     </div>
                 </div>
             </div>
-            
+
             <div class="footer">
                 <p>Generated from OOFS XML Race Data</p>
-                <p style="font-size: 0.9em; margin-top: 10px;">Last updated: 2026-05-30 07:48:37</p>
+                <p style="font-size: 0.9em; margin-top: 10px;">Last updated: 2026-05-30 11:23:18</p>
             </div>
         </div>
     </div>
-    
+
     <svg id="confidenceIntervalSVG" style="position: absolute; top: 0; left: 0; pointer-events: none; display: none;"></svg>
-    
+
     <script>
         // Season selector functionality
         const seasonSelector = document.getElementById('seasonSelector');
         if (seasonSelector) {
             seasonSelector.addEventListener('change', function() {
                 const season = this.value;
-                window.location.href = `../${season}/` + window.location.pathname.split('/').pop();
+                window.location.href = `../../${season}/` + window.location.pathname.split('/').pop();
             });
         }
-        
+
         // Sidebar toggle functionality
         const sidebarToggle = document.getElementById('sidebarToggle');
         const sidebar = document.querySelector('.sidebar');
-        
+
         if (sidebarToggle && sidebar) {
             sidebarToggle.addEventListener('click', function() {
                 sidebar.classList.toggle('active');
             });
-            
+
             // Close sidebar when a link is clicked
             const sidebarLinks = sidebar.querySelectorAll('a');
             sidebarLinks.forEach(link => {
@@ -976,29 +543,29 @@
                 });
             });
         }
-        
+
         // Plotly chart initialization
         const plotData = [{"x": [0, 1, 2, 3, 4, 6, 7], "y": [102.27, 102.17, 101.42, 101.03, 101.84, 102.02, 101.48], "mode": "lines+markers", "name": "Guillermo Paret", "hovertemplate": "%{customdata}<extra></extra>", "customdata": ["Guillermo Paret<br>Fastest Lap: 102.27%", "Guillermo Paret<br>Fastest Lap: 102.17%", "Guillermo Paret<br>Fastest Lap: 101.42%", "Guillermo Paret<br>Fastest Lap: 101.03%", "Guillermo Paret<br>Fastest Lap: 101.84%", "Guillermo Paret<br>Fastest Lap: 102.02%", "Guillermo Paret<br>Fastest Lap: 101.48%"], "line": {"width": 2}, "marker": {"size": 8}, "opacity": 1.0}, {"x": [0, 1, 2, 3, 4, 5, 6], "y": [101.81, 101.92, 101.34, 101.7, 102.07, 101.87, 102.47], "mode": "lines+markers", "name": "Dakota Botello", "hovertemplate": "%{customdata}<extra></extra>", "customdata": ["Dakota Botello<br>Fastest Lap: 101.81%", "Dakota Botello<br>Fastest Lap: 101.92%", "Dakota Botello<br>Fastest Lap: 101.34%", "Dakota Botello<br>Fastest Lap: 101.70%", "Dakota Botello<br>Fastest Lap: 102.07%", "Dakota Botello<br>Fastest Lap: 101.87%", "Dakota Botello<br>Fastest Lap: 102.47%"], "line": {"width": 2}, "marker": {"size": 8}, "opacity": 1.0}, {"x": [0, 1, 2, 3, 4, 5, 6], "y": [102.21, 101.97, 101.85, 101.25, 102.0, 102.34, 101.41], "mode": "lines+markers", "name": "Willie Mangram", "hovertemplate": "%{customdata}<extra></extra>", "customdata": ["Willie Mangram<br>Fastest Lap: 102.21%", "Willie Mangram<br>Fastest Lap: 101.97%", "Willie Mangram<br>Fastest Lap: 101.85%", "Willie Mangram<br>Fastest Lap: 101.25%", "Willie Mangram<br>Fastest Lap: 102.00%", "Willie Mangram<br>Fastest Lap: 102.34%", "Willie Mangram<br>Fastest Lap: 101.41%"], "line": {"width": 2}, "marker": {"size": 8}, "opacity": 1.0}, {"x": [0, 1, 2, 3, 4, 5], "y": [104.12, 102.55, 103.59, 101.35, 102.06, 102.52], "mode": "lines+markers", "name": "Grayson Head", "hovertemplate": "%{customdata}<extra></extra>", "customdata": ["Grayson Head<br>Fastest Lap: 104.12%", "Grayson Head<br>Fastest Lap: 102.55%", "Grayson Head<br>Fastest Lap: 103.59%", "Grayson Head<br>Fastest Lap: 101.35%", "Grayson Head<br>Fastest Lap: 102.06%", "Grayson Head<br>Fastest Lap: 102.52%"], "line": {"width": 2}, "marker": {"size": 8}, "opacity": 1.0}, {"x": [2, 4, 5, 6, 7], "y": [100.47, 101.7, 101.71, 101.45, 101.15], "mode": "lines+markers", "name": "Avinash Ganti", "hovertemplate": "%{customdata}<extra></extra>", "customdata": ["Avinash Ganti<br>Fastest Lap: 100.47%", "Avinash Ganti<br>Fastest Lap: 101.70%", "Avinash Ganti<br>Fastest Lap: 101.71%", "Avinash Ganti<br>Fastest Lap: 101.45%", "Avinash Ganti<br>Fastest Lap: 101.15%"], "line": {"width": 2}, "marker": {"size": 8}, "opacity": 1.0}, {"x": [0, 1], "y": [103.19, 102.07], "mode": "lines+markers", "name": "Edriel Lugo-Ortiz", "hovertemplate": "%{customdata}<extra></extra>", "customdata": ["Edriel Lugo-Ortiz<br>Fastest Lap: 103.19%", "Edriel Lugo-Ortiz<br>Fastest Lap: 102.07%"], "line": {"width": 2}, "marker": {"size": 8}, "opacity": 1.0}, {"x": [1, 3, 4, 5, 6], "y": [102.86, 101.87, 102.41, 104.04, 103.02], "mode": "lines+markers", "name": "Nick Johnson", "hovertemplate": "%{customdata}<extra></extra>", "customdata": ["Nick Johnson<br>Fastest Lap: 102.86%", "Nick Johnson<br>Fastest Lap: 101.87%", "Nick Johnson<br>Fastest Lap: 102.41%", "Nick Johnson<br>Fastest Lap: 104.04%", "Nick Johnson<br>Fastest Lap: 103.02%"], "line": {"width": 2}, "marker": {"size": 8}, "opacity": 1.0}, {"x": [1, 2, 3, 4, 5, 6, 7], "y": [111.54, 102.44, 101.55, 101.89, 102.58, 102.75, 102.14], "mode": "lines+markers", "name": "Parker Thomas", "hovertemplate": "%{customdata}<extra></extra>", "customdata": ["Parker Thomas<br>Fastest Lap: 111.54%", "Parker Thomas<br>Fastest Lap: 102.44%", "Parker Thomas<br>Fastest Lap: 101.55%", "Parker Thomas<br>Fastest Lap: 101.89%", "Parker Thomas<br>Fastest Lap: 102.58%", "Parker Thomas<br>Fastest Lap: 102.75%", "Parker Thomas<br>Fastest Lap: 102.14%"], "line": {"width": 2}, "marker": {"size": 8}, "opacity": 1.0}, {"x": [0, 1, 2, 3, 4, 5, 6, 7], "y": [101.78, 102.47, 102.64, 103.27, 101.67, 102.66, 102.47, 102.11], "mode": "lines+markers", "name": "Kasi Jackman", "hovertemplate": "%{customdata}<extra></extra>", "customdata": ["Kasi Jackman<br>Fastest Lap: 101.78%", "Kasi Jackman<br>Fastest Lap: 102.47%", "Kasi Jackman<br>Fastest Lap: 102.64%", "Kasi Jackman<br>Fastest Lap: 103.27%", "Kasi Jackman<br>Fastest Lap: 101.67%", "Kasi Jackman<br>Fastest Lap: 102.66%", "Kasi Jackman<br>Fastest Lap: 102.47%", "Kasi Jackman<br>Fastest Lap: 102.11%"], "line": {"width": 2}, "marker": {"size": 8}, "opacity": 1.0}, {"x": [3, 5, 6], "y": [101.9, 102.15, 102.15], "mode": "lines+markers", "name": "Josh Popov", "hovertemplate": "%{customdata}<extra></extra>", "customdata": ["Josh Popov<br>Fastest Lap: 101.90%", "Josh Popov<br>Fastest Lap: 102.15%", "Josh Popov<br>Fastest Lap: 102.15%"], "line": {"width": 2}, "marker": {"size": 8}, "opacity": 1.0}, {"x": [3, 4, 5, 6, 7], "y": [102.02, 103.02, 102.65, 102.91, 102.49], "mode": "lines+markers", "name": "DAN POULIN", "hovertemplate": "%{customdata}<extra></extra>", "customdata": ["DAN POULIN<br>Fastest Lap: 102.02%", "DAN POULIN<br>Fastest Lap: 103.02%", "DAN POULIN<br>Fastest Lap: 102.65%", "DAN POULIN<br>Fastest Lap: 102.91%", "DAN POULIN<br>Fastest Lap: 102.49%"], "line": {"width": 2}, "marker": {"size": 8}, "opacity": 1.0}, {"x": [0, 1, 2, 3, 4], "y": [103.24, 108.02, 102.05, 101.81, 102.49], "mode": "lines+markers", "name": "Harrison Miller", "hovertemplate": "%{customdata}<extra></extra>", "customdata": ["Harrison Miller<br>Fastest Lap: 103.24%", "Harrison Miller<br>Fastest Lap: 108.02%", "Harrison Miller<br>Fastest Lap: 102.05%", "Harrison Miller<br>Fastest Lap: 101.81%", "Harrison Miller<br>Fastest Lap: 102.49%"], "line": {"width": 2}, "marker": {"size": 8}, "opacity": 1.0}, {"x": [0, 1, 2, 3, 4, 5, 6, 7], "y": [102.79, 103.35, 103.54, 102.47, 102.8, 102.51, 102.74, 103.26], "mode": "lines+markers", "name": "Richie Wood", "hovertemplate": "%{customdata}<extra></extra>", "customdata": ["Richie Wood<br>Fastest Lap: 102.79%", "Richie Wood<br>Fastest Lap: 103.35%", "Richie Wood<br>Fastest Lap: 103.54%", "Richie Wood<br>Fastest Lap: 102.47%", "Richie Wood<br>Fastest Lap: 102.80%", "Richie Wood<br>Fastest Lap: 102.51%", "Richie Wood<br>Fastest Lap: 102.74%", "Richie Wood<br>Fastest Lap: 103.26%"], "line": {"width": 2}, "marker": {"size": 8}, "opacity": 1.0}, {"x": [0, 1, 3, 4, 6], "y": [103.17, 102.97, 102.31, 104.04, 104.3], "mode": "lines+markers", "name": "Ross McLean", "hovertemplate": "%{customdata}<extra></extra>", "customdata": ["Ross McLean<br>Fastest Lap: 103.17%", "Ross McLean<br>Fastest Lap: 102.97%", "Ross McLean<br>Fastest Lap: 102.31%", "Ross McLean<br>Fastest Lap: 104.04%", "Ross McLean<br>Fastest Lap: 104.30%"], "line": {"width": 2}, "marker": {"size": 8}, "opacity": 1.0}, {"x": [0, 1, 3, 4, 7], "y": [103.85, 103.93, 102.48, 104.67, 104.1], "mode": "lines+markers", "name": "Javier Tellez", "hovertemplate": "%{customdata}<extra></extra>", "customdata": ["Javier Tellez<br>Fastest Lap: 103.85%", "Javier Tellez<br>Fastest Lap: 103.93%", "Javier Tellez<br>Fastest Lap: 102.48%", "Javier Tellez<br>Fastest Lap: 104.67%", "Javier Tellez<br>Fastest Lap: 104.10%"], "line": {"width": 2}, "marker": {"size": 8}, "opacity": 1.0}, {"x": [6, 7], "y": [103.05, 102.62], "mode": "lines+markers", "name": "Abe Wozniak", "hovertemplate": "%{customdata}<extra></extra>", "customdata": ["Abe Wozniak<br>Fastest Lap: 103.05%", "Abe Wozniak<br>Fastest Lap: 102.62%"], "line": {"width": 2}, "marker": {"size": 8}, "opacity": 1.0}, {"x": [0, 1, 2], "y": [101.85, 102.68, 102.58], "mode": "lines+markers", "name": "Jesse Olsen", "hovertemplate": "%{customdata}<extra></extra>", "customdata": ["Jesse Olsen<br>Fastest Lap: 101.85%", "Jesse Olsen<br>Fastest Lap: 102.68%", "Jesse Olsen<br>Fastest Lap: 102.58%"], "line": {"width": 2}, "marker": {"size": 8}, "opacity": 1.0}, {"x": [0, 1, 2, 3, 4], "y": [104.35, 103.37, 102.73, 102.6, 102.93], "mode": "lines+markers", "name": "Justin Fortuna", "hovertemplate": "%{customdata}<extra></extra>", "customdata": ["Justin Fortuna<br>Fastest Lap: 104.35%", "Justin Fortuna<br>Fastest Lap: 103.37%", "Justin Fortuna<br>Fastest Lap: 102.73%", "Justin Fortuna<br>Fastest Lap: 102.60%", "Justin Fortuna<br>Fastest Lap: 102.93%"], "line": {"width": 2}, "marker": {"size": 8}, "opacity": 1.0}, {"x": [0, 1, 2, 3, 4, 5, 6, 7], "y": [104.31, 103.79, 104.55, 102.98, 102.26, 103.75, 104.56, 103.93], "mode": "lines+markers", "name": "Dustin Rand", "hovertemplate": "%{customdata}<extra></extra>", "customdata": ["Dustin Rand<br>Fastest Lap: 104.31%", "Dustin Rand<br>Fastest Lap: 103.79%", "Dustin Rand<br>Fastest Lap: 104.55%", "Dustin Rand<br>Fastest Lap: 102.98%", "Dustin Rand<br>Fastest Lap: 102.26%", "Dustin Rand<br>Fastest Lap: 103.75%", "Dustin Rand<br>Fastest Lap: 104.56%", "Dustin Rand<br>Fastest Lap: 103.93%"], "line": {"width": 2}, "marker": {"size": 8}, "opacity": 1.0}, {"x": [0, 1, 2, 3, 5], "y": [103.1, 103.07, 103.46, 102.34, 103.59], "mode": "lines+markers", "name": "Dave Paccagnini", "hovertemplate": "%{customdata}<extra></extra>", "customdata": ["Dave Paccagnini<br>Fastest Lap: 103.10%", "Dave Paccagnini<br>Fastest Lap: 103.07%", "Dave Paccagnini<br>Fastest Lap: 103.46%", "Dave Paccagnini<br>Fastest Lap: 102.34%", "Dave Paccagnini<br>Fastest Lap: 103.59%"], "line": {"width": 2}, "marker": {"size": 8}, "opacity": 1.0}, {"x": [2, 4, 5], "y": [102.56, 102.81, 102.94], "mode": "lines+markers", "name": "Patricio Fernandez", "hovertemplate": "%{customdata}<extra></extra>", "customdata": ["Patricio Fernandez<br>Fastest Lap: 102.56%", "Patricio Fernandez<br>Fastest Lap: 102.81%", "Patricio Fernandez<br>Fastest Lap: 102.94%"], "line": {"width": 2}, "marker": {"size": 8}, "opacity": 1.0}, {"x": [0, 1, 3, 4, 5, 6, 7], "y": [105.25, 103.33, 102.51, 104.46, 105.3, 105.08, 104.83], "mode": "lines+markers", "name": "Matthew Canelli", "hovertemplate": "%{customdata}<extra></extra>", "customdata": ["Matthew Canelli<br>Fastest Lap: 105.25%", "Matthew Canelli<br>Fastest Lap: 103.33%", "Matthew Canelli<br>Fastest Lap: 102.51%", "Matthew Canelli<br>Fastest Lap: 104.46%", "Matthew Canelli<br>Fastest Lap: 105.30%", "Matthew Canelli<br>Fastest Lap: 105.08%", "Matthew Canelli<br>Fastest Lap: 104.83%"], "line": {"width": 2}, "marker": {"size": 8}, "opacity": 1.0}, {"x": [0, 1, 4, 5, 7], "y": [103.74, 105.57, 103.43, 103.59, 103.28], "mode": "lines+markers", "name": "Dave Carter", "hovertemplate": "%{customdata}<extra></extra>", "customdata": ["Dave Carter<br>Fastest Lap: 103.74%", "Dave Carter<br>Fastest Lap: 105.57%", "Dave Carter<br>Fastest Lap: 103.43%", "Dave Carter<br>Fastest Lap: 103.59%", "Dave Carter<br>Fastest Lap: 103.28%"], "line": {"width": 2}, "marker": {"size": 8}, "opacity": 1.0}, {"x": [0, 2, 3, 4, 5, 6, 7], "y": [103.14, 103.75, 103.13, 103.48, 104.58, 104.84, 103.9], "mode": "lines+markers", "name": "Dave Harris", "hovertemplate": "%{customdata}<extra></extra>", "customdata": ["Dave Harris<br>Fastest Lap: 103.14%", "Dave Harris<br>Fastest Lap: 103.75%", "Dave Harris<br>Fastest Lap: 103.13%", "Dave Harris<br>Fastest Lap: 103.48%", "Dave Harris<br>Fastest Lap: 104.58%", "Dave Harris<br>Fastest Lap: 104.84%", "Dave Harris<br>Fastest Lap: 103.90%"], "line": {"width": 2}, "marker": {"size": 8}, "opacity": 1.0}, {"x": [0, 1], "y": [103.04, 103.61], "mode": "lines+markers", "name": "J.P.", "hovertemplate": "%{customdata}<extra></extra>", "customdata": ["J.P.<br>Fastest Lap: 103.04%", "J.P.<br>Fastest Lap: 103.61%"], "line": {"width": 2}, "marker": {"size": 8}, "opacity": 1.0}, {"x": [0, 1, 2, 3], "y": [104.15, 105.29, 104.81, 102.94], "mode": "lines+markers", "name": "Donnie Greathouse", "hovertemplate": "%{customdata}<extra></extra>", "customdata": ["Donnie Greathouse<br>Fastest Lap: 104.15%", "Donnie Greathouse<br>Fastest Lap: 105.29%", "Donnie Greathouse<br>Fastest Lap: 104.81%", "Donnie Greathouse<br>Fastest Lap: 102.94%"], "line": {"width": 2}, "marker": {"size": 8}, "opacity": 1.0}, {"x": [0, 1, 2, 3, 4, 7], "y": [105.53, 104.11, 103.89, 103.38, 104.77, 104.45], "mode": "lines+markers", "name": "Macaronie Tout Garni", "hovertemplate": "%{customdata}<extra></extra>", "customdata": ["Macaronie Tout Garni<br>Fastest Lap: 105.53%", "Macaronie Tout Garni<br>Fastest Lap: 104.11%", "Macaronie Tout Garni<br>Fastest Lap: 103.89%", "Macaronie Tout Garni<br>Fastest Lap: 103.38%", "Macaronie Tout Garni<br>Fastest Lap: 104.77%", "Macaronie Tout Garni<br>Fastest Lap: 104.45%"], "line": {"width": 2}, "marker": {"size": 8}, "opacity": 1.0}, {"x": [5, 6, 7], "y": [106.06, 103.47, 110.21], "mode": "lines+markers", "name": "Preston Parenti", "hovertemplate": "%{customdata}<extra></extra>", "customdata": ["Preston Parenti<br>Fastest Lap: 106.06%", "Preston Parenti<br>Fastest Lap: 103.47%", "Preston Parenti<br>Fastest Lap: 110.21%"], "line": {"width": 2}, "marker": {"size": 8}, "opacity": 1.0}, {"x": [0, 3, 4, 5, 6, 7], "y": [105.04, 103.48, 103.76, 106.52, 105.75, 105.46], "mode": "lines+markers", "name": "Gage Galvin", "hovertemplate": "%{customdata}<extra></extra>", "customdata": ["Gage Galvin<br>Fastest Lap: 105.04%", "Gage Galvin<br>Fastest Lap: 103.48%", "Gage Galvin<br>Fastest Lap: 103.76%", "Gage Galvin<br>Fastest Lap: 106.52%", "Gage Galvin<br>Fastest Lap: 105.75%", "Gage Galvin<br>Fastest Lap: 105.46%"], "line": {"width": 2}, "marker": {"size": 8}, "opacity": 1.0}];
         const plotLayout = {"title": "Multiclass GT3 Quali Pace Trend: After 8 Rounds", "xaxis": {"tickmode": "array", "ticktext": ["Portimao", "Le Mans", "Interlagos", "Monza", "Sebring", "Paul Ricard", "COTA", "Spa"], "tickvals": [0, 1, 2, 3, 4, 5, 6, 7]}, "yaxis": {"title": "Quali Pace % (vs Alien)", "range": [100.0, 107.0]}, "hovermode": "closest", "plot_bgcolor": "rgba(240, 240, 240, 0.5)", "height": 500, "autosize": true, "showlegend": false, "xaxis_range": [-0.6, 7.6], "margin": {"l": 50, "r": 20, "b": 50, "t": 60}};
-        
+
         Plotly.newPlot('paceChart', plotData, plotLayout, {responsive: true, displayModeBar: false});
-        
+
         // Confidence interval visualization using Plotly shapes
         const paceChart = document.getElementById('paceChart');
-        
+
         function drawConfidenceInterval(traceIndex) {
             try {
                 const trace = plotData[traceIndex];
                 if (!trace.ci_lower || !trace.ci_upper || !trace.x || !trace.y) return;
-                
+
                 // Build shapes for confidence intervals
                 const shapes = [];
-                
+
                 for (let i = 0; i < trace.x.length; i++) {
                     const x_val = trace.x[i];
                     const lower = trace.ci_lower[i];
                     const upper = trace.ci_upper[i];
-                    
+
                     if (lower !== null && upper !== null) {
                         // Add a filled rectangle for the confidence interval band
                         shapes.push({
@@ -1011,7 +578,7 @@
                             line: {color: 'rgba(100, 150, 255, 0.3)', width: 1},
                             layer: 'below'
                         });
-                        
+
                         // Add a line at the center (average pace)
                         shapes.push({
                             type: 'line',
@@ -1023,14 +590,14 @@
                         });
                     }
                 }
-                
+
                 // Update layout with shapes
                 Plotly.relayout('paceChart', {shapes: shapes});
             } catch (e) {
                 console.error('Error drawing confidence interval:', e);
             }
         }
-        
+
         function clearConfidenceInterval() {
             try {
                 Plotly.relayout('paceChart', {shapes: []});
@@ -1038,7 +605,7 @@
                 // Silently fail
             }
         }
-        
+
         // Function to highlight table rows by driver name
         function highlightTableRows(driverName) {
             try {
@@ -1053,7 +620,7 @@
                 // Ignore errors if driver not found in tables
             }
         }
-        
+
         // Function to clear table row highlights
         function clearTableHighlights() {
             try {
@@ -1064,7 +631,7 @@
                 // Ignore errors
             }
         }
-        
+
         // Function to highlight trace by driver name
         function highlightTrace(driverName) {
             try {
@@ -1072,11 +639,11 @@
                 if (traceIndex === -1) {
                     return; // Driver not in graph, silently pass
                 }
-                
+
                 const numTraces = plotData.length;
                 const opacities = [];
                 const lineWidths = [];
-                
+
                 for (let i = 0; i < numTraces; i++) {
                     if (i === traceIndex) {
                         opacities.push(1.0);
@@ -1086,13 +653,13 @@
                         lineWidths.push({width: 1});
                     }
                 }
-                
+
                 Plotly.restyle('paceChart', {'opacity': opacities, 'line': lineWidths});
             } catch (e) {
                 // Ignore errors if driver not found
             }
         }
-        
+
         // Function to clear trace highlights
         function clearTraceHighlights() {
             try {
@@ -1104,14 +671,14 @@
                 // Ignore errors
             }
         }
-        
+
         // Add hover effect to grey out non-hovered lines in graph
         paceChart.on('plotly_hover', function(data) {
             const driverName = data.points[0].name;
             const numTraces = plotData.length;
             const opacities = [];
             const lineWidths = [];
-            
+
             for (let i = 0; i < numTraces; i++) {
                 if (i === data.points[0].curveNumber) {
                     opacities.push(1.0);
@@ -1121,18 +688,18 @@
                     lineWidths.push({width: 1});
                 }
             }
-            
+
             Plotly.restyle('paceChart', {'opacity': opacities, 'line': lineWidths});
             highlightTableRows(driverName);
             drawConfidenceInterval(data.points[0].curveNumber);
         });
-        
+
         paceChart.on('plotly_unhover', function(data) {
             clearTraceHighlights();
             clearTableHighlights();
             clearConfidenceInterval();
         });
-        
+
         // Add hover effect to table rows
         document.addEventListener('DOMContentLoaded', function() {
             const rows = document.querySelectorAll('table tbody tr');
@@ -1144,14 +711,14 @@
                         highlightTrace(driverName);
                     }
                 });
-                
+
                 row.addEventListener('mouseleave', function() {
                     this.classList.remove('highlighted');
                     clearTraceHighlights();
                 });
             });
         });
-        
+
         // Handle responsive resizing
         window.addEventListener('resize', function() {
             Plotly.Plots.resize('paceChart');
