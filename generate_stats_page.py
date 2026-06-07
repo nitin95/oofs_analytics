@@ -74,28 +74,32 @@ SEASON_CONFIG = {
             's4-sc2.xml': {'name': 'Barcelona', 'ref_time': 100.60},
             's4-sc3.xml': {'name': 'Silverstone', 'ref_time': 117.76},
             's4-sc4.xml': {'name': 'Fuji', 'ref_time': 105.0},
-            's4-sc5.xml': {'name': 'Bahrain (outer)', 'ref_time': 72.01}
+            's4-sc5.xml': {'name': 'Bahrain (outer)', 'ref_time': 72.01},
+            's4-sc6.xml': {'name': 'Spa', 'ref_time': 137.03}
         },
         'sprint_races': {
             's4-sc1-r.xml': {'name': 'Imola', 'ref_time': 102.33},
             's4-sc2-r.xml': {'name': 'Barcelona', 'ref_time': 101.10},
             's4-sc3-r.xml': {'name': 'Silverstone', 'ref_time': 133.72},
             's4-sc4-r.xml': {'name': 'Fuji', 'ref_time': 106.5},
-            's4-sc5-r.xml': {'name': 'Bahrain (outer)', 'ref_time': 72.37}
+            's4-sc5-r.xml': {'name': 'Bahrain (outer)', 'ref_time': 72.37},
+            's4-sc6-r.xml': {'name': 'Spa', 'ref_time': 137.71}
         },
         'multiclass_qualis': {
             's4-mc1.xml': {'name': 'Imola', 'ref_time_hyper': 89.45, 'ref_time_gt3': 101.82},
             's4-mc2.xml': {'name': 'Barcelona', 'ref_time_hyper': 88.59, 'ref_time_gt3': 100.60},
             's4-mc3.xml': {'name': 'Silverstone', 'ref_time_hyper': 102.23, 'ref_time_gt3': 117.76},
             's4-mc4.xml': {'name': 'Fuji', 'ref_time_hyper': 93.4, 'ref_time_gt3': 105.0},
-            's4-mc5.xml': {'name': 'Bahrain (outer)', 'ref_time_hyper': 63.94, 'ref_time_gt3': 72.01}
+            's4-mc5.xml': {'name': 'Bahrain (outer)', 'ref_time_hyper': 63.94, 'ref_time_gt3': 72.01},
+            's4-mc6.xml': {'name': 'Spa', 'ref_time_hyper': 119.97, 'ref_time_gt3': 137.03}
         },
         'multiclass_races': {
             's4-mc1-r.xml': {'name': 'Imola', 'ref_time_hyper': 89.89, 'ref_time_gt3': 102.33},
             's4-mc2-r.xml': {'name': 'Barcelona', 'ref_time_hyper': 89.04, 'ref_time_gt3': 101.10},
             's4-mc3-r.xml': {'name': 'Silverstone', 'ref_time_hyper': 111.20, 'ref_time_gt3': 127.40},
             's4-mc4-r.xml': {'name': 'Fuji', 'ref_time_hyper': 91.0, 'ref_time_gt3': 103.5},
-            's4-mc5-r.xml': {'name': 'Bahrain (outer)', 'ref_time_hyper': 64.26, 'ref_time_gt3': 72.37}
+            's4-mc5-r.xml': {'name': 'Bahrain (outer)', 'ref_time_hyper': 64.26, 'ref_time_gt3': 72.37},
+            's4-mc6-r.xml': {'name': 'Spa', 'ref_time_hyper': 120.57, 'ref_time_gt3': 137.71}
         }
     },
     # Add more seasons here as needed
@@ -413,9 +417,11 @@ def process_races_into_comparison_df(dfs_dict, race_codes, code_to_track):
         - comparison_df: Merged dataframe with all races
         - pace_cols: List of pace column names (best lap basis)
         - avg_pace_cols: List of average pace column names
+        - used_race_codes: List of race codes that were actually successfully merged
+        - used_track_names: List of track names that were actually successfully merged
     """
     if not race_codes:
-        return None, [], []
+        return None, [], [], [], []
     
     # Start with first race
     first_code = race_codes[0]
@@ -423,7 +429,7 @@ def process_races_into_comparison_df(dfs_dict, race_codes, code_to_track):
     
     if first_track not in dfs_dict:
         print(f"    DEBUG: first_track '{first_track}' not in dfs_dict keys: {list(dfs_dict.keys())}")
-        return None, [], []
+        return None, [], [], [], []
     
     print(f"    DEBUG: Starting comparison_df from {first_track} with shape {dfs_dict[first_track].shape}")
     comparison_df = dfs_dict[first_track][['Driver_name', 'laptime_sec', 'laptime_pct', 'laptime_pct_alien', 'avg_laptime', 'avg_pace_pct_alien', 'stdev_laptime', 'stdev_pace_pct']].rename(
@@ -440,6 +446,8 @@ def process_races_into_comparison_df(dfs_dict, race_codes, code_to_track):
     
     pace_cols = [f'laptime_pct_alien_{first_code}']
     avg_pace_cols = [f'avg_pace_pct_alien_{first_code}']
+    used_race_codes = [first_code]
+    used_track_names = [first_track]
     
     print(f"    DEBUG: After first race, comparison_df shape: {comparison_df.shape}")
     
@@ -466,6 +474,8 @@ def process_races_into_comparison_df(dfs_dict, race_codes, code_to_track):
             print(f"    DEBUG: After merge with {track_name}, shape: {comparison_df.shape}")
             pace_cols.append(f'laptime_pct_alien_{code}')
             avg_pace_cols.append(f'avg_pace_pct_alien_{code}')
+            used_race_codes.append(code)
+            used_track_names.append(track_name)
     
     # Clean up - use average pace columns for filtering
     print(f"    DEBUG: Before cleanup, comparison_df shape: {comparison_df.shape}, avg_pace_cols: {avg_pace_cols}")
@@ -479,9 +489,9 @@ def process_races_into_comparison_df(dfs_dict, race_codes, code_to_track):
     
     if comparison_df.empty:
         print("    DEBUG: comparison_df is EMPTY after cleanup!")
-        return None, pace_cols, avg_pace_cols
+        return None, pace_cols, avg_pace_cols, used_race_codes, used_track_names
     
-    return comparison_df, pace_cols, avg_pace_cols
+    return comparison_df, pace_cols, avg_pace_cols, used_race_codes, used_track_names
 
 
 def build_improvement_df(comparison_df, pace_cols):
@@ -841,11 +851,11 @@ def main():
             print(f"    DEBUG: sprint_race_dfs has {len(sprint_race_dfs)} entries: {list(sprint_race_dfs.keys())}")
             race_codes, track_names, code_to_track = load_races_dynamically(season_config['sprint_races'], xml_folder)
             print(f"    DEBUG: race_codes={race_codes}, code_to_track={code_to_track}")
-            comparison_df, _, avg_pace_cols = process_races_into_comparison_df(sprint_race_dfs, race_codes, code_to_track)
+            comparison_df, _, avg_pace_cols, used_race_codes, track_names = process_races_into_comparison_df(sprint_race_dfs, race_codes, code_to_track)
             
             if comparison_df is not None:
                 improvement_df = build_improvement_df(comparison_df, avg_pace_cols)
-                stdev_pace_cols = [f'stdev_pace_pct_{code}' for code in race_codes]
+                stdev_pace_cols = [f'stdev_pace_pct_{code}' for code in used_race_codes]
                 df_display_renamed, _ = create_display_df(comparison_df, avg_pace_cols, stdev_pace_cols, track_names, mode='race')
                 pace_html, improvement_html = generate_html_tables(comparison_df, improvement_df, avg_pace_cols, track_names)
                 
@@ -881,14 +891,14 @@ def main():
         
         if sprint_quali_dfs:
             race_codes, track_names, code_to_track = load_races_dynamically(season_config['sprint_qualis'], xml_folder)
-            comparison_df, _, avg_pace_cols = process_races_into_comparison_df(sprint_quali_dfs, race_codes, code_to_track)
+            comparison_df, _, avg_pace_cols, used_race_codes, track_names = process_races_into_comparison_df(sprint_quali_dfs, race_codes, code_to_track)
             
             if comparison_df is not None:
                 # Create fastest lap column names and pass instead of average pace 
                 fastest_lap_cols = [col.replace('avg_pace_pct_alien_', 'laptime_pct_alien_') for col in avg_pace_cols]
                 improvement_df = build_improvement_df(comparison_df, fastest_lap_cols)
                 # improvement_df = build_improvement_df(comparison_df, avg_pace_cols)
-                stdev_pace_cols = [f'stdev_pace_pct_{code}' for code in race_codes]
+                stdev_pace_cols = [f'stdev_pace_pct_{code}' for code in used_race_codes]
                 df_display_renamed, _ = create_display_df(comparison_df, avg_pace_cols, stdev_pace_cols, track_names, mode='quali')
                 pace_html, improvement_html = generate_html_tables(comparison_df, improvement_df, avg_pace_cols, track_names, mode='quali')
                 
@@ -925,11 +935,11 @@ def main():
         
         if mc_p2ur_race_dfs:
             race_codes, track_names, code_to_track = load_races_dynamically(season_config['multiclass_races'], xml_folder_mc)
-            comparison_df, _, avg_pace_cols = process_races_into_comparison_df(mc_p2ur_race_dfs, race_codes, code_to_track)
+            comparison_df, _, avg_pace_cols, used_race_codes, track_names = process_races_into_comparison_df(mc_p2ur_race_dfs, race_codes, code_to_track)
             
             if comparison_df is not None:
                 improvement_df = build_improvement_df(comparison_df, avg_pace_cols)
-                stdev_pace_cols = [f'stdev_pace_pct_{code}' for code in race_codes]
+                stdev_pace_cols = [f'stdev_pace_pct_{code}' for code in used_race_codes]
                 df_display_renamed, _ = create_display_df(comparison_df, avg_pace_cols, stdev_pace_cols, track_names, mode='race')
                 pace_html, improvement_html = generate_html_tables(comparison_df, improvement_df, avg_pace_cols, track_names)
                 
@@ -970,7 +980,7 @@ def main():
             print(f"    No {proto_class_label} data found for qualies")
         else:
             race_codes, track_names, code_to_track = load_races_dynamically(season_config['multiclass_qualis'], xml_folder_mc)
-            comparison_df, _, avg_pace_cols = process_races_into_comparison_df(mc_p2ur_quali_dfs, race_codes, code_to_track)
+            comparison_df, _, avg_pace_cols, used_race_codes, track_names = process_races_into_comparison_df(mc_p2ur_quali_dfs, race_codes, code_to_track)
             
             if comparison_df is not None:
                 # Create fastest lap column names and pass instead of average pace
@@ -978,7 +988,7 @@ def main():
                 improvement_df = build_improvement_df(comparison_df, fastest_lap_cols)
 
                 # improvement_df = build_improvement_df(comparison_df, avg_pace_cols)
-                stdev_pace_cols = [f'stdev_pace_pct_{code}' for code in race_codes]
+                stdev_pace_cols = [f'stdev_pace_pct_{code}' for code in used_race_codes]
                 df_display_renamed, _ = create_display_df(comparison_df, avg_pace_cols, stdev_pace_cols, track_names, mode='quali')
                 pace_html, improvement_html = generate_html_tables(comparison_df, improvement_df, avg_pace_cols, track_names, mode='quali')
                 
@@ -1009,11 +1019,11 @@ def main():
         
         if mc_gt3_race_dfs:
             race_codes, track_names, code_to_track = load_races_dynamically(season_config['multiclass_races'], xml_folder_mc)
-            comparison_df, _, avg_pace_cols = process_races_into_comparison_df(mc_gt3_race_dfs, race_codes, code_to_track)
+            comparison_df, _, avg_pace_cols, used_race_codes, track_names = process_races_into_comparison_df(mc_gt3_race_dfs, race_codes, code_to_track)
             
             if comparison_df is not None:
                 improvement_df = build_improvement_df(comparison_df, avg_pace_cols)
-                stdev_pace_cols = [f'stdev_pace_pct_{code}' for code in race_codes]
+                stdev_pace_cols = [f'stdev_pace_pct_{code}' for code in used_race_codes]
                 df_display_renamed, _ = create_display_df(comparison_df, avg_pace_cols, stdev_pace_cols, track_names, mode='race')
                 pace_html, improvement_html = generate_html_tables(comparison_df, improvement_df, avg_pace_cols, track_names)
                 
@@ -1045,7 +1055,7 @@ def main():
         
         if mc_gt3_quali_dfs:
             race_codes, track_names, code_to_track = load_races_dynamically(season_config['multiclass_qualis'], xml_folder_mc)
-            comparison_df, _, avg_pace_cols = process_races_into_comparison_df(mc_gt3_quali_dfs, race_codes, code_to_track)
+            comparison_df, _, avg_pace_cols, used_race_codes, track_names = process_races_into_comparison_df(mc_gt3_quali_dfs, race_codes, code_to_track)
             
             if comparison_df is not None:
 
@@ -1054,7 +1064,7 @@ def main():
                 improvement_df = build_improvement_df(comparison_df, fastest_lap_cols)
 
                 # improvement_df = build_improvement_df(comparison_df, avg_pace_cols)
-                stdev_pace_cols = [f'stdev_pace_pct_{code}' for code in race_codes]
+                stdev_pace_cols = [f'stdev_pace_pct_{code}' for code in used_race_codes]
                 df_display_renamed, _ = create_display_df(comparison_df, avg_pace_cols, stdev_pace_cols, track_names, mode='quali')
                 pace_html, improvement_html = generate_html_tables(comparison_df, improvement_df, avg_pace_cols, track_names, mode='quali')
                 
