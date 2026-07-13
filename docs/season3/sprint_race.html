@@ -1,0 +1,570 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🏁 Sprint Race Pace Data</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <div class="main-wrapper">
+        
+    <button class="sidebar-toggle" id="sidebarToggle" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+    <nav class="sidebar"><div class="sidebar-content"></select></div><h3 style="color: #ccfc00; margin-bottom: 20px; margin-top: 15px;">📊 Dashboard</h3><div class="section-group"><h4>Sprint LMP3</h4><ul><li><a href="sprint_lmp3_race.html" class="">Race Pace</a></li><li><a href="sprint_lmp3_quali.html" class="">Quali Pace</a></li></ul></div><div class="section-group"><h4>Sprint GT3</h4><ul><li><a href="sprint_gt3_race.html" class="">Race Pace</a></li><li><a href="sprint_gt3_quali.html" class="">Quali Pace</a></li></ul></div><div class="section-group"><h4>Multiclass P2UR/Hypercar</h4><ul><li><a href="multiclass_p2ur_race.html" class="">Race Pace</a></li><li><a href="multiclass_p2ur_quali.html" class="">Quali Pace</a></li></ul></div><div class="section-group"><h4>Multiclass GT3</h4><ul><li><a href="multiclass_gt3_race.html" class="">Race Pace</a></li><li><a href="multiclass_gt3_quali.html" class="">Quali Pace</a></li></ul></div></nav>
+    
+        <div class="container">
+            <header>
+                <img src="../logo.png" alt="Logo" class="header-logo">
+                <h1>🏁 Sprint Race Pace Data</h1>
+            </header>
+
+            <div class="content">
+                <!-- Pace Trend Chart -->
+                <div class="section">
+                    <h2>Pace Trend by Round (Average Pace with &plusmn;1 SD Confidence Intervals)</h2>
+                    <div class="chart-container">
+                        <div id="paceChart" style="width:100%;"></div>
+                    </div>
+                </div>
+
+                <!-- Pace vs Alien Table -->
+                <div class="section">
+                    <h2>Average Pace vs Alien - All Rounds</h2>
+                    <div class="table-container">
+                        <table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Driver</th>
+      <th>Portimao</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr data-driver="Chris Wilson">
+      <td>Chris W.</td>
+      <td>97.65</td>
+    </tr>
+    <tr data-driver="Dan Gomez">
+      <td>Dan G.</td>
+      <td>104.36</td>
+    </tr>
+    <tr data-driver="Dave Carter">
+      <td>Dave C.</td>
+      <td>101.32</td>
+    </tr>
+    <tr data-driver="Edriel Lugo-Ortiz">
+      <td>Edriel L.</td>
+      <td>99.00</td>
+    </tr>
+    <tr data-driver="Ethan Gonzales">
+      <td>Ethan G.</td>
+      <td>102.85</td>
+    </tr>
+    <tr data-driver="Gage Galvin">
+      <td>Gage G.</td>
+      <td>105.00</td>
+    </tr>
+    <tr data-driver="Glenn Jacobs#3297">
+      <td>Glenn J.</td>
+      <td>101.08</td>
+    </tr>
+    <tr data-driver="Greg Kachadurian">
+      <td>Greg K.</td>
+      <td>101.79</td>
+    </tr>
+    <tr data-driver="Guillermo Paret">
+      <td>Guillermo P.</td>
+      <td>103.29</td>
+    </tr>
+    <tr data-driver="Harrison Miller">
+      <td>Harrison M.</td>
+      <td>103.20</td>
+    </tr>
+    <tr data-driver="Ily Bordiyan">
+      <td>Ily B.</td>
+      <td>99.20</td>
+    </tr>
+    <tr data-driver="Jackson Sangalang">
+      <td>Jackson S.</td>
+      <td>106.21</td>
+    </tr>
+    <tr data-driver="James Rubio">
+      <td>James R.</td>
+      <td>98.11</td>
+    </tr>
+    <tr data-driver="Jay Stephens">
+      <td>Jay S.</td>
+      <td>103.48</td>
+    </tr>
+    <tr data-driver="Karl Fredricksen">
+      <td>Karl F.</td>
+      <td>104.40</td>
+    </tr>
+    <tr data-driver="Lewis M Smith">
+      <td>Lewis S.</td>
+      <td>106.34</td>
+    </tr>
+    <tr data-driver="Nate Feese">
+      <td>Nate F.</td>
+      <td>106.41</td>
+    </tr>
+    <tr data-driver="Neil Lorch">
+      <td>Neil L.</td>
+      <td>103.83</td>
+    </tr>
+    <tr data-driver="Nick Johnson">
+      <td>Nick J.</td>
+      <td>98.68</td>
+    </tr>
+    <tr data-driver="Nitin Murthy">
+      <td>Nitin M.</td>
+      <td>103.08</td>
+    </tr>
+    <tr data-driver="Patricio Fernandez">
+      <td>Patricio F.</td>
+      <td>104.03</td>
+    </tr>
+    <tr data-driver="Richie Wood">
+      <td>Richie W.</td>
+      <td>103.50</td>
+    </tr>
+    <tr data-driver="Sean Meikle">
+      <td>Sean M.</td>
+      <td>104.67</td>
+    </tr>
+    <tr data-driver="Shae Lewis">
+      <td>Shae L.</td>
+      <td>99.82</td>
+    </tr>
+    <tr data-driver="Timo White">
+      <td>Timo W.</td>
+      <td>100.95</td>
+    </tr>
+    <tr data-driver="Tony Spaghett">
+      <td>Tony S.</td>
+      <td>104.14</td>
+    </tr>
+    <tr data-driver="Trav Brown">
+      <td>Trav B.</td>
+      <td>103.95</td>
+    </tr>
+    <tr data-driver="William Neron">
+      <td>William N.</td>
+      <td>98.02</td>
+    </tr>
+  </tbody>
+</table>
+                    </div>
+                </div>
+
+                <!-- Improvement Comparison -->
+                <div class="section">
+                    <h2>Driver Improvement Comparison (Average Pace)</h2>
+                    <div class="table-container">
+                        <table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Driver</th>
+      <th>Best Avg (First 2)</th>
+      <th>Best Avg (Last 2)</th>
+      <th>Improvement</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr data-driver="Chris Wilson">
+      <td>Chris W.</td>
+      <td>97.65</td>
+      <td>97.65</td>
+      <td>0.00</td>
+    </tr>
+    <tr data-driver="Dan Gomez">
+      <td>Dan G.</td>
+      <td>104.36</td>
+      <td>104.36</td>
+      <td>0.00</td>
+    </tr>
+    <tr data-driver="Dave Carter">
+      <td>Dave C.</td>
+      <td>101.32</td>
+      <td>101.32</td>
+      <td>0.00</td>
+    </tr>
+    <tr data-driver="Edriel Lugo-Ortiz">
+      <td>Edriel L.</td>
+      <td>99.00</td>
+      <td>99.00</td>
+      <td>0.00</td>
+    </tr>
+    <tr data-driver="Ethan Gonzales">
+      <td>Ethan G.</td>
+      <td>102.85</td>
+      <td>102.85</td>
+      <td>0.00</td>
+    </tr>
+    <tr data-driver="Gage Galvin">
+      <td>Gage G.</td>
+      <td>105.00</td>
+      <td>105.00</td>
+      <td>0.00</td>
+    </tr>
+    <tr data-driver="Glenn Jacobs#3297">
+      <td>Glenn J.</td>
+      <td>101.08</td>
+      <td>101.08</td>
+      <td>0.00</td>
+    </tr>
+    <tr data-driver="Greg Kachadurian">
+      <td>Greg K.</td>
+      <td>101.79</td>
+      <td>101.79</td>
+      <td>0.00</td>
+    </tr>
+    <tr data-driver="Guillermo Paret">
+      <td>Guillermo P.</td>
+      <td>103.29</td>
+      <td>103.29</td>
+      <td>0.00</td>
+    </tr>
+    <tr data-driver="Harrison Miller">
+      <td>Harrison M.</td>
+      <td>103.20</td>
+      <td>103.20</td>
+      <td>0.00</td>
+    </tr>
+    <tr data-driver="Ily Bordiyan">
+      <td>Ily B.</td>
+      <td>99.20</td>
+      <td>99.20</td>
+      <td>0.00</td>
+    </tr>
+    <tr data-driver="Jackson Sangalang">
+      <td>Jackson S.</td>
+      <td>106.21</td>
+      <td>106.21</td>
+      <td>0.00</td>
+    </tr>
+    <tr data-driver="James Rubio">
+      <td>James R.</td>
+      <td>98.11</td>
+      <td>98.11</td>
+      <td>0.00</td>
+    </tr>
+    <tr data-driver="Jay Stephens">
+      <td>Jay S.</td>
+      <td>103.48</td>
+      <td>103.48</td>
+      <td>0.00</td>
+    </tr>
+    <tr data-driver="Karl Fredricksen">
+      <td>Karl F.</td>
+      <td>104.40</td>
+      <td>104.40</td>
+      <td>0.00</td>
+    </tr>
+    <tr data-driver="Lewis M Smith">
+      <td>Lewis S.</td>
+      <td>106.34</td>
+      <td>106.34</td>
+      <td>0.00</td>
+    </tr>
+    <tr data-driver="Nate Feese">
+      <td>Nate F.</td>
+      <td>106.41</td>
+      <td>106.41</td>
+      <td>0.00</td>
+    </tr>
+    <tr data-driver="Neil Lorch">
+      <td>Neil L.</td>
+      <td>103.83</td>
+      <td>103.83</td>
+      <td>0.00</td>
+    </tr>
+    <tr data-driver="Nick Johnson">
+      <td>Nick J.</td>
+      <td>98.68</td>
+      <td>98.68</td>
+      <td>0.00</td>
+    </tr>
+    <tr data-driver="Nitin Murthy">
+      <td>Nitin M.</td>
+      <td>103.08</td>
+      <td>103.08</td>
+      <td>0.00</td>
+    </tr>
+    <tr data-driver="Patricio Fernandez">
+      <td>Patricio F.</td>
+      <td>104.03</td>
+      <td>104.03</td>
+      <td>0.00</td>
+    </tr>
+    <tr data-driver="Richie Wood">
+      <td>Richie W.</td>
+      <td>103.50</td>
+      <td>103.50</td>
+      <td>0.00</td>
+    </tr>
+    <tr data-driver="Sean Meikle">
+      <td>Sean M.</td>
+      <td>104.67</td>
+      <td>104.67</td>
+      <td>0.00</td>
+    </tr>
+    <tr data-driver="Shae Lewis">
+      <td>Shae L.</td>
+      <td>99.82</td>
+      <td>99.82</td>
+      <td>0.00</td>
+    </tr>
+    <tr data-driver="Timo White">
+      <td>Timo W.</td>
+      <td>100.95</td>
+      <td>100.95</td>
+      <td>0.00</td>
+    </tr>
+    <tr data-driver="Tony Spaghett">
+      <td>Tony S.</td>
+      <td>104.14</td>
+      <td>104.14</td>
+      <td>0.00</td>
+    </tr>
+    <tr data-driver="Trav Brown">
+      <td>Trav B.</td>
+      <td>103.95</td>
+      <td>103.95</td>
+      <td>0.00</td>
+    </tr>
+    <tr data-driver="William Neron">
+      <td>William N.</td>
+      <td>98.02</td>
+      <td>98.02</td>
+      <td>0.00</td>
+    </tr>
+  </tbody>
+</table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer">
+                <p>Generated from OOFS XML Race Data</p>
+                <p style="font-size: 0.9em; margin-top: 10px;">Last updated: 2026-07-12 22:35:41</p>
+            </div>
+        </div>
+    </div>
+
+    <svg id="confidenceIntervalSVG" style="position: absolute; top: 0; left: 0; pointer-events: none; display: none;"></svg>
+
+    <script>
+        // Season selector functionality
+        const seasonSelector = document.getElementById('seasonSelector');
+        if (seasonSelector) {
+            seasonSelector.addEventListener('change', function() {
+                const season = this.value;
+                window.location.href = `../../${season}/` + window.location.pathname.split('/').pop();
+            });
+        }
+
+        // Sidebar toggle functionality
+        const sidebarToggle = document.getElementById('sidebarToggle');
+        const sidebar = document.querySelector('.sidebar');
+
+        if (sidebarToggle && sidebar) {
+            sidebarToggle.addEventListener('click', function() {
+                sidebar.classList.toggle('active');
+            });
+
+            // Close sidebar when a link is clicked
+            const sidebarLinks = sidebar.querySelectorAll('a');
+            sidebarLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    sidebar.classList.remove('active');
+                });
+            });
+        }
+
+        // Plotly chart initialization
+        const plotData = [{"x": [0], "y": [97.65], "mode": "lines+markers", "name": "Chris Wilson", "hovertemplate": "%{customdata}<extra></extra>", "customdata": ["Chris Wilson<br>Avg Pace: 97.65%<br>Fastest Lap: 96.63%<br>Consistency: 98.98%"], "line": {"width": 2}, "marker": {"size": 8}, "opacity": 1.0}, {"x": [0], "y": [98.02], "mode": "lines+markers", "name": "William Neron", "hovertemplate": "%{customdata}<extra></extra>", "customdata": ["William Neron<br>Avg Pace: 98.02%<br>Fastest Lap: 96.54%<br>Consistency: 98.52%"], "line": {"width": 2}, "marker": {"size": 8}, "opacity": 1.0}, {"x": [0], "y": [98.11], "mode": "lines+markers", "name": "James Rubio", "hovertemplate": "%{customdata}<extra></extra>", "customdata": ["James Rubio<br>Avg Pace: 98.11%<br>Fastest Lap: 96.79%<br>Consistency: 98.67%"], "line": {"width": 2}, "marker": {"size": 8}, "opacity": 1.0}, {"x": [0], "y": [98.68], "mode": "lines+markers", "name": "Nick Johnson", "hovertemplate": "%{customdata}<extra></extra>", "customdata": ["Nick Johnson<br>Avg Pace: 98.68%<br>Fastest Lap: 97.32%<br>Consistency: 98.64%"], "line": {"width": 2}, "marker": {"size": 8}, "opacity": 1.0}, {"x": [0], "y": [99.0], "mode": "lines+markers", "name": "Edriel Lugo-Ortiz", "hovertemplate": "%{customdata}<extra></extra>", "customdata": ["Edriel Lugo-Ortiz<br>Avg Pace: 99.00%<br>Fastest Lap: 97.25%<br>Consistency: 98.25%"], "line": {"width": 2}, "marker": {"size": 8}, "opacity": 1.0}, {"x": [0], "y": [99.2], "mode": "lines+markers", "name": "Ily Bordiyan", "hovertemplate": "%{customdata}<extra></extra>", "customdata": ["Ily Bordiyan<br>Avg Pace: 99.20%<br>Fastest Lap: 97.77%<br>Consistency: 98.57%"], "line": {"width": 2}, "marker": {"size": 8}, "opacity": 1.0}, {"x": [0], "y": [99.82], "mode": "lines+markers", "name": "Shae Lewis", "hovertemplate": "%{customdata}<extra></extra>", "customdata": ["Shae Lewis<br>Avg Pace: 99.82%<br>Fastest Lap: 98.07%<br>Consistency: 98.25%"], "line": {"width": 2}, "marker": {"size": 8}, "opacity": 1.0}, {"x": [0], "y": [100.95], "mode": "lines+markers", "name": "Timo White", "hovertemplate": "%{customdata}<extra></extra>", "customdata": ["Timo White<br>Avg Pace: 100.95%<br>Fastest Lap: 98.78%<br>Consistency: 97.83%"], "line": {"width": 2}, "marker": {"size": 8}, "opacity": 1.0}, {"x": [0], "y": [101.08], "mode": "lines+markers", "name": "Glenn Jacobs#3297", "hovertemplate": "%{customdata}<extra></extra>", "customdata": ["Glenn Jacobs#3297<br>Avg Pace: 101.08%<br>Fastest Lap: 98.41%<br>Consistency: 97.33%"], "line": {"width": 2}, "marker": {"size": 8}, "opacity": 1.0}, {"x": [0], "y": [101.32], "mode": "lines+markers", "name": "Dave Carter", "hovertemplate": "%{customdata}<extra></extra>", "customdata": ["Dave Carter<br>Avg Pace: 101.32%<br>Fastest Lap: 98.92%<br>Consistency: 97.60%"], "line": {"width": 2}, "marker": {"size": 8}, "opacity": 1.0}, {"x": [0], "y": [101.79], "mode": "lines+markers", "name": "Greg Kachadurian", "hovertemplate": "%{customdata}<extra></extra>", "customdata": ["Greg Kachadurian<br>Avg Pace: 101.79%<br>Fastest Lap: 100.84%<br>Consistency: 99.05%"], "line": {"width": 2}, "marker": {"size": 8}, "opacity": 1.0}, {"x": [0], "y": [102.85], "mode": "lines+markers", "name": "Ethan Gonzales", "hovertemplate": "%{customdata}<extra></extra>", "customdata": ["Ethan Gonzales<br>Avg Pace: 102.85%<br>Fastest Lap: 102.22%<br>Consistency: 99.37%"], "line": {"width": 2}, "marker": {"size": 8}, "opacity": 1.0}, {"x": [0], "y": [103.08], "mode": "lines+markers", "name": "Nitin Murthy", "hovertemplate": "%{customdata}<extra></extra>", "customdata": ["Nitin Murthy<br>Avg Pace: 103.08%<br>Fastest Lap: 101.79%<br>Consistency: 98.71%"], "line": {"width": 2}, "marker": {"size": 8}, "opacity": 1.0}, {"x": [0], "y": [103.2], "mode": "lines+markers", "name": "Harrison Miller", "hovertemplate": "%{customdata}<extra></extra>", "customdata": ["Harrison Miller<br>Avg Pace: 103.20%<br>Fastest Lap: 101.71%<br>Consistency: 98.51%"], "line": {"width": 2}, "marker": {"size": 8}, "opacity": 1.0}, {"x": [0], "y": [103.29], "mode": "lines+markers", "name": "Guillermo Paret", "hovertemplate": "%{customdata}<extra></extra>", "customdata": ["Guillermo Paret<br>Avg Pace: 103.29%<br>Fastest Lap: 101.26%<br>Consistency: 97.97%"], "line": {"width": 2}, "marker": {"size": 8}, "opacity": 1.0}, {"x": [0], "y": [103.48], "mode": "lines+markers", "name": "Jay Stephens", "hovertemplate": "%{customdata}<extra></extra>", "customdata": ["Jay Stephens<br>Avg Pace: 103.48%<br>Fastest Lap: 102.31%<br>Consistency: 98.83%"], "line": {"width": 2}, "marker": {"size": 8}, "opacity": 1.0}, {"x": [0], "y": [103.5], "mode": "lines+markers", "name": "Richie Wood", "hovertemplate": "%{customdata}<extra></extra>", "customdata": ["Richie Wood<br>Avg Pace: 103.50%<br>Fastest Lap: 102.17%<br>Consistency: 98.67%"], "line": {"width": 2}, "marker": {"size": 8}, "opacity": 1.0}, {"x": [0], "y": [103.83], "mode": "lines+markers", "name": "Neil Lorch", "hovertemplate": "%{customdata}<extra></extra>", "customdata": ["Neil Lorch<br>Avg Pace: 103.83%<br>Fastest Lap: 102.36%<br>Consistency: 98.53%"], "line": {"width": 2}, "marker": {"size": 8}, "opacity": 1.0}, {"x": [0], "y": [103.95], "mode": "lines+markers", "name": "Trav Brown", "hovertemplate": "%{customdata}<extra></extra>", "customdata": ["Trav Brown<br>Avg Pace: 103.95%<br>Fastest Lap: 102.45%<br>Consistency: 98.50%"], "line": {"width": 2}, "marker": {"size": 8}, "opacity": 1.0}, {"x": [0], "y": [104.03], "mode": "lines+markers", "name": "Patricio Fernandez", "hovertemplate": "%{customdata}<extra></extra>", "customdata": ["Patricio Fernandez<br>Avg Pace: 104.03%<br>Fastest Lap: 102.25%<br>Consistency: 98.23%"], "line": {"width": 2}, "marker": {"size": 8}, "opacity": 1.0}, {"x": [0], "y": [104.14], "mode": "lines+markers", "name": "Tony Spaghett", "hovertemplate": "%{customdata}<extra></extra>", "customdata": ["Tony Spaghett<br>Avg Pace: 104.14%<br>Fastest Lap: 101.89%<br>Consistency: 97.75%"], "line": {"width": 2}, "marker": {"size": 8}, "opacity": 1.0}, {"x": [0], "y": [104.36], "mode": "lines+markers", "name": "Dan Gomez", "hovertemplate": "%{customdata}<extra></extra>", "customdata": ["Dan Gomez<br>Avg Pace: 104.36%<br>Fastest Lap: 103.39%<br>Consistency: 99.03%"], "line": {"width": 2}, "marker": {"size": 8}, "opacity": 1.0}, {"x": [0], "y": [104.4], "mode": "lines+markers", "name": "Karl Fredricksen", "hovertemplate": "%{customdata}<extra></extra>", "customdata": ["Karl Fredricksen<br>Avg Pace: 104.40%<br>Fastest Lap: 101.68%<br>Consistency: 97.28%"], "line": {"width": 2}, "marker": {"size": 8}, "opacity": 1.0}, {"x": [0], "y": [104.67], "mode": "lines+markers", "name": "Sean Meikle", "hovertemplate": "%{customdata}<extra></extra>", "customdata": ["Sean Meikle<br>Avg Pace: 104.67%<br>Fastest Lap: 102.85%<br>Consistency: 98.18%"], "line": {"width": 2}, "marker": {"size": 8}, "opacity": 1.0}, {"x": [0], "y": [105.0], "mode": "lines+markers", "name": "Gage Galvin", "hovertemplate": "%{customdata}<extra></extra>", "customdata": ["Gage Galvin<br>Avg Pace: 105.00%<br>Fastest Lap: 102.42%<br>Consistency: 97.42%"], "line": {"width": 2}, "marker": {"size": 8}, "opacity": 1.0}, {"x": [0], "y": [106.21], "mode": "lines+markers", "name": "Jackson Sangalang", "hovertemplate": "%{customdata}<extra></extra>", "customdata": ["Jackson Sangalang<br>Avg Pace: 106.21%<br>Fastest Lap: 104.18%<br>Consistency: 97.96%"], "line": {"width": 2}, "marker": {"size": 8}, "opacity": 1.0}, {"x": [0], "y": [106.34], "mode": "lines+markers", "name": "Lewis M Smith", "hovertemplate": "%{customdata}<extra></extra>", "customdata": ["Lewis M Smith<br>Avg Pace: 106.34%<br>Fastest Lap: 103.05%<br>Consistency: 96.71%"], "line": {"width": 2}, "marker": {"size": 8}, "opacity": 1.0}, {"x": [0], "y": [106.41], "mode": "lines+markers", "name": "Nate Feese", "hovertemplate": "%{customdata}<extra></extra>", "customdata": ["Nate Feese<br>Avg Pace: 106.41%<br>Fastest Lap: 104.17%<br>Consistency: 97.75%"], "line": {"width": 2}, "marker": {"size": 8}, "opacity": 1.0}];
+        const plotLayout = {"title": "Sprint Race Pace Trend: After 1 Rounds", "xaxis": {"tickmode": "array", "ticktext": ["Portimao"], "tickvals": [0]}, "yaxis": {"title": "Race Pace % (vs Alien)", "range": [100.0, 107.0]}, "hovermode": "closest", "plot_bgcolor": "rgba(240, 240, 240, 0.5)", "height": 500, "autosize": true, "showlegend": false, "xaxis_range": [-0.6, 0.6], "margin": {"l": 50, "r": 20, "b": 50, "t": 60}};
+
+        Plotly.newPlot('paceChart', plotData, plotLayout, {responsive: true, displayModeBar: false});
+
+        // Confidence interval visualization using Plotly shapes
+        const paceChart = document.getElementById('paceChart');
+
+        function drawConfidenceInterval(traceIndex) {
+            try {
+                const trace = plotData[traceIndex];
+                if (!trace.ci_lower || !trace.ci_upper || !trace.x || !trace.y) return;
+
+                // Build shapes for confidence intervals
+                const shapes = [];
+
+                for (let i = 0; i < trace.x.length; i++) {
+                    const x_val = trace.x[i];
+                    const lower = trace.ci_lower[i];
+                    const upper = trace.ci_upper[i];
+
+                    if (lower !== null && upper !== null) {
+                        // Add a filled rectangle for the confidence interval band
+                        shapes.push({
+                            type: 'rect',
+                            x0: x_val - 0.2,
+                            x1: x_val + 0.2,
+                            y0: lower,
+                            y1: upper,
+                            fillcolor: 'rgba(100, 150, 255, 0.15)',
+                            line: {color: 'rgba(100, 150, 255, 0.3)', width: 1},
+                            layer: 'below'
+                        });
+
+                        // Add a line at the center (average pace)
+                        shapes.push({
+                            type: 'line',
+                            x0: x_val - 0.1,
+                            x1: x_val + 0.1,
+                            y0: trace.y[i],
+                            y1: trace.y[i],
+                            line: {color: 'rgba(50, 100, 200, 0.6)', width: 2}
+                        });
+                    }
+                }
+
+                // Update layout with shapes
+                Plotly.relayout('paceChart', {shapes: shapes});
+            } catch (e) {
+                console.error('Error drawing confidence interval:', e);
+            }
+        }
+
+        function clearConfidenceInterval() {
+            try {
+                Plotly.relayout('paceChart', {shapes: []});
+            } catch (e) {
+                // Silently fail
+            }
+        }
+
+        // Function to highlight table rows by driver name
+        function highlightTableRows(driverName) {
+            try {
+                const rows = document.querySelectorAll('table tbody tr');
+                rows.forEach(row => {
+                    const firstCell = row.cells[0].textContent.trim();
+                    if (firstCell === driverName) {
+                        row.classList.add('highlighted');
+                    }
+                });
+            } catch (e) {
+                // Ignore errors if driver not found in tables
+            }
+        }
+
+        // Function to clear table row highlights
+        function clearTableHighlights() {
+            try {
+                document.querySelectorAll('table tbody tr.highlighted').forEach(row => {
+                    row.classList.remove('highlighted');
+                });
+            } catch (e) {
+                // Ignore errors
+            }
+        }
+
+        // Function to highlight trace by driver name
+        function highlightTrace(driverName) {
+            try {
+                const traceIndex = plotData.findIndex(trace => trace.name === driverName);
+                if (traceIndex === -1) {
+                    return; // Driver not in graph, silently pass
+                }
+
+                const numTraces = plotData.length;
+                const opacities = [];
+                const lineWidths = [];
+
+                for (let i = 0; i < numTraces; i++) {
+                    if (i === traceIndex) {
+                        opacities.push(1.0);
+                        lineWidths.push({width: 3});
+                    } else {
+                        opacities.push(0.2);
+                        lineWidths.push({width: 1});
+                    }
+                }
+
+                Plotly.restyle('paceChart', {'opacity': opacities, 'line': lineWidths});
+            } catch (e) {
+                // Ignore errors if driver not found
+            }
+        }
+
+        // Function to clear trace highlights
+        function clearTraceHighlights() {
+            try {
+                const numTraces = plotData.length;
+                const opacities = Array(numTraces).fill(1.0);
+                const lineWidths = Array(numTraces).fill({width: 2});
+                Plotly.restyle('paceChart', {'opacity': opacities, 'line': lineWidths});
+            } catch (e) {
+                // Ignore errors
+            }
+        }
+
+        // Add hover effect to grey out non-hovered lines in graph
+        paceChart.on('plotly_hover', function(data) {
+            const driverName = data.points[0].name;
+            const numTraces = plotData.length;
+            const opacities = [];
+            const lineWidths = [];
+
+            for (let i = 0; i < numTraces; i++) {
+                if (i === data.points[0].curveNumber) {
+                    opacities.push(1.0);
+                    lineWidths.push({width: 3});
+                } else {
+                    opacities.push(0.2);
+                    lineWidths.push({width: 1});
+                }
+            }
+
+            Plotly.restyle('paceChart', {'opacity': opacities, 'line': lineWidths});
+            highlightTableRows(driverName);
+            drawConfidenceInterval(data.points[0].curveNumber);
+        });
+
+        paceChart.on('plotly_unhover', function(data) {
+            clearTraceHighlights();
+            clearTableHighlights();
+            clearConfidenceInterval();
+        });
+
+        // Add hover effect to table rows
+        document.addEventListener('DOMContentLoaded', function() {
+            const rows = document.querySelectorAll('table tbody tr');
+            rows.forEach(row => {
+                row.addEventListener('mouseenter', function() {
+                    const driverName = this.getAttribute('data-driver');
+                    if (driverName) {
+                        this.classList.add('highlighted');
+                        highlightTrace(driverName);
+                    }
+                });
+
+                row.addEventListener('mouseleave', function() {
+                    this.classList.remove('highlighted');
+                    clearTraceHighlights();
+                });
+            });
+        });
+
+        // Handle responsive resizing
+        window.addEventListener('resize', function() {
+            Plotly.Plots.resize('paceChart');
+        });
+    </script>
+</body>
+</html>
