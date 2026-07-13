@@ -15,11 +15,11 @@
         <span></span>
         <span></span>
     </button>
-    <nav class="sidebar"><div class="sidebar-content"></select></div><h3 style="color: #ccfc00; margin-bottom: 20px; margin-top: 15px;">📊 Dashboard</h3><div class="section-group"><h4>Sprint LMP3</h4><ul><li><a href="sprint_lmp3_race.html" class="">Race Pace</a></li><li><a href="sprint_lmp3_quali.html" class="">Quali Pace</a></li></ul></div><div class="section-group"><h4>Sprint GT3</h4><ul><li><a href="sprint_gt3_race.html" class="">Race Pace</a></li><li><a href="sprint_gt3_quali.html" class="">Quali Pace</a></li></ul></div><div class="section-group"><h4>Multiclass P2UR/Hypercar</h4><ul><li><a href="multiclass_p2ur_race.html" class="">Race Pace</a></li><li><a href="multiclass_p2ur_quali.html" class="">Quali Pace</a></li></ul></div><div class="section-group"><h4>Multiclass GT3</h4><ul><li><a href="multiclass_gt3_race.html" class="">Race Pace</a></li><li><a href="multiclass_gt3_quali.html" class="">Quali Pace</a></li></ul></div></nav>
+    <nav class="sidebar"><div class="sidebar-content"></select></div><img src="../logo.png" alt="Logo" class="header-logo"><div class="section-group"><h4>Sprint LMP3</h4><ul><li><a href="sprint_lmp3_race.html" class="">Race Pace</a></li><li><a href="sprint_lmp3_quali.html" class="">Quali Pace</a></li></ul></div><div class="section-group"><h4>Sprint GT3</h4><ul><li><a href="sprint_gt3_race.html" class="">Race Pace</a></li><li><a href="sprint_gt3_quali.html" class="">Quali Pace</a></li></ul></div><div class="section-group"><h4>Multiclass P2UR/Hypercar</h4><ul><li><a href="multiclass_p2ur_race.html" class="">Race Pace</a></li><li><a href="multiclass_p2ur_quali.html" class="active">Quali Pace</a></li></ul></div><div class="section-group"><h4>Multiclass GT3</h4><ul><li><a href="multiclass_gt3_race.html" class="">Race Pace</a></li><li><a href="multiclass_gt3_quali.html" class="">Quali Pace</a></li></ul></div></nav>
     
         <div class="container">
             <header>
-                <img src="../logo.png" alt="Logo" class="header-logo">
+                <!-- <img src="../logo.png" alt="Logo" class="header-logo"> -->
                 <h1>🏆 Multiclass Hyper Quali Pace Data</h1>
             </header>
 
@@ -80,8 +80,8 @@
       <td>Ryan B.</td>
       <td>102.95</td>
     </tr>
-    <tr data-driver="T Ducharme">
-      <td>T D.</td>
+    <tr data-driver="Tim Ducharme">
+      <td>Tim D.</td>
       <td>103.97</td>
     </tr>
     <tr data-driver="Wesley Ambrose">
@@ -161,8 +161,8 @@
       <td>102.95</td>
       <td>0.00</td>
     </tr>
-    <tr data-driver="T Ducharme">
-      <td>T D.</td>
+    <tr data-driver="Tim Ducharme">
+      <td>Tim D.</td>
       <td>103.97</td>
       <td>103.97</td>
       <td>0.00</td>
@@ -181,7 +181,7 @@
 
             <div class="footer">
                 <p>Generated from OOFS XML Race Data</p>
-                <p style="font-size: 0.9em; margin-top: 10px;">Last updated: 2026-07-12 22:35:41</p>
+                <p style="font-size: 0.9em; margin-top: 10px;">Last updated: 2026-07-13 11:51:45</p>
             </div>
         </div>
     </div>
@@ -189,14 +189,6 @@
     <svg id="confidenceIntervalSVG" style="position: absolute; top: 0; left: 0; pointer-events: none; display: none;"></svg>
 
     <script>
-        // Season selector functionality
-        const seasonSelector = document.getElementById('seasonSelector');
-        if (seasonSelector) {
-            seasonSelector.addEventListener('change', function() {
-                const season = this.value;
-                window.location.href = `../../${season}/` + window.location.pathname.split('/').pop();
-            });
-        }
 
         // Sidebar toggle functionality
         const sidebarToggle = document.getElementById('sidebarToggle');
@@ -217,7 +209,7 @@
         }
 
         // Plotly chart initialization
-        const plotData = [{"x": [0], "y": [101.19], "mode": "lines+markers", "name": "Greg Kachadurian", "hovertemplate": "%{customdata}<extra></extra>", "customdata": ["Greg Kachadurian<br>Fastest Lap: 101.19%"], "line": {"width": 2}, "marker": {"size": 8}, "opacity": 1.0}, {"x": [0], "y": [101.82], "mode": "lines+markers", "name": "Mason Moffett", "hovertemplate": "%{customdata}<extra></extra>", "customdata": ["Mason Moffett<br>Fastest Lap: 101.82%"], "line": {"width": 2}, "marker": {"size": 8}, "opacity": 1.0}, {"x": [0], "y": [100.99], "mode": "lines+markers", "name": "Jeffrey Aroyan", "hovertemplate": "%{customdata}<extra></extra>", "customdata": ["Jeffrey Aroyan<br>Fastest Lap: 100.99%"], "line": {"width": 2}, "marker": {"size": 8}, "opacity": 1.0}, {"x": [0], "y": [101.3], "mode": "lines+markers", "name": "Andrew Canelli", "hovertemplate": "%{customdata}<extra></extra>", "customdata": ["Andrew Canelli<br>Fastest Lap: 101.30%"], "line": {"width": 2}, "marker": {"size": 8}, "opacity": 1.0}, {"x": [0], "y": [102.43], "mode": "lines+markers", "name": "Nathan Sides", "hovertemplate": "%{customdata}<extra></extra>", "customdata": ["Nathan Sides<br>Fastest Lap: 102.43%"], "line": {"width": 2}, "marker": {"size": 8}, "opacity": 1.0}, {"x": [0], "y": [102.95], "mode": "lines+markers", "name": "Ryan Bellune", "hovertemplate": "%{customdata}<extra></extra>", "customdata": ["Ryan Bellune<br>Fastest Lap: 102.95%"], "line": {"width": 2}, "marker": {"size": 8}, "opacity": 1.0}, {"x": [0], "y": [103.97], "mode": "lines+markers", "name": "T Ducharme", "hovertemplate": "%{customdata}<extra></extra>", "customdata": ["T Ducharme<br>Fastest Lap: 103.97%"], "line": {"width": 2}, "marker": {"size": 8}, "opacity": 1.0}, {"x": [0], "y": [102.15], "mode": "lines+markers", "name": "Daniel Valasco", "hovertemplate": "%{customdata}<extra></extra>", "customdata": ["Daniel Valasco<br>Fastest Lap: 102.15%"], "line": {"width": 2}, "marker": {"size": 8}, "opacity": 1.0}, {"x": [0], "y": [102.26], "mode": "lines+markers", "name": "Jumpy Whale", "hovertemplate": "%{customdata}<extra></extra>", "customdata": ["Jumpy Whale<br>Fastest Lap: 102.26%"], "line": {"width": 2}, "marker": {"size": 8}, "opacity": 1.0}, {"x": [0], "y": [103.05], "mode": "lines+markers", "name": "Wesley Ambrose", "hovertemplate": "%{customdata}<extra></extra>", "customdata": ["Wesley Ambrose<br>Fastest Lap: 103.05%"], "line": {"width": 2}, "marker": {"size": 8}, "opacity": 1.0}, {"x": [0], "y": [103.75], "mode": "lines+markers", "name": "Jesse Olsen", "hovertemplate": "%{customdata}<extra></extra>", "customdata": ["Jesse Olsen<br>Fastest Lap: 103.75%"], "line": {"width": 2}, "marker": {"size": 8}, "opacity": 1.0}];
+        const plotData = [{"x": [0], "y": [101.19], "mode": "lines+markers", "name": "Greg Kachadurian", "hovertemplate": "%{customdata}<extra></extra>", "customdata": ["Greg Kachadurian<br>Fastest Lap: 101.19%"], "line": {"width": 2}, "marker": {"size": 8}, "opacity": 1.0}, {"x": [0], "y": [101.82], "mode": "lines+markers", "name": "Mason Moffett", "hovertemplate": "%{customdata}<extra></extra>", "customdata": ["Mason Moffett<br>Fastest Lap: 101.82%"], "line": {"width": 2}, "marker": {"size": 8}, "opacity": 1.0}, {"x": [0], "y": [100.99], "mode": "lines+markers", "name": "Jeffrey Aroyan", "hovertemplate": "%{customdata}<extra></extra>", "customdata": ["Jeffrey Aroyan<br>Fastest Lap: 100.99%"], "line": {"width": 2}, "marker": {"size": 8}, "opacity": 1.0}, {"x": [0], "y": [101.3], "mode": "lines+markers", "name": "Andrew Canelli", "hovertemplate": "%{customdata}<extra></extra>", "customdata": ["Andrew Canelli<br>Fastest Lap: 101.30%"], "line": {"width": 2}, "marker": {"size": 8}, "opacity": 1.0}, {"x": [0], "y": [102.43], "mode": "lines+markers", "name": "Nathan Sides", "hovertemplate": "%{customdata}<extra></extra>", "customdata": ["Nathan Sides<br>Fastest Lap: 102.43%"], "line": {"width": 2}, "marker": {"size": 8}, "opacity": 1.0}, {"x": [0], "y": [102.95], "mode": "lines+markers", "name": "Ryan Bellune", "hovertemplate": "%{customdata}<extra></extra>", "customdata": ["Ryan Bellune<br>Fastest Lap: 102.95%"], "line": {"width": 2}, "marker": {"size": 8}, "opacity": 1.0}, {"x": [0], "y": [103.97], "mode": "lines+markers", "name": "Tim Ducharme", "hovertemplate": "%{customdata}<extra></extra>", "customdata": ["Tim Ducharme<br>Fastest Lap: 103.97%"], "line": {"width": 2}, "marker": {"size": 8}, "opacity": 1.0}, {"x": [0], "y": [102.15], "mode": "lines+markers", "name": "Daniel Valasco", "hovertemplate": "%{customdata}<extra></extra>", "customdata": ["Daniel Valasco<br>Fastest Lap: 102.15%"], "line": {"width": 2}, "marker": {"size": 8}, "opacity": 1.0}, {"x": [0], "y": [102.26], "mode": "lines+markers", "name": "Jumpy Whale", "hovertemplate": "%{customdata}<extra></extra>", "customdata": ["Jumpy Whale<br>Fastest Lap: 102.26%"], "line": {"width": 2}, "marker": {"size": 8}, "opacity": 1.0}, {"x": [0], "y": [103.05], "mode": "lines+markers", "name": "Wesley Ambrose", "hovertemplate": "%{customdata}<extra></extra>", "customdata": ["Wesley Ambrose<br>Fastest Lap: 103.05%"], "line": {"width": 2}, "marker": {"size": 8}, "opacity": 1.0}, {"x": [0], "y": [103.75], "mode": "lines+markers", "name": "Jesse Olsen", "hovertemplate": "%{customdata}<extra></extra>", "customdata": ["Jesse Olsen<br>Fastest Lap: 103.75%"], "line": {"width": 2}, "marker": {"size": 8}, "opacity": 1.0}];
         const plotLayout = {"title": "Multiclass Hyper Quali Pace Trend: After 1 Rounds", "xaxis": {"tickmode": "array", "ticktext": ["Portimao"], "tickvals": [0]}, "yaxis": {"title": "Quali Pace % (vs Alien)", "range": [100.0, 107.0]}, "hovermode": "closest", "plot_bgcolor": "rgba(240, 240, 240, 0.5)", "height": 500, "autosize": true, "showlegend": false, "xaxis_range": [-0.6, 0.6], "margin": {"l": 50, "r": 20, "b": 50, "t": 60}};
 
         Plotly.newPlot('paceChart', plotData, plotLayout, {responsive: true, displayModeBar: false});

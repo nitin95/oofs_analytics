@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🏁 Sprint GT3 Race Pace Data</title>
+    <title>Sprint GT3 Race Pace Data</title>
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <link rel="stylesheet" href="../styles.css">
 </head>
@@ -15,12 +15,12 @@
         <span></span>
         <span></span>
     </button>
-    <nav class="sidebar"><div class="sidebar-content"></select></div><h3 style="color: #ccfc00; margin-bottom: 20px; margin-top: 15px;">📊 Dashboard</h3><div class="section-group"><h4>Sprint LMP3</h4><ul><li><a href="sprint_lmp3_race.html" class="">Race Pace</a></li><li><a href="sprint_lmp3_quali.html" class="">Quali Pace</a></li></ul></div><div class="section-group"><h4>Sprint GT3</h4><ul><li><a href="sprint_gt3_race.html" class="">Race Pace</a></li><li><a href="sprint_gt3_quali.html" class="">Quali Pace</a></li></ul></div><div class="section-group"><h4>Multiclass P2UR/Hypercar</h4><ul><li><a href="multiclass_p2ur_race.html" class="">Race Pace</a></li><li><a href="multiclass_p2ur_quali.html" class="">Quali Pace</a></li></ul></div><div class="section-group"><h4>Multiclass GT3</h4><ul><li><a href="multiclass_gt3_race.html" class="">Race Pace</a></li><li><a href="multiclass_gt3_quali.html" class="">Quali Pace</a></li></ul></div></nav>
+    <nav class="sidebar"><div class="sidebar-content"></select></div><img src="../logo.png" alt="Logo" class="header-logo"><div class="section-group"><h4>Sprint</h4><ul><li><a href="sprint_race.html" class="">Race Pace</a></li><li><a href="sprint_quali.html" class="">Quali Pace</a></li></ul></div><div class="section-group"><h4>Multiclass P2UR/Hypercar</h4><ul><li><a href="multiclass_p2ur_race.html" class="">Race Pace</a></li><li><a href="multiclass_p2ur_quali.html" class="">Quali Pace</a></li></ul></div><div class="section-group"><h4>Multiclass GT3</h4><ul><li><a href="multiclass_gt3_race.html" class="">Race Pace</a></li><li><a href="multiclass_gt3_quali.html" class="">Quali Pace</a></li></ul></div></nav>
     
         <div class="container">
             <header>
-                <img src="../logo.png" alt="Logo" class="header-logo">
-                <h1>🏁 Sprint GT3 Race Pace Data</h1>
+                <!-- <img src="../logo.png" alt="Logo" class="header-logo"> -->
+                <h1>Sprint GT3 Race Pace Data</h1>
             </header>
 
             <div class="content">
@@ -448,7 +448,7 @@
 
             <div class="footer">
                 <p>Generated from OOFS XML Race Data</p>
-                <p style="font-size: 0.9em; margin-top: 10px;">Last updated: 2026-07-12 22:35:41</p>
+                <p style="font-size: 0.9em; margin-top: 10px;">Last updated: 2026-07-13 11:51:44</p>
             </div>
         </div>
     </div>
@@ -456,14 +456,6 @@
     <svg id="confidenceIntervalSVG" style="position: absolute; top: 0; left: 0; pointer-events: none; display: none;"></svg>
 
     <script>
-        // Season selector functionality
-        const seasonSelector = document.getElementById('seasonSelector');
-        if (seasonSelector) {
-            seasonSelector.addEventListener('change', function() {
-                const season = this.value;
-                window.location.href = `../../${season}/` + window.location.pathname.split('/').pop();
-            });
-        }
 
         // Sidebar toggle functionality
         const sidebarToggle = document.getElementById('sidebarToggle');

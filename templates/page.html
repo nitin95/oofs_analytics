@@ -12,7 +12,7 @@
         {sidebar_section}
         <div class="container">
             <header>
-                <img src="../logo.png" alt="Logo" class="header-logo">
+                <!-- <img src="../logo.png" alt="Logo" class="header-logo"> -->
                 <h1>{title}</h1>
             </header>
 
@@ -52,14 +52,6 @@
     <svg id="confidenceIntervalSVG" style="position: absolute; top: 0; left: 0; pointer-events: none; display: none;"></svg>
 
     <script>
-        // Season selector functionality
-        const seasonSelector = document.getElementById('seasonSelector');
-        if (seasonSelector) {
-            seasonSelector.addEventListener('change', function() {
-                const season = this.value;
-                window.location.href = `../../${season}/` + window.location.pathname.split('/').pop();
-            });
-        }
 
         // Sidebar toggle functionality
         const sidebarToggle = document.getElementById('sidebarToggle');
