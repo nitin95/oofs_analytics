@@ -843,18 +843,27 @@ def create_plotly_json(df_display_renamed, comparison_df, avg_pace_cols, stdev_p
     return {
         'traces': traces,
         'layout': {
-            'title': chart_title,
+            'title': {'text': chart_title, 'font': {'color': '#ccfc00'}}, # Changed title structure here
             'xaxis': {
                 'tickmode': 'array',
                 'ticktext': track_names,
-                'tickvals': x_positions
+                'tickvals': x_positions,
+                'titlefont': {'color': '#fafafa'}, # Color for the X-axis Title
+                'tickfont': {'color': '#fafafa'},  # Color for the Tick Labels on X-axis
+                'linecolor': '#ccfc00', # Dark axis line color
+                'gridcolor': '#fafafa', # Dark grid line color
             },
             'yaxis': {
                 'title': y_axis_title,
-                'range': [time_lower, time_upper]
+                'range': [time_lower, time_upper],
+                'titlefont': {'color': '#fafafa'}, # Color for the Y-axis Title
+                'tickfont': {'color': '#fafafa'},  # Color for the Tick Labels on Y-axis
+                'linecolor': '#ccfc00', # Dark axis line color
+                'gridcolor': '#fafafa', # Dark grid line color
             },
             'hovermode': 'closest',
-            'plot_bgcolor': 'rgba(240, 240, 240, 0.5)',
+            'plot_bgcolor': '#14161ff2',
+            'paper_bgcolor': '#14161ff2', # Set paper background to match plot area
             'height': 500,
             'autosize': True,
             'showlegend': False,
