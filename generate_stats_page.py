@@ -109,16 +109,20 @@ SEASON_CONFIG = {
     },
     'season3': {
         'sprint_qualis': {
-            's5-sc1.xml': {'name': 'Portimao', 'ref_time':102.91, 'ref_time_lmp3': 97.76, 'ref_time_gt3': 102.91},
+            's5-sc1.xml': {'name': 'Portimao', 'ref_time_lmp3': 97.76, 'ref_time_gt3': 102.91},
+            's5-sc2.xml': {'name': 'Sebring', 'ref_time_lmp3': 113.79, 'ref_time_gt3': 119.87}, 
         },
         'sprint_races': {
-            's5-sc1-r.xml': {'name': 'Portimao', 'ref_time':103.81, 'ref_time_lmp3': 99.15, 'ref_time_gt3': 103.81},
+            's5-sc1-r.xml': {'name': 'Portimao', 'ref_time_lmp3': 99.15, 'ref_time_gt3': 103.81},
+            's5-sc2-r.xml': {'name': 'Sebring', 'ref_time_lmp3': 115.33, 'ref_time_gt3': 120.66},
         },
         'multiclass_qualis': {
             's5-mc1.xml': {'name': 'Portimao', 'ref_time_hyper': 91.36, 'ref_time_gt3': 102.91},
+            's5-mc2.xml': {'name': 'Sebring', 'ref_time_hyper': 105.98, 'ref_time_gt3': 119.87},
         },
         'multiclass_races': {
             's5-mc1-r.xml': {'name': 'Portimao', 'ref_time_hyper': 92.27, 'ref_time_gt3': 103.81},
+            's5-mc2-r.xml': {'name': 'Sebring', 'ref_time_hyper': 106.82, 'ref_time_gt3': 120.66},
         }
     },
     # Add more seasons here as needed
@@ -1017,86 +1021,87 @@ def main():
             if os.path.exists(output_file):
                 os.remove(output_file)
         
-        # ===== SPRINT LMP3 RACE PACE (Class-filtered) =====
-        print("  [Sprint] LMP3 Race Pace...")
-        sprint_lmp3_race_dfs = {}
-        xml_folder = os.path.join('xml', season_id, 'sprint')
-        
-        for filename, race_info in season_config['sprint_races'].items():
-            xml_path = os.path.join(xml_folder, filename)
-            if os.path.exists(xml_path):
-                # Use ref_time_lmp3 if available, otherwise fall back to ref_time
-                ref_time = race_info.get('ref_time_lmp3', race_info.get('ref_time'))
-                df = process_sprint_race_data(xml_path, 'LMP3', ref_time)
-                if df is not None:
-                    sprint_lmp3_race_dfs[race_info['name']] = df
-            else:
-                print(f"    Not found: {xml_path}")
-        
-        if sprint_lmp3_race_dfs:
-            race_codes, track_names, code_to_track = load_races_dynamically(season_config['sprint_races'], xml_folder)
-            comparison_df, _, avg_pace_cols, used_race_codes, track_names = process_races_into_comparison_df(sprint_lmp3_race_dfs, race_codes, code_to_track)
+            # ===== SPRINT LMP3 RACE PACE (Class-filtered) =====
+            print("  [Sprint] LMP3 Race Pace...")
+            sprint_lmp3_race_dfs = {}
+            xml_folder = os.path.join('xml', season_id, 'sprint')
             
-            if comparison_df is not None:
-                improvement_df = build_improvement_df(comparison_df, avg_pace_cols)
-                stdev_pace_cols = [f'stdev_pace_pct_{code}' for code in used_race_codes]
-                df_display_renamed, _ = create_display_df(comparison_df, avg_pace_cols, stdev_pace_cols, track_names, mode='race')
-                pace_html, improvement_html = generate_html_tables(comparison_df, improvement_df, avg_pace_cols, track_names)
-                
-                num_rounds = len(track_names)
-                plotly_data = create_plotly_json(df_display_renamed, comparison_df, avg_pace_cols, stdev_pace_cols, track_names,
-                    f'Sprint LMP3 Race Pace Trend: After {num_rounds} Rounds', 'Race Pace % (vs Alien)', race_type='race')
-                
-                html_content = generate_page('Sprint LMP3 Race Pace Data',
-                    'sprint_lmp3_race.html', season_id, pace_html, improvement_html, plotly_data)
-                
-                with open(os.path.join(season_output_dir, 'sprint_lmp3_race.html'), 'w', encoding='utf-8-sig') as f:
-                    f.write(html_content)
-                print("    Generated sprint_lmp3_race.html")
-            else:
-                print("    Comparison DF is None for LMP3 races")
-        else:
-            print("    No LMP3 sprint race data found")
-        
-        # ===== SPRINT GT3 RACE PACE (Class-filtered) =====
-        print("  [Sprint] GT3 Race Pace...")
-        sprint_gt3_race_dfs = {}
-        
-        for filename, race_info in season_config['sprint_races'].items():
-            xml_path = os.path.join(xml_folder, filename)
-            if os.path.exists(xml_path):
-                # Use ref_time_gt3 if available, otherwise fall back to ref_time
-                ref_time = race_info.get('ref_time_gt3', race_info.get('ref_time'))
-                df = process_sprint_race_data(xml_path, 'GT3', ref_time)
-                if df is not None:
-                    sprint_gt3_race_dfs[race_info['name']] = df
-            else:
-                print(f"    Not found: {xml_path}")
-        
-        if sprint_gt3_race_dfs:
-            race_codes, track_names, code_to_track = load_races_dynamically(season_config['sprint_races'], xml_folder)
-            comparison_df, _, avg_pace_cols, used_race_codes, track_names = process_races_into_comparison_df(sprint_gt3_race_dfs, race_codes, code_to_track)
+            for filename, race_info in season_config['sprint_races'].items():
+                xml_path = os.path.join(xml_folder, filename)
+                if os.path.exists(xml_path):
+                    # Use ref_time_lmp3 if available, otherwise fall back to ref_time
+                    ref_time = race_info.get('ref_time_lmp3')
+                    df = process_sprint_race_data(xml_path, 'LMP3', ref_time)
+                    if df is not None:
+                        sprint_lmp3_race_dfs[race_info['name']] = df
+                else:
+                    print(f"    Not found: {xml_path}")
             
-            if comparison_df is not None:
-                improvement_df = build_improvement_df(comparison_df, avg_pace_cols)
-                stdev_pace_cols = [f'stdev_pace_pct_{code}' for code in used_race_codes]
-                df_display_renamed, _ = create_display_df(comparison_df, avg_pace_cols, stdev_pace_cols, track_names, mode='race')
-                pace_html, improvement_html = generate_html_tables(comparison_df, improvement_df, avg_pace_cols, track_names)
+            if sprint_lmp3_race_dfs:
+                race_codes, track_names, code_to_track = load_races_dynamically(season_config['sprint_races'], xml_folder)
+                comparison_df, _, avg_pace_cols, used_race_codes, track_names = process_races_into_comparison_df(sprint_lmp3_race_dfs, race_codes, code_to_track)
                 
-                num_rounds = len(track_names)
-                plotly_data = create_plotly_json(df_display_renamed, comparison_df, avg_pace_cols, stdev_pace_cols, track_names,
-                    f'Sprint GT3 Race Pace Trend: After {num_rounds} Rounds', 'Race Pace % (vs Alien)', race_type='race')
-                
-                html_content = generate_page('Sprint GT3 Race Pace Data',
-                    'sprint_gt3_race.html', season_id, pace_html, improvement_html, plotly_data)
-                
-                with open(os.path.join(season_output_dir, 'sprint_gt3_race.html'), 'w', encoding='utf-8-sig') as f:
-                    f.write(html_content)
-                print("    Generated sprint_gt3_race.html")
+                if comparison_df is not None:
+                    improvement_df = build_improvement_df(comparison_df, avg_pace_cols)
+                    stdev_pace_cols = [f'stdev_pace_pct_{code}' for code in used_race_codes]
+                    df_display_renamed, _ = create_display_df(comparison_df, avg_pace_cols, stdev_pace_cols, track_names, mode='race')
+                    pace_html, improvement_html = generate_html_tables(comparison_df, improvement_df, avg_pace_cols, track_names)
+                    
+                    num_rounds = len(track_names)
+                    plotly_data = create_plotly_json(df_display_renamed, comparison_df, avg_pace_cols, stdev_pace_cols, track_names,
+                        f'Sprint LMP3 Race Pace Trend: After {num_rounds} Rounds', 'Race Pace % (vs Alien)', race_type='race')
+                    
+                    html_content = generate_page('Sprint LMP3 Race Pace Data',
+                        'sprint_lmp3_race.html', season_id, pace_html, improvement_html, plotly_data)
+                    
+                    with open(os.path.join(season_output_dir, 'sprint_lmp3_race.html'), 'w', encoding='utf-8-sig') as f:
+                        f.write(html_content)
+                    print("    Generated sprint_lmp3_race.html")
+                else:
+                    print("    Comparison DF is None for LMP3 races")
             else:
-                print("    Comparison DF is None for GT3 races")
-        else:
-            print("    No GT3 sprint race data found")
+                print("    No LMP3 sprint race data found")
+            
+            # ===== SPRINT GT3 RACE PACE (Class-filtered) =====
+            print("  [Sprint] GT3 Race Pace...")
+            sprint_gt3_race_dfs = {}
+            
+            for filename, race_info in season_config['sprint_races'].items():
+                xml_path = os.path.join(xml_folder, filename)
+                print(f"    DEBUG: Processing GT3 race XML: {xml_path}, ref_time_gt3={race_info.get('ref_time_gt3')}")
+                if os.path.exists(xml_path):
+                    # Use ref_time_gt3 if available, otherwise fall back to ref_time
+                    ref_time = race_info.get('ref_time_gt3')
+                    df = process_sprint_race_data(xml_path, 'GT3', ref_time)
+                    if df is not None:
+                        sprint_gt3_race_dfs[race_info['name']] = df
+                else:
+                    print(f"    Not found: {xml_path}")
+            
+            if sprint_gt3_race_dfs:
+                race_codes, track_names, code_to_track = load_races_dynamically(season_config['sprint_races'], xml_folder)
+                comparison_df, _, avg_pace_cols, used_race_codes, track_names = process_races_into_comparison_df(sprint_gt3_race_dfs, race_codes, code_to_track)
+                
+                if comparison_df is not None:
+                    improvement_df = build_improvement_df(comparison_df, avg_pace_cols)
+                    stdev_pace_cols = [f'stdev_pace_pct_{code}' for code in used_race_codes]
+                    df_display_renamed, _ = create_display_df(comparison_df, avg_pace_cols, stdev_pace_cols, track_names, mode='race')
+                    pace_html, improvement_html = generate_html_tables(comparison_df, improvement_df, avg_pace_cols, track_names)
+                    
+                    num_rounds = len(track_names)
+                    plotly_data = create_plotly_json(df_display_renamed, comparison_df, avg_pace_cols, stdev_pace_cols, track_names,
+                        f'Sprint GT3 Race Pace Trend: After {num_rounds} Rounds', 'Race Pace % (vs Alien)', race_type='race')
+                    
+                    html_content = generate_page('Sprint GT3 Race Pace Data',
+                        'sprint_gt3_race.html', season_id, pace_html, improvement_html, plotly_data)
+                    
+                    with open(os.path.join(season_output_dir, 'sprint_gt3_race.html'), 'w', encoding='utf-8-sig') as f:
+                        f.write(html_content)
+                    print("    Generated sprint_gt3_race.html")
+                else:
+                    print("    Comparison DF is None for GT3 races")
+            else:
+                print("    No GT3 sprint race data found")
         
         # ===== SPRINT QUALI PACE =====
         if not has_split_sprint_classes:
@@ -1141,89 +1146,89 @@ def main():
             if os.path.exists(output_file):
                 os.remove(output_file)
         
-        # ===== SPRINT LMP3 QUALI PACE (Class-filtered) =====
-        print("  [Sprint] LMP3 Quali Pace...")
-        sprint_lmp3_quali_dfs = {}
-        
-        for filename, quali_info in season_config['sprint_qualis'].items():
-            xml_path = os.path.join(xml_folder, filename)
-            if os.path.exists(xml_path):
-                # Use ref_time_lmp3 if available, otherwise fall back to ref_time
-                ref_time = quali_info.get('ref_time_lmp3', quali_info.get('ref_time'))
-                df = process_sprint_race_data(xml_path, 'LMP3', ref_time)
-                if df is not None:
-                    sprint_lmp3_quali_dfs[quali_info['name']] = df
-            else:
-                print(f"    Not found: {xml_path}")
-        
-        if sprint_lmp3_quali_dfs:
-            race_codes, track_names, code_to_track = load_races_dynamically(season_config['sprint_qualis'], xml_folder)
-            comparison_df, _, avg_pace_cols, used_race_codes, track_names = process_races_into_comparison_df(sprint_lmp3_quali_dfs, race_codes, code_to_track)
+            # ===== SPRINT LMP3 QUALI PACE (Class-filtered) =====
+            print("  [Sprint] LMP3 Quali Pace...")
+            sprint_lmp3_quali_dfs = {}
             
-            if comparison_df is not None:
-                # Create fastest lap column names and pass instead of average pace
-                fastest_lap_cols = [col.replace('avg_pace_pct_alien_', 'laptime_pct_alien_') for col in avg_pace_cols]
-                improvement_df = build_improvement_df(comparison_df, fastest_lap_cols)
-                stdev_pace_cols = [f'stdev_pace_pct_{code}' for code in used_race_codes]
-                df_display_renamed, _ = create_display_df(comparison_df, avg_pace_cols, stdev_pace_cols, track_names, mode='quali')
-                pace_html, improvement_html = generate_html_tables(comparison_df, improvement_df, avg_pace_cols, track_names, mode='quali')
-                
-                num_rounds = len(track_names)
-                plotly_data = create_plotly_json(df_display_renamed, comparison_df, avg_pace_cols, stdev_pace_cols, track_names,
-                    f'Sprint LMP3 Quali Pace Trend: After {num_rounds} Rounds', 'Quali Pace % (vs Alien)', race_type='quali')
-                
-                html_content = generate_page('Sprint LMP3 Quali Pace Data',
-                    'sprint_lmp3_quali.html', season_id, pace_html, improvement_html, plotly_data)
-                
-                with open(os.path.join(season_output_dir, 'sprint_lmp3_quali.html'), 'w', encoding='utf-8-sig') as f:
-                    f.write(html_content)
-                print("    Generated sprint_lmp3_quali.html")
-            else:
-                print("    Comparison DF is None for LMP3 qualies")
-        else:
-            print("    No LMP3 sprint quali data found")
-        
-        # ===== SPRINT GT3 QUALI PACE (Class-filtered) =====
-        print("  [Sprint] GT3 Quali Pace...")
-        sprint_gt3_quali_dfs = {}
-        
-        for filename, quali_info in season_config['sprint_qualis'].items():
-            xml_path = os.path.join(xml_folder, filename)
-            if os.path.exists(xml_path):
-                # Use ref_time_gt3 if available, otherwise fall back to ref_time
-                ref_time = quali_info.get('ref_time_gt3', quali_info.get('ref_time'))
-                df = process_sprint_race_data(xml_path, 'GT3', ref_time)
-                if df is not None:
-                    sprint_gt3_quali_dfs[quali_info['name']] = df
-            else:
-                print(f"    Not found: {xml_path}")
-        
-        if sprint_gt3_quali_dfs:
-            race_codes, track_names, code_to_track = load_races_dynamically(season_config['sprint_qualis'], xml_folder)
-            comparison_df, _, avg_pace_cols, used_race_codes, track_names = process_races_into_comparison_df(sprint_gt3_quali_dfs, race_codes, code_to_track)
+            for filename, quali_info in season_config['sprint_qualis'].items():
+                xml_path = os.path.join(xml_folder, filename)
+                if os.path.exists(xml_path):
+                    # Use ref_time_lmp3 if available, otherwise fall back to ref_time
+                    ref_time = quali_info.get('ref_time_lmp3', quali_info.get('ref_time'))
+                    df = process_sprint_race_data(xml_path, 'LMP3', ref_time)
+                    if df is not None:
+                        sprint_lmp3_quali_dfs[quali_info['name']] = df
+                else:
+                    print(f"    Not found: {xml_path}")
             
-            if comparison_df is not None:
-                # Create fastest lap column names and pass instead of average pace
-                fastest_lap_cols = [col.replace('avg_pace_pct_alien_', 'laptime_pct_alien_') for col in avg_pace_cols]
-                improvement_df = build_improvement_df(comparison_df, fastest_lap_cols)
-                stdev_pace_cols = [f'stdev_pace_pct_{code}' for code in used_race_codes]
-                df_display_renamed, _ = create_display_df(comparison_df, avg_pace_cols, stdev_pace_cols, track_names, mode='quali')
-                pace_html, improvement_html = generate_html_tables(comparison_df, improvement_df, avg_pace_cols, track_names, mode='quali')
+            if sprint_lmp3_quali_dfs:
+                race_codes, track_names, code_to_track = load_races_dynamically(season_config['sprint_qualis'], xml_folder)
+                comparison_df, _, avg_pace_cols, used_race_codes, track_names = process_races_into_comparison_df(sprint_lmp3_quali_dfs, race_codes, code_to_track)
                 
-                num_rounds = len(track_names)
-                plotly_data = create_plotly_json(df_display_renamed, comparison_df, avg_pace_cols, stdev_pace_cols, track_names,
-                    f'Sprint GT3 Quali Pace Trend: After {num_rounds} Rounds', 'Quali Pace % (vs Alien)', race_type='quali')
-                
-                html_content = generate_page('Sprint GT3 Quali Pace Data',
-                    'sprint_gt3_quali.html', season_id, pace_html, improvement_html, plotly_data)
-                
-                with open(os.path.join(season_output_dir, 'sprint_gt3_quali.html'), 'w', encoding='utf-8-sig') as f:
-                    f.write(html_content)
-                print("    Generated sprint_gt3_quali.html")
+                if comparison_df is not None:
+                    # Create fastest lap column names and pass instead of average pace
+                    fastest_lap_cols = [col.replace('avg_pace_pct_alien_', 'laptime_pct_alien_') for col in avg_pace_cols]
+                    improvement_df = build_improvement_df(comparison_df, fastest_lap_cols)
+                    stdev_pace_cols = [f'stdev_pace_pct_{code}' for code in used_race_codes]
+                    df_display_renamed, _ = create_display_df(comparison_df, avg_pace_cols, stdev_pace_cols, track_names, mode='quali')
+                    pace_html, improvement_html = generate_html_tables(comparison_df, improvement_df, avg_pace_cols, track_names, mode='quali')
+                    
+                    num_rounds = len(track_names)
+                    plotly_data = create_plotly_json(df_display_renamed, comparison_df, avg_pace_cols, stdev_pace_cols, track_names,
+                        f'Sprint LMP3 Quali Pace Trend: After {num_rounds} Rounds', 'Quali Pace % (vs Alien)', race_type='quali')
+                    
+                    html_content = generate_page('Sprint LMP3 Quali Pace Data',
+                        'sprint_lmp3_quali.html', season_id, pace_html, improvement_html, plotly_data)
+                    
+                    with open(os.path.join(season_output_dir, 'sprint_lmp3_quali.html'), 'w', encoding='utf-8-sig') as f:
+                        f.write(html_content)
+                    print("    Generated sprint_lmp3_quali.html")
+                else:
+                    print("    Comparison DF is None for LMP3 qualies")
             else:
-                print("    Comparison DF is None for GT3 qualies")
-        else:
-            print("    No GT3 sprint quali data found")
+                print("    No LMP3 sprint quali data found")
+            
+            # ===== SPRINT GT3 QUALI PACE (Class-filtered) =====
+            print("  [Sprint] GT3 Quali Pace...")
+            sprint_gt3_quali_dfs = {}
+            
+            for filename, quali_info in season_config['sprint_qualis'].items():
+                xml_path = os.path.join(xml_folder, filename)
+                if os.path.exists(xml_path):
+                    # Use ref_time_gt3 if available, otherwise fall back to ref_time
+                    ref_time = quali_info.get('ref_time_gt3', quali_info.get('ref_time'))
+                    df = process_sprint_race_data(xml_path, 'GT3', ref_time)
+                    if df is not None:
+                        sprint_gt3_quali_dfs[quali_info['name']] = df
+                else:
+                    print(f"    Not found: {xml_path}")
+            
+            if sprint_gt3_quali_dfs:
+                race_codes, track_names, code_to_track = load_races_dynamically(season_config['sprint_qualis'], xml_folder)
+                comparison_df, _, avg_pace_cols, used_race_codes, track_names = process_races_into_comparison_df(sprint_gt3_quali_dfs, race_codes, code_to_track)
+                
+                if comparison_df is not None:
+                    # Create fastest lap column names and pass instead of average pace
+                    fastest_lap_cols = [col.replace('avg_pace_pct_alien_', 'laptime_pct_alien_') for col in avg_pace_cols]
+                    improvement_df = build_improvement_df(comparison_df, fastest_lap_cols)
+                    stdev_pace_cols = [f'stdev_pace_pct_{code}' for code in used_race_codes]
+                    df_display_renamed, _ = create_display_df(comparison_df, avg_pace_cols, stdev_pace_cols, track_names, mode='quali')
+                    pace_html, improvement_html = generate_html_tables(comparison_df, improvement_df, avg_pace_cols, track_names, mode='quali')
+                    
+                    num_rounds = len(track_names)
+                    plotly_data = create_plotly_json(df_display_renamed, comparison_df, avg_pace_cols, stdev_pace_cols, track_names,
+                        f'Sprint GT3 Quali Pace Trend: After {num_rounds} Rounds', 'Quali Pace % (vs Alien)', race_type='quali')
+                    
+                    html_content = generate_page('Sprint GT3 Quali Pace Data',
+                        'sprint_gt3_quali.html', season_id, pace_html, improvement_html, plotly_data)
+                    
+                    with open(os.path.join(season_output_dir, 'sprint_gt3_quali.html'), 'w', encoding='utf-8-sig') as f:
+                        f.write(html_content)
+                    print("    Generated sprint_gt3_quali.html")
+                else:
+                    print("    Comparison DF is None for GT3 qualies")
+            else:
+                print("    No GT3 sprint quali data found")
         
         # ===== MULTICLASS P2UR/Hyper RACE PACE =====
         proto_class = 'P2UR' if season_id == 'season1' else 'Hyper'

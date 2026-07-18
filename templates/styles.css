@@ -63,7 +63,7 @@ body {
 .sidebar-toggle span {
     width: 25px;
     height: 3px;
-    background: #667eea;
+    background: #ccfc00;
     margin: 5px 0;
     transition: 0.3s;
 }
