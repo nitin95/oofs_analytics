@@ -110,19 +110,23 @@ SEASON_CONFIG = {
     'season3': {
         'sprint_qualis': {
             's5-sc1.xml': {'name': 'Portimao', 'ref_time_lmp3': 97.76, 'ref_time_gt3': 102.91},
-            's5-sc2.xml': {'name': 'Sebring', 'ref_time_lmp3': 113.79, 'ref_time_gt3': 119.87}, 
+            's5-sc2.xml': {'name': 'Sebring', 'ref_time_lmp3': 113.79, 'ref_time_gt3': 119.87},
+            's5-sc3.xml': {'name': 'Interlagos', 'ref_time_lmp3': 97.90, 'ref_time_gt3': 102.29}, # Wet reference times determined to normalize Greg/Neron's pace to first two rounds
         },
         'sprint_races': {
             's5-sc1-r.xml': {'name': 'Portimao', 'ref_time_lmp3': 99.15, 'ref_time_gt3': 103.81},
             's5-sc2-r.xml': {'name': 'Sebring', 'ref_time_lmp3': 115.33, 'ref_time_gt3': 120.66},
+            's5-sc3-r.xml': {'name': 'Interlagos', 'ref_time_lmp3': 103.28, 'ref_time_gt3': 107.42}, # Wet reference times determined to normalize Greg/Rubio's pace to first two rounds; GT3 pace is slightly different from mc due to different track conditions
         },
         'multiclass_qualis': {
             's5-mc1.xml': {'name': 'Portimao', 'ref_time_hyper': 91.36, 'ref_time_gt3': 102.91},
             's5-mc2.xml': {'name': 'Sebring', 'ref_time_hyper': 105.98, 'ref_time_gt3': 119.87},
+            's5-mc3.xml': {'name': 'Interlagos', 'ref_time_hyper': 82.52, 'ref_time_gt3': 93.29},
         },
         'multiclass_races': {
             's5-mc1-r.xml': {'name': 'Portimao', 'ref_time_hyper': 92.27, 'ref_time_gt3': 103.81},
             's5-mc2-r.xml': {'name': 'Sebring', 'ref_time_hyper': 106.82, 'ref_time_gt3': 120.66},
+            's5-mc3-r.xml': {'name': 'Interlagos', 'ref_time_hyper': 96.36, 'ref_time_gt3': 106.87} # Wet reference times determined to normalize Greg/Karl's pace to first two rounds
         }
     },
     # Add more seasons here as needed
@@ -1263,7 +1267,7 @@ def main():
                 plotly_data = create_plotly_json(df_display_renamed, comparison_df, avg_pace_cols, stdev_pace_cols, track_names,
                     f'Multiclass {proto_class} Race Pace Trend: After {num_rounds} Rounds', 'Race Pace % (vs Alien)', race_type='race')
                 
-                html_content = generate_page(f'🏆 Multiclass {proto_class} Race Pace Data',
+                html_content = generate_page(f'Multiclass {proto_class} Race Pace Data',
                     'multiclass_p2ur_race.html', season_id, pace_html, improvement_html, plotly_data)
                 
                 with open(os.path.join(season_output_dir, 'multiclass_p2ur_race.html'), 'w', encoding='utf-8-sig') as f:
@@ -1312,7 +1316,7 @@ def main():
                 plotly_data = create_plotly_json(df_display_renamed, comparison_df, avg_pace_cols, stdev_pace_cols, track_names,
                     f'Multiclass {proto_class} Quali Pace Trend: After {num_rounds} Rounds', 'Quali Pace % (vs Alien)', race_type='quali')
                 
-                html_content = generate_page(f'🏆 Multiclass {proto_class} Quali Pace Data',
+                html_content = generate_page(f'Multiclass {proto_class} Quali Pace Data',
                     'multiclass_p2ur_quali.html', season_id, pace_html, improvement_html, plotly_data)
                 
                 with open(os.path.join(season_output_dir, 'multiclass_p2ur_quali.html'), 'w', encoding='utf-8-sig') as f:
