@@ -8,6 +8,8 @@ import pandas as pd
 import xml.etree.ElementTree as ET
 import numpy as np
 import json
+import seaborn as sns
+from matplotlib.colors import to_hex
 
 # ===== MULTI-SEASON CONFIGURATION =====
 # Season metadata
@@ -177,7 +179,7 @@ def calculate_lap_stats(laps_data):
     return {
         'best': float(np.min(laps_array)),
         'avg': float(np.mean(laps_array)),
-        'stdev': float(np.mean(laps_array)-np.min(laps_array)) if len(laps_array) > 1 else 0.0,  # Use mean-min as a simple consistency metric
+        'stdev': np.std(laps_array, ddof=1) if len(laps_array) > 1 else 0.0,
         'count': len(laps_data)
     }
 
@@ -310,12 +312,14 @@ def extract_xml_drivers(xml_path):
         for lap_elem in lap_elements:
             try:
                 lap_time = float(lap_elem.text) if lap_elem.text else 0.0
-                if len(laps_data)>0 and lap_time > min(laps_data)*1.04:  # Filter out outlier lap times (e.g., pit stops, crashes)
+                if len(laps_data)>0 and lap_time > min(laps_data)*1.07:  # Filter out outlier lap times (e.g., pit stops, crashes)
+                    print(f"Warning: Outlier lap time for driver {driver_info['Driver']}: {lap_elem.text} (min lap: {min(laps_data)})")
                     continue
                 if lap_time > 0:
                     laps_data.append(lap_time)
-            except (ValueError, TypeError):
-                pass
+            except (ValueError, TypeError) as e:
+                print(f"Warning: Invalid lap time for driver {driver_info['Driver']}: {lap_elem.text} ({e})")
+                continue
         
         driver_info['laps_data'] = laps_data
         
@@ -647,20 +651,40 @@ def build_improvement_df(comparison_df, pace_cols):
     return final_improvement_df.dropna(subset=['improvement']).sort_values('improvement', ascending=False)
 
 
+def build_driver_color_map(driver_names):
+    """Build a stable color map for drivers based on alphabetical name order."""
+    unique_names = sorted(pd.Series(driver_names).dropna().unique().tolist())
+    if not unique_names:
+        return {}
+
+    cmap = sns.color_palette('rainbow', as_cmap=True)
+    color_values = np.linspace(0, 1, len(unique_names))
+    return {
+        driver_name: to_hex(cmap(value))
+        for driver_name, value in zip(unique_names, color_values)
+    }
+
+
 def create_display_df(comparison_df, avg_pace_cols, stdev_pace_cols, track_names, mode='race'):
     """Create display dataframe with renamed columns using average pace"""
     display_df = comparison_df[['Driver_name'] + avg_pace_cols + stdev_pace_cols].copy()
     display_df = display_df.replace(0.00, np.nan).dropna(subset=avg_pace_cols, how='all')
     display_df['best_pct'] = display_df[avg_pace_cols].min(axis=1)
     display_df = display_df.sort_values('best_pct')
-    
+
+    # Use the canonical driver ordering from the full comparison set so the same driver
+    # keeps the same color on race and quali charts even when a specific plot filters out
+    # some drivers due to missing data.
+    driver_color_map = build_driver_color_map(comparison_df['Driver_name'])
+    display_df['color'] = display_df['Driver_name'].map(driver_color_map)
+
     # Build rename mapping
     rename_map = {'Driver_name': 'Driver_name'}
     for _, (avg_col, sd_col, track) in enumerate(zip(avg_pace_cols, stdev_pace_cols, track_names)):
         pace_type = 'Race' if mode == 'race' else 'Quali'
         rename_map[avg_col] = f'{track} {pace_type} Avg Pace % (vs Alien)'
         rename_map[sd_col] = f'{track} {pace_type} Pace SD %'
-    
+
     display_df_renamed = display_df.rename(columns=rename_map)
     return display_df_renamed, list(rename_map.values())[1:]  # Return column names minus Driver_name
 
@@ -746,6 +770,15 @@ def create_plotly_json(df_display_renamed, comparison_df, avg_pace_cols, stdev_p
     min_races = 1 if len(avg_pace_cols) == 1 else 2
     plot_df = plot_df[races_attended >= min_races].reset_index(drop=True)
 
+    # Reuse a stable driver-to-color mapping generated from the full comparison set so race
+    # and quali plots keep the same color for the same driver even when each subplot filters
+    # a different subset of drivers.
+    canonical_color_map = build_driver_color_map(comparison_df['Driver_name'])
+    if 'color' in df_display_renamed.columns:
+        canonical_color_map.update(dict(zip(df_display_renamed['Driver_name'], df_display_renamed['color'])))
+
+    plot_df['color'] = plot_df['Driver_name'].map(canonical_color_map)
+
     # Calculate best average pace
     plot_df['best'] = plot_df[avg_pace_cols].min(axis=1, skipna=True)
     plot_df = plot_df.sort_values('best').reset_index(drop=True)
@@ -757,7 +790,9 @@ def create_plotly_json(df_display_renamed, comparison_df, avg_pace_cols, stdev_p
         plot_df[consistency_col] = 100 - plot_df[sd_col]
         # print(f"DEBUG: Added consistency column '{consistency_col}' to plot_df, df columns: {plot_df.columns.tolist()}")
         consistency_cols.append(consistency_col)
-    
+    # print(plot_df.head(3))  # Debug: Show first 3 rows of plot_df
+    # exit(0)  # Debug: Exit after showing plot_df to inspect the data
+    # plot_df.to_csv('debug_plot_df.csv', index=False)  # Debug: Save plot_df to CSV for inspection
     # Create traces for Plotly
     traces = []
     x_positions = list(range(len(track_names)))
@@ -791,8 +826,8 @@ def create_plotly_json(df_display_renamed, comparison_df, avg_pace_cols, stdev_p
                 'name': driver_name,
                 'hovertemplate': "%{customdata}<extra></extra>",
                 'customdata': hover_data,
-                'line': {'width': 2},
-                'marker': {'size': 8},
+                'line': {'color': row.get('color'), 'width': 2},
+                'marker': {'color': row.get('color'), 'size': 8},
                 'opacity': 1.0,
                 # No ci_lower / ci_upper — JS drawConfidenceInterval will skip this trace
             }
@@ -800,43 +835,36 @@ def create_plotly_json(df_display_renamed, comparison_df, avg_pace_cols, stdev_p
         else:
             # Race mode: plot average pace with confidence intervals, fastest lap in hover
             pts = []
-            # ci_lower = []
-            # ci_upper = []
-            fastest_laps = []
-            consistency_data = []
+            hover_data = []
 
             for xi, (avg_col, sd_col, fastest_col) in enumerate(zip(avg_pace_cols, stdev_pace_cols, fastest_lap_cols)):
                 avg_val = row.get(avg_col)
-                # sd_val = row.get(sd_col)
                 fastest_val = row.get(fastest_col)
 
-                if pd.notna(avg_val):
-                    pts.append((xi, avg_val))
-                    # lower_bound = avg_val - sd_val if pd.notna(sd_val) else avg_val
-                    # upper_bound = avg_val + sd_val if pd.notna(sd_val) else avg_val
-                    # ci_lower.append(lower_bound)
-                    # ci_upper.append(upper_bound)
-                    fastest_laps.append(fastest_val if pd.notna(fastest_val) else avg_val)
-                    consistency_col = sd_col.replace('stdev_pace_pct_', 'consistency_')
-                    # print(f"DEBUG: For driver '{driver_name}', row index {row.name}, consistency_col: '{consistency_col}'")
-                    consistency_data.append(plot_df.loc[row.name, consistency_col] if pd.notna(plot_df.loc[row.name, consistency_col]) else None)
+                if not pd.notna(avg_val):
+                    continue
+
+                pts.append((xi, avg_val))
+
+                fastest_lap = fastest_val if pd.notna(fastest_val) else avg_val
+                if pd.isna(fastest_lap):
+                    fastest_lap_str = f"{avg_val:.2f}%"
                 else:
-                    # ci_lower.append(None)
-                    # ci_upper.append(None)
-                    fastest_laps.append(None)
-                    consistency_data.append(None)
+                    fastest_lap_str = f"{fastest_lap:.2f}%"
+
+                consistency_col = sd_col.replace('stdev_pace_pct_', 'consistency_')
+                consistency_value = row.get(consistency_col)
+                hover_text = f"{driver_name}<br>Avg Pace: {avg_val:.2f}%<br>Fastest Lap: {fastest_lap_str}"
+
+                if pd.notna(consistency_value):
+                    hover_text += f"<br>Consistency: {float(consistency_value):.2f}%"
+
+                hover_data.append(hover_text)
 
             if not pts:
                 continue
 
             xs, ys = zip(*pts)
-            hover_data = []
-            for avg_pace, fastest_lap, consistency in zip(ys, fastest_laps, consistency_data):
-                if fastest_lap is None or (isinstance(fastest_lap, float) and pd.isna(fastest_lap)):
-                    fastest_lap_str = f"{avg_pace:.2f}%"
-                else:
-                    fastest_lap_str = f"{fastest_lap:.2f}%"
-                hover_data.append(f"{driver_name}<br>Avg Pace: {avg_pace:.2f}%<br>Fastest Lap: {fastest_lap_str}<br>Consistency: {consistency:.2f}%" if consistency is not None else f"{driver_name}<br>Avg Pace: {avg_pace:.2f}%<br>Fastest Lap: {fastest_lap_str}")
 
             # Display lines if more than 2 points, regardless of NaN at the end
             mode_race = 'lines+markers' 
@@ -847,8 +875,8 @@ def create_plotly_json(df_display_renamed, comparison_df, avg_pace_cols, stdev_p
                 'name': driver_name,
                 'hovertemplate': "%{customdata}<extra></extra>",
                 'customdata': hover_data,
-                'line': {'width': 2},
-                'marker': {'size': 8},
+                'line': {'color': row.get('color'), 'width': 2},
+                'marker': {'color': row.get('color'), 'size': 8},
                 'opacity': 1.0,
                 # 'ci_lower': ci_lower,
                 # 'ci_upper': ci_upper,
