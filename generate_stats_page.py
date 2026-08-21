@@ -115,28 +115,33 @@ SEASON_CONFIG = {
             's5-sc2.xml': {'name': 'Sebring', 'ref_time_lmp3': 113.79, 'ref_time_gt3': 119.87},
             's5-sc3.xml': {'name': 'Interlagos', 'ref_time_lmp3': 97.90, 'ref_time_gt3': 102.29}, # Wet reference times determined to normalize Greg/Neron's pace to first two rounds
             's5-sc4.xml': {'name': 'Daytona', 'ref_time_lmp3': 100.86, 'ref_time_gt3': 104.85},
-            's5-sc5.xml': {'name': 'COTA', 'ref_time_lmp3':121.13, 'ref_time_gt3': 126.427}
+            's5-sc5.xml': {'name': 'COTA', 'ref_time_lmp3':121.13, 'ref_time_gt3': 126.427},
+            's5-sc6.xml': {'name': 'Spa', 'ref_time_lmp3': 129.874, 'ref_time_gt3': 136.963}
         },
         'sprint_races': {
             's5-sc1-r.xml': {'name': 'Portimao', 'ref_time_lmp3': 99.15, 'ref_time_gt3': 103.81},
             's5-sc2-r.xml': {'name': 'Sebring', 'ref_time_lmp3': 115.33, 'ref_time_gt3': 120.66},
-            's5-sc3-r.xml': {'name': 'Interlagos', 'ref_time_lmp3': 103.28, 'ref_time_gt3': 107.42}, # Wet reference times determined to normalize Greg/Rubio's pace to first two rounds; GT3 pace is slightly different from mc due to different track conditions
+            's5-sc3-r.xml': {'name': 'Interlagos', 'ref_time_lmp3': 103.28, 'ref_time_gt3': 107.42}, # Wet reference times determined to normalize Greg/Rubio's pace to first two rounds; GT3 pace is slightly different from mc due to different track conditions.
             's5-sc4-r.xml': {'name': 'Daytona', 'ref_time_lmp3': 101.36, 'ref_time_gt3': 105.38},
-            's5-sc5-r.xml': {'name': 'COTA', 'ref_time_lmp3': 121.735, 'ref_time_gt3': 127.059}
+            's5-sc5-r.xml': {'name': 'COTA', 'ref_time_lmp3': 121.735, 'ref_time_gt3': 127.059},
+            's5-sc6-r.xml': {'name': 'Spa', 'ref_time_lmp3': 130.734, 'ref_time_gt3': 137.894}
         },
         'multiclass_qualis': {
             's5-mc1.xml': {'name': 'Portimao', 'ref_time_hyper': 91.36, 'ref_time_gt3': 102.91},
             's5-mc2.xml': {'name': 'Sebring', 'ref_time_hyper': 105.98, 'ref_time_gt3': 119.87},
             's5-mc3.xml': {'name': 'Interlagos', 'ref_time_hyper': 82.52, 'ref_time_gt3': 93.29},
             's5-mc4.xml': {'name': 'Daytona', 'ref_time_hyper': 92.33, 'ref_time_gt3': 104.85},
-            's5-mc5.xml': {'name': 'COTA', 'ref_time_hyper': 112.156, 'ref_time_gt3': 126.427}
+            's5-mc5.xml': {'name': 'COTA', 'ref_time_hyper': 112.156, 'ref_time_gt3': 126.427},
+            's5-mc6.xml': {'name': 'Spa', 'ref_time_hyper': 119.963, 'ref_time_gt3': 136.963}
         },
         'multiclass_races': {
             's5-mc1-r.xml': {'name': 'Portimao', 'ref_time_hyper': 92.27, 'ref_time_gt3': 103.81},
             's5-mc2-r.xml': {'name': 'Sebring', 'ref_time_hyper': 106.82, 'ref_time_gt3': 120.66},
-            's5-mc3-r.xml': {'name': 'Interlagos', 'ref_time_hyper': 96.36, 'ref_time_gt3': 106.87}, # Wet reference times determined to normalize Greg/Karl's pace to first two rounds
+            's5-mc3-r.xml': {'name': 'Interlagos', 'ref_time_hyper': 96.36, 'ref_time_gt3': 106.87},    # Wet reference times determined to normalize Greg/Karl's pace to first two rounds.
             's5-mc4-r.xml': {'name': 'Daytona', 'ref_time_hyper': 92.79, 'ref_time_gt3': 105.38},
-            's5-mc5-r.xml': {'name': 'COTA', 'ref_time_hyper': 112.716, 'ref_time_gt3': 127.059}
+            's5-mc5-r.xml': {'name': 'COTA', 'ref_time_hyper': 112.716, 'ref_time_gt3': 127.059},
+            's5-mc6-r.xml': {'name': 'Spa', 'ref_time_hyper': 120.57, 'ref_time_gt3': 138.861}          # NOTE: This is the first race where 60+ min GT3 race pace data was available in bop-tourism, some shifts may happen in the percentage pace as a result.
+                                                                                                        # NOTE 2: Hypercar race pace data is unavailable on bop-tourism, and given that quali reference is very close to season 4, I'm keeping the race pace target the same.
         }
     },
     # Add more seasons here as needed

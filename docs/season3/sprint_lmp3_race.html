@@ -45,6 +45,7 @@
       <th>Interlagos</th>
       <th>Daytona</th>
       <th>COTA</th>
+      <th>Spa</th>
     </tr>
   </thead>
   <tbody>
@@ -55,6 +56,7 @@
       <td>102.60</td>
       <td>103.50</td>
       <td>102.22</td>
+      <td>104.58</td>
     </tr>
     <tr data-driver="Dave Carter">
       <td>Dave C.</td>
@@ -62,6 +64,7 @@
       <td>105.21</td>
       <td>104.95</td>
       <td>105.36</td>
+      <td>NaN</td>
       <td>NaN</td>
     </tr>
     <tr data-driver="Dave Harris">
@@ -71,6 +74,7 @@
       <td>NaN</td>
       <td>104.10</td>
       <td>NaN</td>
+      <td>NaN</td>
     </tr>
     <tr data-driver="Edriel Lugo-Ortiz">
       <td>Edriel L.</td>
@@ -79,11 +83,13 @@
       <td>102.69</td>
       <td>101.11</td>
       <td>NaN</td>
+      <td>NaN</td>
     </tr>
     <tr data-driver="Glenn Jacobs#3297">
       <td>Glenn J.</td>
       <td>105.99</td>
       <td>106.32</td>
+      <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -95,6 +101,7 @@
       <td>103.53</td>
       <td>103.26</td>
       <td>NaN</td>
+      <td>103.12</td>
     </tr>
     <tr data-driver="James Rubio">
       <td>James R.</td>
@@ -103,6 +110,7 @@
       <td>102.75</td>
       <td>102.26</td>
       <td>101.13</td>
+      <td>103.10</td>
     </tr>
     <tr data-driver="Nick Johnson">
       <td>Nick J.</td>
@@ -111,6 +119,16 @@
       <td>102.88</td>
       <td>101.53</td>
       <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr data-driver="Owen Beerkircher">
+      <td>Owen B.</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>103.27</td>
     </tr>
     <tr data-driver="Shae Lewis">
       <td>Shae L.</td>
@@ -119,6 +137,7 @@
       <td>103.18</td>
       <td>104.28</td>
       <td>105.69</td>
+      <td>104.34</td>
     </tr>
     <tr data-driver="Timo White">
       <td>Timo W.</td>
@@ -127,6 +146,7 @@
       <td>106.32</td>
       <td>103.55</td>
       <td>103.57</td>
+      <td>NaN</td>
     </tr>
     <tr data-driver="William Neron">
       <td>William N.</td>
@@ -135,6 +155,7 @@
       <td>103.32</td>
       <td>102.91</td>
       <td>101.45</td>
+      <td>103.36</td>
     </tr>
     <tr data-driver="Willie Mangram">
       <td>Willie M.</td>
@@ -143,6 +164,7 @@
       <td>104.93</td>
       <td>101.86</td>
       <td>101.47</td>
+      <td>NaN</td>
     </tr>
   </tbody>
 </table>
@@ -169,18 +191,6 @@
       <td>101.47</td>
       <td>3.99</td>
     </tr>
-    <tr data-driver="Nick Johnson">
-      <td>Nick J.</td>
-      <td>103.38</td>
-      <td>101.53</td>
-      <td>1.85</td>
-    </tr>
-    <tr data-driver="Edriel Lugo-Ortiz">
-      <td>Edriel L.</td>
-      <td>102.93</td>
-      <td>101.11</td>
-      <td>1.82</td>
-    </tr>
     <tr data-driver="James Rubio">
       <td>James R.</td>
       <td>102.73</td>
@@ -196,14 +206,14 @@
     <tr data-driver="Timo White">
       <td>Timo W.</td>
       <td>104.34</td>
-      <td>103.55</td>
-      <td>0.79</td>
+      <td>103.57</td>
+      <td>0.77</td>
     </tr>
     <tr data-driver="Ily Bordiyan">
       <td>Ily B.</td>
       <td>103.68</td>
-      <td>103.26</td>
-      <td>0.42</td>
+      <td>103.12</td>
+      <td>0.56</td>
     </tr>
     <tr data-driver="Chris Wilson">
       <td>Chris W.</td>
@@ -211,17 +221,11 @@
       <td>102.22</td>
       <td>0.26</td>
     </tr>
-    <tr data-driver="Dave Carter">
-      <td>Dave C.</td>
-      <td>105.21</td>
-      <td>105.36</td>
-      <td>-0.15</td>
-    </tr>
     <tr data-driver="Shae Lewis">
       <td>Shae L.</td>
       <td>103.93</td>
-      <td>104.28</td>
-      <td>-0.35</td>
+      <td>104.34</td>
+      <td>-0.41</td>
     </tr>
   </tbody>
 </table>
@@ -231,7 +235,7 @@
 
             <div class="footer">
                 <p>Generated from OOFS XML Race Data</p>
-                <p style="font-size: 0.9em; margin-top: 10px;">Last updated: 2026-08-16 10:04:47</p>
+                <p style="font-size: 0.9em; margin-top: 10px;">Last updated: 2026-08-21 09:34:10</p>
             </div>
         </div>
     </div>
@@ -259,8 +263,8 @@
         }
 
         // Plotly chart initialization
-        const plotData = [{"x": [0, 1, 2, 3], "y": [103.65, 102.93, 102.69, 101.11], "mode": "lines+markers", "name": "Edriel Lugo-Ortiz", "hovertemplate": "%{customdata}<extra></extra>", "customdata": ["Edriel Lugo-Ortiz<br>Avg Pace: 103.65%<br>Fastest Lap: 101.82%<br>Consistency: 97.78%", "Edriel Lugo-Ortiz<br>Avg Pace: 102.93%<br>Fastest Lap: 101.50%<br>Consistency: 98.33%", "Edriel Lugo-Ortiz<br>Avg Pace: 102.69%<br>Fastest Lap: 101.42%<br>Consistency: 98.76%", "Edriel Lugo-Ortiz<br>Avg Pace: 101.11%<br>Fastest Lap: 100.67%<br>Consistency: 99.63%"], "line": {"color": "#0ac0e8", "width": 2}, "marker": {"color": "#0ac0e8", "size": 8}, "opacity": 1.0}, {"x": [0, 1, 2, 3, 4], "y": [102.73, 102.91, 102.75, 102.26, 101.13], "mode": "lines+markers", "name": "James Rubio", "hovertemplate": "%{customdata}<extra></extra>", "customdata": ["James Rubio<br>Avg Pace: 102.73%<br>Fastest Lap: 101.33%<br>Consistency: 98.12%", "James Rubio<br>Avg Pace: 102.91%<br>Fastest Lap: 101.48%<br>Consistency: 98.36%", "James Rubio<br>Avg Pace: 102.75%<br>Fastest Lap: 100.71%<br>Consistency: 98.32%", "James Rubio<br>Avg Pace: 102.26%<br>Fastest Lap: 101.06%<br>Consistency: 97.90%", "James Rubio<br>Avg Pace: 101.13%<br>Fastest Lap: 100.36%<br>Consistency: 99.03%"], "line": {"color": "#96fca7", "width": 2}, "marker": {"color": "#96fca7", "size": 8}, "opacity": 1.0}, {"x": [0, 1, 2, 3, 4], "y": [102.63, 104.3, 103.32, 102.91, 101.45], "mode": "lines+markers", "name": "William Neron", "hovertemplate": "%{customdata}<extra></extra>", "customdata": ["William Neron<br>Avg Pace: 102.63%<br>Fastest Lap: 101.08%<br>Consistency: 98.03%", "William Neron<br>Avg Pace: 104.30%<br>Fastest Lap: 102.05%<br>Consistency: 96.82%", "William Neron<br>Avg Pace: 103.32%<br>Fastest Lap: 101.67%<br>Consistency: 98.17%", "William Neron<br>Avg Pace: 102.91%<br>Fastest Lap: 100.79%<br>Consistency: 94.56%", "William Neron<br>Avg Pace: 101.45%<br>Fastest Lap: 100.15%<br>Consistency: 98.52%"], "line": {"color": "#ff4724", "width": 2}, "marker": {"color": "#ff4724", "size": 8}, "opacity": 1.0}, {"x": [1, 2, 3, 4], "y": [105.46, 104.93, 101.86, 101.47], "mode": "lines+markers", "name": "Willie Mangram", "hovertemplate": "%{customdata}<extra></extra>", "customdata": ["Willie Mangram<br>Avg Pace: 105.46%<br>Fastest Lap: 103.31%<br>Consistency: 97.76%", "Willie Mangram<br>Avg Pace: 104.93%<br>Fastest Lap: 101.04%<br>Consistency: 95.33%", "Willie Mangram<br>Avg Pace: 101.86%<br>Fastest Lap: 100.88%<br>Consistency: 98.30%", "Willie Mangram<br>Avg Pace: 101.47%<br>Fastest Lap: 100.16%<br>Consistency: 98.74%"], "line": {"color": "#ff0000", "width": 2}, "marker": {"color": "#ff0000", "size": 8}, "opacity": 1.0}, {"x": [0, 1, 2, 3], "y": [103.59, 103.38, 102.88, 101.53], "mode": "lines+markers", "name": "Nick Johnson", "hovertemplate": "%{customdata}<extra></extra>", "customdata": ["Nick Johnson<br>Avg Pace: 103.59%<br>Fastest Lap: 101.90%<br>Consistency: 97.73%", "Nick Johnson<br>Avg Pace: 103.38%<br>Fastest Lap: 101.59%<br>Consistency: 97.70%", "Nick Johnson<br>Avg Pace: 102.88%<br>Fastest Lap: 100.92%<br>Consistency: 98.20%", "Nick Johnson<br>Avg Pace: 101.53%<br>Fastest Lap: 100.55%<br>Consistency: 99.45%"], "line": {"color": "#c4e88a", "width": 2}, "marker": {"color": "#c4e88a", "size": 8}, "opacity": 1.0}, {"x": [0, 1, 2, 3, 4], "y": [102.48, 103.47, 102.6, 103.5, 102.22], "mode": "lines+markers", "name": "Chris Wilson", "hovertemplate": "%{customdata}<extra></extra>", "customdata": ["Chris Wilson<br>Avg Pace: 102.48%<br>Fastest Lap: 101.17%<br>Consistency: 98.10%", "Chris Wilson<br>Avg Pace: 103.47%<br>Fastest Lap: 102.17%<br>Consistency: 97.87%", "Chris Wilson<br>Avg Pace: 102.60%<br>Fastest Lap: 100.46%<br>Consistency: 98.22%", "Chris Wilson<br>Avg Pace: 103.50%<br>Fastest Lap: 101.03%<br>Consistency: 97.07%", "Chris Wilson<br>Avg Pace: 102.22%<br>Fastest Lap: 100.61%<br>Consistency: 97.88%"], "line": {"color": "#8000ff", "width": 2}, "marker": {"color": "#8000ff", "size": 8}, "opacity": 1.0}, {"x": [0, 1, 2, 3, 4], "y": [104.51, 103.93, 103.18, 104.28, 105.69], "mode": "lines+markers", "name": "Shae Lewis", "hovertemplate": "%{customdata}<extra></extra>", "customdata": ["Shae Lewis<br>Avg Pace: 104.51%<br>Fastest Lap: 102.68%<br>Consistency: 97.53%", "Shae Lewis<br>Avg Pace: 103.93%<br>Fastest Lap: 101.72%<br>Consistency: 97.63%", "Shae Lewis<br>Avg Pace: 103.18%<br>Fastest Lap: 101.61%<br>Consistency: 97.95%", "Shae Lewis<br>Avg Pace: 104.28%<br>Fastest Lap: 102.34%<br>Consistency: 97.23%", "Shae Lewis<br>Avg Pace: 105.69%<br>Fastest Lap: 103.10%<br>Consistency: 98.10%"], "line": {"color": "#f4c069", "width": 2}, "marker": {"color": "#f4c069", "size": 8}, "opacity": 1.0}, {"x": [0, 1, 2, 3], "y": [104.46, 103.68, 103.53, 103.26], "mode": "lines+markers", "name": "Ily Bordiyan", "hovertemplate": "%{customdata}<extra></extra>", "customdata": ["Ily Bordiyan<br>Avg Pace: 104.46%<br>Fastest Lap: 102.36%<br>Consistency: 97.55%", "Ily Bordiyan<br>Avg Pace: 103.68%<br>Fastest Lap: 102.25%<br>Consistency: 98.29%", "Ily Bordiyan<br>Avg Pace: 103.53%<br>Fastest Lap: 101.47%<br>Consistency: 96.72%", "Ily Bordiyan<br>Avg Pace: 103.26%<br>Fastest Lap: 101.37%<br>Consistency: 97.19%"], "line": {"color": "#68fcc1", "width": 2}, "marker": {"color": "#68fcc1", "size": 8}, "opacity": 1.0}, {"x": [0, 1, 2, 3, 4], "y": [105.69, 104.34, 106.32, 103.55, 103.57], "mode": "lines+markers", "name": "Timo White", "hovertemplate": "%{customdata}<extra></extra>", "customdata": ["Timo White<br>Avg Pace: 105.69%<br>Fastest Lap: 103.42%<br>Consistency: 97.51%", "Timo White<br>Avg Pace: 104.34%<br>Fastest Lap: 103.07%<br>Consistency: 97.97%", "Timo White<br>Avg Pace: 106.32%<br>Fastest Lap: 102.79%<br>Consistency: 94.10%", "Timo White<br>Avg Pace: 103.55%<br>Fastest Lap: 101.81%<br>Consistency: 97.47%", "Timo White<br>Avg Pace: 103.57%<br>Fastest Lap: 102.07%<br>Consistency: 98.19%"], "line": {"color": "#ff8947", "width": 2}, "marker": {"color": "#ff8947", "size": 8}, "opacity": 1.0}, {"x": [0, 1, 2, 3], "y": [106.09, 105.21, 104.95, 105.36], "mode": "lines+markers", "name": "Dave Carter", "hovertemplate": "%{customdata}<extra></extra>", "customdata": ["Dave Carter<br>Avg Pace: 106.09%<br>Fastest Lap: 103.57%<br>Consistency: 96.10%", "Dave Carter<br>Avg Pace: 105.21%<br>Fastest Lap: 104.18%<br>Consistency: 98.21%", "Dave Carter<br>Avg Pace: 104.95%<br>Fastest Lap: 102.92%<br>Consistency: 97.61%", "Dave Carter<br>Avg Pace: 105.36%<br>Fastest Lap: 103.10%<br>Consistency: 95.77%"], "line": {"color": "#5247fc", "width": 2}, "marker": {"color": "#5247fc", "size": 8}, "opacity": 1.0}, {"x": [0, 1], "y": [105.99, 106.32], "mode": "lines+markers", "name": "Glenn Jacobs#3297", "hovertemplate": "%{customdata}<extra></extra>", "customdata": ["Glenn Jacobs#3297<br>Avg Pace: 105.99%<br>Fastest Lap: 103.04%<br>Consistency: 95.90%", "Glenn Jacobs#3297<br>Avg Pace: 106.32%<br>Fastest Lap: 104.17%<br>Consistency: 97.17%"], "line": {"color": "#3ae8d6", "width": 2}, "marker": {"color": "#3ae8d6", "size": 8}, "opacity": 1.0}];
-        const plotLayout = {"title": {"text": "Sprint LMP3 Race Pace Trend: After 5 Rounds", "font": {"color": "#ccfc00"}}, "xaxis": {"tickmode": "array", "ticktext": ["Portimao", "Sebring", "Interlagos", "Daytona", "COTA"], "tickvals": [0, 1, 2, 3, 4], "titlefont": {"color": "#fafafa"}, "tickfont": {"color": "#fafafa"}, "linecolor": "#ccfc00", "gridcolor": "#fafafa"}, "yaxis": {"title": "Race Pace % (vs Alien)", "range": [100.0, 107.0], "titlefont": {"color": "#fafafa"}, "tickfont": {"color": "#fafafa"}, "linecolor": "#ccfc00", "gridcolor": "#fafafa"}, "hovermode": "closest", "plot_bgcolor": "#14161ff2", "paper_bgcolor": "#14161ff2", "height": 500, "autosize": true, "showlegend": false, "xaxis_range": [-0.6, 4.6], "margin": {"l": 50, "r": 20, "b": 50, "t": 60}};
+        const plotData = [{"x": [0, 1, 2, 3], "y": [103.65, 102.93, 102.69, 101.11], "mode": "lines+markers", "name": "Edriel Lugo-Ortiz", "hovertemplate": "%{customdata}<extra></extra>", "customdata": ["Edriel Lugo-Ortiz<br>Avg Pace: 103.65%<br>Fastest Lap: 101.82%<br>Consistency: 97.78%", "Edriel Lugo-Ortiz<br>Avg Pace: 102.93%<br>Fastest Lap: 101.50%<br>Consistency: 98.33%", "Edriel Lugo-Ortiz<br>Avg Pace: 102.69%<br>Fastest Lap: 101.42%<br>Consistency: 98.76%", "Edriel Lugo-Ortiz<br>Avg Pace: 101.11%<br>Fastest Lap: 100.67%<br>Consistency: 99.63%"], "line": {"color": "#00b5eb", "width": 2}, "marker": {"color": "#00b5eb", "size": 8}, "opacity": 1.0}, {"x": [0, 1, 2, 3, 4, 5], "y": [102.73, 102.91, 102.75, 102.26, 101.13, 103.1], "mode": "lines+markers", "name": "James Rubio", "hovertemplate": "%{customdata}<extra></extra>", "customdata": ["James Rubio<br>Avg Pace: 102.73%<br>Fastest Lap: 101.33%<br>Consistency: 98.12%", "James Rubio<br>Avg Pace: 102.91%<br>Fastest Lap: 101.48%<br>Consistency: 98.36%", "James Rubio<br>Avg Pace: 102.75%<br>Fastest Lap: 100.71%<br>Consistency: 98.32%", "James Rubio<br>Avg Pace: 102.26%<br>Fastest Lap: 101.06%<br>Consistency: 97.90%", "James Rubio<br>Avg Pace: 101.13%<br>Fastest Lap: 100.36%<br>Consistency: 99.03%", "James Rubio<br>Avg Pace: 103.10%<br>Fastest Lap: 101.45%<br>Consistency: 97.97%"], "line": {"color": "#80ffb4", "width": 2}, "marker": {"color": "#80ffb4", "size": 8}, "opacity": 1.0}, {"x": [0, 1, 2, 3, 4, 5], "y": [102.63, 104.3, 103.32, 102.91, 101.45, 103.36], "mode": "lines+markers", "name": "William Neron", "hovertemplate": "%{customdata}<extra></extra>", "customdata": ["William Neron<br>Avg Pace: 102.63%<br>Fastest Lap: 101.08%<br>Consistency: 98.03%", "William Neron<br>Avg Pace: 104.30%<br>Fastest Lap: 102.05%<br>Consistency: 96.82%", "William Neron<br>Avg Pace: 103.32%<br>Fastest Lap: 101.67%<br>Consistency: 98.17%", "William Neron<br>Avg Pace: 102.91%<br>Fastest Lap: 100.79%<br>Consistency: 94.56%", "William Neron<br>Avg Pace: 101.45%<br>Fastest Lap: 100.15%<br>Consistency: 98.52%", "William Neron<br>Avg Pace: 103.36%<br>Fastest Lap: 101.79%<br>Consistency: 98.55%"], "line": {"color": "#ff4121", "width": 2}, "marker": {"color": "#ff4121", "size": 8}, "opacity": 1.0}, {"x": [1, 2, 3, 4], "y": [105.46, 104.93, 101.86, 101.47], "mode": "lines+markers", "name": "Willie Mangram", "hovertemplate": "%{customdata}<extra></extra>", "customdata": ["Willie Mangram<br>Avg Pace: 105.46%<br>Fastest Lap: 103.31%<br>Consistency: 97.76%", "Willie Mangram<br>Avg Pace: 104.93%<br>Fastest Lap: 101.04%<br>Consistency: 95.33%", "Willie Mangram<br>Avg Pace: 101.86%<br>Fastest Lap: 100.88%<br>Consistency: 98.30%", "Willie Mangram<br>Avg Pace: 101.47%<br>Fastest Lap: 100.16%<br>Consistency: 98.74%"], "line": {"color": "#ff0000", "width": 2}, "marker": {"color": "#ff0000", "size": 8}, "opacity": 1.0}, {"x": [0, 1, 2, 3], "y": [103.59, 103.38, 102.88, 101.53], "mode": "lines+markers", "name": "Nick Johnson", "hovertemplate": "%{customdata}<extra></extra>", "customdata": ["Nick Johnson<br>Avg Pace: 103.59%<br>Fastest Lap: 101.90%<br>Consistency: 97.73%", "Nick Johnson<br>Avg Pace: 103.38%<br>Fastest Lap: 101.59%<br>Consistency: 97.70%", "Nick Johnson<br>Avg Pace: 102.88%<br>Fastest Lap: 100.92%<br>Consistency: 98.20%", "Nick Johnson<br>Avg Pace: 101.53%<br>Fastest Lap: 100.55%<br>Consistency: 99.45%"], "line": {"color": "#abf69b", "width": 2}, "marker": {"color": "#abf69b", "size": 8}, "opacity": 1.0}, {"x": [0, 1, 2, 3, 4, 5], "y": [102.48, 103.47, 102.6, 103.5, 102.22, 104.58], "mode": "lines+markers", "name": "Chris Wilson", "hovertemplate": "%{customdata}<extra></extra>", "customdata": ["Chris Wilson<br>Avg Pace: 102.48%<br>Fastest Lap: 101.17%<br>Consistency: 98.10%", "Chris Wilson<br>Avg Pace: 103.47%<br>Fastest Lap: 102.17%<br>Consistency: 97.87%", "Chris Wilson<br>Avg Pace: 102.60%<br>Fastest Lap: 100.46%<br>Consistency: 98.22%", "Chris Wilson<br>Avg Pace: 103.50%<br>Fastest Lap: 101.03%<br>Consistency: 97.07%", "Chris Wilson<br>Avg Pace: 102.22%<br>Fastest Lap: 100.61%<br>Consistency: 97.88%", "Chris Wilson<br>Avg Pace: 104.58%<br>Fastest Lap: 101.46%<br>Consistency: 96.04%"], "line": {"color": "#8000ff", "width": 2}, "marker": {"color": "#8000ff", "size": 8}, "opacity": 1.0}, {"x": [0, 1, 2, 3, 5], "y": [104.46, 103.68, 103.53, 103.26, 103.12], "mode": "lines+markers", "name": "Ily Bordiyan", "hovertemplate": "%{customdata}<extra></extra>", "customdata": ["Ily Bordiyan<br>Avg Pace: 104.46%<br>Fastest Lap: 102.36%<br>Consistency: 97.55%", "Ily Bordiyan<br>Avg Pace: 103.68%<br>Fastest Lap: 102.25%<br>Consistency: 98.29%", "Ily Bordiyan<br>Avg Pace: 103.53%<br>Fastest Lap: 101.47%<br>Consistency: 96.72%", "Ily Bordiyan<br>Avg Pace: 103.26%<br>Fastest Lap: 101.37%<br>Consistency: 97.19%", "Ily Bordiyan<br>Avg Pace: 103.12%<br>Fastest Lap: 101.93%<br>Consistency: 98.34%"], "line": {"color": "#54f6cb", "width": 2}, "marker": {"color": "#54f6cb", "size": 8}, "opacity": 1.0}, {"x": [0, 1, 2, 3, 4, 5], "y": [104.51, 103.93, 103.18, 104.28, 105.69, 104.34], "mode": "lines+markers", "name": "Shae Lewis", "hovertemplate": "%{customdata}<extra></extra>", "customdata": ["Shae Lewis<br>Avg Pace: 104.51%<br>Fastest Lap: 102.68%<br>Consistency: 97.53%", "Shae Lewis<br>Avg Pace: 103.93%<br>Fastest Lap: 101.72%<br>Consistency: 97.63%", "Shae Lewis<br>Avg Pace: 103.18%<br>Fastest Lap: 101.61%<br>Consistency: 97.95%", "Shae Lewis<br>Avg Pace: 104.28%<br>Fastest Lap: 102.34%<br>Consistency: 97.23%", "Shae Lewis<br>Avg Pace: 105.69%<br>Fastest Lap: 103.10%<br>Consistency: 98.10%", "Shae Lewis<br>Avg Pace: 104.34%<br>Fastest Lap: 102.37%<br>Consistency: 97.94%"], "line": {"color": "#ffb360", "width": 2}, "marker": {"color": "#ffb360", "size": 8}, "opacity": 1.0}, {"x": [0, 1, 2, 3, 4], "y": [105.69, 104.34, 106.32, 103.55, 103.57], "mode": "lines+markers", "name": "Timo White", "hovertemplate": "%{customdata}<extra></extra>", "customdata": ["Timo White<br>Avg Pace: 105.69%<br>Fastest Lap: 103.42%<br>Consistency: 97.51%", "Timo White<br>Avg Pace: 104.34%<br>Fastest Lap: 103.07%<br>Consistency: 97.97%", "Timo White<br>Avg Pace: 106.32%<br>Fastest Lap: 102.79%<br>Consistency: 94.10%", "Timo White<br>Avg Pace: 103.55%<br>Fastest Lap: 101.81%<br>Consistency: 97.47%", "Timo White<br>Avg Pace: 103.57%<br>Fastest Lap: 102.07%<br>Consistency: 98.19%"], "line": {"color": "#ff7e41", "width": 2}, "marker": {"color": "#ff7e41", "size": 8}, "opacity": 1.0}, {"x": [0, 1, 2, 3], "y": [106.09, 105.21, 104.95, 105.36], "mode": "lines+markers", "name": "Dave Carter", "hovertemplate": "%{customdata}<extra></extra>", "customdata": ["Dave Carter<br>Avg Pace: 106.09%<br>Fastest Lap: 103.57%<br>Consistency: 96.10%", "Dave Carter<br>Avg Pace: 105.21%<br>Fastest Lap: 104.18%<br>Consistency: 98.21%", "Dave Carter<br>Avg Pace: 104.95%<br>Fastest Lap: 102.92%<br>Consistency: 97.61%", "Dave Carter<br>Avg Pace: 105.36%<br>Fastest Lap: 103.10%<br>Consistency: 95.77%"], "line": {"color": "#5641fd", "width": 2}, "marker": {"color": "#5641fd", "size": 8}, "opacity": 1.0}, {"x": [0, 1], "y": [105.99, 106.32], "mode": "lines+markers", "name": "Glenn Jacobs#3297", "hovertemplate": "%{customdata}<extra></extra>", "customdata": ["Glenn Jacobs#3297<br>Avg Pace: 105.99%<br>Fastest Lap: 103.04%<br>Consistency: 95.90%", "Glenn Jacobs#3297<br>Avg Pace: 106.32%<br>Fastest Lap: 104.17%<br>Consistency: 97.17%"], "line": {"color": "#2adddd", "width": 2}, "marker": {"color": "#2adddd", "size": 8}, "opacity": 1.0}];
+        const plotLayout = {"title": {"text": "Sprint LMP3 Race Pace Trend: After 6 Rounds", "font": {"color": "#ccfc00"}}, "xaxis": {"tickmode": "array", "ticktext": ["Portimao", "Sebring", "Interlagos", "Daytona", "COTA", "Spa"], "tickvals": [0, 1, 2, 3, 4, 5], "titlefont": {"color": "#fafafa"}, "tickfont": {"color": "#fafafa"}, "linecolor": "#ccfc00", "gridcolor": "#fafafa"}, "yaxis": {"title": "Race Pace % (vs Alien)", "range": [100.0, 107.0], "titlefont": {"color": "#fafafa"}, "tickfont": {"color": "#fafafa"}, "linecolor": "#ccfc00", "gridcolor": "#fafafa"}, "hovermode": "closest", "plot_bgcolor": "#14161ff2", "paper_bgcolor": "#14161ff2", "height": 500, "autosize": true, "showlegend": false, "xaxis_range": [-0.6, 5.6], "margin": {"l": 50, "r": 20, "b": 50, "t": 60}};
 
         Plotly.newPlot('paceChart', plotData, plotLayout, {responsive: true, displayModeBar: false});
 
