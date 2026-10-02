@@ -191,7 +191,7 @@ header p {
     background: #14161ff2;
     border-radius: 8px;
     padding: 20px;
-    margin-bottom: 30px;
+    margin-bottom: 15px;
     width: 100%;
     overflow-x: auto;
 }
@@ -206,7 +206,7 @@ header p {
     background: #000000;
     border-radius: 8px;
     padding: 20px;
-    margin-bottom: 30px;
+    margin-bottom: -15px;
 }
 
 table {
@@ -332,12 +332,12 @@ table tbody tr:nth-child(even) {
 
     .chart-container {
         padding: 15px;
-        margin-bottom: 20px;
+        margin-bottom: 10px;
     }
 
     .table-container {
         padding: 15px;
-        margin-bottom: 20px;
+        margin-bottom: -5px;
     }
 
     table {
@@ -410,12 +410,12 @@ table tbody tr:nth-child(even) {
 
     .chart-container {
         padding: 10px;
-        margin-bottom: 15px;
+        margin-bottom: 5px;
     }
 
     .table-container {
         padding: 10px;
-        margin-bottom: 15px;
+        margin-bottom: 0px;
         overflow-x: auto;
     }
 

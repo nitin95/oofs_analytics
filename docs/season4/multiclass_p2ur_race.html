@@ -1,19 +1,26 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{title}</title>
+    <title>Multiclass Hyper Race Pace Data</title>
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <link rel="stylesheet" href="../styles.css">
 </head>
 <body>
     <div class="main-wrapper">
-        {sidebar_section}
+        
+    <button class="sidebar-toggle" id="sidebarToggle" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+    <nav class="sidebar"><div class="sidebar-content"></select></div><img src="../logo.png" alt="Logo" class="header-logo"><div class="section-group"><h4>Sprint LMP3</h4><ul><li><a href="sprint_lmp3_race.html" class="">Race Pace</a></li><li><a href="sprint_lmp3_quali.html" class="">Quali Pace</a></li></ul></div><div class="section-group"><h4>Sprint GT3</h4><ul><li><a href="sprint_gt3_race.html" class="">Race Pace</a></li><li><a href="sprint_gt3_quali.html" class="">Quali Pace</a></li></ul></div><div class="section-group"><h4>Multiclass P2UR/Hypercar</h4><ul><li><a href="multiclass_p2ur_race.html" class="active">Race Pace</a></li><li><a href="multiclass_p2ur_quali.html" class="">Quali Pace</a></li></ul></div><div class="section-group"><h4>Multiclass GT3</h4><ul><li><a href="multiclass_gt3_race.html" class="">Race Pace</a></li><li><a href="multiclass_gt3_quali.html" class="">Quali Pace</a></li></ul></div></nav>
+    
         <div class="container">
             <header>
                 <!-- <img src="../logo.png" alt="Logo" class="header-logo"> -->
-                <h1>{title}</h1>
+                <h1>Multiclass Hyper Race Pace Data</h1>
             </header>
 
             <div class="content">
@@ -32,7 +39,56 @@
                 <div class="section">
                     <h2>Average Pace vs Alien - All Rounds</h2>
                     <div class="table-container">
-                        {pace_html}
+                        <table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Driver</th>
+      <th>Fuji</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr data-driver="Chris MacLennan">
+      <td>Chris M.</td>
+      <td>103.80</td>
+    </tr>
+    <tr data-driver="Chris Wilson">
+      <td>Chris W.*</td>
+      <td>103.59</td>
+    </tr>
+    <tr data-driver="Dakota Botello">
+      <td>Dakota B.*</td>
+      <td>103.30</td>
+    </tr>
+    <tr data-driver="Dan Jr Poulin">
+      <td>Dan P.*</td>
+      <td>103.64</td>
+    </tr>
+    <tr data-driver="Daniel Valasco">
+      <td>Daniel V.</td>
+      <td>103.46</td>
+    </tr>
+    <tr data-driver="Ethan Gonzales">
+      <td>Ethan G.*</td>
+      <td>104.16</td>
+    </tr>
+    <tr data-driver="Owen Beerkircher">
+      <td>Owen B.*</td>
+      <td>103.35</td>
+    </tr>
+    <tr data-driver="Owen LaMarra">
+      <td>Owen L.*</td>
+      <td>104.11</td>
+    </tr>
+    <tr data-driver="Ryan Bellune">
+      <td>Ryan B.</td>
+      <td>103.63</td>
+    </tr>
+    <tr data-driver="Willie Mangram">
+      <td>Willie M.</td>
+      <td>104.23</td>
+    </tr>
+  </tbody>
+</table>
                     </div>
                     <p class="rookie-legend"><strong>*</strong> New to this series or category</p>
                 </div>
@@ -42,7 +98,78 @@
                 <div class="section">
                     <h2>Driver Improvement Comparison (Average Pace)</h2>
                     <div class="table-container">
-                        {improvement_html}
+                        <table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Driver</th>
+      <th>Best Avg (First 2)</th>
+      <th>Best Avg (Last 2)</th>
+      <th>Improvement</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr data-driver="Chris MacLennan">
+      <td>Chris M.</td>
+      <td>103.80</td>
+      <td>103.80</td>
+      <td>0.00</td>
+    </tr>
+    <tr data-driver="Chris Wilson">
+      <td>Chris W.*</td>
+      <td>103.59</td>
+      <td>103.59</td>
+      <td>0.00</td>
+    </tr>
+    <tr data-driver="Dakota Botello">
+      <td>Dakota B.*</td>
+      <td>103.30</td>
+      <td>103.30</td>
+      <td>0.00</td>
+    </tr>
+    <tr data-driver="Dan Jr Poulin">
+      <td>Dan P.*</td>
+      <td>103.64</td>
+      <td>103.64</td>
+      <td>0.00</td>
+    </tr>
+    <tr data-driver="Daniel Valasco">
+      <td>Daniel V.</td>
+      <td>103.46</td>
+      <td>103.46</td>
+      <td>0.00</td>
+    </tr>
+    <tr data-driver="Ethan Gonzales">
+      <td>Ethan G.*</td>
+      <td>104.16</td>
+      <td>104.16</td>
+      <td>0.00</td>
+    </tr>
+    <tr data-driver="Owen Beerkircher">
+      <td>Owen B.*</td>
+      <td>103.35</td>
+      <td>103.35</td>
+      <td>0.00</td>
+    </tr>
+    <tr data-driver="Owen LaMarra">
+      <td>Owen L.*</td>
+      <td>104.11</td>
+      <td>104.11</td>
+      <td>0.00</td>
+    </tr>
+    <tr data-driver="Ryan Bellune">
+      <td>Ryan B.</td>
+      <td>103.63</td>
+      <td>103.63</td>
+      <td>0.00</td>
+    </tr>
+    <tr data-driver="Willie Mangram">
+      <td>Willie M.</td>
+      <td>104.23</td>
+      <td>104.23</td>
+      <td>0.00</td>
+    </tr>
+  </tbody>
+</table>
                     </div>
                     <p class="rookie-legend"><strong>*</strong> New to this series or category</p>
                 </div>
@@ -51,7 +178,7 @@
 
             <div class="footer">
                 <p>Generated from OOFS XML Race Data</p>
-                <p style="font-size: 0.9em; margin-top: 10px;">Last updated: {generated_at}</p>
+                <p style="font-size: 0.9em; margin-top: 10px;">Last updated: 2026-10-02 11:35:23</p>
             </div>
         </div>
     </div>
@@ -79,8 +206,8 @@
         }
 
         // Plotly chart initialization
-        const plotData = {plot_traces_json};
-        const plotLayout = {plot_layout_json};
+        const plotData = [{"x": [0], "y": [103.3], "mode": "lines+markers", "name": "Dakota Botello", "hovertemplate": "%{customdata}<extra></extra>", "customdata": ["Dakota Botello*<br>Avg Pace: 103.30%<br>Fastest Lap: 101.69%<br>Consistency: 98.46%"], "line": {"color": "#10a2f0", "width": 2}, "marker": {"color": "#10a2f0", "size": 8}, "opacity": 1.0}, {"x": [0], "y": [103.35], "mode": "lines+markers", "name": "Owen Beerkircher", "hovertemplate": "%{customdata}<extra></extra>", "customdata": ["Owen Beerkircher*<br>Avg Pace: 103.35%<br>Fastest Lap: 101.29%<br>Consistency: 97.98%"], "line": {"color": "#d4dd80", "width": 2}, "marker": {"color": "#d4dd80", "size": 8}, "opacity": 1.0}, {"x": [0], "y": [103.46], "mode": "lines+markers", "name": "Daniel Valasco", "hovertemplate": "%{customdata}<extra></extra>", "customdata": ["Daniel Valasco<br>Avg Pace: 103.46%<br>Fastest Lap: 101.13%<br>Consistency: 98.32%"], "line": {"color": "#62fbc4", "width": 2}, "marker": {"color": "#62fbc4", "size": 8}, "opacity": 1.0}, {"x": [0], "y": [103.59], "mode": "lines+markers", "name": "Chris Wilson", "hovertemplate": "%{customdata}<extra></extra>", "customdata": ["Chris Wilson*<br>Avg Pace: 103.59%<br>Fastest Lap: 101.44%<br>Consistency: 97.54%"], "line": {"color": "#4856fb", "width": 2}, "marker": {"color": "#4856fb", "size": 8}, "opacity": 1.0}, {"x": [0], "y": [103.63], "mode": "lines+markers", "name": "Ryan Bellune", "hovertemplate": "%{customdata}<extra></extra>", "customdata": ["Ryan Bellune<br>Avg Pace: 103.63%<br>Fastest Lap: 101.34%<br>Consistency: 97.88%"], "line": {"color": "#ff562c", "width": 2}, "marker": {"color": "#ff562c", "size": 8}, "opacity": 1.0}, {"x": [0], "y": [103.64], "mode": "lines+markers", "name": "Dan Jr Poulin", "hovertemplate": "%{customdata}<extra></extra>", "customdata": ["Dan Jr Poulin*<br>Avg Pace: 103.64%<br>Fastest Lap: 101.88%<br>Consistency: 98.11%"], "line": {"color": "#2adddd", "width": 2}, "marker": {"color": "#2adddd", "size": 8}, "opacity": 1.0}, {"x": [0], "y": [103.8], "mode": "lines+markers", "name": "Chris MacLennan", "hovertemplate": "%{customdata}<extra></extra>", "customdata": ["Chris MacLennan<br>Avg Pace: 103.80%<br>Fastest Lap: 102.11%<br>Consistency: 97.93%"], "line": {"color": "#8000ff", "width": 2}, "marker": {"color": "#8000ff", "size": 8}, "opacity": 1.0}, {"x": [0], "y": [104.11], "mode": "lines+markers", "name": "Owen LaMarra", "hovertemplate": "%{customdata}<extra></extra>", "customdata": ["Owen LaMarra*<br>Avg Pace: 104.11%<br>Fastest Lap: 102.38%<br>Consistency: 98.24%"], "line": {"color": "#ffa256", "width": 2}, "marker": {"color": "#ffa256", "size": 8}, "opacity": 1.0}, {"x": [0], "y": [104.16], "mode": "lines+markers", "name": "Ethan Gonzales", "hovertemplate": "%{customdata}<extra></extra>", "customdata": ["Ethan Gonzales*<br>Avg Pace: 104.16%<br>Fastest Lap: 102.09%<br>Consistency: 96.51%"], "line": {"color": "#9cfba4", "width": 2}, "marker": {"color": "#9cfba4", "size": 8}, "opacity": 1.0}, {"x": [0], "y": [104.23], "mode": "lines+markers", "name": "Willie Mangram", "hovertemplate": "%{customdata}<extra></extra>", "customdata": ["Willie Mangram<br>Avg Pace: 104.23%<br>Fastest Lap: 101.88%<br>Consistency: 98.13%"], "line": {"color": "#ff0000", "width": 2}, "marker": {"color": "#ff0000", "size": 8}, "opacity": 1.0}];
+        const plotLayout = {"title": {"text": "Multiclass Hyper Race Pace Trend: After 1 Rounds", "font": {"color": "#ccfc00"}}, "xaxis": {"tickmode": "array", "ticktext": ["Fuji"], "tickvals": [0], "titlefont": {"color": "#fafafa"}, "tickfont": {"color": "#fafafa"}, "linecolor": "#ccfc00", "gridcolor": "#fafafa"}, "yaxis": {"title": "Race Pace % (vs Alien)", "range": [100.0, 107.0], "titlefont": {"color": "#fafafa"}, "tickfont": {"color": "#fafafa"}, "linecolor": "#ccfc00", "gridcolor": "#fafafa"}, "hovermode": "closest", "plot_bgcolor": "#14161ff2", "paper_bgcolor": "#14161ff2", "height": 500, "autosize": true, "showlegend": false, "xaxis_range": [-0.6, 0.6], "margin": {"l": 50, "r": 20, "b": 50, "t": 60}};
 
         Plotly.newPlot('paceChart', plotData, plotLayout, {responsive: true, displayModeBar: false});
 

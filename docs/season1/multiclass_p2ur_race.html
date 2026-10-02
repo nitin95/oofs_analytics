@@ -24,13 +24,16 @@
             </header>
 
             <div class="content">
+
                 <!-- Pace Trend Chart -->
                 <div class="section">
                     <h2>Pace Trend by Round (Average Pace with &plusmn;1 SD Confidence Intervals)</h2>
                     <div class="chart-container">
                         <div id="paceChart" style="width:100%;"></div>
                     </div>
+                    <p class="rookie-legend"><strong>*</strong> New to this series or category</p>
                 </div>
+                
 
                 <!-- Pace vs Alien Table -->
                 <div class="section">
@@ -186,7 +189,9 @@
   </tbody>
 </table>
                     </div>
+                    <p class="rookie-legend"><strong>*</strong> New to this series or category</p>
                 </div>
+                
 
                 <!-- Improvement Comparison -->
                 <div class="section">
@@ -253,12 +258,14 @@
   </tbody>
 </table>
                     </div>
+                    <p class="rookie-legend"><strong>*</strong> New to this series or category</p>
                 </div>
+                
             </div>
 
             <div class="footer">
                 <p>Generated from OOFS XML Race Data</p>
-                <p style="font-size: 0.9em; margin-top: 10px;">Last updated: 2026-08-21 09:34:08</p>
+                <p style="font-size: 0.9em; margin-top: 10px;">Last updated: 2026-10-02 11:35:17</p>
             </div>
         </div>
     </div>
@@ -352,8 +359,7 @@
             try {
                 const rows = document.querySelectorAll('table tbody tr');
                 rows.forEach(row => {
-                    const firstCell = row.cells[0].textContent.trim();
-                    if (firstCell === driverName) {
+                    if (row.getAttribute('data-driver') === driverName) {
                         row.classList.add('highlighted');
                     }
                 });
@@ -396,6 +402,10 @@
                 }
 
                 Plotly.restyle('paceChart', {'opacity': opacities, 'line': lineWidths});
+                if (plotData[traceIndex].x && plotData[traceIndex].x.length > 0) {
+                    Plotly.Fx.hover(paceChart, [{curveNumber: traceIndex, pointNumber: 0}]);
+                }
+                highlightTableRows(driverName);
             } catch (e) {
                 // Ignore errors if driver not found
             }
@@ -415,7 +425,7 @@
 
         // Add hover effect to grey out non-hovered lines in graph
         paceChart.on('plotly_hover', function(data) {
-            const driverName = data.points[0].name;
+            const driverName = plotData[data.points[0].curveNumber].name;
             const numTraces = plotData.length;
             const opacities = [];
             const lineWidths = [];
@@ -455,7 +465,9 @@
 
                 row.addEventListener('mouseleave', function() {
                     this.classList.remove('highlighted');
+                    Plotly.Fx.unhover(paceChart);
                     clearTraceHighlights();
+                    clearTableHighlights();
                 });
             });
         });
