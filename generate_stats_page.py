@@ -403,7 +403,7 @@ def get_sidebar_html(active_page, season_id='season1'):
     sidebar_html += '</select></div>'
     # sidebar_html += '<hr style="border: none; border-top: 1px solid #555; margin: 15px 0;">'
     # sidebar_html += '<h3 style="color: #ccfc00; margin-bottom: 20px; margin-top: 15px;">📊 Dashboard</h3>'
-    sidebar_html += '<img src="../logo.png" alt="Logo" class="header-logo">'
+    sidebar_html += '<a href="../index.html" aria-label="OOFS Analytics home"><img src="../logo.png" alt="OOFS Analytics" class="header-logo"></a>'
     
     current_section = None
     active_page_id = os.path.splitext(active_page)[0]
