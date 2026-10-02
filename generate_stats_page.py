@@ -171,6 +171,7 @@ DRIVER_REPLACEMENTS = {
     'R McLean': 'Ross McLean',
     'Ricky Swaby': 'Ricardo Swaby',
     'p thomas': 'Parker Thomas',
+    'DAN POULIN': 'Dan Jr Poulin',
     'David Carter': 'Dave Carter',
     'David Carter#5529': 'Dave Carter',
     'John P': 'John Pflibsen',
