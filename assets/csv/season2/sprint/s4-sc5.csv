@@ -1,0 +1,20 @@
+Driver,Car,CarClass,CarNumber,Position,FinishStatus,Laps,laptime_sec,laptime_pct,laptime_pct_alien,avg_laptime,avg_pace_pct_alien,stdev_laptime,stdev_pace_pct,lap_count,race_pace,pct_race_pace,consistency,reliability,n_tracklimits,n_inchidents,pct_laps,n_stops,pit_lane_pct_times,Driver_name,season_id,series_type,session_type
+Joris Butkus,Porsche 911 GT3 R LMGT3,GT3,11,1,None,14,72.6069,100.0,100.83,73.08976666666665,101.5,0.4066602250855947,0.56,6,,,,,,,,,,Joris Butkus,season2,sprint,quali
+Michael Landry,BMW M4 LMGT3,GT3,710,2,Finished Normally,11,72.8292,99.69,101.14,73.12463333333334,101.55,0.2022200056044559,0.28,6,,,,,,,,,,Michael Landry,season2,sprint,quali
+Greg Kach,Ford Mustang LMGT3,GT3,1,3,Finished Normally,11,72.8972,99.6,101.23,73.2646,101.74,0.23214615367622732,0.32,7,,,,,,,,,,Greg Kachadurian,season2,sprint,quali
+Mathieu Murray,BMW M4 LMGT3,GT3,14,4,Finished Normally,9,73.1865,99.21,101.63,73.51003333333334,102.08,0.3364736819822116,0.47,6,,,,,,,,,,Mathieu Murray,season2,sprint,quali
+William Neron,Mercedes-AMG LMGT3,GT3,94,5,Finished Normally,14,73.2567,99.11,101.73,73.59115,102.2,0.4038016035134074,0.56,6,,,,,,,,,,William Neron,season2,sprint,quali
+Michen Wallace,Porsche 911 GT3 R LMGT3,GT3,37,6,Finished Normally,12,73.2663,99.1,101.74,73.47991666666667,102.04,0.19190588752476032,0.27,6,,,,,,,,,,Michen Wallace,season2,sprint,quali
+p thom,Lexus RCF LMGT3,GT3,69,7,Finished Normally,14,73.3325,99.01,101.84,74.3942,103.31,1.1704373473193705,1.63,6,,,,,,,,,,Parker Thomas,season2,sprint,quali
+Richie Wood,Lamborghini Huracan LMGT3 Evo2,GT3,101,8,Finished Normally,12,73.3654,98.97,101.88,73.70705,102.36,0.20970969049072546,0.29,8,,,,,,,,,,Richie Wood,season2,sprint,quali
+C M Wilson,Porsche 911 GT3 R LMGT3,GT3,177,9,Finished Normally,12,73.4167,98.9,101.95,73.95075999999999,102.7,0.6199267722884666,0.86,5,,,,,,,,,,Chris Wilson,season2,sprint,quali
+Guillermo Paret,Lexus RCF LMGT3,GT3,52,10,Finished Normally,12,73.4932,98.79,102.06,74.15021428571428,102.97,0.7222792521561451,1.0,7,,,,,,,,,,Guillermo Paret,season2,sprint,quali
+Ricky Swaby,Lexus RCF LMGT3,GT3,79,11,Finished Normally,12,73.6245,98.62,102.24,74.17635,103.01,0.565119163160682,0.78,8,,,,,,,,,,Ricardo Swaby,season2,sprint,quali
+Lewis M Smith,Porsche 911 GT3 R LMGT3,GT3,28,12,Finished Normally,11,73.6847,98.54,102.33,74.13106666666668,102.95,0.4206407295226299,0.58,3,,,,,,,,,,Lewis M Smith,season2,sprint,quali
+Brian Crane,Chevrolet Corvette Z06 LMGT3.R,GT3,223,13,Finished Normally,8,73.8566,98.31,102.56,74.3054,103.19,0.6149132703072839,0.85,3,,,,,,,,,,Brian Crane,season2,sprint,quali
+Dan Gomez,Lexus RCF LMGT3,GT3,24,14,Finished Normally,10,73.9979,98.12,102.76,74.52461666666666,103.49,0.6348511366191801,0.88,6,,,,,,,,,,Dan Gomez,season2,sprint,quali
+Rich Dyer,Ford Mustang LMGT3,GT3,8,15,Finished Normally,12,74.4288,97.55,103.36,76.9284142857143,106.83,4.69501144955245,6.52,7,,,,,,,,,,Rich Dyer,season2,sprint,quali
+Vinny DelVillano,Ferrari 296 LMGT3,GT3,25,16,Finished Normally,12,74.4984,97.46,103.46,75.33454,104.62,0.5473846572566679,0.76,5,,,,,,,,,,Vinny DelVillano,season2,sprint,quali
+Maximum Angry,Ford Mustang LMGT3,GT3,15,17,Finished Normally,13,74.8794,96.97,103.98,75.50867142857143,104.86,0.46876765998479214,0.65,7,,,,,,,,,,Maximum Angry,season2,sprint,quali
+JD Bagnoli,Ford Mustang LMGT3,GT3,13,18,Finished Normally,12,75.0515,96.74,104.22,77.32518571428571,107.38,3.256992070110381,4.52,7,,,,,,,,,,JD Bagnoli,season2,sprint,quali
+Matthew Heslep,Aston Martin Vantage AMR LMGT3,GT3,33,19,Finished Normally,12,75.6255,96.01,105.02,76.50767142857144,106.25,1.3948739354200739,1.94,7,,,,,,,,,,Matthew Heslep,season2,sprint,quali

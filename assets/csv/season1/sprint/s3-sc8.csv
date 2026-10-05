@@ -1,0 +1,24 @@
+Driver,Car,CarClass,CarNumber,Position,FinishStatus,Laps,laptime_sec,laptime_pct,laptime_pct_alien,avg_laptime,avg_pace_pct_alien,stdev_laptime,stdev_pace_pct,lap_count,race_pace,pct_race_pace,consistency,reliability,n_tracklimits,n_inchidents,pct_laps,n_stops,pit_lane_pct_times,Driver_name,season_id,series_type,session_type
+Jeffrey Aroyan,Ferrari 296 LMGT3,GT3,233,1,Finished Normally,6,139.2051,100.0,101.37,139.30169999999998,101.44,0.13661303012525422,0.1,2,,,,,,,,,,Jeffrey Aroyan,season1,sprint,quali
+Greg Kach,Ford Mustang LMGT3,GT3,123,2,Finished Normally,5,139.2726,99.95,101.42,140.27366666666668,102.15,1.2571511497561887,0.92,3,,,,,,,,,,Greg Kachadurian,season1,sprint,quali
+Michael Landry,Chevrolet Corvette Z06 LMGT3.R,GT3,710,3,Finished Normally,5,139.6482,99.68,101.7,140.19639999999998,102.09,0.7752718748929226,0.56,2,,,,,,,,,,Michael Landry,season1,sprint,quali
+Cyril Fortin,Porsche 911 GT3 R LMGT3,GT3,99,4,Finished Normally,6,139.7017,99.64,101.73,140.4115,102.25,1.0612707602995008,0.77,4,,,,,,,,,,Cyril Fortin,season1,sprint,quali
+Guillermo Paret,Chevrolet Corvette Z06 LMGT3.R,GT3,52,5,Finished Normally,6,140.3135,99.21,102.18,146.14286666666666,106.43,6.787960247624712,4.94,3,,,,,,,,,,Guillermo Paret,season1,sprint,quali
+Philippe Brazeau,McLaren 720S LMGT3 Evo,GT3,88,6,Finished Normally,6,140.3643,99.17,102.22,141.231125,102.85,1.2238466090568736,0.89,4,,,,,,,,,,Philippe Brazeau,season1,sprint,quali
+p thomas,Lamborghini Huracan LMGT3 Evo2,GT3,69,7,Finished Normally,6,140.6088,99.0,102.39,141.30313333333334,102.9,0.6014402159261824,0.44,3,,,,,,,,,,Parker Thomas,season1,sprint,quali
+Owen Beerkircher,Lexus RCF LMGT3,GT3,977,8,Finished Normally,6,140.6611,98.96,102.43,142.05455,103.45,1.6147644131575334,1.18,4,,,,,,,,,,Owen Beerkircher,season1,sprint,quali
+William Neron,Lexus RCF LMGT3,GT3,94,9,Finished Normally,5,140.7652,98.89,102.51,140.778,102.52,0.018101933598373622,0.01,2,,,,,,,,,,William Neron,season1,sprint,quali
+Dustin Rand,BMW M4 LMGT3,GT3,5,10,Finished Normally,4,140.7711,98.89,102.51,141.81664999999998,103.27,1.4786309901391976,1.08,2,,,,,,,,,,Dustin Rand,season1,sprint,quali
+Stigggy yyy,Aston Martin Vantage AMR LMGT3,GT3,56,11,Finished Normally,6,140.7947,98.87,102.53,141.411525,102.98,0.8014189764619596,0.58,4,,,,,,,,,,Stigggy yyy,season1,sprint,quali
+Louis Gendron,Porsche 911 GT3 R LMGT3,GT3,26,12,Finished Normally,4,140.9553,98.76,102.65,140.9553,102.65,0.0,0.0,1,,,,,,,,,,Louis Gendron,season1,sprint,quali
+Alexandre Urie,Porsche 911 GT3 R LMGT3,GT3,23,13,Finished Normally,6,140.972,98.75,102.66,141.24970000000002,102.86,0.3927271062710026,0.29,2,,,,,,,,,,Alexandre Urie,season1,sprint,quali
+Richie Wood,Aston Martin Vantage AMR LMGT3,GT3,101,14,Finished Normally,6,140.9918,98.73,102.67,141.58169999999998,103.1,0.5901501588578902,0.43,3,,,,,,,,,,Richie Wood,season1,sprint,quali
+G Wulf,Ford Mustang LMGT3,GT3,7,15,Finished Normally,5,140.9991,98.73,102.68,142.01936666666666,103.42,1.2019858831672474,0.88,3,,,,,,,,,,Gene Wulf,season1,sprint,quali
+Ricky Swaby,McLaren 720S LMGT3 Evo,GT3,79,16,Finished Normally,5,141.212,98.58,102.83,148.22213333333332,107.94,11.944480590353585,8.7,3,,,,,,,,,,Ricardo Swaby,season1,sprint,quali
+Nick Johnson,BMW M4 LMGT3,GT3,696,17,Finished Normally,6,141.6891,98.25,103.18,144.11499999999998,104.95,3.6949434785934203,2.69,3,,,,,,,,,,Nick Johnson,season1,sprint,quali
+Dan Gomez,McLaren 720S LMGT3 Evo,GT3,242,18,Finished Normally,5,141.8051,98.17,103.27,143.46413333333336,104.47,2.298379930153705,1.67,3,,,,,,,,,,Dan Gomez,season1,sprint,quali
+Dave Carter,Chevrolet Corvette Z06 LMGT3.R,GT3,969,19,Finished Normally,5,142.5111,97.68,103.78,143.2684,104.33,0.6684170629180616,0.49,3,,,,,,,,,,Dave Carter,season1,sprint,quali
+Maximum Angry,BMW M4 LMGT3,GT3,15,20,Finished Normally,5,143.0118,97.34,104.14,144.34613333333334,105.12,2.1670155337083554,1.58,3,,,,,,,,,,Maximum Angry,season1,sprint,quali
+Preston Parenti,Lexus RCF LMGT3,GT3,32,21,Finished Normally,4,143.442,97.05,104.46,146.7591,106.87,4.691087807747788,3.42,2,,,,,,,,,,Preston Parenti,season1,sprint,quali
+Hans Montes,Chevrolet Corvette Z06 LMGT3.R,GT3,345,22,Finished Normally,5,144.1976,96.54,105.01,146.02700000000002,106.34,1.9602134475612651,1.43,3,,,,,,,,,,Hans Montes,season1,sprint,quali
+R McLean,Porsche 911 GT3 R LMGT3,GT3,93,23,Finished Normally,5,146.1977,95.22,106.46,146.1977,106.46,0.0,0.0,1,,,,,,,,,,Ross McLean,season1,sprint,quali

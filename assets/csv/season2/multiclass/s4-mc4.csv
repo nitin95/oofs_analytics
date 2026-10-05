@@ -1,0 +1,26 @@
+Driver,Car,CarClass,CarNumber,Position,FinishStatus,Laps,laptime_sec,laptime_pct,laptime_pct_alien,avg_laptime,avg_pace_pct_alien,stdev_laptime,stdev_pace_pct,lap_count,race_pace,pct_race_pace,consistency,reliability,n_tracklimits,n_inchidents,pct_laps,n_stops,pit_lane_pct_times,Driver_name,season_id,series_type,session_type
+Julian Munoz#7588,Peugeot 9x8,Hyper,55,1,Finished Normally,7,93.6145,100.0,100.23,93.93794,100.58,0.23500334678467694,0.25,5,,,,,,,,,,Julian Munoz#7588,season2,multiclass,quali
+Joris Butkus,Glickenhaus SCG007,Hyper,11,2,Finished Normally,9,94.0303,99.56,100.67,94.65274,101.34,0.3693846883670213,0.4,5,,,,,,,,,,Joris Butkus,season2,multiclass,quali
+Greg Kach,Porsche 963,Hyper,123,3,Finished Normally,6,94.3022,99.27,100.97,94.818825,101.52,0.41085701791093626,0.44,4,,,,,,,,,,Greg Kachadurian,season2,multiclass,quali
+Andrew Canelli,Alpine A424,Hyper,44,4,Finished Normally,6,94.4613,99.1,101.14,94.89982499999999,101.61,0.4381203744406351,0.47,4,,,,,,,,,,Andrew Canelli,season2,multiclass,quali
+Wesley Ambrose,BMW M Hybrid V8,Hyper,332,5,Finished Normally,6,94.6048,98.95,101.29,95.43492499999999,102.18,1.1423178465295902,1.22,4,,,,,,,,,,Wesley Ambrose,season2,multiclass,quali
+Michael Landry,Peugeot 9x8,Hyper,710,6,Finished Normally,7,94.7704,98.78,101.47,95.63413999999997,102.39,1.042133114338088,1.12,5,,,,,,,,,,Michael Landry,season2,multiclass,quali
+Nathan Sides,Peugeot 9x8,Hyper,12,7,Finished Normally,9,94.7981,98.75,101.5,95.1602857142857,101.88,0.3107359405699701,0.33,7,,,,,,,,,,Nathan Sides,season2,multiclass,quali
+Jeffrey Aroyan,Porsche 963,Hyper,233,8,Finished Normally,6,94.864,98.68,101.57,95.700825,102.46,1.1020836398235228,1.18,4,,,,,,,,,,Jeffrey Aroyan,season2,multiclass,quali
+Grayson Head,Cadillac V-Series.R,Hyper,34,9,Finished Normally,10,94.9045,98.64,101.61,95.44456,102.19,0.4223539842359744,0.45,5,,,,,,,,,,Grayson Head,season2,multiclass,quali
+James Rubio,Peugeot 9x8,Hyper,27,10,Finished Normally,7,95.2144,98.32,101.94,96.06477999999998,102.85,0.8247526186681674,0.88,5,,,,,,,,,,James Rubio,season2,multiclass,quali
+Chris MacLennan,Genesis GMR001,Hyper,114,11,Finished Normally,7,95.4771,98.05,102.22,96.082275,102.87,0.5942964152396247,0.64,4,,,,,,,,,,Chris MacLennan,season2,multiclass,quali
+Daniel Valasco,BMW M Hybrid V8,Hyper,477,12,Finished Normally,9,95.626,97.9,102.38,96.403975,103.22,0.7964587178044226,0.85,4,,,,,,,,,,Daniel Valasco,season2,multiclass,quali
+Willie Mangram,Ferrari 499P,Hyper,2,13,Finished Normally,10,95.7563,97.76,102.52,97.00811666666668,103.86,2.3590015925528025,2.53,6,,,,,,,,,,Willie Mangram,season2,multiclass,quali
+Josh Popov,Lexus RCF LMGT3,GT3,6,1,Finished Normally,7,105.3157,100.0,100.3,105.84263333333332,100.8,0.5548399889457598,0.53,3,,,,,,,,,,Josh Popov,season2,multiclass,quali
+Guillermo Paret,Lexus RCF LMGT3,GT3,52,2,None,8,105.4626,99.86,100.44,106.00724,100.96,0.601043636519015,0.57,5,,,,,,,,,,Guillermo Paret,season2,multiclass,quali
+Kasi Jackman,Chevrolet Corvette Z06 LMGT3.R,GT3,868,3,Finished Normally,9,105.704,99.63,100.67,105.88824,100.85,0.2127839115158898,0.2,5,,,,,,,,,,Kasi Jackman,season2,multiclass,quali
+Richie Wood,Aston Martin Vantage AMR LMGT3,GT3,101,4,Finished Normally,8,105.7341,99.6,100.7,106.20398333333333,101.15,0.325842608734135,0.31,6,,,,,,,,,,Richie Wood,season2,multiclass,quali
+p thom,Lexus RCF LMGT3,GT3,69,5,Finished Normally,8,105.7752,99.57,100.74,105.96096666666666,100.92,0.24915257039278974,0.24,3,,,,,,,,,,Parker Thomas,season2,multiclass,quali
+Mathieu Murray,BMW M4 LMGT3,GT3,14,6,Finished Normally,8,105.8246,99.52,100.79,106.22290000000001,101.16,0.298935812508302,0.28,4,,,,,,,,,,Mathieu Murray,season2,multiclass,quali
+Lewis M Smith,Porsche 911 GT3 R LMGT3,GT3,28,7,Finished Normally,9,105.8392,99.51,100.8,106.12804000000001,101.07,0.2766452475644562,0.26,5,,,,,,,,,,Lewis M Smith,season2,multiclass,quali
+Dan Jr Poulin,Ford Mustang LMGT3,GT3,514,8,Finished Normally,7,106.0199,99.34,100.97,106.47691999999999,101.41,0.48853570698568116,0.47,5,,,,,,,,,,Dan Jr Poulin,season2,multiclass,quali
+C M Wilson,Porsche 911 GT3 R LMGT3,GT3,177,9,Finished Normally,8,106.437,98.95,101.37,107.4633,102.35,1.0327594928152424,0.98,3,,,,,,,,,,Chris Wilson,season2,multiclass,quali
+Logan Breakey,Porsche 911 GT3 R LMGT3,GT3,229,10,Finished Normally,8,106.975,98.45,101.88,107.49180000000001,102.37,0.37469243387077206,0.36,4,,,,,,,,,,Logan Breakey,season2,multiclass,quali
+Dave Carter,Lexus RCF LMGT3,GT3,420,11,Finished Normally,5,107.0853,98.35,101.99,107.59556666666667,102.47,0.4660290262776885,0.44,3,,,,,,,,,,Dave Carter,season2,multiclass,quali
+Kevin Sakamoto,Lexus RCF LMGT3,GT3,72,12,Finished Normally,8,107.1008,98.33,102.0,108.35132000000002,103.19,0.7695140590008706,0.73,5,,,,,,,,,,Kevin Sakamoto,season2,multiclass,quali

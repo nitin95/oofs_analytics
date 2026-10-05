@@ -1,0 +1,34 @@
+Driver,Car,CarClass,CarNumber,Position,FinishStatus,Laps,laptime_sec,laptime_pct,laptime_pct_alien,avg_laptime,avg_pace_pct_alien,stdev_laptime,stdev_pace_pct,lap_count,race_pace,pct_race_pace,consistency,reliability,n_tracklimits,n_inchidents,pct_laps,n_stops,pit_lane_pct_times,Driver_name,season_id,series_type,session_type
+Greg Kach,Oreca 07,LMP2_ELMS,1,1,Finished Normally,6,106.9708,100.0,101.37,110.33809999999998,104.56,5.152623277030835,4.88,5,,,,,,,,,,Greg Kachadurian,season1,multiclass,quali
+Donovan Bailey,Oreca 07,LMP2_ELMS,31,2,None,7,107.1362,99.85,101.52,111.28238333333333,105.45,5.029447114511362,4.77,6,,,,,,,,,,Donovan Bailey,season1,multiclass,quali
+Michael Landry,Oreca 07,LMP2_ELMS,710,3,Finished Normally,6,107.5046,99.5,101.87,112.35036,106.46,5.956925000619031,5.64,5,,,,,,,,,,Michael Landry,season1,multiclass,quali
+Michael Quandt,Oreca 07,LMP2_ELMS,106,4,Finished Normally,6,107.7362,99.29,102.09,110.26588000000001,104.49,3.781473975449256,3.58,5,,,,,,,,,,Michael Quandt,season1,multiclass,quali
+Ryan Bellune,Oreca 07,LMP2_ELMS,228,5,None,6,107.9869,99.06,102.33,112.04792499999999,106.18,6.2208947798929985,5.89,4,,,,,,,,,,Ryan Bellune,season1,multiclass,quali
+Nathan Sides,Oreca 07,LMP2_ELMS,12,6,None,7,108.2334,98.83,102.56,111.54788333333333,105.7,4.957415908885058,4.7,6,,,,,,,,,,Nathan Sides,season1,multiclass,quali
+James Rubio,Oreca 07,LMP2_ELMS,27,7,Finished Normally,7,108.3986,98.68,102.72,110.80045,104.99,3.071147065674322,2.91,6,,,,,,,,,,James Rubio,season1,multiclass,quali
+Abe Wozniak,Oreca 07,LMP2_ELMS,25,8,Finished Normally,7,108.41,98.67,102.73,110.22358000000001,104.45,2.947236845250139,2.79,5,,,,,,,,,,Abe Wozniak,season1,multiclass,quali
+Brian Crane,Oreca 07,LMP2_ELMS,223,9,Finished Normally,6,108.7904,98.33,103.09,112.05328,106.18,4.801789771220724,4.55,5,,,,,,,,,,Brian Crane,season1,multiclass,quali
+Hans Montes,Oreca 07,LMP2_ELMS,345,10,Finished Normally,7,108.9551,98.18,103.25,111.61939999999998,105.77,4.157439395589549,3.94,6,,,,,,,,,,Hans Montes,season1,multiclass,quali
+Chris MacLennan,Oreca 07,LMP2_ELMS,114,11,Finished Normally,5,109.5295,97.66,103.79,113.763325,107.8,6.3929179213538045,6.06,4,,,,,,,,,,Chris MacLennan,season1,multiclass,quali
+Kasi Jackman,Chevrolet Corvette Z06 LMGT3.R,GT3,868,1,Finished Normally,6,121.9687,100.0,101.67,128.84355,107.41,11.237847393073109,9.37,4,,,,,,,,,,Kasi Jackman,season1,multiclass,quali
+Avinash Ganti,Lexus RCF LMGT3,GT3,46,2,Finished Normally,6,121.9954,99.98,101.7,129.52385,107.97,11.311920761597763,9.43,4,,,,,,,,,,Avinash Ganti,season1,multiclass,quali
+Guillermo Paret,Chevrolet Corvette Z06 LMGT3.R,GT3,52,3,Finished Normally,6,122.1631,99.84,101.84,125.83795,104.9,4.320516014320512,3.6,4,,,,,,,,,,Guillermo Paret,season1,multiclass,quali
+p thomas,Lamborghini Huracan LMGT3 Evo2,GT3,69,4,Finished Normally,7,122.2258,99.79,101.89,128.331275,106.98,10.829009649201538,9.03,4,,,,,,,,,,Parker Thomas,season1,multiclass,quali
+Willie Mangram,Porsche 911 GT3 R LMGT3,GT3,2,5,Finished Normally,7,122.3633,99.68,102.0,124.1622,103.5,2.3585408214967742,1.97,4,,,,,,,,,,Willie Mangram,season1,multiclass,quali
+Grayson Head,Mercedes-AMG LMGT3,GT3,34,6,Finished Normally,4,122.436,99.62,102.06,124.6605,103.92,2.908906734496651,2.42,3,,,,,,,,,,Grayson Head,season1,multiclass,quali
+Dakota Botello,McLaren 720S LMGT3 Evo,GT3,303,7,Finished Normally,7,122.4475,99.61,102.07,127.28226,106.1,8.863683330760416,7.39,5,,,,,,,,,,Dakota Botello,season1,multiclass,quali
+Dustin Rand,BMW M4 LMGT3,GT3,5,8,Finished Normally,5,122.6682,99.43,102.26,123.9192,103.3,1.4628202760421427,1.22,3,,,,,,,,,,Dustin Rand,season1,multiclass,quali
+Nick Johnson,Lamborghini Huracan LMGT3 Evo2,GT3,696,9,Finished Normally,6,122.8541,99.28,102.41,124.55827500000001,103.83,2.1933683630054777,1.83,4,,,,,,,,,,Nick Johnson,season1,multiclass,quali
+Harrison Miller,Ford Mustang LMGT3,GT3,17,10,Finished Normally,6,122.9496,99.2,102.49,124.02315999999999,103.39,1.8813164760348018,1.57,5,,,,,,,,,,Harrison Miller,season1,multiclass,quali
+Richie Wood,Lamborghini Huracan LMGT3 Evo2,GT3,101,11,Finished Normally,7,123.3146,98.91,102.8,129.09615,107.62,10.005621142304632,8.34,4,,,,,,,,,,Richie Wood,season1,multiclass,quali
+Patricio Fernandez,BMW M4 LMGT3,GT3,4,12,Finished Normally,6,123.3303,98.9,102.81,130.02734,108.39,13.162071641766737,10.97,5,,,,,,,,,,Patricio Fernandez,season1,multiclass,quali
+Justin Fortuna,Ford Mustang LMGT3,GT3,88,13,Finished Normally,7,123.4709,98.78,102.93,125.78960000000002,104.86,3.4851554212115143,2.91,5,,,,,,,,,,Justin Fortuna,season1,multiclass,quali
+DAN POULIN,Porsche 911 GT3 R LMGT3,GT3,13,14,Finished Normally,5,123.5822,98.69,103.02,124.7399,103.98,1.6372350411593297,1.36,2,,,,,,,,,,Dan Jr Poulin,season1,multiclass,quali
+Dave Carter,Chevrolet Corvette Z06 LMGT3.R,GT3,969,15,Finished Normally,6,124.0778,98.3,103.43,133.44672500000001,111.24,14.772592927755321,12.31,4,,,,,,,,,,Dave Carter,season1,multiclass,quali
+Dave Harris,Ferrari 296 LMGT3,GT3,91,16,Finished Normally,6,124.1309,98.26,103.48,131.57432,109.68,12.832097804217355,10.7,5,,,,,,,,,,Dave Harris,season1,multiclass,quali
+Gage Galvin,Lexus RCF LMGT3,GT3,420,17,Finished Normally,6,124.4645,97.99,103.76,127.53327999999999,106.31,4.9165384476275635,4.1,5,,,,,,,,,,Gage Galvin,season1,multiclass,quali
+R McLean,Porsche 911 GT3 R LMGT3,GT3,93,18,Finished Normally,5,124.8078,97.73,104.04,130.5058,108.79,9.112364970741679,7.6,3,,,,,,,,,,Ross McLean,season1,multiclass,quali
+Matthew Canelli,BMW M4 LMGT3,GT3,33,19,Finished Normally,6,125.3158,97.33,104.46,133.2976,111.12,15.52028471726599,12.94,5,,,,,,,,,,Matthew Canelli,season1,multiclass,quali
+Javier Tellez,Porsche 911 GT3 R LMGT3,GT3,67,20,Finished Normally,3,125.5623,97.14,104.67,127.8483,106.58,3.232892203584897,2.69,2,,,,,,,,,,Javier Tellez,season1,multiclass,quali
+Ron Heslop,McLaren 720S LMGT3 Evo,GT3,22,21,Finished Normally,5,125.6115,97.1,104.71,131.128125,109.31,8.530152659976252,7.11,4,,,,,,,,,,Ron Heslop,season1,multiclass,quali
+Macaronie Tout Garni,Ferrari 296 LMGT3,GT3,8,22,Finished Normally,6,125.6808,97.05,104.77,128.79456666666667,107.36,4.57156412438165,3.81,3,,,,,,,,,,Macaronie Tout Garni,season1,multiclass,quali
