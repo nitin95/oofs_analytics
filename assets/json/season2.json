@@ -1,0 +1,166 @@
+{
+  "sprint_qualis": {
+    "s4-sc1.xml": {
+      "name": "Imola",
+      "reference_times": {
+        "default": 101.82
+      }
+    },
+    "s4-sc2.xml": {
+      "name": "Barcelona",
+      "reference_times": {
+        "default": 100.6
+      }
+    },
+    "s4-sc3.xml": {
+      "name": "Silverstone",
+      "reference_times": {
+        "default": 117.76
+      }
+    },
+    "s4-sc4.xml": {
+      "name": "Fuji",
+      "reference_times": {
+        "default": 105.0
+      }
+    },
+    "s4-sc5.xml": {
+      "name": "Bahrain (outer)",
+      "reference_times": {
+        "default": 72.01
+      }
+    },
+    "s4-sc6.xml": {
+      "name": "Spa",
+      "reference_times": {
+        "default": 137.03
+      }
+    }
+  },
+  "sprint_races": {
+    "s4-sc1-r.xml": {
+      "name": "Imola",
+      "reference_times": {
+        "default": 102.33
+      }
+    },
+    "s4-sc2-r.xml": {
+      "name": "Barcelona",
+      "reference_times": {
+        "default": 101.1
+      }
+    },
+    "s4-sc3-r.xml": {
+      "name": "Silverstone",
+      "reference_times": {
+        "default": 133.72
+      }
+    },
+    "s4-sc4-r.xml": {
+      "name": "Fuji",
+      "reference_times": {
+        "default": 106.5
+      }
+    },
+    "s4-sc5-r.xml": {
+      "name": "Bahrain (outer)",
+      "reference_times": {
+        "default": 72.37
+      }
+    },
+    "s4-sc6-r.xml": {
+      "name": "Spa",
+      "reference_times": {
+        "default": 137.71
+      }
+    }
+  },
+  "multiclass_qualis": {
+    "s4-mc1.xml": {
+      "name": "Imola",
+      "reference_times": {
+        "hyper": 89.45,
+        "gt3": 101.82
+      }
+    },
+    "s4-mc2.xml": {
+      "name": "Barcelona",
+      "reference_times": {
+        "hyper": 88.59,
+        "gt3": 100.6
+      }
+    },
+    "s4-mc3.xml": {
+      "name": "Silverstone",
+      "reference_times": {
+        "hyper": 102.23,
+        "gt3": 117.76
+      }
+    },
+    "s4-mc4.xml": {
+      "name": "Fuji",
+      "reference_times": {
+        "hyper": 93.4,
+        "gt3": 105.0
+      }
+    },
+    "s4-mc5.xml": {
+      "name": "Bahrain (outer)",
+      "reference_times": {
+        "hyper": 63.94,
+        "gt3": 72.01
+      }
+    },
+    "s4-mc6.xml": {
+      "name": "Spa",
+      "reference_times": {
+        "hyper": 119.97,
+        "gt3": 137.03
+      }
+    }
+  },
+  "multiclass_races": {
+    "s4-mc1-r.xml": {
+      "name": "Imola",
+      "reference_times": {
+        "hyper": 89.89,
+        "gt3": 102.33
+      }
+    },
+    "s4-mc2-r.xml": {
+      "name": "Barcelona",
+      "reference_times": {
+        "hyper": 89.04,
+        "gt3": 101.1
+      }
+    },
+    "s4-mc3-r.xml": {
+      "name": "Silverstone",
+      "reference_times": {
+        "hyper": 111.2,
+        "gt3": 127.4
+      }
+    },
+    "s4-mc4-r.xml": {
+      "name": "Fuji",
+      "reference_times": {
+        "hyper": 91.0,
+        "gt3": 103.5
+      }
+    },
+    "s4-mc5-r.xml": {
+      "name": "Bahrain (outer)",
+      "reference_times": {
+        "hyper": 64.26,
+        "gt3": 72.37
+      }
+    },
+    "s4-mc6-r.xml": {
+      "name": "Spa",
+      "reference_times": {
+        "hyper": 120.57,
+        "gt3": 137.71
+      }
+    }
+  }
+}

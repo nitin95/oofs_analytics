@@ -1,0 +1,34 @@
+Driver,Car,CarClass,CarNumber,Position,FinishStatus,Laps,laptime_sec,laptime_pct,laptime_pct_alien,avg_laptime,avg_pace_pct_alien,stdev_laptime,stdev_pace_pct,lap_count,race_pace,pct_race_pace,consistency,reliability,n_tracklimits,n_inchidents,pct_laps,n_stops,pit_lane_pct_times,Driver_name,season_id,series_type,session_type
+Dakota Botello,Ferrari 499P,Hyper,33,1,Finished Normally,10,89.6556,100.0,101.84,90.3910875,102.68,1.0878593454742724,1.24,8,,,,,,,,,,Dakota Botello,season4,multiclass,quali
+Daniel Valasco,Porsche 963,Hyper,477,2,Finished Normally,8,89.7241,99.92,101.92,91.1167,103.5,1.8003140837087277,2.04,6,,,,,,,,,,Daniel Valasco,season4,multiclass,quali
+Owen Beerkircher,Porsche 963,Hyper,997,3,Finished Normally,9,89.7808,99.86,101.98,90.91001428571428,103.26,1.387998646047096,1.58,7,,,,,,,,,,Owen Beerkircher,season4,multiclass,quali
+C M Wilson,Genesis GMR-001,Hyper,177,4,Finished Normally,12,89.8516,99.78,102.06,90.82962,103.17,1.0595903392349333,1.2,5,,,,,,,,,,Chris Wilson,season4,multiclass,quali
+Willie Mangram,Ferrari 499P,Hyper,2,5,Finished Normally,8,89.9346,99.69,102.16,91.45383333333332,103.88,1.3274208237530891,1.51,3,,,,,,,,,,Willie Mangram,season4,multiclass,quali
+Owen LaMarra,Alpine A424,Hyper,811,6,Finished Normally,9,90.0078,99.61,102.24,91.37275,103.79,1.9356315033256366,2.2,4,,,,,,,,,,Owen LaMarra,season4,multiclass,quali
+Ethan Gonzales,Alpine A424,Hyper,985,7,Finished Normally,9,90.2773,99.31,102.55,92.61159999999998,105.2,2.3978056795050464,2.72,7,,,,,,,,,,Ethan Gonzales,season4,multiclass,quali
+Chris MacLennan,Peugeot 9x8,Hyper,114,8,Finished Normally,10,90.2992,99.29,102.57,91.0782375,103.46,1.2621048574702507,1.43,8,,,,,,,,,,Chris MacLennan,season4,multiclass,quali
+Dan Jr Poulin,BMW M Hybrid V8,Hyper,418,9,Finished Normally,10,90.3974,99.18,102.68,91.67850000000001,104.14,2.1304756714561806,2.42,7,,,,,,,,,,Dan Jr Poulin,season4,multiclass,quali
+Ryan Bellune,Genesis GMR-001,Hyper,228,10,Finished Normally,7,90.4235,99.15,102.71,90.5416,102.85,0.16701862171626014,0.19,2,,,,,,,,,,Ryan Bellune,season4,multiclass,quali
+Guillermo Paret,Lexus RCF LMGT3,GT3,52,1,Finished Normally,10,100.7601,100.0,101.59,102.96861666666666,103.82,3.642511467334957,3.67,6,,,,,,,,,,Guillermo Paret,season4,multiclass,quali
+Scarlett Brown,Porsche 911 GT3 R LMGT3,GT3,42,2,Finished Normally,9,101.0675,99.7,101.9,102.48925999999999,103.33,1.299081111016555,1.31,5,,,,,,,,,,Scarlett Brown,season4,multiclass,quali
+p thom,Porsche 911 GT3 R LMGT3,GT3,69,3,Finished Normally,9,101.108,99.66,101.94,101.72065714285714,102.56,0.6819347570384892,0.69,7,,,,,,,,,,Parker Thomas,season4,multiclass,quali
+Josh Popov,Porsche 911 GT3 R LMGT3,GT3,6,4,Finished Normally,7,101.2296,99.54,102.06,101.97152,102.81,0.8785229462000422,0.89,5,,,,,,,,,,Josh Popov,season4,multiclass,quali
+Nick Johnson,Porsche 911 GT3 R LMGT3,GT3,696,5,Finished Normally,7,101.4336,99.34,102.27,102.11548,102.96,0.6778822958301872,0.68,5,,,,,,,,,,Nick Johnson,season4,multiclass,quali
+Richie Wood,Aston Martin Vantage AMR LMGT3,GT3,101,6,Finished Normally,9,101.5256,99.25,102.36,102.39188571428569,103.23,1.108151138050176,1.12,7,,,,,,,,,,Richie Wood,season4,multiclass,quali
+Keith Drury,Ferrari 296 LMGT3 Evo,GT3,86,7,Finished Normally,10,101.5834,99.19,102.42,102.59052,103.43,1.341712278023867,1.35,5,,,,,,,,,,Keith Drury,season4,multiclass,quali
+John Calbick,Chevrolet Corvette Z06 LMGT3.R,GT3,9,8,Finished Normally,7,101.6067,99.17,102.44,103.38135,104.23,2.509734098465415,2.53,2,,,,,,,,,,John Calbick,season4,multiclass,quali
+Alex Laplante,Porsche 911 GT3 R LMGT3,GT3,71,9,Finished Normally,9,101.6577,99.12,102.49,102.36656666666666,103.21,0.8645212447746262,0.87,6,,,,,,,,,,Alex Laplante,season4,multiclass,quali
+Dustin Rand,Ford Mustang LMGT3,GT3,5,10,Finished Normally,6,101.7999,98.98,102.64,103.08134999999999,103.93,1.2686708438361842,1.28,4,,,,,,,,,,Dustin Rand,season4,multiclass,quali
+Mike Dougherty,Ferrari 296 LMGT3 Evo,GT3,26,11,Finished Normally,7,101.8203,98.96,102.66,102.50492000000001,103.35,0.7692577604418445,0.78,5,,,,,,,,,,Mike Dougherty,season4,multiclass,quali
+Harrison Miller,Ford Mustang LMGT3,GT3,17,12,Finished Normally,9,101.9031,98.88,102.74,103.31086,104.16,1.1978269879243848,1.21,5,,,,,,,,,,Harrison Miller,season4,multiclass,quali
+Holden Gawehn,BMW M4 LMGT3,GT3,420,13,Finished Normally,5,102.0724,98.71,102.91,103.15143333333333,104.0,1.0972840212694823,1.11,3,,,,,,,,,,Holden Gawehn,season4,multiclass,quali
+Ily Bordiyan,Porsche 911 GT3 R LMGT3,GT3,3,14,Finished Normally,9,102.2154,98.58,103.06,103.32514,104.18,1.1987270740247755,1.21,5,,,,,,,,,,Ily Bordiyan,season4,multiclass,quali
+Jesse Olsen,BMW M4 LMGT3,GT3,16,15,Finished Normally,9,102.2506,98.54,103.09,105.78578,106.66,5.018595925854163,5.06,5,,,,,,,,,,Jesse Olsen,season4,multiclass,quali
+Abe Wozniak,Aston Martin Vantage AMR LMGT3,GT3,25,16,Finished Normally,9,102.3484,98.45,103.19,104.21576666666665,105.07,2.7161547214153106,2.74,6,,,,,,,,,,Abe Wozniak,season4,multiclass,quali
+Ryan Dangler,Lamborghini Huracan LMGT3 Evo2,GT3,11,17,Finished Normally,5,102.57,98.24,103.41,103.97059999999999,104.83,1.6405491245311732,1.65,3,,,,,,,,,,Ryan Dangler,season4,multiclass,quali
+Dave Carter,Ferrari 296 LMGT3 Evo,GT3,390,18,Finished Normally,9,102.5837,98.22,103.43,103.74575714285716,104.6,1.155977588965496,1.17,7,,,,,,,,,,Dave Carter,season4,multiclass,quali
+Brian Crane,Aston Martin Vantage AMR LMGT3,GT3,223,19,Finished Normally,6,102.6865,98.12,103.53,104.01615000000001,104.87,1.4991457845497684,1.51,4,,,,,,,,,,Brian Crane,season4,multiclass,quali
+Justin Jackson,Porsche 911 GT3 R LMGT3,GT3,13,20,Finished Normally,9,102.7818,98.03,103.63,103.37803333333333,104.23,0.5392847843826728,0.54,6,,,,,,,,,,Justin Jackson,season4,multiclass,quali
+Dick Garcia,Aston Martin Vantage AMR LMGT3,GT3,57,21,Finished Normally,4,104.6706,96.26,105.53,104.92275,105.79,0.35659394975237635,0.36,2,,,,,,,,,,Dick Garcia,season4,multiclass,quali
+bt bt,Porsche 911 GT3 R LMGT3,GT3,43,22,None,9,104.7227,96.22,105.58,106.80341999999999,107.68,2.6253302491305757,2.65,5,,,,,,,,,,bt bt,season4,multiclass,quali
+Daniel DuChaine,Ford Mustang LMGT3,GT3,173,23,Finished Normally,4,108.8584,92.56,109.75,109.41284999999999,110.31,0.7841107096577564,0.79,2,,,,,,,,,,Daniel DuChaine,season4,multiclass,quali

@@ -1,15 +1,10 @@
-"""
-Generate GitHub Pages HTML report from XML pace data
-This script processes XML files and generates an interactive multi-page dashboard.
-"""
+"""Generate GitHub Pages reports from precomputed event descriptor CSVs."""
 
 import os
+import colorsys
 import pandas as pd
-import xml.etree.ElementTree as ET
 import numpy as np
 import json
-import seaborn as sns
-from matplotlib.colors import to_hex
 
 # ===== MULTI-SEASON CONFIGURATION =====
 # Season metadata
@@ -36,136 +31,6 @@ SEASONS = {
     },
 }
 
-# Season-based race configurations
-SEASON_CONFIG = {
-    'season1': {
-        'sprint_qualis': {
-            's3-sc1.xml': {'name': 'Portimao', 'ref_time': 103.23},
-            's3-sc2.xml': {'name': 'Le Mans', 'ref_time': 235.4},
-            's3-sc3.xml': {'name': 'Interlagos', 'ref_time': 93.46},
-            's3-sc4.xml': {'name': 'Monza', 'ref_time': 99.01},
-            's3-sc5.xml': {'name': 'Sebring', 'ref_time': 119.96},
-            's3-sc6.xml': {'name': 'Paul Ricard', 'ref_time': 123.35},
-            's3-sc7.xml': {'name': 'COTA', 'ref_time': 125.58},
-            's3-sc8.xml': {'name': 'Spa', 'ref_time': 137.32},
-        },
-        'sprint_races': {
-            's3-sc1-r.xml': {'name': 'Portimao', 'ref_time': 103.75},
-            's3-sc2-r.xml': {'name': 'Le Mans', 'ref_time': 236.58},
-            's3-sc3-r.xml': {'name': 'Interlagos', 'ref_time': 93.93},
-            's3-sc4-r.xml': {'name': 'Monza', 'ref_time': 99.51},
-            's3-sc5-r.xml': {'name': 'Sebring', 'ref_time': 120.56},
-            's3-sc6-r.xml': {'name': 'Paul Ricard', 'ref_time': 123.97},
-            's3-sc7-r.xml': {'name': 'COTA', 'ref_time': 126.20},
-            's3-sc8-r.xml': {'name': 'Spa', 'ref_time': 138.01},
-        },
-        'multiclass_qualis': {
-            's3-mc1.xml': {'name': 'Portimao', 'ref_time_p2ur': 91.53, 'ref_time_gt3': 103.23},
-            's3-mc2.xml': {'name': 'Le Mans', 'ref_time_p2ur': 206.83, 'ref_time_gt3': 235.4},
-            's3-mc3.xml': {'name': 'Interlagos', 'ref_time_p2ur': 82.86, 'ref_time_gt3': 93.46},
-            's3-mc4.xml': {'name': 'Monza', 'ref_time_p2ur': 87.27, 'ref_time_gt3': 99.01},
-            's3-mc5.xml': {'name': 'Sebring', 'ref_time_p2ur': 105.53, 'ref_time_gt3': 119.96},
-            's3-mc6.xml': {'name': 'Paul Ricard', 'ref_time_p2ur': 109.24, 'ref_time_gt3': 123.44},
-            's3-mc7.xml': {'name': 'COTA', 'ref_time_p2ur': 112.81, 'ref_time_gt3': 125.61},
-            's3-mc8.xml': {'name': 'Spa', 'ref_time_p2ur': 120.98, 'ref_time_gt3': 137.32},
-        },
-        'multiclass_races': {
-            's3-mc1-r.xml': {'name': 'Portimao', 'ref_time_p2ur': 91.99, 'ref_time_gt3': 103.75},
-            's3-mc2-r.xml': {'name': 'Le Mans', 'ref_time_p2ur': 207.86, 'ref_time_gt3': 236.58},
-            's3-mc3-r.xml': {'name': 'Interlagos', 'ref_time_p2ur': 83.27, 'ref_time_gt3': 93.93},
-            's3-mc4-r.xml': {'name': 'Monza', 'ref_time_p2ur': 87.70, 'ref_time_gt3': 99.51},
-            's3-mc5-r.xml': {'name': 'Sebring', 'ref_time_p2ur': 106.06, 'ref_time_gt3': 120.56},
-            's3-mc6-r.xml': {'name': 'Paul Ricard', 'ref_time_p2ur': 109.79, 'ref_time_gt3': 123.97},
-            's3-mc7-r.xml': {'name': 'COTA', 'ref_time_p2ur': 113.37, 'ref_time_gt3': 126.20},
-            's3-mc8-r.xml': {'name': 'Spa', 'ref_time_p2ur': 121.59, 'ref_time_gt3': 138.01},
-        },
-    },
-    'season2': {
-        'sprint_qualis': {
-            's4-sc1.xml': {'name': 'Imola', 'ref_time': 101.82},
-            's4-sc2.xml': {'name': 'Barcelona', 'ref_time': 100.60},
-            's4-sc3.xml': {'name': 'Silverstone', 'ref_time': 117.76},
-            's4-sc4.xml': {'name': 'Fuji', 'ref_time': 105.0},
-            's4-sc5.xml': {'name': 'Bahrain (outer)', 'ref_time': 72.01},
-            's4-sc6.xml': {'name': 'Spa', 'ref_time': 137.03}
-        },
-        'sprint_races': {
-            's4-sc1-r.xml': {'name': 'Imola', 'ref_time': 102.33},
-            's4-sc2-r.xml': {'name': 'Barcelona', 'ref_time': 101.10},
-            's4-sc3-r.xml': {'name': 'Silverstone', 'ref_time': 133.72},
-            's4-sc4-r.xml': {'name': 'Fuji', 'ref_time': 106.5},
-            's4-sc5-r.xml': {'name': 'Bahrain (outer)', 'ref_time': 72.37},
-            's4-sc6-r.xml': {'name': 'Spa', 'ref_time': 137.71}
-        },
-        'multiclass_qualis': {
-            's4-mc1.xml': {'name': 'Imola', 'ref_time_hyper': 89.45, 'ref_time_gt3': 101.82},
-            's4-mc2.xml': {'name': 'Barcelona', 'ref_time_hyper': 88.59, 'ref_time_gt3': 100.60},
-            's4-mc3.xml': {'name': 'Silverstone', 'ref_time_hyper': 102.23, 'ref_time_gt3': 117.76},
-            's4-mc4.xml': {'name': 'Fuji', 'ref_time_hyper': 93.4, 'ref_time_gt3': 105.0},
-            's4-mc5.xml': {'name': 'Bahrain (outer)', 'ref_time_hyper': 63.94, 'ref_time_gt3': 72.01},
-            's4-mc6.xml': {'name': 'Spa', 'ref_time_hyper': 119.97, 'ref_time_gt3': 137.03}
-        },
-        'multiclass_races': {
-            's4-mc1-r.xml': {'name': 'Imola', 'ref_time_hyper': 89.89, 'ref_time_gt3': 102.33},
-            's4-mc2-r.xml': {'name': 'Barcelona', 'ref_time_hyper': 89.04, 'ref_time_gt3': 101.10},
-            's4-mc3-r.xml': {'name': 'Silverstone', 'ref_time_hyper': 111.20, 'ref_time_gt3': 127.40},
-            's4-mc4-r.xml': {'name': 'Fuji', 'ref_time_hyper': 91.0, 'ref_time_gt3': 103.5},
-            's4-mc5-r.xml': {'name': 'Bahrain (outer)', 'ref_time_hyper': 64.26, 'ref_time_gt3': 72.37},
-            's4-mc6-r.xml': {'name': 'Spa', 'ref_time_hyper': 120.57, 'ref_time_gt3': 137.71}
-        }
-    },
-    'season3': { # bop-tourism reference times used from this season onwards (unless otherwise specified); more up-to-date than Ohne
-        'sprint_qualis': {
-            's5-sc1.xml': {'name': 'Portimao', 'ref_time_lmp3': 97.76, 'ref_time_gt3': 102.91},
-            's5-sc2.xml': {'name': 'Sebring', 'ref_time_lmp3': 113.79, 'ref_time_gt3': 119.87},
-            's5-sc3.xml': {'name': 'Interlagos', 'ref_time_lmp3': 97.90, 'ref_time_gt3': 102.29}, # Wet reference times determined to normalize Greg/Neron's pace to first two rounds
-            's5-sc4.xml': {'name': 'Daytona', 'ref_time_lmp3': 100.86, 'ref_time_gt3': 104.85},
-            's5-sc5.xml': {'name': 'COTA', 'ref_time_lmp3':121.13, 'ref_time_gt3': 126.427},
-            's5-sc6.xml': {'name': 'Spa', 'ref_time_lmp3': 129.874, 'ref_time_gt3': 136.963}
-        },
-        'sprint_races': {
-            's5-sc1-r.xml': {'name': 'Portimao', 'ref_time_lmp3': 99.15, 'ref_time_gt3': 103.81},
-            's5-sc2-r.xml': {'name': 'Sebring', 'ref_time_lmp3': 115.33, 'ref_time_gt3': 120.66},
-            's5-sc3-r.xml': {'name': 'Interlagos', 'ref_time_lmp3': 103.28, 'ref_time_gt3': 107.42}, # Wet reference times determined to normalize Greg/Rubio's pace to first two rounds; GT3 pace is slightly different from mc due to different track conditions.
-            's5-sc4-r.xml': {'name': 'Daytona', 'ref_time_lmp3': 101.36, 'ref_time_gt3': 105.38},
-            's5-sc5-r.xml': {'name': 'COTA', 'ref_time_lmp3': 121.735, 'ref_time_gt3': 127.059},
-            's5-sc6-r.xml': {'name': 'Spa', 'ref_time_lmp3': 130.734, 'ref_time_gt3': 137.894}
-        },
-        'multiclass_qualis': {
-            's5-mc1.xml': {'name': 'Portimao', 'ref_time_hyper': 91.36, 'ref_time_gt3': 102.91},
-            's5-mc2.xml': {'name': 'Sebring', 'ref_time_hyper': 105.98, 'ref_time_gt3': 119.87},
-            's5-mc3.xml': {'name': 'Interlagos', 'ref_time_hyper': 82.52, 'ref_time_gt3': 93.29},
-            's5-mc4.xml': {'name': 'Daytona', 'ref_time_hyper': 92.33, 'ref_time_gt3': 104.85},
-            's5-mc5.xml': {'name': 'COTA', 'ref_time_hyper': 112.156, 'ref_time_gt3': 126.427},
-            's5-mc6.xml': {'name': 'Spa', 'ref_time_hyper': 119.963, 'ref_time_gt3': 136.963}
-        },
-        'multiclass_races': {
-            's5-mc1-r.xml': {'name': 'Portimao', 'ref_time_hyper': 92.27, 'ref_time_gt3': 103.81},
-            's5-mc2-r.xml': {'name': 'Sebring', 'ref_time_hyper': 106.82, 'ref_time_gt3': 120.66},
-            's5-mc3-r.xml': {'name': 'Interlagos', 'ref_time_hyper': 96.36, 'ref_time_gt3': 106.87},    # Wet reference times determined to normalize Greg/Karl's pace to first two rounds.
-            's5-mc4-r.xml': {'name': 'Daytona', 'ref_time_hyper': 92.79, 'ref_time_gt3': 105.38},
-            's5-mc5-r.xml': {'name': 'COTA', 'ref_time_hyper': 112.716, 'ref_time_gt3': 127.059},
-            's5-mc6-r.xml': {'name': 'Spa', 'ref_time_hyper': 120.57, 'ref_time_gt3': 138.861}          # NOTE: This is the first race where 60+ min GT3 race pace data was available in bop-tourism, some shifts may happen in the percentage pace as a result.
-                                                                                                        # NOTE 2: Hypercar race pace data is unavailable on bop-tourism, and given that quali reference is very close to season 4, I'm keeping the race pace target the same.
-        }
-    },
-    'season4': {
-        'sprint_qualis': {
-            's6-sc1.xml': {'name': 'Fuji', 'ref_time_lmp3': 94.197, 'ref_time_gt3': 99.184},
-        },
-        'sprint_races': {
-            's6-sc1-r.xml': {'name': 'Fuji', 'ref_time_lmp3': 94.579, 'ref_time_gt3': 100.776},
-        },
-        'multiclass_qualis': {
-            's6-mc1.xml': {'name': 'Fuji', 'ref_time_hyper': 88.036, 'ref_time_gt3': 99.184},
-        },
-        'multiclass_races': {
-            's6-mc1-r.xml': {'name': 'Fuji', 'ref_time_hyper': 89.127, 'ref_time_gt3': 100.776},
-        }
-    },
-    # Add more seasons here as needed
-}
-
 DRIVER_REPLACEMENTS = {
     'Greg Kach': 'Greg Kachadurian',
     'R McLean': 'Ross McLean',
@@ -183,6 +48,14 @@ DRIVER_REPLACEMENTS = {
     'C M Wilson': 'Chris Wilson',
     'T Ducharme': 'Tim Ducharme',
 }
+
+
+def load_season_config(season_id, config_root='assets/json'):
+    """Load event metadata and pace references from a season JSON file."""
+    config_path = os.path.join(config_root, f'{season_id}.json')
+    with open(config_path, 'r', encoding='utf-8') as config_file:
+        return json.load(config_file)
+
 
 # TRACK_NAMES = ['Portimao', 'Le Mans', 'Interlagos', 'Monza', 'Sebring', 'Paul Ricard', 'COTA', 'Spa']
 
@@ -213,11 +86,11 @@ def get_driver_category(car_class, series_type):
     return None
 
 
-def get_configured_xml_files(season_id, series_type):
-    """Return configured XML files for a series, including quali and races."""
-    season_config = SEASON_CONFIG.get(season_id, {})
+def get_configured_event_csvs(season_id, series_type):
+    """Return configured event CSV paths for a series, including quali and races."""
+    season_config = load_season_config(season_id)
     return [
-        build_xml_path(season_id, series_type, filename)
+        build_csv_path(season_id, series_type, filename)
         for section_name, races in season_config.items()
         if section_name.startswith(series_type)
         for filename in races
@@ -225,18 +98,18 @@ def get_configured_xml_files(season_id, series_type):
 
 
 def iter_series_driver_records(season_id, series_type):
-    """Yield canonical driver names and categories from configured series XML."""
-    for xml_path in get_configured_xml_files(season_id, series_type):
-        if not os.path.exists(xml_path):
+    """Yield canonical driver names and categories from configured event CSVs."""
+    for csv_path in get_configured_event_csvs(season_id, series_type):
+        if not os.path.exists(csv_path):
             continue
         try:
-            root = ET.parse(xml_path).getroot()
-        except ET.ParseError:
+            event_data = pd.read_csv(csv_path)
+        except (OSError, pd.errors.ParserError):
             continue
 
-        for driver_elem in root.iter('Driver'):
-            name = normalize_driver_name(driver_elem.findtext('Name', 'Unknown'))
-            car_class = driver_elem.findtext('CarClass', '')
+        for _, driver in event_data.iterrows():
+            name = normalize_driver_name(driver.get('Driver_name', driver.get('Driver', 'Unknown')))
+            car_class = driver.get('CarClass', '')
             yield name, get_driver_category(car_class, series_type)
 
 
@@ -298,68 +171,36 @@ def format_driver_name(driver_name, rookie_names=(), abbreviated=True):
     return name
 
 
-def calculate_lap_stats(laps_data):
-    """
-    Calculate statistics from list of lap times.
-    
-    Args:
-        laps_data: List of lap time floats
-        
-    Returns:
-        Dict with 'best', 'avg', 'stdev', 'count' keys
-    """
-    if not laps_data or len(laps_data) == 0:
-        return {'best': 0.0, 'avg': 0.0, 'stdev': 0.0, 'count': 0}
-    
-    laps_array = np.array(laps_data)
-    return {
-        'best': float(np.min(laps_array)),
-        'avg': float(np.mean(laps_array)),
-        'stdev': np.std(laps_array, ddof=1) if len(laps_array) > 1 else 0.0,
-        'count': len(laps_data)
-    }
-
-
-def build_xml_path(season_id, series_type, filename):
-    """
-    Build XML file path for a season.
-    
-    Args:
-        season_id: Season identifier (e.g., 'season1')
-        series_type: 'sprint' or 'multiclass'
-        filename: XML filename
-        
-    Returns:
-        Full path to XML file
-    """
-    return os.path.join('xml', season_id, series_type, filename)
+def build_csv_path(season_id, series_type, xml_filename, output_root='assets/csv'):
+    """Return the CSV path corresponding to a configured XML event filename."""
+    csv_filename = os.path.splitext(xml_filename)[0] + '.csv'
+    return os.path.join(output_root, season_id, series_type, csv_filename)
 
 
 def season_has_sprint_class_data(season_id, class_names=('LMP3', 'P3')):
-    """Return True if any sprint XML file for the season contains the requested class."""
-    if season_id not in SEASON_CONFIG:
+    """Return True if any sprint event CSV contains the requested class."""
+    if season_id not in SEASONS:
         return False
 
+    season_config = load_season_config(season_id)
     sprint_files = []
-    sprint_files.extend(SEASON_CONFIG[season_id].get('sprint_qualis', {}).keys())
-    sprint_files.extend(SEASON_CONFIG[season_id].get('sprint_races', {}).keys())
+    sprint_files.extend(season_config.get('sprint_qualis', {}).keys())
+    sprint_files.extend(season_config.get('sprint_races', {}).keys())
 
-    xml_folder = os.path.join('xml', season_id, 'sprint')
     for filename in sprint_files:
-        xml_path = os.path.join(xml_folder, filename)
-        if not os.path.exists(xml_path):
+        csv_path = build_csv_path(season_id, 'sprint', filename)
+        if not os.path.exists(csv_path):
             continue
 
         try:
-            tree = ET.parse(xml_path)
-            root = tree.getroot()
-        except ET.ParseError:
+            event_data = pd.read_csv(csv_path, usecols=['CarClass'])
+        except (OSError, pd.errors.ParserError, ValueError):
             continue
 
-        for driver_elem in root.iter('Driver'):
-            car_class = driver_elem.findtext('CarClass', '')
-            if any(class_name.lower() in str(car_class).lower() for class_name in class_names):
-                return True
+        if event_data['CarClass'].fillna('').str.contains(
+            '|'.join(class_names), case=False, regex=True
+        ).any():
+            return True
 
     return False
 
@@ -423,189 +264,49 @@ def get_sidebar_html(active_page, season_id='season1'):
     return sidebar_html
 
 
-def extract_xml_drivers(xml_path):
-    """Parse XML file and extract driver lap time data including all individual laps"""
-    tree = ET.parse(xml_path)
-    root = tree.getroot()
-    child = root[0]
-    subchild = child[-1]
-    drivers_data = []
-    
-    for driver_elem in subchild.findall('Driver'):
-        driver_info = {}
-        driver_info['Driver'] = driver_elem.findtext('Name', 'Unknown')
-        driver_info['Car'] = driver_elem.findtext('CarType', 'Unknown')
-        driver_info['CarClass'] = driver_elem.findtext('CarClass', 'Unknown')
-        driver_info['CarNumber'] = driver_elem.findtext('CarNumber', 'N/A')
-        driver_info['Position'] = driver_elem.findtext('Position', 'N/A')
-        driver_info['BestLapTime'] = driver_elem.findtext('BestLapTime', '')
-        driver_info['Laps'] = driver_elem.findtext('Laps', '0')
-        driver_info['FinishStatus'] = driver_elem.findtext('FinishStatus', '')
-        
-        # Extract all lap times
-        lap_elements = driver_elem.findall('Lap')
-        laps_data = []
-        for lap_elem in lap_elements:
-            try:
-                lap_time = float(lap_elem.text) if lap_elem.text else 0.0
-                if len(laps_data)>0 and lap_time > min(laps_data)*1.07:  # Filter out outlier lap times (e.g., pit stops, crashes)
-                    print(f"Warning: Outlier lap time for driver {driver_info['Driver']}: {lap_elem.text} (min lap: {min(laps_data)})")
-                    continue
-                if lap_time > 0:
-                    laps_data.append(lap_time)
-            except (ValueError, TypeError) as e:
-                print(f"Warning: Invalid lap time for driver {driver_info['Driver']}: {lap_elem.text} ({e})")
-                continue
-        
-        driver_info['laps_data'] = laps_data
-        
-        # Calculate lap statistics
-        lap_stats = calculate_lap_stats(laps_data)
-        driver_info['best_laptime'] = lap_stats['best']
-        driver_info['avg_laptime'] = lap_stats['avg']
-        driver_info['stdev_laptime'] = lap_stats['stdev']
-        driver_info['lap_count'] = lap_stats['count']
-        
-        # Format best lap time for display
-        try:
-            best_lap_float = float(driver_info['BestLapTime'])
-            minutes = int(best_lap_float // 60)
-            seconds = best_lap_float % 60
-            driver_info['Best Lap'] = f"{minutes}:{seconds:06.3f}"
-            driver_info['Best Lap  Laps'] = f"{minutes}:{seconds:06.3f}"
-        except (ValueError, TypeError):
-            if driver_info['BestLapTime']:
-                driver_info['Best Lap'] = driver_info['BestLapTime']
-                driver_info['Best Lap  Laps'] = driver_info['BestLapTime']
-            else:
-                driver_info['Best Lap'] = 'DNF'
-                driver_info['Best Lap  Laps'] = 'DNF'
-        
-        drivers_data.append(driver_info)
-    
-    if drivers_data:
-        return [pd.DataFrame(drivers_data)]
-    else:
-        return []
-
-
-def convert_laptime_to_seconds(laptime_str):
-    """Convert laptime string (MM:SS.SSS or float) to seconds"""
-    if pd.isna(laptime_str) or laptime_str == '' or laptime_str == 'DNF':
-        return 0.0
-    
-    str_val = str(laptime_str).strip()
-    
-    if ':' in str_val:
-        try:
-            parts = str_val.split(':')
-            minutes = float(parts[0])
-            seconds = float(parts[1])
-            return minutes * 60 + seconds
-        except (ValueError, IndexError):
-            return 0.0
-    
-    try:
-        return float(str_val)
-    except ValueError:
-        return 0.0
-
-
-def process_race_data(xml_path, ref_laptime):
-    """Process a single race XML file with lap statistics"""
-    tables = extract_xml_drivers(xml_path)
-    if not tables:
+def load_event_csv(csv_path, car_class=None):
+    """Load one event CSV and optionally filter it to a requested class."""
+    if not os.path.exists(csv_path):
         return None
-    
-    df = tables[0].copy()
-    df['laptime_sec'] = df['Best Lap  Laps'].apply(convert_laptime_to_seconds)
-    df['Driver_name'] = df['Driver'].apply(normalize_driver_name)
-    
-    # Calculate pace percentages from best lap
-    min_laptime = df[df['laptime_sec'] > 0]['laptime_sec'].min()
-    df['laptime_pct'] = round(min_laptime / df['laptime_sec'] * 100, 2) if min_laptime > 0 else 100
-    df['laptime_pct_alien'] = round(df['laptime_sec'] / ref_laptime * 100, 2) if ref_laptime > 0 else 100
-    
-    # Calculate pace percentages from average lap
-    df['avg_pace_pct_alien'] = round(df['avg_laptime'] / ref_laptime * 100, 2) if ref_laptime > 0 else 100
-    df['stdev_pace_pct'] = round(df['stdev_laptime'] / ref_laptime * 100, 2) if ref_laptime > 0 else 0
-    
-    return df
+    frame = pd.read_csv(csv_path)
+    if car_class:
+        class_name = car_class.upper()
+        if class_name in ('P2UR', 'PROTOTYPE'):
+            class_pattern = 'LMP2_ELMS|P2UR|Hyper'
+        elif class_name == 'HYPER':
+            class_pattern = 'Hyper'
+        elif class_name == 'LMP3':
+            class_pattern = 'LMP3|^P3$'
+        elif class_name == 'GT3':
+            class_pattern = 'GT3'
+        else:
+            class_pattern = car_class
+        frame = frame[frame['CarClass'].fillna('').str.contains(
+            class_pattern, case=False, regex=True
+        )].copy()
+    return frame if not frame.empty else None
 
 
-def process_multiclass_race_data(xml_path, car_class, ref_laptime):
-    """Process a single multiclass race XML file, filtered by car class (P2UR or GT3)"""
-    tables = extract_xml_drivers(xml_path)
-    if not tables:
-        return None
-    
-    df = tables[0].copy()
-    
-    # Filter by car class
-    if car_class.upper() == 'P2UR':
-        df = df[df['CarClass'].str.contains('LMP2_ELMS', case=False, na=False)]
-    elif car_class.upper() == 'GT3':
-        df = df[df['CarClass'].str.contains('GT3', case=False, na=False)]
-    elif car_class.upper() == 'HYPER':
-        df = df[df['CarClass'].str.contains('Hyper', case=False, na=False)]
-    
-    if df.empty:
-        return None
-    
-    df['laptime_sec'] = df['Best Lap  Laps'].apply(convert_laptime_to_seconds)
-    df['Driver_name'] = df['Driver'].apply(normalize_driver_name)
-    
-    # Calculate pace percentages from best lap
-    min_laptime = df[df['laptime_sec'] > 0]['laptime_sec'].min()
-    df['laptime_pct'] = round(min_laptime / df['laptime_sec'] * 100, 2) if min_laptime > 0 else 100
-    df['laptime_pct_alien'] = round(df['laptime_sec'] / ref_laptime * 100, 2) if ref_laptime > 0 else 100
-
-    # Calculate pace percentages from average lap
-    df['avg_pace_pct_alien'] = round(df['avg_laptime'] / ref_laptime * 100, 2) if ref_laptime > 0 else 100
-    df['stdev_pace_pct'] = round(df['stdev_laptime'] / ref_laptime * 100, 2) if ref_laptime > 0 else 0
-    
-    return df
+def process_race_data(csv_path, ref_laptime=None):
+    """Load precomputed event statistics from a CSV."""
+    return load_event_csv(csv_path)
 
 
-def process_sprint_race_data(xml_path, car_class, ref_laptime):
-    """
-    Process a single sprint race XML file, filtered by car class (LMP3 or GT3).
-    Used for mixed-class sprint races (e.g., s5-sc1-r.xml containing both LMP3 and GT3 drivers).
-    """
-    tables = extract_xml_drivers(xml_path)
-    if not tables:
-        return None
-    
-    df = tables[0].copy()
-    
-    # Filter by car class
-    if car_class.upper() == 'LMP3':
-        df = df[df['CarClass'].str.contains('LMP3', case=False, na=False)]
-    elif car_class.upper() == 'GT3':
-        df = df[df['CarClass'].str.contains('GT3', case=False, na=False)]
-    
-    if df.empty:
-        return None
-    
-    df['laptime_sec'] = df['Best Lap  Laps'].apply(convert_laptime_to_seconds)
-    df['Driver_name'] = df['Driver'].apply(normalize_driver_name)
-    
-    # Calculate pace percentages from best lap
-    min_laptime = df[df['laptime_sec'] > 0]['laptime_sec'].min()
-    df['laptime_pct'] = round(min_laptime / df['laptime_sec'] * 100, 2) if min_laptime > 0 else 100
-    df['laptime_pct_alien'] = round(df['laptime_sec'] / ref_laptime * 100, 2) if ref_laptime > 0 else 100
+def process_multiclass_race_data(csv_path, car_class, ref_laptime=None):
+    """Load precomputed multiclass event statistics for one class."""
+    return load_event_csv(csv_path, car_class)
 
-    # Calculate pace percentages from average lap
-    df['avg_pace_pct_alien'] = round(df['avg_laptime'] / ref_laptime * 100, 2) if ref_laptime > 0 else 100
-    df['stdev_pace_pct'] = round(df['stdev_laptime'] / ref_laptime * 100, 2) if ref_laptime > 0 else 0
-    
-    return df
+
+def process_sprint_race_data(csv_path, car_class, ref_laptime=None):
+    """Load precomputed sprint event statistics for one class."""
+    return load_event_csv(csv_path, car_class)
 
 
 def extract_code_from_filename(filename, prefix):
     """Extract race code from filename (e.g., 's3-sc1-r.xml' -> 'sc1')"""
     # Remove prefix and extensions
-    name = filename.replace(f'{prefix}-', '').replace('-r.xml', '').replace('.xml', '')
+    name = filename.replace(f'{prefix}-', '').replace('-r.xml', '').replace('-r.csv', '')
+    name = name.replace('.xml', '').replace('.csv', '')
     return name
 
 
@@ -624,6 +325,8 @@ def load_races_dynamically(config_dict, xml_folder):
     code_to_track = {}
     
     # Get prefix from first filename for code extraction
+    if not config_dict:
+        return race_codes, track_names, code_to_track
     first_filename = list(config_dict.keys())[0]
     if 'sc' in first_filename.split('-')[1]:
         prefix = 'sc'
@@ -636,8 +339,8 @@ def load_races_dynamically(config_dict, xml_folder):
     sorted_items = sorted(config_dict.items(), key=lambda x: x[0])
     
     for filename, race_info in sorted_items:
-        xml_path = os.path.join(xml_folder, filename)
-        if os.path.exists(xml_path):
+        csv_path = os.path.join(xml_folder, filename)
+        if os.path.exists(csv_path):
             track_name = race_info['name']
             
             # Extract code from filename
@@ -653,97 +356,70 @@ def load_races_dynamically(config_dict, xml_folder):
 def process_races_into_comparison_df(
     dfs_dict, race_codes, code_to_track, season_id=None, series_type=None, category=None
 ):
-    """
-    Build a comparison dataframe from loaded race dataframes.
-    
-    Args:
-        dfs_dict: Dictionary of {track_name: dataframe}
-        race_codes: List of race codes in order (e.g., ['sc1', 'sc2', 'sc3'])
-        code_to_track: Dict mapping code to track name
-    
-    Returns:
-        - comparison_df: Merged dataframe with all races
-        - pace_cols: List of pace column names (best lap basis)
-        - avg_pace_cols: List of average pace column names
-        - used_race_codes: List of race codes that were actually successfully merged
-        - used_track_names: List of track names that were actually successfully merged
-    """
+    """Merge per-event pace and descriptor columns into a season comparison."""
     if not race_codes:
         return None, [], [], [], []
-    
-    # Start with first race
+
+    legacy_columns = [
+        'laptime_sec', 'laptime_pct', 'laptime_pct_alien', 'avg_laptime',
+        'avg_pace_pct_alien', 'stdev_laptime', 'stdev_pace_pct',
+    ]
+    descriptor_columns = [
+        'Position', 'race_pace', 'pct_race_pace', 'consistency', 'reliability',
+        'n_tracklimits', 'n_inchidents', 'pct_laps', 'n_stops',
+        'pit_lane_pct_times',
+    ]
+
+    def event_frame(track_name, code):
+        frame = dfs_dict[track_name]
+        available = ['Driver_name'] + [
+            column for column in legacy_columns + descriptor_columns
+            if column in frame.columns
+        ]
+        renamed = {
+            column: f'{column.lower()}_{code}'
+            for column in descriptor_columns
+            if column in frame.columns
+        }
+        renamed.update({
+            column: f'{column}_{code}'
+            for column in legacy_columns if column in frame.columns
+        })
+        return frame[available].rename(columns=renamed).copy()
+
     first_code = race_codes[0]
     first_track = code_to_track[first_code]
-    
     if first_track not in dfs_dict:
-        print(f"    DEBUG: first_track '{first_track}' not in dfs_dict keys: {list(dfs_dict.keys())}")
         return None, [], [], [], []
-    
-    print(f"    DEBUG: Starting comparison_df from {first_track} with shape {dfs_dict[first_track].shape}")
-    comparison_df = dfs_dict[first_track][['Driver_name', 'laptime_sec', 'laptime_pct', 'laptime_pct_alien', 'avg_laptime', 'avg_pace_pct_alien', 'stdev_laptime', 'stdev_pace_pct']].rename(
-        columns={
-            'laptime_sec': f'laptime_sec_{first_code}',
-            'laptime_pct': f'laptime_pct_{first_code}',
-            'laptime_pct_alien': f'laptime_pct_alien_{first_code}',
-            'avg_laptime': f'avg_laptime_{first_code}',
-            'avg_pace_pct_alien': f'avg_pace_pct_alien_{first_code}',
-            'stdev_laptime': f'stdev_laptime_{first_code}',
-            'stdev_pace_pct': f'stdev_pace_pct_{first_code}',
-        }
-    ).copy()
-    
+
+    comparison_df = event_frame(first_track, first_code)
     pace_cols = [f'laptime_pct_alien_{first_code}']
     avg_pace_cols = [f'avg_pace_pct_alien_{first_code}']
     used_race_codes = [first_code]
     used_track_names = [first_track]
-    
-    print(f"    DEBUG: After first race, comparison_df shape: {comparison_df.shape}")
-    
-    # Merge remaining races
+
     for code in race_codes[1:]:
         track_name = code_to_track[code]
-        if track_name in dfs_dict:
-            print(f"    DEBUG: Merging {track_name}...")
-            comparison_df = comparison_df.merge(
-                dfs_dict[track_name][['Driver_name', 'laptime_sec', 'laptime_pct', 'laptime_pct_alien', 'avg_laptime', 'avg_pace_pct_alien', 'stdev_laptime', 'stdev_pace_pct']].rename(
-                    columns={
-                        'laptime_sec': f'laptime_sec_{code}',
-                        'laptime_pct': f'laptime_pct_{code}',
-                        'laptime_pct_alien': f'laptime_pct_alien_{code}',
-                        'avg_laptime': f'avg_laptime_{code}',
-                        'avg_pace_pct_alien': f'avg_pace_pct_alien_{code}',
-                        'stdev_laptime': f'stdev_laptime_{code}',
-                        'stdev_pace_pct': f'stdev_pace_pct_{code}',
-                    }
-                ),
-                on='Driver_name',
-                how='outer'
-            )
-            print(f"    DEBUG: After merge with {track_name}, shape: {comparison_df.shape}")
-            pace_cols.append(f'laptime_pct_alien_{code}')
-            avg_pace_cols.append(f'avg_pace_pct_alien_{code}')
-            used_race_codes.append(code)
-            used_track_names.append(track_name)
-    
-    # Clean up - use average pace columns for filtering
-    print(f"    DEBUG: Before cleanup, comparison_df shape: {comparison_df.shape}, avg_pace_cols: {avg_pace_cols}")
-    comparison_df = comparison_df.replace(0.00, np.nan).dropna(subset=avg_pace_cols, how='all')
-    print(f"    DEBUG: After dropna(how='all'), comparison_df shape: {comparison_df.shape}")
-    # Replace any entries over 107% with NaN to filter out outliers (use avg pace for filtering)
-    for col in avg_pace_cols:
-        comparison_df[col] = comparison_df[col].apply(lambda x: x if pd.isna(x) or x <= 107.0 else np.nan)
-    print(f"    DEBUG: After filtering 107% outliers, comparison_df shape: {comparison_df.shape}")
+        if track_name not in dfs_dict:
+            continue
+        comparison_df = comparison_df.merge(
+            event_frame(track_name, code), on='Driver_name', how='outer'
+        )
+        pace_cols.append(f'laptime_pct_alien_{code}')
+        avg_pace_cols.append(f'avg_pace_pct_alien_{code}')
+        used_race_codes.append(code)
+        used_track_names.append(track_name)
+
+    for column in avg_pace_cols:
+        comparison_df[column] = comparison_df[column].replace(0.0, np.nan)
+    comparison_df = comparison_df.dropna(subset=avg_pace_cols, how='all')
     comparison_df = comparison_df.sort_values('Driver_name').reset_index(drop=True)
 
     if season_id and series_type:
-        comparison_df = mark_rookies(
-            comparison_df, season_id, series_type, category
-        )
-    
+        comparison_df = mark_rookies(comparison_df, season_id, series_type, category)
     if comparison_df.empty:
-        print("    DEBUG: comparison_df is EMPTY after cleanup!")
         return None, pace_cols, avg_pace_cols, used_race_codes, used_track_names
-    
+
     return comparison_df, pace_cols, avg_pace_cols, used_race_codes, used_track_names
 
 
@@ -782,11 +458,13 @@ def build_driver_color_map(driver_names):
     if not unique_names:
         return {}
 
-    cmap = sns.color_palette('rainbow', as_cmap=True)
-    color_values = np.linspace(0, 1, len(unique_names))
     return {
-        driver_name: to_hex(cmap(value))
-        for driver_name, value in zip(unique_names, color_values)
+        driver_name: '#{:02x}{:02x}{:02x}'.format(
+            *(int(channel * 255) for channel in colorsys.hsv_to_rgb(
+                index / len(unique_names), 0.72, 0.9
+            ))
+        )
+        for index, driver_name in enumerate(unique_names)
     }
 
 
@@ -873,6 +551,71 @@ def generate_html_tables(comparison_df, improvement_df, avg_pace_cols, track_nam
     
     return pace_html, improvement_html
 
+
+def generate_descriptor_tables(comparison_df, race_codes, track_names):
+    """Build round-by-round tables for race descriptors present in the data."""
+    descriptor_specs = [
+        ('race_pace', 'Clean Race Pace (s)', 'number'),
+        ('consistency', 'Consistency (%)', 'fraction'),
+        ('reliability', 'Reliability (%)', 'fraction'),
+        ('n_tracklimits', 'Track Limits', 'integer'),
+        ('n_inchidents', 'Incidents', 'integer'),
+        ('pct_laps', 'Laps Completed (%)', 'number'),
+        ('n_stops', 'Pit Stops', 'integer'),
+        ('pit_lane_pct_times', 'Pit Lane Loss (lap equivalents)', 'number'),
+    ]
+    rookie_names = set(
+        comparison_df.loc[comparison_df['is_rookie'], 'Driver_name']
+    ) if 'is_rookie' in comparison_df else set()
+    tables = []
+
+    for metric, title, format_type in descriptor_specs:
+        columns = [f'{metric}_{code}' for code in race_codes]
+        available = [column for column in columns if column in comparison_df.columns]
+        if not available:
+            continue
+
+        table_df = comparison_df[['Driver_name'] + available].copy()
+        table_df = table_df.dropna(subset=available, how='all').reset_index(drop=True)
+        if table_df.empty:
+            continue
+
+        full_driver_names = table_df['Driver_name'].tolist()
+        table_df['Driver_name'] = table_df['Driver_name'].apply(
+            lambda name: format_driver_name(name, rookie_names)
+        )
+        column_names = {'Driver_name': 'Driver'}
+        for column, track in zip(columns, track_names):
+            if column in table_df.columns:
+                column_names[column] = track
+        table_df = table_df.rename(columns=column_names)
+
+        if format_type == 'fraction':
+            for track in column_names.values():
+                if track != 'Driver' and track in table_df.columns:
+                    table_df[track] = table_df[track] * 100
+        float_format = (lambda value: f'{value:.0f}') if format_type == 'integer' else (
+            lambda value: f'{value:.2f}'
+        )
+        table_html = table_df.to_html(
+            index=False,
+            float_format=lambda value: float_format(value) if pd.notna(value) else '',
+        )
+        for full_name in full_driver_names:
+            table_html = table_html.replace(
+                '<tr>', f'<tr data-driver="{full_name}">', 1
+            )
+        tables.append(f'<h3>{title}</h3><div class="table-container">{table_html}</div>')
+
+    if not tables:
+        return ''
+    return (
+        '<div class="section descriptor-tables"><h2>Race Descriptors by Round</h2>'
+        + '\n'.join(tables)
+        + '</div>'
+    )
+
+
 def create_plotly_json(df_display_renamed, comparison_df, avg_pace_cols, stdev_pace_cols, track_names, chart_title, y_axis_title, race_type='race', time_lower=100.0, time_upper=107.0):
     """Create Plotly JSON data for the interactive chart.
     
@@ -891,8 +634,20 @@ def create_plotly_json(df_display_renamed, comparison_df, avg_pace_cols, stdev_p
     # Replace avg_pace_pct_alien_ with laptime_pct_alien_ to get fastest lap columns
     fastest_lap_cols = [col.replace('avg_pace_pct_alien_', 'laptime_pct_alien_') for col in avg_pace_cols]
     
-    # Build plot_df using average pace columns, standard deviation columns, and fastest lap columns
-    plot_df = comparison_df[['Driver_name'] + avg_pace_cols + stdev_pace_cols + fastest_lap_cols].copy()
+    descriptor_metrics = [
+        'position', 'race_pace', 'pct_race_pace', 'consistency', 'reliability',
+        'n_tracklimits', 'n_inchidents', 'pct_laps', 'n_stops',
+        'pit_lane_pct_times',
+    ]
+    descriptor_cols = [
+        f'{metric}_{avg_col.replace("avg_pace_pct_alien_", "")}'
+        for avg_col in avg_pace_cols for metric in descriptor_metrics
+        if f'{metric}_{avg_col.replace("avg_pace_pct_alien_", "")}' in comparison_df.columns
+    ]
+    plot_columns = list(dict.fromkeys(
+        ['Driver_name'] + avg_pace_cols + stdev_pace_cols + fastest_lap_cols + descriptor_cols
+    ))
+    plot_df = comparison_df[plot_columns].copy()
     rookie_names = set(
         comparison_df.loc[comparison_df['is_rookie'], 'Driver_name']
     ) if 'is_rookie' in comparison_df else set()
@@ -916,12 +671,10 @@ def create_plotly_json(df_display_renamed, comparison_df, avg_pace_cols, stdev_p
     plot_df = plot_df.sort_values('best').reset_index(drop=True)
 
     # Calculate consistency metric (inverse of stdev: 100 - stdev_pct)
-    consistency_cols = []
     for sd_col in stdev_pace_cols:
         consistency_col = sd_col.replace('stdev_pace_pct_', 'consistency_')
-        plot_df[consistency_col] = 100 - plot_df[sd_col]
-        # print(f"DEBUG: Added consistency column '{consistency_col}' to plot_df, df columns: {plot_df.columns.tolist()}")
-        consistency_cols.append(consistency_col)
+        if consistency_col not in plot_df:
+            plot_df[consistency_col] = 1 - plot_df[sd_col] / 100
     # print(plot_df.head(3))  # Debug: Show first 3 rows of plot_df
     # exit(0)  # Debug: Exit after showing plot_df to inspect the data
     # plot_df.to_csv('debug_plot_df.csv', index=False)  # Debug: Save plot_df to CSV for inspection
@@ -940,7 +693,7 @@ def create_plotly_json(df_display_renamed, comparison_df, avg_pace_cols, stdev_p
             fastest_lap_pts = []
             for xi, fastest_col in enumerate(fastest_lap_cols):
                 fastest_val = row.get(fastest_col)
-                if pd.notna(fastest_val) and fastest_val > 0:
+                if pd.notna(fastest_val) and 0 < fastest_val <= time_upper:
                     fastest_lap_pts.append((xi, fastest_val))
 
             if not fastest_lap_pts:
@@ -976,7 +729,7 @@ def create_plotly_json(df_display_renamed, comparison_df, avg_pace_cols, stdev_p
                 avg_val = row.get(avg_col)
                 fastest_val = row.get(fastest_col)
 
-                if not pd.notna(avg_val):
+                if not pd.notna(avg_val) or avg_val > time_upper:
                     continue
 
                 pts.append((xi, avg_val))
@@ -987,12 +740,42 @@ def create_plotly_json(df_display_renamed, comparison_df, avg_pace_cols, stdev_p
                 else:
                     fastest_lap_str = f"{fastest_lap:.2f}%"
 
-                consistency_col = sd_col.replace('stdev_pace_pct_', 'consistency_')
+                race_code = avg_col.replace('avg_pace_pct_alien_', '')
+                consistency_col = f'consistency_{race_code}'
                 consistency_value = row.get(consistency_col)
+                if pd.isna(consistency_value):
+                    consistency_value = 1 - row.get(sd_col, np.nan) / 100
                 hover_text = f"{display_driver_name}<br>Avg Pace: {avg_val:.2f}%<br>Fastest Lap: {fastest_lap_str}"
 
                 if pd.notna(consistency_value):
-                    hover_text += f"<br>Consistency: {float(consistency_value):.2f}%"
+                    hover_text += f"<br>Consistency: {float(consistency_value) * 100:.2f}%"
+
+                descriptor_specs = [
+                    ('position', 'Finishing Position', 'integer'),
+                    ('race_pace', 'Clean Race Pace', 'seconds'),
+                    ('pct_race_pace', 'Race Pace vs Class Leader', 'percent'),
+                    ('reliability', 'Reliability', 'fraction'),
+                    ('n_tracklimits', 'Track Limits', 'integer'),
+                    ('n_inchidents', 'Incidents', 'integer'),
+                    ('pct_laps', 'Laps Completed', 'percent'),
+                    ('n_stops', 'Pit Stops', 'integer'),
+                    ('pit_lane_pct_times', 'Pit Lane Loss (lap equivalents)', 'number'),
+                ]
+                for descriptor, label, value_format in descriptor_specs:
+                    value = row.get(f'{descriptor}_{race_code}')
+                    if pd.isna(value):
+                        continue
+                    if value_format == 'integer':
+                        formatted = f'{int(value)}'
+                    elif value_format == 'fraction':
+                        formatted = f'{float(value) * 100:.2f}%'
+                    elif value_format == 'percent':
+                        formatted = f'{float(value):.2f}%'
+                    elif value_format == 'seconds':
+                        formatted = f'{float(value):.3f}s'
+                    else:
+                        formatted = f'{float(value):.2f}'
+                    hover_text += f'<br>{label}: {formatted}'
 
                 hover_data.append(hover_text)
 
@@ -1063,7 +846,10 @@ def get_css_styles():
 
 
 
-def generate_page(title, sidebar_file, season_id, pace_html, improvement_html, plotly_data):
+def generate_page(
+    title, sidebar_file, season_id, pace_html, improvement_html, plotly_data,
+    descriptor_tables_html='',
+):
     """Generate an HTML page with sidebar and season selector (loaded from templates/page.html)"""
     sidebar = get_sidebar_html(sidebar_file, season_id)
 
@@ -1085,6 +871,7 @@ def generate_page(title, sidebar_file, season_id, pace_html, improvement_html, p
         '{sidebar_section}': sidebar_section,
         '{pace_html}': pace_html,
         '{improvement_html}': improvement_html,
+        '{descriptor_tables_html}': descriptor_tables_html,
         '{plot_traces_json}': json.dumps(plotly_data['traces']),
         '{plot_layout_json}': json.dumps(plotly_data['layout']),
         '{generated_at}': pd.Timestamp.now().strftime('%Y-%m-%d %H:%M:%S'),
@@ -1099,6 +886,11 @@ def main():
     """Main execution function - process all seasons and generate pages"""
     print("[*] OOFS Stats Page Generator\n")
     print("=" * 60)
+
+    from generate_descriptor_csvs import generate_event_csvs
+
+    generated_csvs = generate_event_csvs()
+    print(f"  Generated {len(generated_csvs)} event descriptor CSVs")
     
     # Create top-level docs folder
     os.makedirs('docs', exist_ok=True)
@@ -1135,7 +927,13 @@ def main():
     # Loop through all configured seasons
     for season_id, season_info in SEASONS.items():
         print(f"\n[Season] Processing {season_info['name']}...")
-        season_config = SEASON_CONFIG[season_id]
+        season_config = {
+            section_name: {
+                f'{os.path.splitext(filename)[0]}.csv': race_info
+                for filename, race_info in events.items()
+            }
+            for section_name, events in load_season_config(season_id).items()
+        }
         
         # Create season-specific output folder
         season_output_dir = os.path.join('docs', season_id)
@@ -1147,12 +945,12 @@ def main():
         if not has_split_sprint_classes:
             print("  [Sprint] Race Pace...")
             sprint_race_dfs = {}
-            xml_folder = os.path.join('xml', season_id, 'sprint')
+            xml_folder = os.path.join('assets', 'csv', season_id, 'sprint')
             
             for filename, race_info in season_config['sprint_races'].items():
                 xml_path = os.path.join(xml_folder, filename)
                 if os.path.exists(xml_path):
-                    df = process_race_data(xml_path, race_info['ref_time'])
+                    df = process_race_data(xml_path)
                     if df is not None:
                         sprint_race_dfs[race_info['name']] = df
                 else:
@@ -1171,13 +969,15 @@ def main():
                     stdev_pace_cols = [f'stdev_pace_pct_{code}' for code in used_race_codes]
                     df_display_renamed, _ = create_display_df(comparison_df, avg_pace_cols, stdev_pace_cols, track_names, mode='race')
                     pace_html, improvement_html = generate_html_tables(comparison_df, improvement_df, avg_pace_cols, track_names)
+                    descriptor_tables_html = generate_descriptor_tables(comparison_df, used_race_codes, track_names)
                     
                     num_rounds = len(track_names)
                     plotly_data = create_plotly_json(df_display_renamed, comparison_df, avg_pace_cols, stdev_pace_cols, track_names,
                         f'Sprint Race Pace Trend: After {num_rounds} Rounds', 'Race Pace % (vs Alien)', race_type='race')
                     
                     html_content = generate_page('Sprint Race Pace Data',
-                        'sprint_race.html', season_id, pace_html, improvement_html, plotly_data)
+                        'sprint_race.html', season_id, pace_html, improvement_html, plotly_data,
+                        descriptor_tables_html)
                     
                     output_file = os.path.join(season_output_dir, 'sprint_race.html')
                     with open(output_file, 'w', encoding='utf-8-sig') as f:
@@ -1199,14 +999,12 @@ def main():
             # ===== SPRINT LMP3 RACE PACE (Class-filtered) =====
             print("  [Sprint] LMP3 Race Pace...")
             sprint_lmp3_race_dfs = {}
-            xml_folder = os.path.join('xml', season_id, 'sprint')
+            xml_folder = os.path.join('assets', 'csv', season_id, 'sprint')
             
             for filename, race_info in season_config['sprint_races'].items():
                 xml_path = os.path.join(xml_folder, filename)
                 if os.path.exists(xml_path):
-                    # Use ref_time_lmp3 if available, otherwise fall back to ref_time
-                    ref_time = race_info.get('ref_time_lmp3')
-                    df = process_sprint_race_data(xml_path, 'LMP3', ref_time)
+                    df = process_sprint_race_data(xml_path, 'LMP3')
                     if df is not None:
                         sprint_lmp3_race_dfs[race_info['name']] = df
                 else:
@@ -1221,13 +1019,15 @@ def main():
                     stdev_pace_cols = [f'stdev_pace_pct_{code}' for code in used_race_codes]
                     df_display_renamed, _ = create_display_df(comparison_df, avg_pace_cols, stdev_pace_cols, track_names, mode='race')
                     pace_html, improvement_html = generate_html_tables(comparison_df, improvement_df, avg_pace_cols, track_names)
+                    descriptor_tables_html = generate_descriptor_tables(comparison_df, used_race_codes, track_names)
                     
                     num_rounds = len(track_names)
                     plotly_data = create_plotly_json(df_display_renamed, comparison_df, avg_pace_cols, stdev_pace_cols, track_names,
                         f'Sprint LMP3 Race Pace Trend: After {num_rounds} Rounds', 'Race Pace % (vs Alien)', race_type='race')
                     
                     html_content = generate_page('Sprint LMP3 Race Pace Data',
-                        'sprint_lmp3_race.html', season_id, pace_html, improvement_html, plotly_data)
+                        'sprint_lmp3_race.html', season_id, pace_html, improvement_html, plotly_data,
+                        descriptor_tables_html)
                     
                     with open(os.path.join(season_output_dir, 'sprint_lmp3_race.html'), 'w', encoding='utf-8-sig') as f:
                         f.write(html_content)
@@ -1243,11 +1043,9 @@ def main():
             
             for filename, race_info in season_config['sprint_races'].items():
                 xml_path = os.path.join(xml_folder, filename)
-                print(f"    DEBUG: Processing GT3 race XML: {xml_path}, ref_time_gt3={race_info.get('ref_time_gt3')}")
+                print(f"    DEBUG: Processing GT3 race CSV: {xml_path}")
                 if os.path.exists(xml_path):
-                    # Use ref_time_gt3 if available, otherwise fall back to ref_time
-                    ref_time = race_info.get('ref_time_gt3')
-                    df = process_sprint_race_data(xml_path, 'GT3', ref_time)
+                    df = process_sprint_race_data(xml_path, 'GT3')
                     if df is not None:
                         sprint_gt3_race_dfs[race_info['name']] = df
                 else:
@@ -1262,13 +1060,15 @@ def main():
                     stdev_pace_cols = [f'stdev_pace_pct_{code}' for code in used_race_codes]
                     df_display_renamed, _ = create_display_df(comparison_df, avg_pace_cols, stdev_pace_cols, track_names, mode='race')
                     pace_html, improvement_html = generate_html_tables(comparison_df, improvement_df, avg_pace_cols, track_names)
+                    descriptor_tables_html = generate_descriptor_tables(comparison_df, used_race_codes, track_names)
                     
                     num_rounds = len(track_names)
                     plotly_data = create_plotly_json(df_display_renamed, comparison_df, avg_pace_cols, stdev_pace_cols, track_names,
                         f'Sprint GT3 Race Pace Trend: After {num_rounds} Rounds', 'Race Pace % (vs Alien)', race_type='race')
                     
                     html_content = generate_page('Sprint GT3 Race Pace Data',
-                        'sprint_gt3_race.html', season_id, pace_html, improvement_html, plotly_data)
+                        'sprint_gt3_race.html', season_id, pace_html, improvement_html, plotly_data,
+                        descriptor_tables_html)
                     
                     with open(os.path.join(season_output_dir, 'sprint_gt3_race.html'), 'w', encoding='utf-8-sig') as f:
                         f.write(html_content)
@@ -1286,7 +1086,7 @@ def main():
             for filename, quali_info in season_config['sprint_qualis'].items():
                 xml_path = os.path.join(xml_folder, filename)
                 if os.path.exists(xml_path):
-                    df = process_race_data(xml_path, quali_info['ref_time'])
+                    df = process_race_data(xml_path)
                     if df is not None:
                         sprint_quali_dfs[quali_info['name']] = df
             
@@ -1328,9 +1128,7 @@ def main():
             for filename, quali_info in season_config['sprint_qualis'].items():
                 xml_path = os.path.join(xml_folder, filename)
                 if os.path.exists(xml_path):
-                    # Use ref_time_lmp3 if available, otherwise fall back to ref_time
-                    ref_time = quali_info.get('ref_time_lmp3', quali_info.get('ref_time'))
-                    df = process_sprint_race_data(xml_path, 'LMP3', ref_time)
+                    df = process_sprint_race_data(xml_path, 'LMP3')
                     if df is not None:
                         sprint_lmp3_quali_dfs[quali_info['name']] = df
                 else:
@@ -1370,9 +1168,7 @@ def main():
             for filename, quali_info in season_config['sprint_qualis'].items():
                 xml_path = os.path.join(xml_folder, filename)
                 if os.path.exists(xml_path):
-                    # Use ref_time_gt3 if available, otherwise fall back to ref_time
-                    ref_time = quali_info.get('ref_time_gt3', quali_info.get('ref_time'))
-                    df = process_sprint_race_data(xml_path, 'GT3', ref_time)
+                    df = process_sprint_race_data(xml_path, 'GT3')
                     if df is not None:
                         sprint_gt3_quali_dfs[quali_info['name']] = df
                 else:
@@ -1409,15 +1205,15 @@ def main():
         proto_class = 'P2UR' if season_id == 'season1' else 'Hyper'
         print(f"  [Multiclass] {proto_class}/GT3 Race Pace...")
         mc_p2ur_race_dfs = {}
-        xml_folder_mc = os.path.join('xml', season_id, 'multiclass')
+        xml_folder_mc = os.path.join('assets', 'csv', season_id, 'multiclass')
         
         for filename, mc_info in season_config['multiclass_races'].items():
             xml_path = os.path.join(xml_folder_mc, filename)
             if os.path.exists(xml_path):
                 if season_id == 'season1':
-                    df = process_multiclass_race_data(xml_path, 'P2UR', mc_info['ref_time_p2ur'])
+                    df = process_multiclass_race_data(xml_path, 'P2UR')
                 else:
-                    df = process_multiclass_race_data(xml_path, 'Hyper', mc_info['ref_time_hyper'])
+                    df = process_multiclass_race_data(xml_path, 'Hyper')
                 if df is not None:
                     mc_p2ur_race_dfs[mc_info['name']] = df
             else:
@@ -1432,6 +1228,7 @@ def main():
                 stdev_pace_cols = [f'stdev_pace_pct_{code}' for code in used_race_codes]
                 df_display_renamed, _ = create_display_df(comparison_df, avg_pace_cols, stdev_pace_cols, track_names, mode='race')
                 pace_html, improvement_html = generate_html_tables(comparison_df, improvement_df, avg_pace_cols, track_names)
+                descriptor_tables_html = generate_descriptor_tables(comparison_df, used_race_codes, track_names)
                 
                 num_rounds = len(track_names)
                 proto_class = 'P2UR' if season_id == 'season1' else 'Hyper'
@@ -1439,7 +1236,8 @@ def main():
                     f'Multiclass {proto_class} Race Pace Trend: After {num_rounds} Rounds', 'Race Pace % (vs Alien)', race_type='race')
                 
                 html_content = generate_page(f'Multiclass {proto_class} Race Pace Data',
-                    'multiclass_p2ur_race.html', season_id, pace_html, improvement_html, plotly_data)
+                    'multiclass_p2ur_race.html', season_id, pace_html, improvement_html, plotly_data,
+                    descriptor_tables_html)
                 
                 with open(os.path.join(season_output_dir, 'multiclass_p2ur_race.html'), 'w', encoding='utf-8-sig') as f:
                     f.write(html_content)
@@ -1458,9 +1256,9 @@ def main():
             xml_path = os.path.join(xml_folder_mc, filename)
             if os.path.exists(xml_path):
                 if season_id == 'season1':
-                    df = process_multiclass_race_data(xml_path, 'P2UR', mc_info['ref_time_p2ur'])
+                    df = process_multiclass_race_data(xml_path, 'P2UR')
                 else:
-                    df = process_multiclass_race_data(xml_path, 'Hyper', mc_info['ref_time_hyper'])
+                    df = process_multiclass_race_data(xml_path, 'Hyper')
                 if df is not None:
                     mc_p2ur_quali_dfs[mc_info['name']] = df
             else:
@@ -1503,7 +1301,7 @@ def main():
         for filename, mc_info in season_config['multiclass_races'].items():
             xml_path = os.path.join(xml_folder_mc, filename)
             if os.path.exists(xml_path):
-                df = process_multiclass_race_data(xml_path, 'GT3', mc_info['ref_time_gt3'])
+                df = process_multiclass_race_data(xml_path, 'GT3')
                 if df is not None:
                     mc_gt3_race_dfs[mc_info['name']] = df
         
@@ -1516,13 +1314,15 @@ def main():
                 stdev_pace_cols = [f'stdev_pace_pct_{code}' for code in used_race_codes]
                 df_display_renamed, _ = create_display_df(comparison_df, avg_pace_cols, stdev_pace_cols, track_names, mode='race')
                 pace_html, improvement_html = generate_html_tables(comparison_df, improvement_df, avg_pace_cols, track_names)
+                descriptor_tables_html = generate_descriptor_tables(comparison_df, used_race_codes, track_names)
                 
                 num_rounds = len(track_names)
                 plotly_data = create_plotly_json(df_display_renamed, comparison_df, avg_pace_cols, stdev_pace_cols, track_names,
                     f'Multiclass GT3 Race Pace Trend: After {num_rounds} Rounds', 'Race Pace % (vs Alien)', race_type='race')
                 
                 html_content = generate_page('Multiclass GT3 Race Pace Data',
-                    'multiclass_gt3_race.html', season_id, pace_html, improvement_html, plotly_data)
+                    'multiclass_gt3_race.html', season_id, pace_html, improvement_html, plotly_data,
+                    descriptor_tables_html)
                 
                 with open(os.path.join(season_output_dir, 'multiclass_gt3_race.html'), 'w', encoding='utf-8-sig') as f:
                     f.write(html_content)
@@ -1539,7 +1339,7 @@ def main():
         for filename, mc_info in season_config['multiclass_qualis'].items():
             xml_path = os.path.join(xml_folder_mc, filename)
             if os.path.exists(xml_path):
-                df = process_multiclass_race_data(xml_path, 'GT3', mc_info['ref_time_gt3'])
+                df = process_multiclass_race_data(xml_path, 'GT3')
                 if df is not None:
                     mc_gt3_quali_dfs[mc_info['name']] = df
         

@@ -1,0 +1,26 @@
+Driver,Car,CarClass,CarNumber,Position,FinishStatus,Laps,laptime_sec,laptime_pct,laptime_pct_alien,avg_laptime,avg_pace_pct_alien,stdev_laptime,stdev_pace_pct,lap_count,race_pace,pct_race_pace,consistency,reliability,n_tracklimits,n_inchidents,pct_laps,n_stops,pit_lane_pct_times,Driver_name,season_id,series_type,session_type
+C M Wilson,Ginetta G61-LT-P325 Evo,LMP3,177,1,Finished Normally,9,99.0828,100.0,101.21,99.80565000000001,101.95,0.5516926831730382,0.56,4,,,,,,,,,,Chris Wilson,season3,sprint,quali
+Edriel Lugo-Ortiz,Ligier JS P325,LMP3,35,2,Finished Normally,11,99.3536,99.73,101.48,100.29991666666666,102.45,1.0234047574965983,1.05,6,,,,,,,,,,Edriel Lugo-Ortiz,season3,sprint,quali
+William Neron,Ligier JS P325,LMP3,94,3,Finished Normally,11,99.4643,99.62,101.6,100.47562,102.63,1.221572644994968,1.25,5,,,,,,,,,,William Neron,season3,sprint,quali
+Nick Johnson,Ginetta G61-LT-P325 Evo,LMP3,696,4,Finished Normally,9,99.5009,99.58,101.64,99.693325,101.83,0.222472236095502,0.23,4,,,,,,,,,,Nick Johnson,season3,sprint,quali
+James Rubio,Duqueine D09 P3,LMP3,27,5,Finished Normally,10,99.6191,99.46,101.76,100.95228333333334,103.12,2.2655711813285997,2.31,6,,,,,,,,,,James Rubio,season3,sprint,quali
+Ily Bordiyan,Duqueine D09 P3,LMP3,3,6,Finished Normally,9,99.6523,99.43,101.79,101.25099999999999,103.42,2.2292988655628907,2.28,6,,,,,,,,,,Ily Bordiyan,season3,sprint,quali
+Willie Mangram,Ginetta G61-LT-P325 Evo,LMP3,2,7,Finished Normally,8,100.0439,99.04,102.19,101.42843333333333,103.6,1.3021758035431883,1.33,3,,,,,,,,,,Willie Mangram,season3,sprint,quali
+Shae Lewis,Ginetta G61-LT-P325 Evo,LMP3,88,8,Finished Normally,5,100.4179,98.67,102.57,100.75073333333334,102.91,0.2890919288623124,0.3,3,,,,,,,,,,Shae Lewis,season3,sprint,quali
+Dave Carter,Ginetta G61-LT-P325 Evo,LMP3,390,9,Finished Normally,10,100.5295,98.56,102.69,102.7739125,104.98,1.8985923157039284,1.94,8,,,,,,,,,,Dave Carter,season3,sprint,quali
+Timo White,Ginetta G61-LT-P325 Evo,LMP3,38,10,Finished Normally,8,100.9071,98.19,103.07,101.4631,103.64,0.41730271186913126,0.43,4,,,,,,,,,,Timo White,season3,sprint,quali
+Guillermo Paret,Lexus RCF LMGT3,GT3,52,1,Finished Normally,10,102.8961,100.0,100.59,105.03472500000001,102.68,3.2764051645820604,3.2,4,,,,,,,,,,Guillermo Paret,season3,sprint,quali
+Glenn Jacobs#3297,Ginetta G61-LT-P325 Evo,LMP3,713,11,Finished Normally,10,102.9235,96.27,105.13,104.00648000000001,106.24,0.8813801461344567,0.9,5,,,,,,,,,,Glenn Jacobs#3297,season3,sprint,quali
+Greg Kach,Ford Mustang LMGT3,GT3,123,2,Finished Normally,9,103.0906,99.81,100.78,103.29962499999999,100.99,0.23964696778108227,0.23,4,,,,,,,,,,Greg Kachadurian,season3,sprint,quali
+Karl Fredricksen,Lexus RCF LMGT3,GT3,23,3,Finished Normally,7,103.4546,99.46,101.14,104.10999999999999,101.78,0.7444545419298634,0.73,5,,,,,,,,,,Karl Fredricksen,season3,sprint,quali
+Harrison Miller,Ford Mustang LMGT3,GT3,17,4,Finished Normally,9,103.6458,99.28,101.33,104.24467142857142,101.91,0.7034799848237472,0.69,7,,,,,,,,,,Harrison Miller,season3,sprint,quali
+Michen Wallace,BMW M4 LMGT3,GT3,37,5,Finished Normally,10,103.6982,99.23,101.38,104.26538333333333,101.93,0.34120860139607595,0.33,6,,,,,,,,,,Michen Wallace,season3,sprint,quali
+Richie Wood,Aston Martin Vantage AMR LMGT3,GT3,101,6,Finished Normally,10,104.1216,98.82,101.79,104.50654999999999,102.17,0.38618715238426293,0.38,4,,,,,,,,,,Richie Wood,season3,sprint,quali
+Sean Meikle,Porsche 911 GT3 R LMGT3,GT3,112,7,Finished Normally,6,104.6828,98.29,102.34,105.0665,102.71,0.3818936763027097,0.37,4,,,,,,,,,,Sean Meikle,season3,sprint,quali
+Trav Brown,BMW M4 LMGT3,GT3,81,8,Finished Normally,9,105.1559,97.85,102.8,106.0406375,103.67,0.8759332524105742,0.86,8,,,,,,,,,,Trav Brown,season3,sprint,quali
+Lewis M Smith,BMW M4 LMGT3,GT3,14,9,Finished Normally,5,105.2599,97.75,102.9,105.4882,103.13,0.32286495628977374,0.32,2,,,,,,,,,,Lewis M Smith,season3,sprint,quali
+Neil Lorch,BMW M4 LMGT3,GT3,76,10,Finished Normally,9,105.2985,97.72,102.94,106.36873333333334,103.99,0.5837331673518871,0.57,6,,,,,,,,,,Neil Lorch,season3,sprint,quali
+Jackson Sangalang,McLaren 720S LMGT3 Evo,GT3,628,11,Finished Normally,10,105.8928,97.17,103.52,106.88821428571428,104.5,0.8283422892109529,0.81,7,,,,,,,,,,Jackson Sangalang,season3,sprint,quali
+Mike Cook,Ferrari 296 LMGT3 Evo,GT3,28,12,Finished Normally,8,108.1992,95.1,105.78,109.28674000000001,106.84,0.7984176463480748,0.78,5,,,,,,,,,,Mike Cook,season3,sprint,quali
+Hudson Hembree,Ford Mustang LMGT3,GT3,55,13,Finished Normally,7,109.6895,93.81,107.23,110.463125,107.99,1.0208365927839134,1.0,4,,,,,,,,,,Hudson Hembree,season3,sprint,quali
+Maximum Angry,Chevrolet Corvette Z06 LMGT3.R,GT3,15,14,Finished Normally,8,109.7717,93.74,107.31,110.9686,108.48,0.9072527128645049,0.89,5,,,,,,,,,,Maximum Angry,season3,sprint,quali

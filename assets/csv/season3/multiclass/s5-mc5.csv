@@ -1,0 +1,27 @@
+Driver,Car,CarClass,CarNumber,Position,FinishStatus,Laps,laptime_sec,laptime_pct,laptime_pct_alien,avg_laptime,avg_pace_pct_alien,stdev_laptime,stdev_pace_pct,lap_count,race_pace,pct_race_pace,consistency,reliability,n_tracklimits,n_inchidents,pct_laps,n_stops,pit_lane_pct_times,Driver_name,season_id,series_type,session_type
+Greg Kach,Porsche 963,Hyper,123,1,Finished Normally,8,113.3066,100.0,101.03,113.98683333333334,101.63,0.9255682593232478,0.83,6,,,,,,,,,,Greg Kachadurian,season3,multiclass,quali
+Jumpy Whale,BMW M Hybrid V8,Hyper,45,2,Finished Normally,8,113.3786,99.94,101.09,115.54031666666668,103.02,2.586632038320614,2.31,6,,,,,,,,,,Jumpy Whale,season3,multiclass,quali
+Jeffrey Aroyan,Porsche 963,Hyper,23,3,Finished Normally,8,113.5988,99.74,101.29,114.53065,102.12,0.8668372021319818,0.77,6,,,,,,,,,,Jeffrey Aroyan,season3,multiclass,quali
+Andrew Canelli,Genesis GMR001,Hyper,44,4,Finished Normally,9,114.0507,99.35,101.69,115.23382000000001,102.74,1.3818872482948827,1.23,5,,,,,,,,,,Andrew Canelli,season3,multiclass,quali
+Willie Mangram,Toyota TR010,Hyper,2,5,Finished Normally,7,114.6039,98.87,102.18,115.5703,103.04,1.1221912916254533,1.0,5,,,,,,,,,,Willie Mangram,season3,multiclass,quali
+Mason Moffett,Genesis GMR001,Hyper,87,6,Finished Normally,8,114.7391,98.75,102.3,115.54080000000002,103.02,0.8053131223319311,0.72,5,,,,,,,,,,Mason Moffett,season3,multiclass,quali
+Daniel Valasco,Porsche 963,Hyper,477,7,Finished Normally,7,115.6503,97.97,103.12,117.70232000000001,104.95,1.8771436138452509,1.67,5,,,,,,,,,,Daniel Valasco,season3,multiclass,quali
+Jesse Olsen,Cadillac V-Series.R,Hyper,16,8,Finished Normally,7,116.2009,97.51,103.61,118.34318,105.52,3.547675372268436,3.16,5,,,,,,,,,,Jesse Olsen,season3,multiclass,quali
+Karl Contout,Porsche 911 GT3 R LMGT3,GT3,438,1,Finished Normally,7,127.2043,100.0,100.61,127.79729999999999,101.08,0.5451102701900439,0.43,4,,,,,,,,,,Karl Contout,season3,multiclass,quali
+Guillermo Paret,Lexus RCF LMGT3,GT3,152,2,Finished Normally,8,127.9531,99.41,101.21,129.0675,102.09,1.4843415599742045,1.17,4,,,,,,,,,,Guillermo Paret,season3,multiclass,quali
+Ily Bordiyan,Porsche 911 GT3 R LMGT3,GT3,3,3,Finished Normally,7,128.0592,99.33,101.29,128.88143333333335,101.94,0.7480071144937961,0.59,3,,,,,,,,,,Ily Bordiyan,season3,multiclass,quali
+p thom,BMW M4 LMGT3,GT3,69,4,Finished Normally,7,128.1299,99.28,101.35,128.78992499999998,101.87,1.0213908307629695,0.81,4,,,,,,,,,,Parker Thomas,season3,multiclass,quali
+Richie Wood,Aston Martin Vantage AMR LMGT3,GT3,101,5,Finished Normally,7,128.153,99.26,101.37,129.18693333333331,102.18,1.0633816640009106,0.84,3,,,,,,,,,,Richie Wood,season3,multiclass,quali
+Josh Popov,Lexus RCF LMGT3,GT3,6,6,Finished Normally,8,128.2568,99.18,101.45,129.09265,102.11,1.249226506016166,0.99,4,,,,,,,,,,Josh Popov,season3,multiclass,quali
+C M Wilson,BMW M4 LMGT3,GT3,177,7,Finished Normally,8,128.5142,98.98,101.65,129.86704,102.72,1.7085137175334615,1.35,5,,,,,,,,,,Chris Wilson,season3,multiclass,quali
+Grayson Head,Mercedes-AMG LMGT3,GT3,34,8,Finished Normally,8,128.5475,98.96,101.68,128.98735,102.03,0.5475111962325455,0.43,4,,,,,,,,,,Grayson Head,season3,multiclass,quali
+Joe Marsiglia,Ferrari 296 LMGT3 Evo,GT3,517,9,Finished Normally,7,128.5781,98.93,101.7,129.829075,102.69,1.4687162657118815,1.16,4,,,,,,,,,,Joe Marsiglia,season3,multiclass,quali
+Dan Jr Poulin,Lamborghini Huracan LMGT3 Evo2,GT3,581,10,Finished Normally,8,128.5792,98.93,101.7,129.52969999999996,102.45,0.8777239372376742,0.69,3,,,,,,,,,,Dan Jr Poulin,season3,multiclass,quali
+Abe Wozniak,Aston Martin Vantage AMR LMGT3,GT3,25,11,Finished Normally,6,128.7517,98.8,101.84,129.539375,102.46,0.9210830341686497,0.73,4,,,,,,,,,,Abe Wozniak,season3,multiclass,quali
+Owen Beerkircher,Mercedes-AMG LMGT3,GT3,997,12,Finished Normally,7,129.1519,98.49,102.16,130.49395,103.22,1.104878399040662,0.87,4,,,,,,,,,,Owen Beerkircher,season3,multiclass,quali
+Alexandre Urie,Chevrolet Corvette Z06 LMGT3.R,GT3,971,13,Finished Normally,7,129.5101,98.22,102.44,130.38096,103.13,1.1861381572144218,0.94,5,,,,,,,,,,Alexandre Urie,season3,multiclass,quali
+Chris MacLennan,Ferrari 296 LMGT3,GT3,114,14,Finished Normally,6,130.0305,97.83,102.85,131.1844,103.76,1.4603151098307556,1.16,4,,,,,,,,,,Chris MacLennan,season3,multiclass,quali
+Christian Holmes,Mercedes-AMG LMGT3,GT3,240,15,Finished Normally,6,130.1091,97.77,102.91,130.99475,103.61,1.0609707771658858,0.84,4,,,,,,,,,,Christian Holmes,season3,multiclass,quali
+Matthew Canelli,BMW M4 LMGT3,GT3,404,16,Finished Normally,7,130.7543,97.28,103.42,133.18406,105.34,2.6700362774689093,2.11,5,,,,,,,,,,Matthew Canelli,season3,multiclass,quali
+Justin Jackson,Chevrolet Corvette Z06 LMGT3.R,GT3,13,17,Finished Normally,8,133.3373,95.4,105.47,134.64176666666665,106.5,1.2213505208033713,0.97,6,,,,,,,,,,Justin Jackson,season3,multiclass,quali
+Daniel DuChaine,Ford Mustang LMGT3,GT3,173,18,Finished Normally,8,142.1146,89.51,112.41,148.09085,117.14,9.083986431994855,7.19,4,,,,,,,,,,Daniel DuChaine,season3,multiclass,quali

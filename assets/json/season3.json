@@ -1,0 +1,178 @@
+{
+  "sprint_qualis": {
+    "s5-sc1.xml": {
+      "name": "Portimao",
+      "reference_times": {
+        "lmp3": 97.76,
+        "gt3": 102.91
+      }
+    },
+    "s5-sc2.xml": {
+      "name": "Sebring",
+      "reference_times": {
+        "lmp3": 113.79,
+        "gt3": 119.87
+      }
+    },
+    "s5-sc3.xml": {
+      "name": "Interlagos",
+      "reference_times": {
+        "lmp3": 97.9,
+        "gt3": 102.29
+      }
+    },
+    "s5-sc4.xml": {
+      "name": "Daytona",
+      "reference_times": {
+        "lmp3": 100.86,
+        "gt3": 104.85
+      }
+    },
+    "s5-sc5.xml": {
+      "name": "COTA",
+      "reference_times": {
+        "lmp3": 121.13,
+        "gt3": 126.427
+      }
+    },
+    "s5-sc6.xml": {
+      "name": "Spa",
+      "reference_times": {
+        "lmp3": 129.874,
+        "gt3": 136.963
+      }
+    }
+  },
+  "sprint_races": {
+    "s5-sc1-r.xml": {
+      "name": "Portimao",
+      "reference_times": {
+        "lmp3": 99.15,
+        "gt3": 103.81
+      }
+    },
+    "s5-sc2-r.xml": {
+      "name": "Sebring",
+      "reference_times": {
+        "lmp3": 115.33,
+        "gt3": 120.66
+      }
+    },
+    "s5-sc3-r.xml": {
+      "name": "Interlagos",
+      "reference_times": {
+        "lmp3": 103.28,
+        "gt3": 107.42
+      }
+    },
+    "s5-sc4-r.xml": {
+      "name": "Daytona",
+      "reference_times": {
+        "lmp3": 101.36,
+        "gt3": 105.38
+      }
+    },
+    "s5-sc5-r.xml": {
+      "name": "COTA",
+      "reference_times": {
+        "lmp3": 121.735,
+        "gt3": 127.059
+      }
+    },
+    "s5-sc6-r.xml": {
+      "name": "Spa",
+      "reference_times": {
+        "lmp3": 130.734,
+        "gt3": 137.894
+      }
+    }
+  },
+  "multiclass_qualis": {
+    "s5-mc1.xml": {
+      "name": "Portimao",
+      "reference_times": {
+        "hyper": 91.36,
+        "gt3": 102.91
+      }
+    },
+    "s5-mc2.xml": {
+      "name": "Sebring",
+      "reference_times": {
+        "hyper": 105.98,
+        "gt3": 119.87
+      }
+    },
+    "s5-mc3.xml": {
+      "name": "Interlagos",
+      "reference_times": {
+        "hyper": 82.52,
+        "gt3": 93.29
+      }
+    },
+    "s5-mc4.xml": {
+      "name": "Daytona",
+      "reference_times": {
+        "hyper": 92.33,
+        "gt3": 104.85
+      }
+    },
+    "s5-mc5.xml": {
+      "name": "COTA",
+      "reference_times": {
+        "hyper": 112.156,
+        "gt3": 126.427
+      }
+    },
+    "s5-mc6.xml": {
+      "name": "Spa",
+      "reference_times": {
+        "hyper": 119.963,
+        "gt3": 136.963
+      }
+    }
+  },
+  "multiclass_races": {
+    "s5-mc1-r.xml": {
+      "name": "Portimao",
+      "reference_times": {
+        "hyper": 92.27,
+        "gt3": 103.81
+      }
+    },
+    "s5-mc2-r.xml": {
+      "name": "Sebring",
+      "reference_times": {
+        "hyper": 106.82,
+        "gt3": 120.66
+      }
+    },
+    "s5-mc3-r.xml": {
+      "name": "Interlagos",
+      "reference_times": {
+        "hyper": 96.36,
+        "gt3": 106.87
+      }
+    },
+    "s5-mc4-r.xml": {
+      "name": "Daytona",
+      "reference_times": {
+        "hyper": 92.79,
+        "gt3": 105.38
+      }
+    },
+    "s5-mc5-r.xml": {
+      "name": "COTA",
+      "reference_times": {
+        "hyper": 112.716,
+        "gt3": 127.059
+      }
+    },
+    "s5-mc6-r.xml": {
+      "name": "Spa",
+      "reference_times": {
+        "hyper": 120.57,
+        "gt3": 138.861
+      }
+    }
+  }
+}

@@ -1,0 +1,218 @@
+{
+  "sprint_qualis": {
+    "s3-sc1.xml": {
+      "name": "Portimao",
+      "reference_times": {
+        "default": 103.23
+      }
+    },
+    "s3-sc2.xml": {
+      "name": "Le Mans",
+      "reference_times": {
+        "default": 235.4
+      }
+    },
+    "s3-sc3.xml": {
+      "name": "Interlagos",
+      "reference_times": {
+        "default": 93.46
+      }
+    },
+    "s3-sc4.xml": {
+      "name": "Monza",
+      "reference_times": {
+        "default": 99.01
+      }
+    },
+    "s3-sc5.xml": {
+      "name": "Sebring",
+      "reference_times": {
+        "default": 119.96
+      }
+    },
+    "s3-sc6.xml": {
+      "name": "Paul Ricard",
+      "reference_times": {
+        "default": 123.35
+      }
+    },
+    "s3-sc7.xml": {
+      "name": "COTA",
+      "reference_times": {
+        "default": 125.58
+      }
+    },
+    "s3-sc8.xml": {
+      "name": "Spa",
+      "reference_times": {
+        "default": 137.32
+      }
+    }
+  },
+  "sprint_races": {
+    "s3-sc1-r.xml": {
+      "name": "Portimao",
+      "reference_times": {
+        "default": 103.75
+      }
+    },
+    "s3-sc2-r.xml": {
+      "name": "Le Mans",
+      "reference_times": {
+        "default": 236.58
+      }
+    },
+    "s3-sc3-r.xml": {
+      "name": "Interlagos",
+      "reference_times": {
+        "default": 93.93
+      }
+    },
+    "s3-sc4-r.xml": {
+      "name": "Monza",
+      "reference_times": {
+        "default": 99.51
+      }
+    },
+    "s3-sc5-r.xml": {
+      "name": "Sebring",
+      "reference_times": {
+        "default": 120.56
+      }
+    },
+    "s3-sc6-r.xml": {
+      "name": "Paul Ricard",
+      "reference_times": {
+        "default": 123.97
+      }
+    },
+    "s3-sc7-r.xml": {
+      "name": "COTA",
+      "reference_times": {
+        "default": 126.2
+      }
+    },
+    "s3-sc8-r.xml": {
+      "name": "Spa",
+      "reference_times": {
+        "default": 138.01
+      }
+    }
+  },
+  "multiclass_qualis": {
+    "s3-mc1.xml": {
+      "name": "Portimao",
+      "reference_times": {
+        "p2ur": 91.53,
+        "gt3": 103.23
+      }
+    },
+    "s3-mc2.xml": {
+      "name": "Le Mans",
+      "reference_times": {
+        "p2ur": 206.83,
+        "gt3": 235.4
+      }
+    },
+    "s3-mc3.xml": {
+      "name": "Interlagos",
+      "reference_times": {
+        "p2ur": 82.86,
+        "gt3": 93.46
+      }
+    },
+    "s3-mc4.xml": {
+      "name": "Monza",
+      "reference_times": {
+        "p2ur": 87.27,
+        "gt3": 99.01
+      }
+    },
+    "s3-mc5.xml": {
+      "name": "Sebring",
+      "reference_times": {
+        "p2ur": 105.53,
+        "gt3": 119.96
+      }
+    },
+    "s3-mc6.xml": {
+      "name": "Paul Ricard",
+      "reference_times": {
+        "p2ur": 109.24,
+        "gt3": 123.44
+      }
+    },
+    "s3-mc7.xml": {
+      "name": "COTA",
+      "reference_times": {
+        "p2ur": 112.81,
+        "gt3": 125.61
+      }
+    },
+    "s3-mc8.xml": {
+      "name": "Spa",
+      "reference_times": {
+        "p2ur": 120.98,
+        "gt3": 137.32
+      }
+    }
+  },
+  "multiclass_races": {
+    "s3-mc1-r.xml": {
+      "name": "Portimao",
+      "reference_times": {
+        "p2ur": 91.99,
+        "gt3": 103.75
+      }
+    },
+    "s3-mc2-r.xml": {
+      "name": "Le Mans",
+      "reference_times": {
+        "p2ur": 207.86,
+        "gt3": 236.58
+      }
+    },
+    "s3-mc3-r.xml": {
+      "name": "Interlagos",
+      "reference_times": {
+        "p2ur": 83.27,
+        "gt3": 93.93
+      }
+    },
+    "s3-mc4-r.xml": {
+      "name": "Monza",
+      "reference_times": {
+        "p2ur": 87.7,
+        "gt3": 99.51
+      }
+    },
+    "s3-mc5-r.xml": {
+      "name": "Sebring",
+      "reference_times": {
+        "p2ur": 106.06,
+        "gt3": 120.56
+      }
+    },
+    "s3-mc6-r.xml": {
+      "name": "Paul Ricard",
+      "reference_times": {
+        "p2ur": 109.79,
+        "gt3": 123.97
+      }
+    },
+    "s3-mc7-r.xml": {
+      "name": "COTA",
+      "reference_times": {
+        "p2ur": 113.37,
+        "gt3": 126.2
+      }
+    },
+    "s3-mc8-r.xml": {
+      "name": "Spa",
+      "reference_times": {
+        "p2ur": 121.59,
+        "gt3": 138.01
+      }
+    }
+  }
+}
