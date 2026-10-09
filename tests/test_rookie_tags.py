@@ -169,6 +169,42 @@ class RookieTagTests(unittest.TestCase):
         self.assertEqual(plot_data['traces'][0]['name'], 'Greg Kachadurian')
         self.assertIn('Greg Kachadurian*', plot_data['traces'][0]['customdata'][0])
 
+    def test_pace_above_chart_ceiling_remains_in_tables(self):
+        event_df = pd.DataFrame([{
+            'Driver_name': 'Slow Driver',
+            'laptime_pct_alien_sc1': 108.2,
+            'avg_pace_pct_alien_sc1': 108.2,
+            'stdev_pace_pct_sc1': 0.4,
+        }])
+        comparison_df, _, avg_cols, _, tracks = stats.process_races_into_comparison_df(
+            {'Test Track': event_df}, ['sc1'], {'sc1': 'Test Track'}
+        )
+        improvement_df = pd.DataFrame([{
+            'Driver_name': 'Slow Driver',
+            'best_first_two': 108.2,
+            'best_last_two': 108.2,
+            'improvement': 0.0,
+        }])
+
+        for mode in ('race', 'quali'):
+            pace_html, _ = stats.generate_html_tables(
+                comparison_df, improvement_df, avg_cols, tracks, mode=mode
+            )
+            display_df, _ = stats.create_display_df(
+                comparison_df, avg_cols, ['stdev_pace_pct_sc1'], tracks, mode=mode
+            )
+            plot_data = stats.create_plotly_json(
+                display_df, comparison_df, avg_cols, ['stdev_pace_pct_sc1'], tracks,
+                'Pace', 'Pace %', race_type=mode,
+            )
+
+            self.assertIn('<td>108.20</td>', pace_html)
+            self.assertTrue(all(
+                value <= 107.0
+                for trace in plot_data['traces']
+                for value in trace['y']
+            ))
+
     def test_race_descriptors_are_class_scoped_and_qualifying_is_pace_only(self):
         xml_path = self.write_descriptor_xml('race.xml', [
             {'name': 'Fast Driver', 'class': 'GT3', 'position': 1, 'times': [98, 100, 100]},

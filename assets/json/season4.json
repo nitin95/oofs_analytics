@@ -6,6 +6,13 @@
         "lmp3": 94.197,
         "gt3": 99.184
       }
+    },
+    "s6-sc2.xml": {
+      "name": "Barcelona",
+      "reference_times": {
+        "lmp3": 94.647,
+        "gt3": 100.860
+      }
     }
   },
   "sprint_races": {
@@ -14,6 +21,13 @@
       "reference_times": {
         "lmp3": 94.579,
         "gt3": 100.776
+      }
+    },
+    "s6-sc2-r.xml": { 
+      "name": "Barcelona",
+      "reference_times": {
+        "lmp3": 106.755,
+        "gt3": 112.896
       }
     }
   },
@@ -24,6 +38,13 @@
         "hyper": 88.036,
         "gt3": 99.184
       }
+    },
+    "s6-mc2.xml": {
+      "name": "Barcelona",
+      "reference_times": {
+        "hyper": 88.335,
+        "gt3": 100.860
+      }
     }
   },
   "multiclass_races": {
@@ -32,6 +53,13 @@
       "reference_times": {
         "hyper": 89.127,
         "gt3": 100.776
+      }
+    },
+    "s6-mc2-r.xml": {
+      "name": "Barcelona",
+      "reference_times": {
+        "hyper": 98.166,
+        "gt3": 110.679
       }
     }
   }

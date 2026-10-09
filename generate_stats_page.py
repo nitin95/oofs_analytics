@@ -413,8 +413,6 @@ def process_races_into_comparison_df(
     for column in avg_pace_cols:
         comparison_df[column] = comparison_df[column].replace(0.0, np.nan)
     comparison_df = comparison_df.dropna(subset=avg_pace_cols, how='all')
-    for column in avg_pace_cols:
-        comparison_df.loc[comparison_df[column] > 107.0, column] = np.nan
     comparison_df = comparison_df.sort_values('Driver_name').reset_index(drop=True)
 
     if season_id and series_type:
@@ -695,7 +693,7 @@ def create_plotly_json(df_display_renamed, comparison_df, avg_pace_cols, stdev_p
             fastest_lap_pts = []
             for xi, fastest_col in enumerate(fastest_lap_cols):
                 fastest_val = row.get(fastest_col)
-                if pd.notna(fastest_val) and fastest_val > 0:
+                if pd.notna(fastest_val) and 0 < fastest_val <= time_upper:
                     fastest_lap_pts.append((xi, fastest_val))
 
             if not fastest_lap_pts:
@@ -731,7 +729,7 @@ def create_plotly_json(df_display_renamed, comparison_df, avg_pace_cols, stdev_p
                 avg_val = row.get(avg_col)
                 fastest_val = row.get(fastest_col)
 
-                if not pd.notna(avg_val):
+                if not pd.notna(avg_val) or avg_val > time_upper:
                     continue
 
                 pts.append((xi, avg_val))
