@@ -1,4 +1,9 @@
 {
+  "season_info": {
+    "name": "Season 6",
+    "year": 2026,
+    "description": "OOFS S6"
+  },
   "sprint_qualis": {
     "s6-sc1.xml": {
       "name": "Fuji",

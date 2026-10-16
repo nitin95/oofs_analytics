@@ -1,4 +1,9 @@
 {
+  "season_info": {
+    "name": "Season 5",
+    "year": 2026,
+    "description": "OOFS S5"
+  },
   "sprint_qualis": {
     "s5-sc1.xml": {
       "name": "Portimao",

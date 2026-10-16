@@ -88,10 +88,14 @@ body {
 
 .section-group ul {
     list-style: none;
+    display: flex;
+    gap: 8px;
+    max-width: 220px;
 }
 
 .section-group li {
-    margin-bottom: 8px;
+    flex: 1;
+    min-width: 0;
 }
 
 .section-group a {

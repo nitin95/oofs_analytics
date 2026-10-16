@@ -1,4 +1,9 @@
 {
+  "season_info": {
+    "name": "Season 4",
+    "year": 2026,
+    "description": "OOFS S4"
+  },
   "sprint_qualis": {
     "s4-sc1.xml": {
       "name": "Imola",

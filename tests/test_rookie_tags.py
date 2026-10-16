@@ -7,8 +7,8 @@ from unittest.mock import patch
 
 import pandas as pd
 
-import generate_descriptor_csvs as csvgen
-import generate_stats_page as stats
+import csv_lib as stats
+import html_lib
 from lmu_descriptors import LMUDescriptor
 
 
@@ -94,6 +94,18 @@ class RookieTagTests(unittest.TestCase):
         self.assertFalse(hasattr(stats, 'SEASON_CONFIG'))
         self.assertEqual(stats.load_season_config('season1'), config)
 
+    def test_season_metadata_is_loaded_from_json_files(self):
+        metadata = {
+            'name': 'Season Test',
+            'year': 2027,
+            'description': 'Test season',
+        }
+        self.write_config('season_test', {'season_info': metadata})
+
+        seasons = stats.load_season_metadata(os.path.join('assets', 'json'))
+
+        self.assertEqual(seasons, {'season_test': metadata})
+
     def test_category_change_and_name_replacement_are_detected(self):
         self.write_race('season1', 'sprint', 's1.xml', [
             ('Greg Kach', 'GT3'),
@@ -134,6 +146,29 @@ class RookieTagTests(unittest.TestCase):
 
         self.assertEqual(rookies, set())
 
+    def test_prototype_display_and_filter_follow_csv_class_data(self):
+        self.write_race('season1', 'multiclass', 's1-mc1.xml', [('Hyper Driver', 'Hyper')])
+        self.write_race('season2', 'multiclass', 's2-mc1.xml', [('P2UR Driver', 'LMP2_ELMS')])
+
+        self.assertEqual(stats.get_multiclass_prototype_class('season1'), 'Hypercar')
+        self.assertEqual(stats.get_multiclass_prototype_class('season2'), 'P2UR')
+        self.assertIn('Multiclass Hypercar', html_lib.get_sidebar_html('multiclass_p2ur_race.html', 'season1'))
+        self.assertIn('Multiclass P2UR', html_lib.get_sidebar_html('multiclass_p2ur_race.html', 'season2'))
+
+        hyper_csv = stats.build_csv_path('season1', 'multiclass', 's1-mc1.xml')
+        p2ur_csv = stats.build_csv_path('season2', 'multiclass', 's2-mc1.xml')
+        self.assertIsNone(stats.load_event_csv(hyper_csv, 'P2UR'))
+        p2ur_data = stats.load_event_csv(p2ur_csv, 'P2UR')
+        self.assertIsNotNone(p2ur_data)
+        if p2ur_data is not None:
+            self.assertEqual(p2ur_data['Driver_name'].tolist(), ['P2UR Driver'])
+
+    def test_championship_name_changes_to_endurance_from_season3(self):
+        self.assertEqual(stats.get_multiclass_championship_name('season2'), 'Multiclass')
+        self.assertEqual(stats.get_multiclass_championship_name('season3'), 'Endurance')
+        self.assertIn('Multiclass GT3', html_lib.get_sidebar_html('multiclass_gt3_race.html', 'season2'))
+        self.assertIn('Endurance GT3', html_lib.get_sidebar_html('multiclass_gt3_race.html', 'season3'))
+
     def test_asterisk_is_presentation_only(self):
         comparison_df = pd.DataFrame([{
             'Driver_name': 'Greg Kachadurian',
@@ -152,13 +187,13 @@ class RookieTagTests(unittest.TestCase):
         sd_cols = ['stdev_pace_pct_sc1']
         tracks = ['Portimao']
 
-        pace_html, improvement_html = stats.generate_html_tables(
+        pace_html, improvement_html = html_lib.generate_html_tables(
             comparison_df, improvement_df, avg_cols, tracks
         )
-        display_df, _ = stats.create_display_df(
+        display_df, _ = html_lib.create_display_df(
             comparison_df, avg_cols, sd_cols, tracks
         )
-        plot_data = stats.create_plotly_json(
+        plot_data = html_lib.create_plotly_json(
             display_df, comparison_df, avg_cols, sd_cols, tracks,
             'Pace', 'Pace %',
         )
@@ -169,12 +204,41 @@ class RookieTagTests(unittest.TestCase):
         self.assertEqual(plot_data['traces'][0]['name'], 'Greg Kachadurian')
         self.assertIn('Greg Kachadurian*', plot_data['traces'][0]['customdata'][0])
 
+    def test_comparison_page_wrapper_handles_race_and_quali(self):
+        comparison_df = pd.DataFrame([{
+            'Driver_name': 'Test Driver',
+            'avg_pace_pct_alien_sc1': 102.0,
+            'stdev_pace_pct_sc1': 0.5,
+            'laptime_pct_alien_sc1': 101.0,
+            'race_pace_sc1': 100.5,
+            'reliability_sc1': 1.0,
+        }])
+
+        with patch.object(html_lib, 'generate_page', side_effect=lambda *args: args):
+            race_page = html_lib.generate_comparison_page(
+                comparison_df, ['avg_pace_pct_alien_sc1'], ['sc1'], ['Fuji'],
+                'Race Data', 'race.html', 'season1', 'Race Pace Trend', 'Race Pace %',
+            )
+            quali_page = html_lib.generate_comparison_page(
+                comparison_df, ['avg_pace_pct_alien_sc1'], ['sc1'], ['Fuji'],
+                'Quali Data', 'quali.html', 'season1', 'Quali Pace Trend', 'Quali Pace %',
+                mode='quali',
+            )
+
+        self.assertIn('Race Descriptors by Round', race_page[6])
+        self.assertEqual(quali_page[6], '')
+        self.assertIn('102.00', race_page[4])
+        self.assertIn('101.00', quali_page[4])
+        self.assertEqual(
+            race_page[5]['layout']['title']['text'], 'Race Pace Trend: After 1 Rounds'
+        )
+
     def test_pace_above_chart_ceiling_remains_in_tables(self):
         event_df = pd.DataFrame([{
             'Driver_name': 'Slow Driver',
-            'laptime_pct_alien_sc1': 108.2,
-            'avg_pace_pct_alien_sc1': 108.2,
-            'stdev_pace_pct_sc1': 0.4,
+            'laptime_pct_alien': 108.2,
+            'avg_pace_pct_alien': 108.2,
+            'stdev_pace_pct': 0.4,
         }])
         comparison_df, _, avg_cols, _, tracks = stats.process_races_into_comparison_df(
             {'Test Track': event_df}, ['sc1'], {'sc1': 'Test Track'}
@@ -187,13 +251,13 @@ class RookieTagTests(unittest.TestCase):
         }])
 
         for mode in ('race', 'quali'):
-            pace_html, _ = stats.generate_html_tables(
+            pace_html, _ = html_lib.generate_html_tables(
                 comparison_df, improvement_df, avg_cols, tracks, mode=mode
             )
-            display_df, _ = stats.create_display_df(
+            display_df, _ = html_lib.create_display_df(
                 comparison_df, avg_cols, ['stdev_pace_pct_sc1'], tracks, mode=mode
             )
-            plot_data = stats.create_plotly_json(
+            plot_data = html_lib.create_plotly_json(
                 display_df, comparison_df, avg_cols, ['stdev_pace_pct_sc1'], tracks,
                 'Pace', 'Pace %', race_type=mode,
             )
@@ -251,8 +315,8 @@ class RookieTagTests(unittest.TestCase):
             )
         self.write_config('season_test', config)
 
-        with patch.object(csvgen, 'SEASONS', {'season_test': {}}):
-            generated = csvgen.generate_event_csvs(['season_test'])
+        with patch.object(stats, 'SEASONS', {'season_test': {}}):
+            generated = stats.generate_event_csvs(['season_test'])
 
         self.assertEqual(len(generated), 2)
         self.assertTrue(os.path.exists(os.path.join('assets', 'csv', 'season_test', 'sprint', 'st-sc1.csv')))
@@ -277,15 +341,15 @@ class RookieTagTests(unittest.TestCase):
             'n_stops_sc1': 1,
             'pit_lane_pct_times_sc1': 0.2,
         }])
-        tables = stats.generate_descriptor_tables(comparison_df, ['sc1'], ['Fuji'])
-        display_df, _ = stats.create_display_df(
+        tables = html_lib.generate_descriptor_tables(comparison_df, ['sc1'], ['Fuji'])
+        display_df, _ = html_lib.create_display_df(
             comparison_df, ['avg_pace_pct_alien_sc1'], ['stdev_pace_pct_sc1'], ['Fuji']
         )
-        race_plot = stats.create_plotly_json(
+        race_plot = html_lib.create_plotly_json(
             display_df, comparison_df, ['avg_pace_pct_alien_sc1'], ['stdev_pace_pct_sc1'],
             ['Fuji'], 'Race pace', 'Pace %',
         )
-        quali_plot = stats.create_plotly_json(
+        quali_plot = html_lib.create_plotly_json(
             display_df, comparison_df, ['avg_pace_pct_alien_sc1'], ['stdev_pace_pct_sc1'],
             ['Fuji'], 'Quali pace', 'Pace %', race_type='quali',
         )
