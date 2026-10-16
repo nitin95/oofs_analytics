@@ -13,6 +13,13 @@
         "lmp3": 94.647,
         "gt3": 100.860
       }
+    },
+    "s6-sc3.xml":{
+      "name": "Laguna Seca",
+      "reference_times": {
+        "lmp3": 77.641,
+        "gt3": 81.162
+    }
     }
   },
   "sprint_races": {
@@ -28,6 +35,13 @@
       "reference_times": {
         "lmp3": 106.755,
         "gt3": 112.896
+      }
+    },
+    "s6-sc3-r.xml": {
+      "name": "Laguna Seca",
+      "reference_times": {
+        "lmp3": 78.871,
+        "gt3": 82.154
       }
     }
   },
@@ -45,6 +59,13 @@
         "hyper": 88.335,
         "gt3": 100.860
       }
+    },
+    "s6-mc3.xml": {
+      "name": "Laguna Seca",
+      "reference_times": {
+        "hyper": 72.417,
+        "gt3": 81.162
+      }
     }
   },
   "multiclass_races": {
@@ -60,6 +81,13 @@
       "reference_times": {
         "hyper": 98.166,
         "gt3": 110.679
+      }
+    },
+    "s6-mc3-r.xml": {
+      "name": "Laguna Seca",
+      "reference_times": {
+        "hyper": 73.481,
+        "gt3": 82.154
       }
     }
   }
