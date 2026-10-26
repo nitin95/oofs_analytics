@@ -1,16 +1,13 @@
 """Build and assemble a GitHub Pages site from every remote branch."""
 
 import argparse
-import html
 import shutil
 import subprocess
 import sys
 import tempfile
 from pathlib import Path
-from urllib.parse import quote
 
 
-BRANCH_LINK_MARKER = "<!-- branch-sites -->"
 STATIC_DOC_FILES = (".nojekyll", "logo.png", "README.md", "index.html")
 
 
@@ -66,35 +63,6 @@ def branch_site_path(branch):
     return Path(*parts)
 
 
-def add_branch_links(index_path, branches, default_branch):
-    links = []
-    for branch in branches:
-        if branch == default_branch:
-            continue
-        encoded_path = "/".join(quote(part, safe="-._~") for part in branch.split("/"))
-        links.append(
-            f'<a class="season-card" href="{html.escape(encoded_path, quote=True)}/">'
-            f'<span class="season-name">{html.escape(branch)}</span></a>'
-        )
-
-    section = ""
-    if links:
-        link_markup = "\n".join(links)
-        section = (
-            '<h2 class="section-label">Branches</h2>\n'
-            f'<div class="card-grid">{link_markup}</div>'
-        )
-
-    index = index_path.read_text(encoding="utf-8-sig")
-    if BRANCH_LINK_MARKER in index:
-        index = index.replace(BRANCH_LINK_MARKER, section)
-    elif "<footer" in index:
-        index = index.replace("<footer", f"{section}\n<footer", 1)
-    else:
-        raise ValueError(f"Could not find branch-link insertion point in {index_path}")
-    index_path.write_text(index, encoding="utf-8")
-
-
 def build_pages(repository, default_branch, output_directory):
     branches = get_remote_branches(repository)
     if default_branch not in branches:
@@ -124,19 +92,8 @@ def build_pages(repository, default_branch, output_directory):
                     destination = output_directory / branch_site_path(branch)
                 destination.parent.mkdir(parents=True, exist_ok=True)
                 shutil.copytree(generated_docs, destination, dirs_exist_ok=True)
-
-                if branch != default_branch:
-                    branch_index = destination / "index.html"
-                    branch_index.write_text(
-                        branch_index.read_text(encoding="utf-8-sig").replace(
-                            BRANCH_LINK_MARKER, ""
-                        ),
-                        encoding="utf-8",
-                    )
             finally:
                 run(["git", "worktree", "remove", "--force", str(worktree)], repository)
-
-    add_branch_links(output_directory / "index.html", branches, default_branch)
 
 
 def main():
