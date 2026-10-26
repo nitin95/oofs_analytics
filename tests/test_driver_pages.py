@@ -52,7 +52,11 @@ class DriverPagesTests(unittest.TestCase):
                     return_value=[{
                         'slug': 'sprint_gt3',
                         'standings': [
-                            {'driver': 'Greg Kachadurian', 'rating': 1612.3},
+                            {
+                                'driver': 'Greg Kachadurian',
+                                'race_rating': 1612.3,
+                                'quali_rating': 1580.0,
+                            },
                             {'driver': 'Another Driver', 'rating': 1498.7},
                         ],
                     }],

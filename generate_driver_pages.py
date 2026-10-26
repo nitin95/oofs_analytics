@@ -138,7 +138,7 @@ def _build_elo_lookup(config_root, data_root):
             continue
         lookup[category] = {
             csv_lib.normalize_driver_name(standing['driver']): {
-                'rating': standing['rating'],
+                'rating': standing.get('rating', standing.get('race_rating')),
                 'rank': rank,
             }
             for rank, standing in enumerate(ranking['standings'], start=1)
