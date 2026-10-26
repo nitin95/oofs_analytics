@@ -119,6 +119,35 @@ body {
     font-weight: 600;
 }
 
+.elo-sidebar .sidebar-content h3 a {
+    color: #ccfc00;
+    text-decoration: none;
+}
+
+.elo-sidebar .section-group ul {
+    display: grid;
+    gap: 4px;
+    max-width: none;
+}
+
+.elo-sidebar .section-group li {
+    min-width: 0;
+}
+
+.elo-method {
+    color: rgba(255,255,255,0.65);
+    margin: -8px 0 16px;
+}
+
+.elo-table {
+    min-width: 840px;
+}
+
+.elo-updated {
+    font-size: 0.9em;
+    margin-top: 10px;
+}
+
 .container {
     flex: 1;
     background: transparent;

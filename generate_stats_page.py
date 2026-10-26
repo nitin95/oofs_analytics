@@ -1,9 +1,39 @@
 """Generate GitHub Pages reports from precomputed event descriptor CSVs."""
 
+import html
 import os
 
 import csv_lib
+import elo_lib
 import html_lib
+
+
+def generate_index_page(output_dir='docs'):
+    """Render the top-level season index from its template and season metadata."""
+    season_cards = []
+    for season_id, season_info in csv_lib.SEASONS.items():
+        sprint_page = (
+            'sprint_lmp3_race.html'
+            if csv_lib.season_has_sprint_class_data(season_id)
+            else 'sprint_race.html'
+        )
+        season_cards.append(
+            f'<a class="season-card" href="{html.escape(season_id)}/{sprint_page}">\n'
+            f'    <span class="season-name">{html.escape(season_info["name"])}</span>\n'
+            '</a>'
+        )
+
+    template_path = os.path.join(html_lib.TEMPLATES_DIR, 'index.html')
+    with open(template_path, 'r', encoding='utf-8') as template_file:
+        template = template_file.read()
+    if '{season_cards}' not in template:
+        raise ValueError(f"Index template is missing the '{{season_cards}}' placeholder: {template_path}")
+
+    os.makedirs(output_dir, exist_ok=True)
+    output_path = os.path.join(output_dir, 'index.html')
+    with open(output_path, 'w', encoding='utf-8-sig') as index_file:
+        index_file.write(template.replace('{season_cards}', '\n'.join(season_cards)))
+    return output_path
 
 
 def main():
@@ -383,6 +413,12 @@ def main():
         else:
             print("    No GT3 data found for qualies")
     
+    print("\n[Elo] Generating driver rankings...")
+    elo_lib.generate_pages()
+
+    index_path = generate_index_page()
+    print(f"  Generated {index_path}")
+
     # All seasons processed - print summary
     print("\n" + "=" * 60)
     print("All pages generated successfully!")

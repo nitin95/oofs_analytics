@@ -15,10 +15,10 @@
         }
         header {
             display: flex;
-            /* flex-direction: column; */
+            flex-direction: column;
             align-items: center;
             text-align: center;
-            /* margin-bottom: 50px; */
+            margin-bottom: 50px;
         }
         header img {
             max-width: 180px;
@@ -26,18 +26,18 @@
             width: auto;
             height: auto;
             object-fit: contain;
-            /* margin-bottom: 24px; */
+            margin-bottom: 24px;
         }
         header h1 {
             color: #ccfc00;
-            font-size: 4.5em;
+            font-size: 2.8em;
             margin-bottom: 10px;
         }
         header p {
             color: rgba(255,255,255,0.6);
-            font-size: 1.5em;
+            font-size: 1em;
         }
-        @media (max-width: 720px) {
+        @media (min-width: 600px) {
             header {
                 flex-direction: row;
                 text-align: left;
@@ -47,16 +47,10 @@
                 margin-bottom: 0;
                 flex-shrink: 0;
             }
-            header h1 {
-                font-size: 3em;
-            }
-            header p {
-                font-size: 1em;
-            }
         }
         h2.section-label {
             color: rgba(255,255,255,0.4);
-            font-size: 0.75em;
+            font-size: 1em;
             font-weight: 600;
             letter-spacing: 2px;
             text-transform: uppercase;
@@ -77,9 +71,9 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            aspect-ratio: 2.5 / 1;
+            aspect-ratio: 2 / 1;
             background: black;
-            border: 2px solid #512f89;
+            border: 2px solid transparent;
             border-radius: 12px;
             text-decoration: none;
             color: white;
@@ -91,7 +85,7 @@
         .season-card:hover,
         .season-card:focus {
             border-color: #ccfc00;
-            background: #0e1014;
+            background: #512f8977;
             transform: translateY(-3px);
             outline: none;
         }
@@ -108,20 +102,10 @@
             margin-bottom: 10px;
         }
         .season-card .season-name {
-            color: #ccfc00;
             font-size: 1.6em;
             font-weight: 700;
-            margin-bottom: 6px;
-        }
-        .season-card .season-year {
-            color: rgba(255,255,255,0.45);
-            font-size: 0.85em;
-        }
-        .season-card .season-desc {
-            color: rgba(255,255,255,0.35);
-            font-size: 0.75em;
-            margin-top: 12px;
-            text-align: center;
+            color: #ccfc00;
+            text-decoration: none;
         }
         footer {
             margin-top: 60px;
@@ -139,32 +123,28 @@
             <p>Race pace statistics &amp; driver performance</p>
         </div>
     </header>
-    <h2 class="section-label">Select a Season</h2>
+    <h2 class="section-label">Seasons</h2>
     <div class="card-grid">
-        
         <a class="season-card" href="season1/sprint_race.html">
-            <!-- <span class="season-label">Season</span> -->
-            <span class="season-name">Season 3</span>
-            <!-- <span class="season-year">2026</span> -->
-            <!-- <span class="season-desc">OOFS S3</span> -->
+    <span class="season-name">Season 3</span>
+</a>
+<a class="season-card" href="season2/sprint_race.html">
+    <span class="season-name">Season 4</span>
+</a>
+<a class="season-card" href="season3/sprint_lmp3_race.html">
+    <span class="season-name">Season 5</span>
+</a>
+<a class="season-card" href="season4/sprint_lmp3_race.html">
+    <span class="season-name">Season 6</span>
+</a>
+    </div>
+    <h2 class="section-label">Other</h2>
+    <div class="card-grid">
+        <a class="season-card" href="elo.html">
+                <span class="season-name">OOFS ELO Rankings</span>
         </a>
-        <a class="season-card" href="season2/sprint_race.html">
-            <!-- <span class="season-label">Season</span> -->
-            <span class="season-name">Season 4</span>
-            <!-- <span class="season-year">2026</span> -->
-            <!-- <span class="season-desc">OOFS S4</span> -->
-        </a>
-        <a class="season-card" href="season3/sprint_lmp3_race.html">
-            <!-- <span class="season-label">Season</span> -->
-            <span class="season-name">Season 5</span>
-            <!-- <span class="season-year">2026</span> -->
-            <!-- <span class="season-desc">OOFS S5</span> -->
-        </a>
-        <a class="season-card" href="season4/sprint_lmp3_race.html">
-            <!-- <span class="season-label">Season</span> -->
-            <span class="season-name">Season 6</span>
-            <!-- <span class="season-year">2026</span> -->
-            <!-- <span class="season-desc">OOFS S6</span> -->
+        <a class="season-card" href="profiles.html">
+                <span class="season-name">OOFS Driver Profiles</span>
         </a>
     </div>
     <footer><p>Generated from OOFS XML Race Data</p></footer>

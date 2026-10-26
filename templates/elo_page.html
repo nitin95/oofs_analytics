@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{title}</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="main-wrapper">
+        <button class="sidebar-toggle" id="sidebarToggle" aria-label="Toggle menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        {sidebar}
+        <main class="container">
+            <header>
+                <h1>{title}</h1>
+            </header>
+            <div class="content">
+                <section class="section">
+                    <h2>Current Standings</h2>
+                    <p class="elo-method">Race finishing order · 1500 starting rating · K-factor 32 (64 for debut season races)</p>
+                    <div class="table-container">
+                        <table class="elo-table">
+                            <thead>
+                                <tr>
+                                    <th>Rank</th>
+                                    <th>Driver</th>
+                                    <th>Elo</th>
+                                    <th>Starts</th>
+                                    <th>Avg Finish</th>
+                                    <th>DNFs</th>
+                                    <th>Wins</th>
+                                    <th>Podiums</th>
+                                    <th>Last Event</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {standings}
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+            </div>
+            <div class="footer">
+                <p>Generated from OOFS event data</p>
+                <p class="elo-updated">Last updated: {generated_at}</p>
+            </div>
+        </main>
+    </div>
+    <script>
+        const sidebarToggle = document.getElementById('sidebarToggle');
+        const sidebar = document.querySelector('.sidebar');
+        sidebarToggle.addEventListener('click', () => sidebar.classList.toggle('active'));
+        sidebar.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => sidebar.classList.remove('active'));
+        });
+    </script>
+</body>
+</html>
