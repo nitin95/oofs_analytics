@@ -34,7 +34,7 @@ Repeat `--season` to select multiple seasons. The CSV generator also accepts `--
 
 ## GitHub Pages
 
-The `Build and deploy GitHub Pages` workflow rebuilds the site when any branch is pushed. It publishes the repository's default branch at the site root and other branches under `/<branch>/`. The workflow must be present on a branch for pushes to that branch to trigger a build; merge it into existing branches once, and create future branches from the default branch.
+The `Build and deploy GitHub Pages` workflow rebuilds the site when any branch is pushed. It publishes the repository's default branch at the site root and other branches under `/<branch>/`. Both `.github/workflows/pages.yml` and `.github/scripts/build_pages.py` must be present on a branch for its pushes to build; merge both into existing branches once, and create future branches from the default branch.
 
 After merging the workflow, set **Settings > Pages > Build and deployment > Source** to **GitHub Actions**. The workflow builds each remote branch in isolation and deploys one combined site.
 
