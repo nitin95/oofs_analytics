@@ -5,6 +5,7 @@ import os
 
 import csv_lib
 import elo_lib
+import generate_driver_pages
 import html_lib
 
 
@@ -418,6 +419,9 @@ def main():
 
     index_path = generate_index_page()
     print(f"  Generated {index_path}")
+
+    profile_count = generate_driver_pages.generate_driver_pages()
+    print(f"  Generated {profile_count} driver profiles")
 
     # All seasons processed - print summary
     print("\n" + "=" * 60)

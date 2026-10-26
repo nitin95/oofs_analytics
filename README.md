@@ -68,6 +68,14 @@ Reference-time keys can be `gt3`, `lmp3`, `hyper`, or `p2ur`; `default` can be u
 
 Generated event pages are written to `docs/<season>/`. The top-level `docs/index.html` is regenerated from `templates/index.html` by `generate_stats_page.py`.
 
+To generate an all-driver index and individual career profile pages from the configured event CSVs, run:
+
+```powershell
+python generate_driver_pages.py
+```
+
+The profile index and pages are written to `docs/profiles/`. Each profile includes overall career totals, per-category statistics, and recent race results.
+
 ## Repository Layout
 
 ```text

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grayson Head | Driver Profile</title>
+    <link rel="stylesheet" href="../styles.css">
+    
+<style>
+    body { line-height: 1.5; }
+    .profile-content { max-width: 1120px; margin: 0 auto; padding: 24px; }
+    .profile-nav { display: flex; justify-content: space-between; gap: 16px; margin-bottom: 24px; }
+    .profile-nav a, .profile-list a { color: #ccfc00; text-decoration: none; }
+    .profile-nav a:hover, .profile-list a:hover { text-decoration: underline; }
+    .profile-heading { text-align: left; padding: 24px 0 20px; border-bottom: 1px solid #454852; }
+    .profile-heading h1 { color: #ccfc00; font-size: 2.2em; overflow-wrap: anywhere; }
+    .profile-heading p { color: #c5c7ce; margin-top: 6px; }
+    .profile-section { margin-top: 30px; }
+    .profile-section h2 { color: #ccfc00; font-size: 1.35em; margin-bottom: 14px; }
+    .profile-section h3 { margin: 24px 0 10px; color: #fff; font-size: 1.05em; }
+    .metric-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(145px, 1fr)); gap: 1px; background: #41444c; border: 1px solid #41444c; }
+    .metric { background: #14161f; padding: 14px; min-height: 78px; }
+    .metric span { display: block; color: #b5b8c2; font-size: .82em; }
+    .metric strong { display: block; margin-top: 4px; color: white; font-size: 1.25em; }
+    .profile-table-wrap { overflow-x: auto; }
+    .profile-table { width: 100%; border-collapse: collapse; min-width: 640px; }
+    .profile-table th, .profile-table td { padding: 10px 12px; border-bottom: 1px solid #41444c; text-align: left; white-space: nowrap; }
+    .profile-table th { color: #ccfc00; background: #14161f; }
+    .profile-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1px; background: #41444c; border: 1px solid #41444c; }
+    .profile-list a { display: block; background: #14161f; padding: 14px; }
+    .profile-list a[hidden] { display: none; }
+    .profile-list small { display: block; color: #b5b8c2; margin-top: 4px; }
+    .profile-search { width: 100%; padding: 12px 14px; border: 1px solid #555963; border-radius: 4px; background: #14161f; color: #fff; font: inherit; }
+    .profile-search:focus { outline: 2px solid #ccfc00; outline-offset: 2px; }
+    .alphabet-bar { display: flex; flex-wrap: wrap; gap: 4px; margin: 12px 0 18px; }
+    .alphabet-bar button { min-width: 34px; min-height: 34px; border: 1px solid #555963; border-radius: 3px; background: #14161f; color: #fff; cursor: pointer; font: inherit; }
+    .alphabet-bar button:hover:not(:disabled), .alphabet-bar button[aria-pressed="true"] { background: #ccfc00; border-color: #ccfc00; color: #111; }
+    .alphabet-bar button:disabled { color: #666a74; cursor: not-allowed; }
+    .profile-count { color: #b5b8c2; margin: 0 0 10px; }
+    .profile-empty { display: none; padding: 18px; color: #c5c7ce; background: #14161f; }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+    .profile-footer { color: #aeb1bb; margin-top: 32px; font-size: .85em; }
+    @media (max-width: 640px) {
+        .profile-content { padding: 14px 8px; }
+        .profile-heading h1 { font-size: 1.8em; }
+        .profile-nav { flex-wrap: wrap; }
+    }
+</style>
+</head>
+<body>
+    <main class="profile-content">
+        <nav class="profile-nav"><a href="index.html">Back to all driver profiles</a><a href="../index.html"><img class="header-logo" src="../logo.png" alt="OOFS Analytics"></a></nav><header class="profile-heading"><h1>Grayson Head</h1><p>Season 6 | #34 | Porsche 911 GT3 R LMGT3</p></header><section class="profile-section"><h2>Overall career stats</h2><div class="metric-grid"><div class="metric"><span>Race starts</span><strong>19</strong></div><div class="metric"><span>Wins</span><strong>0</strong></div><div class="metric"><span>Podiums</span><strong>3</strong></div><div class="metric"><span>Pole positions</span><strong>0</strong></div><div class="metric"><span>Best finish</span><strong>3</strong></div><div class="metric"><span>Average finish</span><strong>8.21</strong></div><div class="metric"><span>DNFs</span><strong>3</strong></div><div class="metric"><span>Categories</span><strong>3</strong></div><div class="metric"><span>Seasons raced</span><strong>4</strong></div><div class="metric"><span>Laps completed</span><strong>585</strong></div></div></section><section class="profile-section"><h2>Multiclass GT3</h2><div class="metric-grid"><div class="metric"><span>Starts</span><strong>13</strong></div><div class="metric"><span>Wins</span><strong>0</strong></div><div class="metric"><span>Podiums</span><strong>3</strong></div><div class="metric"><span>Poles</span><strong>0</strong></div><div class="metric"><span>Best finish</span><strong>3</strong></div><div class="metric"><span>Average finish</span><strong>8.46</strong></div><div class="metric"><span>Average qualifying</span><strong>8.85</strong></div><div class="metric"><span>Average quali pace vs alien</span><strong>103.27%</strong></div><div class="metric"><span>DNFs</span><strong>2</strong></div><div class="metric"><span>Laps completed</span><strong>377</strong></div><div class="metric"><span>Average race pace vs alien</span><strong>104.10%</strong></div><div class="metric"><span>Average consistency</span><strong>0.922</strong></div><div class="metric"><span>Average reliability</span><strong>0.713</strong></div><div class="metric"><span>Incidents</span><strong>20.0</strong></div><div class="metric"><span>Track limits</span><strong>56.0</strong></div><div class="metric"><span>Pit stops</span><strong>25.0</strong></div></div></section><section class="profile-section"><h2>Multiclass Prototype</h2><div class="metric-grid"><div class="metric"><span>Starts</span><strong>5</strong></div><div class="metric"><span>Wins</span><strong>0</strong></div><div class="metric"><span>Podiums</span><strong>0</strong></div><div class="metric"><span>Poles</span><strong>0</strong></div><div class="metric"><span>Best finish</span><strong>6</strong></div><div class="metric"><span>Average finish</span><strong>7.60</strong></div><div class="metric"><span>Average qualifying</span><strong>9.20</strong></div><div class="metric"><span>Average quali pace vs alien</span><strong>105.06%</strong></div><div class="metric"><span>DNFs</span><strong>1</strong></div><div class="metric"><span>Laps completed</span><strong>189</strong></div><div class="metric"><span>Average race pace vs alien</span><strong>105.66%</strong></div><div class="metric"><span>Average consistency</span><strong>0.962</strong></div><div class="metric"><span>Average reliability</span><strong>0.758</strong></div><div class="metric"><span>Incidents</span><strong>23.0</strong></div><div class="metric"><span>Track limits</span><strong>14.0</strong></div><div class="metric"><span>Pit stops</span><strong>9.0</strong></div></div></section><section class="profile-section"><h2>Sprint GT3</h2><div class="metric-grid"><div class="metric"><span>Starts</span><strong>1</strong></div><div class="metric"><span>Wins</span><strong>0</strong></div><div class="metric"><span>Podiums</span><strong>0</strong></div><div class="metric"><span>Poles</span><strong>0</strong></div><div class="metric"><span>Best finish</span><strong>8</strong></div><div class="metric"><span>Average finish</span><strong>8.00</strong></div><div class="metric"><span>Average qualifying</span><strong>11.00</strong></div><div class="metric"><span>Average quali pace vs alien</span><strong>102.82%</strong></div><div class="metric"><span>DNFs</span><strong>0</strong></div><div class="metric"><span>Laps completed</span><strong>19</strong></div><div class="metric"><span>Average race pace vs alien</span><strong>104.22%</strong></div><div class="metric"><span>Average consistency</span><strong>0.964</strong></div><div class="metric"><span>Average reliability</span><strong>0.556</strong></div><div class="metric"><span>Incidents</span><strong>3.0</strong></div><div class="metric"><span>Track limits</span><strong>5.0</strong></div><div class="metric"><span>Pit stops</span><strong>0</strong></div></div></section><section class="profile-section"><h2>Recent race results</h2><div class="profile-table-wrap"><table class="profile-table"><thead><tr><th>Season</th><th>Event</th><th>Category</th><th>Finish</th><th>Status</th></tr></thead><tbody><tr><td>Season 6</td><td>Laguna Seca</td><td>Multiclass GT3</td><td>4</td><td>Finished Normally</td></tr><tr><td>Season 6</td><td>Barcelona</td><td>Sprint GT3</td><td>8</td><td>Finished Normally</td></tr><tr><td>Season 5</td><td>Spa</td><td>Multiclass GT3</td><td>8</td><td>Finished Normally</td></tr><tr><td>Season 5</td><td>COTA</td><td>Multiclass GT3</td><td>10</td><td>Finished Normally</td></tr><tr><td>Season 5</td><td>Daytona</td><td>Multiclass GT3</td><td>15</td><td>Finished Normally</td></tr><tr><td>Season 5</td><td>Interlagos</td><td>Multiclass GT3</td><td>15</td><td>DNF</td></tr><tr><td>Season 5</td><td>Sebring</td><td>Multiclass GT3</td><td>8</td><td>Finished Normally</td></tr><tr><td>Season 5</td><td>Portimao</td><td>Multiclass GT3</td><td>3</td><td>Finished Normally</td></tr><tr><td>Season 4</td><td>Bahrain (outer)</td><td>Multiclass Prototype</td><td>7</td><td>Finished Normally</td></tr><tr><td>Season 4</td><td>Fuji</td><td>Multiclass Prototype</td><td>8</td><td>Finished Normally</td></tr><tr><td>Season 4</td><td>Silverstone</td><td>Multiclass Prototype</td><td>9</td><td>DNF</td></tr><tr><td>Season 4</td><td>Barcelona</td><td>Multiclass Prototype</td><td>6</td><td>Finished Normally</td></tr></tbody></table></div></section><footer class="profile-footer">Generated from OOFS event data on 2026-10-26.</footer>
+    </main>
+</body>
+</html>
