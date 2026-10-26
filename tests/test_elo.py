@@ -127,6 +127,8 @@ class EloRankingTests(unittest.TestCase):
         self.assertEqual(standings['Driver A']['quali_rating'], 1468.0)
         self.assertEqual(standings['Driver A']['elo_differential'], 64.0)
         self.assertEqual(standings['Driver B']['elo_differential'], -64.0)
+        self.assertEqual(standings['Driver B']['pole_positions'], 1)
+        self.assertEqual(standings['Driver A']['pole_positions'], 0)
         output_root = os.path.join(self.root, 'docs')
         generated = elo_lib.generate_pages(
             output_root=output_root,
@@ -158,11 +160,23 @@ class EloRankingTests(unittest.TestCase):
         with open(generated[0], encoding='utf-8') as page_file:
             page = page_file.read()
         self.assertIn('Driver A', page)
-        self.assertIn('<th>Race ELO</th>', page)
-        self.assertIn('<th>Quali ELO</th>', page)
-        self.assertIn('<th>ELO Diff</th>', page)
-        self.assertIn('<th>Avg Finish</th>', page)
-        self.assertIn('<th>DNFs</th>', page)
+        self.assertIn('>Race ELO <span class="elo-sort-indicator"', page)
+        self.assertIn('>Quali ELO <span class="elo-sort-indicator"', page)
+        self.assertIn('>ELO Diff <span class="elo-sort-indicator"', page)
+        self.assertIn('>Pole Positions <span class="elo-sort-indicator"', page)
+        self.assertEqual(page.count('class="elo-sort"'), 11)
+        for column in range(11):
+            self.assertIn(f'data-sort-column="{column}"', page)
+        self.assertNotIn('data-sort-column="11"', page)
+        self.assertIn('aria-sort="none"', page)
+        self.assertIn('data-sort-type="text"', page)
+        with open(
+            os.path.join(os.path.dirname(elo_lib.__file__), 'templates', 'styles.css'),
+            encoding='utf-8',
+        ) as styles_file:
+            self.assertIn('position: fixed', styles_file.read())
+        self.assertIn('>Avg Finish <span class="elo-sort-indicator"', page)
+        self.assertIn('>DNFs <span class="elo-sort-indicator"', page)
         self.assertIn('<td>1.00</td>', page)
         self.assertIn('active', page)
 

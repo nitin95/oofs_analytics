@@ -197,6 +197,20 @@ def build_rankings(config_root='assets/json', csv_root='assets/csv'):
         quali_ratings = _calculate_ratings(quali_events)
         driver_stats = {}
 
+        for event in quali_events:
+            finish_positions = event['finish_positions']
+            pole_position = min(finish_positions.values())
+            for driver, position in finish_positions.items():
+                stats = driver_stats.setdefault(driver, {
+                    'starts': 0,
+                    'position_total': 0.0,
+                    'dnfs': 0,
+                    'wins': 0,
+                    'pole_positions': 0,
+                    'podiums': 0,
+                })
+                stats['pole_positions'] += position == pole_position
+
         for event in race_events:
             finish_positions = event['finish_positions']
             dnf_drivers = event.get('dnf_drivers', set())
@@ -207,6 +221,7 @@ def build_rankings(config_root='assets/json', csv_root='assets/csv'):
                     'position_total': 0.0,
                     'dnfs': 0,
                     'wins': 0,
+                    'pole_positions': 0,
                     'podiums': 0,
                 })
                 stats['starts'] += 1
@@ -232,6 +247,7 @@ def build_rankings(config_root='assets/json', csv_root='assets/csv'):
                     'position_total': 0.0,
                     'dnfs': 0,
                     'wins': 0,
+                    'pole_positions': 0,
                     'podiums': 0,
                     'last_event': '—',
                 }),
@@ -277,6 +293,7 @@ def _render_table(standings):
             if average_finish is not None else '<td>&mdash;</td>',
             f'<td>{standing["dnfs"]}</td>',
             f'<td>{standing["wins"]}</td>',
+            f'<td>{standing["pole_positions"]}</td>',
             f'<td>{standing["podiums"]}</td>',
             f'<td>{html.escape(standing["last_event"])}</td>',
         ]

@@ -26,17 +26,18 @@
                         <table class="elo-table">
                             <thead>
                                 <tr>
-                                    <th>Rank</th>
-                                    <th>Driver</th>
-                                    <th>Race ELO</th>
-                                    <th>Quali ELO</th>
-                                    <th>ELO Diff</th>
-                                    <th>Starts</th>
-                                    <th>Avg Finish</th>
-                                    <th>DNFs</th>
-                                    <th>Wins</th>
-                                    <th>Podiums</th>
-                                    <th>Last Event</th>
+                                    <th scope="col" aria-sort="none"><button class="elo-sort" type="button" data-sort-column="0" data-sort-type="number" aria-label="Sort by Rank ascending">Rank <span class="elo-sort-indicator" aria-hidden="true">&#8597;</span></button></th>
+                                    <th scope="col" aria-sort="none"><button class="elo-sort" type="button" data-sort-column="1" data-sort-type="text" aria-label="Sort by Driver ascending">Driver <span class="elo-sort-indicator" aria-hidden="true">&#8597;</span></button></th>
+                                    <th scope="col" aria-sort="none"><button class="elo-sort" type="button" data-sort-column="2" data-sort-type="number" aria-label="Sort by Race ELO ascending">Race ELO <span class="elo-sort-indicator" aria-hidden="true">&#8597;</span></button></th>
+                                    <th scope="col" aria-sort="none"><button class="elo-sort" type="button" data-sort-column="3" data-sort-type="number" aria-label="Sort by Quali ELO ascending">Quali ELO <span class="elo-sort-indicator" aria-hidden="true">&#8597;</span></button></th>
+                                    <th scope="col" aria-sort="none"><button class="elo-sort" type="button" data-sort-column="4" data-sort-type="number" aria-label="Sort by ELO Diff ascending">ELO Diff <span class="elo-sort-indicator" aria-hidden="true">&#8597;</span></button></th>
+                                    <th scope="col" aria-sort="none"><button class="elo-sort" type="button" data-sort-column="5" data-sort-type="number" aria-label="Sort by Starts ascending">Starts <span class="elo-sort-indicator" aria-hidden="true">&#8597;</span></button></th>
+                                    <th scope="col" aria-sort="none"><button class="elo-sort" type="button" data-sort-column="6" data-sort-type="number" aria-label="Sort by Avg Finish ascending">Avg Finish <span class="elo-sort-indicator" aria-hidden="true">&#8597;</span></button></th>
+                                    <th scope="col" aria-sort="none"><button class="elo-sort" type="button" data-sort-column="7" data-sort-type="number" aria-label="Sort by DNFs ascending">DNFs <span class="elo-sort-indicator" aria-hidden="true">&#8597;</span></button></th>
+                                    <th scope="col" aria-sort="none"><button class="elo-sort" type="button" data-sort-column="8" data-sort-type="number" aria-label="Sort by Wins ascending">Wins <span class="elo-sort-indicator" aria-hidden="true">&#8597;</span></button></th>
+                                    <th scope="col" aria-sort="none"><button class="elo-sort" type="button" data-sort-column="9" data-sort-type="number" aria-label="Sort by Pole Positions ascending">Pole Positions <span class="elo-sort-indicator" aria-hidden="true">&#8597;</span></button></th>
+                                    <th scope="col" aria-sort="none"><button class="elo-sort" type="button" data-sort-column="10" data-sort-type="number" aria-label="Sort by Podiums ascending">Podiums <span class="elo-sort-indicator" aria-hidden="true">&#8597;</span></button></th>
+                                    <th scope="col">Last Event</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -59,6 +60,111 @@
         sidebar.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => sidebar.classList.remove('active'));
         });
+
+        const eloTable = document.querySelector('.elo-table');
+        const eloBody = eloTable.querySelector('tbody');
+        const tableContainer = eloTable.closest('.table-container');
+        const sortButtons = eloTable.querySelectorAll('.elo-sort');
+
+        const fixedHeader = document.createElement('div');
+        fixedHeader.className = 'elo-fixed-header';
+        fixedHeader.setAttribute('aria-hidden', 'true');
+        const fixedTable = document.createElement('table');
+        fixedTable.className = 'elo-table elo-fixed-table';
+        const fixedHead = eloTable.tHead.cloneNode(true);
+        fixedTable.appendChild(fixedHead);
+        fixedHeader.appendChild(fixedTable);
+        document.body.appendChild(fixedHeader);
+
+        function updateSortControls(column, direction) {
+            document.querySelectorAll('.elo-sort').forEach(sortButton => {
+                const sortHeader = sortButton.closest('th');
+                const isActive = Number(sortButton.dataset.sortColumn) === column;
+                sortHeader.setAttribute('aria-sort', isActive ? direction : 'none');
+                sortButton.querySelector('.elo-sort-indicator').textContent = isActive
+                    ? direction === 'ascending' ? '\u25b2' : '\u25bc'
+                    : '\u2195';
+                const label = sortButton.textContent.trim().replace(/[\u25b2\u25bc\u2195]/g, '').trim();
+                sortButton.setAttribute(
+                    'aria-label',
+                    `Sort by ${label} ${isActive && direction === 'ascending' ? 'descending' : 'ascending'}`,
+                );
+            });
+        }
+
+        function sortByColumn(column, type) {
+            const isSameColumn = eloTable.dataset.sortColumn === String(column);
+            const direction = isSameColumn
+                && eloTable.dataset.sortDirection === 'ascending'
+                ? 'descending'
+                : 'ascending';
+            const rows = Array.from(eloBody.rows).map((row, index) => ({
+                row,
+                index,
+                value: type === 'text'
+                    ? row.cells[column].textContent.trim()
+                    : Number.parseFloat(row.cells[column].textContent.trim()),
+            }));
+
+            rows.sort((left, right) => {
+                const leftMissing = type === 'text' ? false : Number.isNaN(left.value);
+                const rightMissing = type === 'text' ? false : Number.isNaN(right.value);
+                if (leftMissing !== rightMissing) return leftMissing ? 1 : -1;
+                if (leftMissing || left.value === right.value) return left.index - right.index;
+                return direction === 'ascending'
+                    ? type === 'text'
+                        ? left.value.localeCompare(right.value, undefined, {numeric: true, sensitivity: 'base'})
+                        : left.value - right.value
+                    : type === 'text'
+                        ? right.value.localeCompare(left.value, undefined, {numeric: true, sensitivity: 'base'})
+                        : right.value - left.value;
+            });
+            rows.forEach(({row}) => eloBody.appendChild(row));
+
+            eloTable.dataset.sortColumn = String(column);
+            eloTable.dataset.sortDirection = direction;
+            updateSortControls(column, direction);
+        }
+
+        function pinHeader() {
+            const headerRect = eloTable.tHead.getBoundingClientRect();
+            const tableRect = eloTable.getBoundingClientRect();
+            const containerRect = tableContainer.getBoundingClientRect();
+            const style = getComputedStyle(tableContainer);
+            const paddingLeft = Number.parseFloat(style.paddingLeft) || 0;
+            const paddingRight = Number.parseFloat(style.paddingRight) || 0;
+            const borderLeft = Number.parseFloat(style.borderLeftWidth) || 0;
+            const headerHeight = eloTable.tHead.offsetHeight;
+            const isPinned = headerRect.top < 0 && tableRect.bottom > headerHeight;
+
+            fixedHeader.style.display = isPinned ? 'block' : 'none';
+            eloTable.classList.toggle('elo-header-pinned', isPinned);
+            if (!isPinned) return;
+
+            fixedHeader.style.left = `${containerRect.left + borderLeft + paddingLeft}px`;
+            fixedHeader.style.width = `${tableContainer.clientWidth - paddingLeft - paddingRight}px`;
+            fixedTable.style.width = `${eloTable.offsetWidth}px`;
+            fixedTable.style.transform = `translateX(-${tableContainer.scrollLeft}px)`;
+            Array.from(eloTable.tHead.rows[0].cells).forEach((cell, index) => {
+                fixedHead.rows[0].cells[index].style.width = `${cell.getBoundingClientRect().width}px`;
+            });
+        }
+
+        sortButtons.forEach(button => {
+            button.addEventListener('click', () => sortByColumn(
+                Number(button.dataset.sortColumn), button.dataset.sortType
+            ));
+        });
+        fixedHead.querySelectorAll('.elo-sort').forEach(button => {
+            button.tabIndex = -1;
+            button.addEventListener('click', () => sortByColumn(
+                Number(button.dataset.sortColumn), button.dataset.sortType
+            ));
+        });
+        window.addEventListener('scroll', pinHeader, {passive: true});
+        window.addEventListener('resize', pinHeader);
+        tableContainer.addEventListener('scroll', pinHeader, {passive: true});
+        requestAnimationFrame(pinHeader);
     </script>
 </body>
 </html>
