@@ -11,7 +11,7 @@ from urllib.parse import quote
 
 
 BRANCH_LINK_MARKER = "<!-- branch-sites -->"
-STATIC_DOC_FILES = (".nojekyll", "logo.png", "README.md")
+STATIC_DOC_FILES = (".nojekyll", "logo.png", "README.md", "index.html")
 
 
 def run(command, cwd):
@@ -86,12 +86,13 @@ def add_branch_links(index_path, branches, default_branch):
         )
 
     index = index_path.read_text(encoding="utf-8-sig")
-    if BRANCH_LINK_MARKER not in index:
-        raise ValueError(f"Branch link marker not found in {index_path}")
-    index_path.write_text(
-        index.replace(BRANCH_LINK_MARKER, section),
-        encoding="utf-8",
-    )
+    if BRANCH_LINK_MARKER in index:
+        index = index.replace(BRANCH_LINK_MARKER, section)
+    elif "<footer" in index:
+        index = index.replace("<footer", f"{section}\n<footer", 1)
+    else:
+        raise ValueError(f"Could not find branch-link insertion point in {index_path}")
+    index_path.write_text(index, encoding="utf-8")
 
 
 def build_pages(repository, default_branch, output_directory):
