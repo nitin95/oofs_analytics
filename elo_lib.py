@@ -69,103 +69,136 @@ def update_event_ratings(ratings, finish_positions, k_factors=None):
     }
 
 
+def _calculate_ratings(events):
+    ratings = {}
+    first_season_by_driver = {}
+    for event in events:
+        for driver in event['finish_positions']:
+            first_season_by_driver.setdefault(driver, event['season_id'])
+
+    for event in events:
+        finish_positions = event['finish_positions']
+        for driver in finish_positions:
+            ratings.setdefault(driver, INITIAL_RATING)
+        k_factors = {
+            driver: (
+                FIRST_SEASON_K_FACTOR
+                if first_season_by_driver[driver] == event['season_id']
+                else K_FACTOR
+            )
+            for driver in finish_positions
+        }
+        ratings = update_event_ratings(ratings, finish_positions, k_factors)
+    return ratings
+
+
 def build_rankings(config_root='assets/json', csv_root='assets/csv'):
-    """Build cumulative standings for each series/class in chronological order."""
+    """Build race and qualifying Elo standings for each series/class."""
     seasons = csv_lib.load_season_metadata(config_root)
-    category_events = {spec[3]: [] for spec in CATEGORY_SPECS}
+    category_events = {
+        spec[3]: {'race': [], 'quali': []} for spec in CATEGORY_SPECS
+    }
     category_by_key = {spec[3]: spec for spec in CATEGORY_SPECS}
     event_order = 0
+    quali_order = 0
+    category_order = {}
 
     for season_id, season_info in seasons.items():
         config = csv_lib.load_season_config(season_id, config_root)
         for series in SERIES_ORDER:
-            for filename, event_info in config.get(f'{series}_races', {}).items():
-                current_event_order = event_order
-                event_order += 1
-                csv_path = csv_lib.build_csv_path(
-                    season_id, series, filename, output_root=csv_root
-                )
-                if not os.path.exists(csv_path):
-                    continue
-                try:
-                    event_data = pd.read_csv(csv_path)
-                except (OSError, pd.errors.ParserError):
-                    continue
+            for event_group, rating_type in (('races', 'race'), ('qualis', 'quali')):
+                for filename, event_info in config.get(
+                    f'{series}_{event_group}', {}
+                ).items():
+                    if rating_type == 'race':
+                        current_event_order = event_order
+                        event_order += 1
+                    else:
+                        current_event_order = quali_order
+                        quali_order += 1
 
-                if 'CarClass' not in event_data or 'Position' not in event_data:
-                    continue
-                driver_column = (
-                    'Driver_name' if 'Driver_name' in event_data else 'Driver'
-                )
-                if driver_column not in event_data:
-                    continue
-
-                positions = pd.to_numeric(event_data['Position'], errors='coerce')
-                driver_names = event_data[driver_column].fillna('').astype(str).str.strip()
-                for _, category_series, class_name, slug in CATEGORY_SPECS:
-                    if category_series != series:
-                        continue
-                    category_rows = event_data.loc[
-                        _category_mask(event_data['CarClass'], class_name)
-                    ].copy()
-                    category_rows['_position'] = positions.loc[category_rows.index]
-                    category_rows['_driver'] = driver_names.loc[category_rows.index]
-                    category_rows = category_rows[
-                        category_rows['_driver'].ne('')
-                        & category_rows['_position'].notna()
-                    ]
-                    if category_rows.empty:
-                        continue
-
-                    finish_positions = (
-                        category_rows.groupby('_driver', sort=False)['_position']
-                        .min()
-                        .sort_values(kind='stable')
-                        .to_dict()
+                    csv_path = csv_lib.build_csv_path(
+                        season_id, series, filename, output_root=csv_root
                     )
-                    dnf_drivers = set()
-                    if 'FinishStatus' in category_rows:
-                        dnf_drivers = set(category_rows.loc[
-                            category_rows['FinishStatus'].fillna('').astype(str)
-                            .str.contains('DNF', case=False),
-                            '_driver',
-                        ])
-                    category_events[slug].append({
-                        'event_order': current_event_order,
-                        'season_id': season_id,
-                        'season': season_info.get('name', season_id),
-                        'track': event_info.get('name', os.path.splitext(filename)[0]),
-                        'finish_positions': finish_positions,
-                        'dnf_drivers': dnf_drivers,
-                    })
+                    if not os.path.exists(csv_path):
+                        continue
+                    try:
+                        event_data = pd.read_csv(csv_path)
+                    except (OSError, pd.errors.ParserError):
+                        continue
+
+                    if 'CarClass' not in event_data or 'Position' not in event_data:
+                        continue
+                    driver_column = (
+                        'Driver_name' if 'Driver_name' in event_data else 'Driver'
+                    )
+                    if driver_column not in event_data:
+                        continue
+
+                    positions = pd.to_numeric(event_data['Position'], errors='coerce')
+                    driver_names = event_data[driver_column].fillna('').astype(str).str.strip()
+                    for _, category_series, class_name, slug in CATEGORY_SPECS:
+                        if category_series != series:
+                            continue
+                        category_rows = event_data.loc[
+                            _category_mask(event_data['CarClass'], class_name)
+                        ].copy()
+                        category_rows['_position'] = positions.loc[category_rows.index]
+                        category_rows['_driver'] = driver_names.loc[category_rows.index]
+                        category_rows = category_rows[
+                            category_rows['_driver'].ne('')
+                            & category_rows['_position'].notna()
+                        ]
+                        if category_rows.empty:
+                            continue
+
+                        finish_positions = (
+                            category_rows.groupby('_driver', sort=False)['_position']
+                            .min()
+                            .sort_values(kind='stable')
+                            .to_dict()
+                        )
+                        dnf_drivers = set()
+                        if rating_type == 'race' and 'FinishStatus' in category_rows:
+                            dnf_drivers = set(category_rows.loc[
+                                category_rows['FinishStatus'].fillna('').astype(str)
+                                .str.contains('DNF', case=False),
+                                '_driver',
+                            ])
+                        category_events[slug][rating_type].append({
+                            'event_order': current_event_order,
+                            'season_id': season_id,
+                            'season': season_info.get('name', season_id),
+                            'track': event_info.get('name', os.path.splitext(filename)[0]),
+                            'finish_positions': finish_positions,
+                            'dnf_drivers': dnf_drivers,
+                        })
+                        if rating_type == 'race':
+                            category_order[slug] = min(
+                                category_order.get(slug, current_event_order),
+                                current_event_order,
+                            )
+                        elif slug not in category_order:
+                            category_order[slug] = len(seasons) * 10000 + current_event_order
 
     rankings = []
     ordered_categories = sorted(
         (
-            (min(event['event_order'] for event in events), slug, events)
-            for slug, events in category_events.items() if events
+            (category_order[slug], slug, events)
+            for slug, events in category_events.items()
+            if events['race'] or events['quali']
         ),
         key=lambda item: item[0],
     )
-    for _, slug, events in ordered_categories:
-        ratings = {}
+    for _, slug, event_groups in ordered_categories:
+        race_events = event_groups['race']
+        quali_events = event_groups['quali']
+        race_ratings = _calculate_ratings(race_events)
+        quali_ratings = _calculate_ratings(quali_events)
         driver_stats = {}
-        first_season_by_driver = {}
-        for event in events:
-            for driver in event['finish_positions']:
-                first_season_by_driver.setdefault(driver, event['season_id'])
 
-        for event in events:
+        for event in race_events:
             finish_positions = event['finish_positions']
-            k_factors = {
-                driver: (
-                    FIRST_SEASON_K_FACTOR
-                    if first_season_by_driver[driver] == event['season_id']
-                    else K_FACTOR
-                )
-                for driver in finish_positions
-            }
-            ratings = update_event_ratings(ratings, finish_positions, k_factors)
             dnf_drivers = event.get('dnf_drivers', set())
             ordered = sorted(finish_positions.items(), key=lambda item: item[1])
             for position_index, (driver, position) in enumerate(ordered, start=1):
@@ -183,19 +216,38 @@ def build_rankings(config_root='assets/json', csv_root='assets/csv'):
                 stats['podiums'] += position_index <= 3
                 stats['last_event'] = f"{event['season']} · {event['track']}"
 
+        all_drivers = race_ratings.keys() | quali_ratings.keys()
         standings = [
             {
                 'driver': driver,
-                'rating': rating,
-                **driver_stats[driver],
+                'race_rating': race_ratings.get(driver),
+                'quali_rating': quali_ratings.get(driver),
+                'elo_differential': (
+                    race_ratings[driver] - quali_ratings[driver]
+                    if driver in race_ratings and driver in quali_ratings
+                    else None
+                ),
+                **driver_stats.get(driver, {
+                    'starts': 0,
+                    'position_total': 0.0,
+                    'dnfs': 0,
+                    'wins': 0,
+                    'podiums': 0,
+                    'last_event': '—',
+                }),
                 'average_finish_position': (
-                    driver_stats[driver]['position_total']
-                    / driver_stats[driver]['starts']
+                    driver_stats[driver]['position_total'] / driver_stats[driver]['starts']
+                    if driver_stats.get(driver, {}).get('starts') else None
                 ),
             }
-            for driver, rating in ratings.items()
+            for driver in all_drivers
         ]
-        standings.sort(key=lambda row: (-row['rating'], -row['wins'], row['driver']))
+        standings.sort(key=lambda row: (
+            row['race_rating'] is None,
+            -(row['race_rating'] or 0),
+            -(row['quali_rating'] or 0),
+            row['driver'],
+        ))
         rankings.append({
             'title': category_by_key[slug][0],
             'slug': slug,
@@ -208,19 +260,27 @@ def build_rankings(config_root='assets/json', csv_root='assets/csv'):
 def _render_table(standings):
     rows = []
     for rank, standing in enumerate(standings, start=1):
-        rows.append(
-            '<tr>'
-            f'<td>{rank}</td>'
-            f'<td>{html.escape(standing["driver"])}</td>'
-            f'<td>{standing["rating"]:.1f}</td>'
-            f'<td>{standing["starts"]}</td>'
-            f'<td>{standing["average_finish_position"]:.2f}</td>'
-            f'<td>{standing["dnfs"]}</td>'
-            f'<td>{standing["wins"]}</td>'
-            f'<td>{standing["podiums"]}</td>'
-            f'<td>{html.escape(standing["last_event"])}</td>'
-            '</tr>'
-        )
+        race_rating = standing['race_rating']
+        quali_rating = standing['quali_rating']
+        elo_differential = standing['elo_differential']
+        average_finish = standing['average_finish_position']
+        cells = [
+            f'<td>{rank}</td>',
+            f'<td>{html.escape(standing["driver"])}</td>',
+            f'<td>{race_rating:.1f}</td>' if race_rating is not None else '<td>&mdash;</td>',
+            f'<td>{quali_rating:.1f}</td>'
+            if quali_rating is not None else '<td>&mdash;</td>',
+            f'<td>{elo_differential:+.1f}</td>'
+            if elo_differential is not None else '<td>&mdash;</td>',
+            f'<td>{standing["starts"]}</td>',
+            f'<td>{average_finish:.2f}</td>'
+            if average_finish is not None else '<td>&mdash;</td>',
+            f'<td>{standing["dnfs"]}</td>',
+            f'<td>{standing["wins"]}</td>',
+            f'<td>{standing["podiums"]}</td>',
+            f'<td>{html.escape(standing["last_event"])}</td>',
+        ]
+        rows.append(f'<tr>{"".join(cells)}</tr>')
     return '\n'.join(rows)
 
 

@@ -44,7 +44,20 @@ class DriverPagesTests(unittest.TestCase):
             pd.DataFrame([qualifying]).to_csv(qualifying_path, index=False)
             pd.DataFrame([race]).to_csv(race_path, index=False)
 
-            with patch.dict(csv_lib.SEASONS, {'season1': {'name': 'Season 1'}}, clear=True):
+            with (
+                patch.dict(csv_lib.SEASONS, {'season1': {'name': 'Season 1'}}, clear=True),
+                patch.object(
+                    generate_driver_pages.elo_lib,
+                    'build_rankings',
+                    return_value=[{
+                        'slug': 'sprint_gt3',
+                        'standings': [
+                            {'driver': 'Greg Kachadurian', 'rating': 1612.3},
+                            {'driver': 'Another Driver', 'rating': 1498.7},
+                        ],
+                    }],
+                ),
+            ):
                 driver_count = generate_driver_pages.generate_driver_pages(
                     output_dir, data_root, config_root, generated_date='2026-10-26'
                 )
@@ -58,6 +71,12 @@ class DriverPagesTests(unittest.TestCase):
             self.assertIn('Sprint GT3', page)
             self.assertIn('Average quali pace vs alien', page)
             self.assertIn('101.25%', page)
+            self.assertIn('Category ELO', page)
+            self.assertIn('1,612.3', page)
+            self.assertIn('Driver rank', page)
+            self.assertIn('#1', page)
+            self.assertNotIn('Track limits</span>', page)
+            self.assertNotIn('Pit stops</span>', page)
             self.assertIn('<strong>1</strong>', page)
             self.assertIn('greg-kachadurian.html', index)
             self.assertIn('id="profileSearch"', index)

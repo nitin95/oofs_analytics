@@ -7,6 +7,7 @@ import re
 import pandas as pd
 
 import csv_lib
+import elo_lib
 
 
 ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -20,6 +21,12 @@ CATEGORY_LABELS = {
     ('sprint', 'LMP3'): 'Sprint LMP3',
     ('multiclass', 'GT3'): 'Multiclass GT3',
     ('multiclass', 'PROTOTYPE'): 'Multiclass Prototype',
+}
+CATEGORY_ELO_SLUGS = {
+    ('sprint', 'GT3'): 'sprint_gt3',
+    ('sprint', 'LMP3'): 'sprint_lmp3',
+    ('multiclass', 'GT3'): 'multiclass_gt3',
+    ('multiclass', 'PROTOTYPE'): 'multiclass_prototype',
 }
 
 
@@ -92,8 +99,6 @@ def collect_driver_records(data_root=DATA_ROOT, config_root=CONFIG_ROOT):
                             'consistency': _as_number(row.get('consistency')),
                             'reliability': _as_number(row.get('reliability')),
                             'incidents': _as_number(row.get('n_inchidents')),
-                            'track_limits': _as_number(row.get('n_tracklimits')),
-                            'pit_stops': _as_number(row.get('n_stops')),
                             '_season_order': season_order,
                             '_event_order': event_order,
                             '_session_order': session_order,
@@ -121,6 +126,26 @@ def _finish_positions(records):
     return [record['position'] for record in records if record['position'] is not None]
 
 
+def _build_elo_lookup(config_root, data_root):
+    """Return final category ratings and ranks indexed by canonical driver name."""
+    category_by_slug = {
+        slug: category for category, slug in CATEGORY_ELO_SLUGS.items()
+    }
+    lookup = {}
+    for ranking in elo_lib.build_rankings(config_root, data_root):
+        category = category_by_slug.get(ranking['slug'])
+        if category is None:
+            continue
+        lookup[category] = {
+            csv_lib.normalize_driver_name(standing['driver']): {
+                'rating': standing['rating'],
+                'rank': rank,
+            }
+            for rank, standing in enumerate(ranking['standings'], start=1)
+        }
+    return lookup
+
+
 def _category_stats(races, qualis):
     positions = _finish_positions(races)
     qualifying_positions = _finish_positions(qualis)
@@ -139,8 +164,6 @@ def _category_stats(races, qualis):
         'average_consistency': _mean(races, 'consistency'),
         'average_reliability': _mean(races, 'reliability'),
         'incidents': sum(record['incidents'] or 0 for record in races),
-        'track_limits': sum(record['track_limits'] or 0 for record in races),
-        'pit_stops': sum(record['pit_stops'] or 0 for record in races),
     }
 
 
@@ -253,7 +276,7 @@ def _render_results(records):
     )
 
 
-def render_driver_page(name, profile, generated_date):
+def render_driver_page(name, profile, generated_date, elo_lookup=None):
     races = profile['race']
     qualis = profile['qualifying']
     all_records = races + qualis
@@ -282,6 +305,7 @@ def render_driver_page(name, profile, generated_date):
             if record['series'] == series and record['category'] == category
         ]
         category_stats = _category_stats(category_races, category_qualis)
+        category_elo = (elo_lookup or {}).get((series, category), {}).get(name, {})
         category_sections.append(
             '<section class="profile-section">'
             f'<h2>{html.escape(category_label)}</h2>'
@@ -300,8 +324,8 @@ def render_driver_page(name, profile, generated_date):
                 ('Average consistency', _format_number(category_stats['average_consistency'], 3)),
                 ('Average reliability', _format_number(category_stats['average_reliability'], 3)),
                 ('Incidents', category_stats['incidents']),
-                ('Track limits', category_stats['track_limits']),
-                ('Pit stops', category_stats['pit_stops']),
+                ('Category ELO', _format_number(category_elo.get('rating'), 1)),
+                ('Driver rank', f"#{category_elo['rank']}" if category_elo else 'N/A'),
             ])
             + '</section>'
         )
@@ -348,6 +372,7 @@ def generate_driver_pages(output_dir=OUTPUT_DIR, data_root=DATA_ROOT,
 
     generated_date = generated_date or date.today().isoformat()
     profiles = collect_driver_records(data_root, config_root)
+    elo_lookup = _build_elo_lookup(config_root, data_root)
     os.makedirs(output_dir, exist_ok=True)
 
     slugs = {}
@@ -361,7 +386,9 @@ def generate_driver_pages(output_dir=OUTPUT_DIR, data_root=DATA_ROOT,
         slugs[name] = slug
         output_path = os.path.join(output_dir, f'{slug}.html')
         with open(output_path, 'w', encoding='utf-8') as page_file:
-            page_file.write(render_driver_page(name, profiles[name], generated_date))
+            page_file.write(
+                render_driver_page(name, profiles[name], generated_date, elo_lookup)
+            )
 
     profile_links = []
     profile_initials = {name[0].upper() for name in profiles if name}

@@ -79,7 +79,7 @@ class EloRankingTests(unittest.TestCase):
         self.assertEqual(sprint_standings[0]['driver'], 'Sprint Winner')
         self.assertEqual(sprint_standings[0]['starts'], 2)
         self.assertEqual(sprint_standings[0]['average_finish_position'], 1.5)
-        self.assertAlmostEqual(sprint_standings[0]['rating'], 1513.1, places=1)
+        self.assertAlmostEqual(sprint_standings[0]['race_rating'], 1513.1, places=1)
         sprint_winner = next(row for row in sprint_standings if row['driver'] == 'Sprint Winner')
         self.assertEqual(sprint_winner['dnfs'], 1)
         self.assertNotIn('GT3 A', [row['driver'] for row in sprint_standings])
@@ -103,8 +103,40 @@ class EloRankingTests(unittest.TestCase):
         rankings = elo_lib.build_rankings(self.config_root, self.csv_root)
         standings = {row['driver']: row for row in rankings[0]['standings']}
 
-        self.assertAlmostEqual(standings['Driver B']['rating'], 1505.8, places=1)
-        self.assertAlmostEqual(standings['Driver A']['rating'], 1494.2, places=1)
+        self.assertAlmostEqual(standings['Driver B']['race_rating'], 1505.8, places=1)
+        self.assertAlmostEqual(standings['Driver A']['race_rating'], 1494.2, places=1)
+
+    def test_race_and_quali_elo_differential(self):
+        self.write_season('season1', 'Season 3', {
+            'sprint_races': {'s3-sc1-r.xml': {'name': 'Portimao'}},
+            'sprint_qualis': {'s3-sc1.xml': {'name': 'Portimao'}},
+        })
+        self.write_event('season1', 'sprint', 's3-sc1-r.xml', [
+            {'Driver_name': 'Driver A', 'CarClass': 'GT3', 'Position': 1},
+            {'Driver_name': 'Driver B', 'CarClass': 'GT3', 'Position': 2},
+        ])
+        self.write_event('season1', 'sprint', 's3-sc1.xml', [
+            {'Driver_name': 'Driver B', 'CarClass': 'GT3', 'Position': 1},
+            {'Driver_name': 'Driver A', 'CarClass': 'GT3', 'Position': 2},
+        ])
+
+        rankings = elo_lib.build_rankings(self.config_root, self.csv_root)
+        standings = {row['driver']: row for row in rankings[0]['standings']}
+
+        self.assertEqual(standings['Driver A']['race_rating'], 1532.0)
+        self.assertEqual(standings['Driver A']['quali_rating'], 1468.0)
+        self.assertEqual(standings['Driver A']['elo_differential'], 64.0)
+        self.assertEqual(standings['Driver B']['elo_differential'], -64.0)
+        output_root = os.path.join(self.root, 'docs')
+        generated = elo_lib.generate_pages(
+            output_root=output_root,
+            config_root=self.config_root,
+            csv_root=self.csv_root,
+        )
+        with open(generated[0], encoding='utf-8') as page_file:
+            page = page_file.read()
+        self.assertIn('<td>+64.0</td>', page)
+        self.assertIn('<td>-64.0</td>', page)
 
     def test_first_category_uses_elo_html_and_sidebar_links_all_pages(self):
         self.write_season('season1', 'Season 3', {
@@ -126,6 +158,9 @@ class EloRankingTests(unittest.TestCase):
         with open(generated[0], encoding='utf-8') as page_file:
             page = page_file.read()
         self.assertIn('Driver A', page)
+        self.assertIn('<th>Race ELO</th>', page)
+        self.assertIn('<th>Quali ELO</th>', page)
+        self.assertIn('<th>ELO Diff</th>', page)
         self.assertIn('<th>Avg Finish</th>', page)
         self.assertIn('<th>DNFs</th>', page)
         self.assertIn('<td>1.00</td>', page)
