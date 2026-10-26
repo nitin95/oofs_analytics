@@ -32,6 +32,12 @@ python csv_lib.py --season season4
 
 Repeat `--season` to select multiple seasons. The CSV generator also accepts `--input-root`, `--output-root`, and `--config-root` when using non-default data directories. The previous `python generate_descriptor_csvs.py` command remains available as a compatibility entrypoint.
 
+## GitHub Pages
+
+The `Build and deploy GitHub Pages` workflow rebuilds the site when any branch is pushed. It publishes the repository's default branch at the site root and other branches under `/<branch>/`. The workflow must be present on a branch for pushes to that branch to trigger a build; merge it into existing branches once, and create future branches from the default branch.
+
+After merging the workflow, set **Settings > Pages > Build and deployment > Source** to **GitHub Actions**. The workflow builds each remote branch in isolation and deploys one combined site.
+
 ## Event Configuration
 
 Each season JSON file starts with a `season_info` object containing its display name, year, and description. It also contains up to four event groups: `sprint_qualis`, `sprint_races`, `multiclass_qualis`, and `multiclass_races`. Each key must match an XML filename in the corresponding `assets/xml/<season>/<series>/` directory. An event entry provides the display name and reference lap time for each car class, for example:
