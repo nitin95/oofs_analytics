@@ -36,7 +36,7 @@ Repeat `--season` to select multiple seasons. The CSV generator also accepts `--
 
 The `Build and deploy GitHub Pages` workflow rebuilds the site when any branch is pushed. It publishes the repository's default branch at the site root and other branches under `/<branch>/`. Both `.github/workflows/pages.yml` and `.github/scripts/build_pages.py` must be present on a branch for its pushes to build; merge both into existing branches once, and create future branches from the default branch.
 
-After merging the workflow, set **Settings > Pages > Build and deployment > Source** to **GitHub Actions**. The workflow builds each remote branch in isolation and deploys one combined site.
+After merging the workflow, set **Settings > Pages > Build and deployment > Source** to **GitHub Actions**. In **Settings > Environments > github-pages > Deployment branches and tags**, choose **Selected branches and tags** and add explicit rules such as `*` for branch names without slashes. GitHub's unrestricted setting may still limit Pages deployments to the default branch when no explicit environment branch rules exist. Wildcards do not match `/`; add matching patterns such as `*/*` for branches with one slash. The workflow builds each remote branch in isolation and deploys one combined site.
 
 ## Event Configuration
 
