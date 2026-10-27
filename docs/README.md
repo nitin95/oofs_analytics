@@ -38,12 +38,7 @@ The page will automatically update on your GitHub Pages site.
 
 ## GitHub Pages Setup
 
-To enable GitHub Pages for this repository:
-
-1. Go to repository **Settings** > **Pages**
-2. Select **Deploy from a branch**
-3. Choose **main** branch and **/docs** folder
-4. Your site will be published at: `https://<username>.github.io/<repo-name>/`
+The `Build and deploy GitHub Pages` workflow publishes the default branch at the site root and other branches under `/<branch>/`. Set repository **Settings** > **Pages** > **Build and deployment** > **Source** to **GitHub Actions**. In **Settings** > **Environments** > **github-pages** > **Deployment branches and tags**, choose **Selected branches and tags** and add explicit rules such as `*` for branch names without slashes. GitHub's unrestricted setting may still limit Pages deployments to the default branch when no explicit environment branch rules exist. Wildcards do not match `/`; add matching patterns such as `*/*` for branches with one slash. The workflow builds all remote branches into one Pages artifact.
 
 ## Data Sources
 

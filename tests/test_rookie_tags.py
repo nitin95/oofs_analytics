@@ -201,8 +201,8 @@ class RookieTagTests(unittest.TestCase):
         self.assertIn('<td>Greg K.*</td>', pace_html)
         self.assertIn('<td>Greg K.*</td>', improvement_html)
         self.assertIn('data-driver="Greg Kachadurian"', pace_html)
-        self.assertEqual(plot_data['traces'][0]['name'], 'Greg Kachadurian')
-        self.assertIn('Greg Kachadurian*', plot_data['traces'][0]['customdata'][0])
+        self.assertEqual(plot_data['traces'][0]['name'], 'Greg K.*')
+        self.assertIn('Greg K.*', plot_data['traces'][0]['customdata'][0])
 
     def test_comparison_page_wrapper_handles_race_and_quali(self):
         comparison_df = pd.DataFrame([{

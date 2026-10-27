@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multiclass GT3 Elo Rankings</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="main-wrapper">
+        <button class="sidebar-toggle" id="sidebarToggle" aria-label="Toggle menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <aside class="sidebar elo-sidebar"><div class="sidebar-content"><a href="index.html"><img class="header-logo" src="logo.png" alt="OOFS Analytics"></a><div class="section-group"><h4>Driver Rankings</h4><ul><li><a class="" href="elo.html">Sprint GT3</a></li><li><a class="active" href="elo_multiclass_gt3.html">Multiclass GT3</a></li><li><a class="" href="elo_multiclass_prototype.html">Multiclass Prototype</a></li><li><a class="" href="elo_sprint_lmp3.html">Sprint LMP3</a></li></ul></div></div></aside>
+        <main class="container">
+            <header>
+                <h1>Multiclass GT3 Elo Rankings</h1>
+            </header>
+            <div class="content">
+                <section class="section">
+                    <h2>Current Standings</h2>
+                    <p class="elo-method">1500 starting rating · K=64 in a driver's first category season, then K=32 · ELO difference = Race ELO minus Quali ELO</p>
+                    <div class="table-container">
+                        <table class="elo-table">
+                            <thead>
+                                <tr>
+                                    <th scope="col" aria-sort="none"><button class="elo-sort" type="button" data-sort-column="0" data-sort-type="number" aria-label="Sort by Rank ascending">Rank <span class="elo-sort-indicator" aria-hidden="true">&#8597;</span></button></th>
+                                    <th scope="col" aria-sort="none"><button class="elo-sort" type="button" data-sort-column="1" data-sort-type="text" aria-label="Sort by Driver ascending">Driver <span class="elo-sort-indicator" aria-hidden="true">&#8597;</span></button></th>
+                                    <th scope="col" aria-sort="none"><button class="elo-sort" type="button" data-sort-column="2" data-sort-type="number" aria-label="Sort by Race ELO ascending">Race ELO <span class="elo-sort-indicator" aria-hidden="true">&#8597;</span></button></th>
+                                    <th scope="col" aria-sort="none"><button class="elo-sort" type="button" data-sort-column="3" data-sort-type="number" aria-label="Sort by Quali ELO ascending">Quali ELO <span class="elo-sort-indicator" aria-hidden="true">&#8597;</span></button></th>
+                                    <th scope="col" aria-sort="none"><button class="elo-sort" type="button" data-sort-column="4" data-sort-type="number" aria-label="Sort by ELO Diff ascending">ELO Diff <span class="elo-sort-indicator" aria-hidden="true">&#8597;</span></button></th>
+                                    <th scope="col" aria-sort="none"><button class="elo-sort" type="button" data-sort-column="5" data-sort-type="number" aria-label="Sort by Starts ascending">Starts <span class="elo-sort-indicator" aria-hidden="true">&#8597;</span></button></th>
+                                    <th scope="col" aria-sort="none"><button class="elo-sort" type="button" data-sort-column="6" data-sort-type="number" aria-label="Sort by Avg Finish ascending">Avg Finish <span class="elo-sort-indicator" aria-hidden="true">&#8597;</span></button></th>
+                                    <th scope="col" aria-sort="none"><button class="elo-sort" type="button" data-sort-column="7" data-sort-type="number" aria-label="Sort by DNFs ascending">DNFs <span class="elo-sort-indicator" aria-hidden="true">&#8597;</span></button></th>
+                                    <th scope="col" aria-sort="none"><button class="elo-sort" type="button" data-sort-column="8" data-sort-type="number" aria-label="Sort by Wins ascending">Wins <span class="elo-sort-indicator" aria-hidden="true">&#8597;</span></button></th>
+                                    <th scope="col" aria-sort="none"><button class="elo-sort" type="button" data-sort-column="9" data-sort-type="number" aria-label="Sort by Pole Positions ascending">Pole Positions <span class="elo-sort-indicator" aria-hidden="true">&#8597;</span></button></th>
+                                    <th scope="col" aria-sort="none"><button class="elo-sort" type="button" data-sort-column="10" data-sort-type="number" aria-label="Sort by Podiums ascending">Podiums <span class="elo-sort-indicator" aria-hidden="true">&#8597;</span></button></th>
+                                    <th scope="col">Last Event</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>1</td><td>Guillermo P.</td><td>1721.2</td><td>1736.3</td><td>-15.1</td><td>22</td><td>2.82</td><td>1</td><td>8</td><td>7</td><td>20</td><td>Season 6 · Laguna Seca</td></tr>
+<tr><td>2</td><td>Parker T.</td><td>1640.9</td><td>1629.9</td><td>+11.0</td><td>18</td><td>4.72</td><td>0</td><td>3</td><td>1</td><td>7</td><td>Season 6 · Barcelona</td></tr>
+<tr><td>3</td><td>Karl C.</td><td>1639.0</td><td>1648.6</td><td>-9.6</td><td>6</td><td>1.83</td><td>0</td><td>5</td><td>4</td><td>5</td><td>Season 5 · Spa</td></tr>
+<tr><td>4</td><td>Dakota B.</td><td>1636.0</td><td>1648.9</td><td>-12.9</td><td>12</td><td>4.33</td><td>1</td><td>3</td><td>1</td><td>6</td><td>Season 4 · Spa</td></tr>
+<tr><td>5</td><td>Kasi J.</td><td>1615.7</td><td>1596.6</td><td>+19.1</td><td>14</td><td>5.36</td><td>0</td><td>0</td><td>2</td><td>4</td><td>Season 5 · Sebring</td></tr>
+<tr><td>6</td><td>Josh P.</td><td>1596.0</td><td>1656.1</td><td>-60.1</td><td>16</td><td>6.12</td><td>2</td><td>0</td><td>1</td><td>5</td><td>Season 6 · Laguna Seca</td></tr>
+<tr><td>7</td><td>Avinash G.</td><td>1594.2</td><td>1652.8</td><td>-58.6</td><td>8</td><td>5.25</td><td>1</td><td>3</td><td>5</td><td>3</td><td>Season 4 · Bahrain (outer)</td></tr>
+<tr><td>8</td><td>Jesse O.</td><td>1588.8</td><td>1513.8</td><td>+75.0</td><td>10</td><td>5.30</td><td>1</td><td>0</td><td>0</td><td>2</td><td>Season 6 · Laguna Seca</td></tr>
+<tr><td>9</td><td>Willie M.</td><td>1580.6</td><td>1635.3</td><td>-54.7</td><td>7</td><td>5.29</td><td>0</td><td>1</td><td>1</td><td>4</td><td>Season 3 · COTA</td></tr>
+<tr><td>10</td><td>Ily B.</td><td>1560.3</td><td>1503.7</td><td>+56.6</td><td>8</td><td>7.50</td><td>0</td><td>0</td><td>0</td><td>0</td><td>Season 6 · Laguna Seca</td></tr>
+<tr><td>11</td><td>Grayson H.</td><td>1551.0</td><td>1546.2</td><td>+4.8</td><td>13</td><td>8.46</td><td>2</td><td>0</td><td>0</td><td>3</td><td>Season 6 · Laguna Seca</td></tr>
+<tr><td>12</td><td>Scarlett B.</td><td>1539.8</td><td>1556.7</td><td>-17.0</td><td>2</td><td>5.00</td><td>0</td><td>0</td><td>0</td><td>0</td><td>Season 6 · Barcelona</td></tr>
+<tr><td>13</td><td>Keith D.</td><td>1529.7</td><td>1551.7</td><td>-22.0</td><td>3</td><td>7.67</td><td>0</td><td>0</td><td>0</td><td>0</td><td>Season 6 · Laguna Seca</td></tr>
+<tr><td>14</td><td>Andrew C.</td><td>1526.3</td><td>1520.1</td><td>+6.3</td><td>1</td><td>3.00</td><td>0</td><td>0</td><td>0</td><td>1</td><td>Season 6 · Laguna Seca</td></tr>
+<tr><td>15</td><td>Joe M.</td><td>1525.9</td><td>1555.8</td><td>-29.9</td><td>8</td><td>8.88</td><td>0</td><td>0</td><td>0</td><td>2</td><td>Season 6 · Laguna Seca</td></tr>
+<tr><td>16</td><td>Holden G.</td><td>1523.6</td><td>1485.5</td><td>+38.1</td><td>3</td><td>8.67</td><td>0</td><td>0</td><td>0</td><td>0</td><td>Season 6 · Laguna Seca</td></tr>
+<tr><td>17</td><td>Owen B.</td><td>1522.6</td><td>1523.8</td><td>-1.2</td><td>6</td><td>9.33</td><td>0</td><td>0</td><td>0</td><td>0</td><td>Season 5 · Spa</td></tr>
+<tr><td>18</td><td>Christian G.</td><td>1519.1</td><td>1505.0</td><td>+14.1</td><td>2</td><td>7.00</td><td>0</td><td>0</td><td>0</td><td>0</td><td>Season 4 · Silverstone</td></tr>
+<tr><td>19</td><td>Abe W.</td><td>1518.5</td><td>1478.6</td><td>+39.9</td><td>14</td><td>9.43</td><td>3</td><td>0</td><td>0</td><td>1</td><td>Season 6 · Laguna Seca</td></tr>
+<tr><td>20</td><td>Patricio F.</td><td>1510.0</td><td>1504.7</td><td>+5.3</td><td>3</td><td>9.00</td><td>0</td><td>0</td><td>0</td><td>0</td><td>Season 3 · Paul Ricard</td></tr>
+<tr><td>21</td><td>Dan P.</td><td>1508.0</td><td>1566.7</td><td>-58.7</td><td>16</td><td>9.25</td><td>3</td><td>0</td><td>0</td><td>3</td><td>Season 5 · COTA</td></tr>
+<tr><td>22</td><td>Logan B.</td><td>1502.5</td><td>1497.8</td><td>+4.7</td><td>4</td><td>8.25</td><td>1</td><td>0</td><td>0</td><td>1</td><td>Season 4 · Fuji</td></tr>
+<tr><td>23</td><td>Alexandre U.</td><td>1496.5</td><td>1506.3</td><td>-9.9</td><td>3</td><td>11.33</td><td>0</td><td>0</td><td>0</td><td>0</td><td>Season 5 · Spa</td></tr>
+<tr><td>24</td><td>Chris W.</td><td>1496.2</td><td>1488.1</td><td>+8.1</td><td>9</td><td>9.33</td><td>2</td><td>0</td><td>0</td><td>1</td><td>Season 5 · Spa</td></tr>
+<tr><td>25</td><td>Edriel L.</td><td>1493.1</td><td>1528.5</td><td>-35.5</td><td>2</td><td>12.50</td><td>0</td><td>0</td><td>0</td><td>0</td><td>Season 3 · Le Mans</td></tr>
+<tr><td>26</td><td>Justin F.</td><td>1492.8</td><td>1464.9</td><td>+27.8</td><td>7</td><td>11.57</td><td>0</td><td>0</td><td>0</td><td>0</td><td>Season 5 · Sebring</td></tr>
+<tr><td>27</td><td>Rich S.</td><td>1491.3</td><td>1468.0</td><td>+23.3</td><td>1</td><td>15.00</td><td>0</td><td>0</td><td>0</td><td>0</td><td>Season 3 · Portimao</td></tr>
+<tr><td>28</td><td>Lewis S.</td><td>1489.9</td><td>1457.2</td><td>+32.8</td><td>5</td><td>12.40</td><td>1</td><td>0</td><td>0</td><td>1</td><td>Season 5 · Daytona</td></tr>
+<tr><td>29</td><td>Chris M.</td><td>1487.4</td><td>1444.8</td><td>+42.6</td><td>5</td><td>12.00</td><td>0</td><td>0</td><td>0</td><td>0</td><td>Season 5 · Spa</td></tr>
+<tr><td>30</td><td>Dave C.</td><td>1484.9</td><td>1388.6</td><td>+96.3</td><td>14</td><td>11.07</td><td>1</td><td>0</td><td>0</td><td>0</td><td>Season 6 · Laguna Seca</td></tr>
+<tr><td>31</td><td>Shae L.</td><td>1484.5</td><td>1489.9</td><td>-5.4</td><td>3</td><td>13.33</td><td>0</td><td>0</td><td>0</td><td>0</td><td>Season 6 · Laguna Seca</td></tr>
+<tr><td>32</td><td>Chase K.</td><td>1483.4</td><td>1479.9</td><td>+3.4</td><td>2</td><td>13.00</td><td>0</td><td>0</td><td>0</td><td>0</td><td>Season 4 · Barcelona</td></tr>
+<tr><td>33</td><td>David S.</td><td>1480.2</td><td>1464.5</td><td>+15.7</td><td>2</td><td>15.50</td><td>0</td><td>0</td><td>0</td><td>0</td><td>Season 5 · Portimao</td></tr>
+<tr><td>34</td><td>Brian H.</td><td>1477.1</td><td>1440.4</td><td>+36.7</td><td>2</td><td>15.00</td><td>0</td><td>0</td><td>0</td><td>0</td><td>Season 6 · Laguna Seca</td></tr>
+<tr><td>35</td><td>Javier T.</td><td>1477.1</td><td>1433.9</td><td>+43.2</td><td>6</td><td>12.83</td><td>0</td><td>0</td><td>0</td><td>0</td><td>Season 4 · Imola</td></tr>
+<tr><td>36</td><td>Alex L.</td><td>1476.2</td><td>1503.0</td><td>-26.8</td><td>2</td><td>16.00</td><td>0</td><td>0</td><td>0</td><td>0</td><td>Season 6 · Laguna Seca</td></tr>
+<tr><td>37</td><td>Dick G.</td><td>1475.9</td><td>1466.9</td><td>+9.0</td><td>2</td><td>15.50</td><td>1</td><td>0</td><td>0</td><td>0</td><td>Season 6 · Barcelona</td></tr>
+<tr><td>38</td><td>J.P.</td><td>1475.9</td><td>1503.9</td><td>-27.9</td><td>2</td><td>15.50</td><td>1</td><td>0</td><td>0</td><td>0</td><td>Season 3 · Le Mans</td></tr>
+<tr><td>39</td><td>Trenton J.</td><td>1474.9</td><td>1491.3</td><td>-16.5</td><td>1</td><td>19.00</td><td>1</td><td>0</td><td>0</td><td>0</td><td>Season 4 · Imola</td></tr>
+<tr><td>40</td><td>Mike D.</td><td>1474.6</td><td>1537.7</td><td>-63.2</td><td>8</td><td>13.12</td><td>1</td><td>0</td><td>0</td><td>0</td><td>Season 6 · Laguna Seca</td></tr>
+<tr><td>41</td><td>John C.</td><td>1474.2</td><td>1512.3</td><td>-38.2</td><td>1</td><td>21.00</td><td>0</td><td>0</td><td>0</td><td>0</td><td>Season 6 · Fuji</td></tr>
+<tr><td>42</td><td>Zac B.</td><td>1470.7</td><td>1512.5</td><td>-41.8</td><td>3</td><td>12.67</td><td>2</td><td>0</td><td>0</td><td>0</td><td>Season 4 · Bahrain (outer)</td></tr>
+<tr><td>43</td><td>Jacob P.</td><td>1468.7</td><td>1532.9</td><td>-64.1</td><td>1</td><td>21.00</td><td>1</td><td>0</td><td>1</td><td>0</td><td>Season 6 · Laguna Seca</td></tr>
+<tr><td>44</td><td>Donnie G.</td><td>1468.1</td><td>1399.3</td><td>+68.8</td><td>9</td><td>12.67</td><td>1</td><td>0</td><td>0</td><td>0</td><td>Season 6 · Barcelona</td></tr>
+<tr><td>45</td><td>Ricardo S.</td><td>1468.0</td><td>1494.6</td><td>-26.6</td><td>1</td><td>23.00</td><td>1</td><td>0</td><td>0</td><td>0</td><td>Season 5 · Portimao</td></tr>
+<tr><td>46</td><td>Mathieu M.</td><td>1467.2</td><td>1493.1</td><td>-25.9</td><td>3</td><td>11.00</td><td>1</td><td>0</td><td>0</td><td>0</td><td>Season 4 · Spa</td></tr>
+<tr><td>47</td><td>Nick J.</td><td>1465.0</td><td>1537.3</td><td>-72.3</td><td>8</td><td>12.88</td><td>2</td><td>0</td><td>0</td><td>0</td><td>Season 6 · Fuji</td></tr>
+<tr><td>48</td><td>Ryan D.</td><td>1464.1</td><td>1467.2</td><td>-3.1</td><td>3</td><td>15.67</td><td>1</td><td>0</td><td>0</td><td>0</td><td>Season 6 · Laguna Seca</td></tr>
+<tr><td>49</td><td>Ross M.</td><td>1463.9</td><td>1480.0</td><td>-16.1</td><td>5</td><td>12.80</td><td>2</td><td>0</td><td>0</td><td>0</td><td>Season 3 · COTA</td></tr>
+<tr><td>50</td><td>bt b.</td><td>1462.3</td><td>1446.0</td><td>+16.4</td><td>2</td><td>18.50</td><td>0</td><td>0</td><td>0</td><td>0</td><td>Season 6 · Barcelona</td></tr>
+<tr><td>51</td><td>Preston P.</td><td>1460.1</td><td>1423.3</td><td>+36.8</td><td>4</td><td>13.25</td><td>0</td><td>0</td><td>0</td><td>0</td><td>Season 5 · Daytona</td></tr>
+<tr><td>52</td><td>Brian C.</td><td>1459.3</td><td>1465.6</td><td>-6.3</td><td>4</td><td>15.00</td><td>1</td><td>0</td><td>0</td><td>0</td><td>Season 6 · Fuji</td></tr>
+<tr><td>53</td><td>Harrison M.</td><td>1458.4</td><td>1518.6</td><td>-60.2</td><td>12</td><td>13.50</td><td>4</td><td>0</td><td>0</td><td>0</td><td>Season 6 · Laguna Seca</td></tr>
+<tr><td>54</td><td>Dave H.</td><td>1457.8</td><td>1424.5</td><td>+33.3</td><td>7</td><td>12.86</td><td>1</td><td>0</td><td>0</td><td>0</td><td>Season 3 · Spa</td></tr>
+<tr><td>55</td><td>Dave P.</td><td>1447.4</td><td>1494.7</td><td>-47.3</td><td>6</td><td>14.50</td><td>1</td><td>0</td><td>0</td><td>0</td><td>Season 4 · Imola</td></tr>
+<tr><td>56</td><td>Daniel D.</td><td>1431.2</td><td>1429.8</td><td>+1.4</td><td>3</td><td>20.33</td><td>1</td><td>0</td><td>0</td><td>0</td><td>Season 6 · Fuji</td></tr>
+<tr><td>57</td><td>Matthew C.</td><td>1430.6</td><td>1365.9</td><td>+64.7</td><td>12</td><td>13.33</td><td>1</td><td>0</td><td>0</td><td>0</td><td>Season 5 · Spa</td></tr>
+<tr><td>58</td><td>Kevin S.</td><td>1429.0</td><td>1410.8</td><td>+18.2</td><td>5</td><td>12.80</td><td>3</td><td>0</td><td>0</td><td>0</td><td>Season 4 · Spa</td></tr>
+<tr><td>59</td><td>Macaronie G.</td><td>1427.4</td><td>1379.3</td><td>+48.0</td><td>6</td><td>15.33</td><td>1</td><td>0</td><td>0</td><td>0</td><td>Season 3 · Spa</td></tr>
+<tr><td>60</td><td>Christian H.</td><td>1427.2</td><td>1434.7</td><td>-7.5</td><td>5</td><td>15.80</td><td>1</td><td>0</td><td>0</td><td>0</td><td>Season 5 · Spa</td></tr>
+<tr><td>61</td><td>Ron H.</td><td>1424.8</td><td>1400.2</td><td>+24.6</td><td>10</td><td>15.60</td><td>1</td><td>0</td><td>0</td><td>0</td><td>Season 5 · Daytona</td></tr>
+<tr><td>62</td><td>Richie W.</td><td>1421.1</td><td>1558.2</td><td>-137.1</td><td>23</td><td>13.13</td><td>3</td><td>0</td><td>0</td><td>0</td><td>Season 6 · Laguna Seca</td></tr>
+<tr><td>63</td><td>Dustin R.</td><td>1410.6</td><td>1383.3</td><td>+27.4</td><td>17</td><td>13.47</td><td>4</td><td>0</td><td>0</td><td>0</td><td>Season 6 · Laguna Seca</td></tr>
+<tr><td>64</td><td>Justin J.</td><td>1396.4</td><td>1354.9</td><td>+41.5</td><td>9</td><td>17.00</td><td>1</td><td>0</td><td>0</td><td>0</td><td>Season 6 · Laguna Seca</td></tr>
+<tr><td>65</td><td>Gage G.</td><td>1394.2</td><td>1357.5</td><td>+36.8</td><td>8</td><td>15.75</td><td>1</td><td>0</td><td>0</td><td>0</td><td>Season 4 · Barcelona</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+            </div>
+            <div class="footer">
+                <p>Generated from OOFS event data</p>
+                <p class="elo-updated">Last updated: 2026-10-26 20:20:23</p>
+            </div>
+        </main>
+    </div>
+    <script>
+        const sidebarToggle = document.getElementById('sidebarToggle');
+        const sidebar = document.querySelector('.sidebar');
+        sidebarToggle.addEventListener('click', () => sidebar.classList.toggle('active'));
+        sidebar.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => sidebar.classList.remove('active'));
+        });
+
+        const eloTable = document.querySelector('.elo-table');
+        const eloBody = eloTable.querySelector('tbody');
+        const tableContainer = eloTable.closest('.table-container');
+        const sortButtons = eloTable.querySelectorAll('.elo-sort');
+
+        const fixedHeader = document.createElement('div');
+        fixedHeader.className = 'elo-fixed-header';
+        fixedHeader.setAttribute('aria-hidden', 'true');
+        const fixedTable = document.createElement('table');
+        fixedTable.className = 'elo-table elo-fixed-table';
+        const fixedHead = eloTable.tHead.cloneNode(true);
+        fixedTable.appendChild(fixedHead);
+        fixedHeader.appendChild(fixedTable);
+        document.body.appendChild(fixedHeader);
+
+        function updateSortControls(column, direction) {
+            document.querySelectorAll('.elo-sort').forEach(sortButton => {
+                const sortHeader = sortButton.closest('th');
+                const isActive = Number(sortButton.dataset.sortColumn) === column;
+                sortHeader.setAttribute('aria-sort', isActive ? direction : 'none');
+                sortButton.querySelector('.elo-sort-indicator').textContent = isActive
+                    ? direction === 'ascending' ? '\u25b2' : '\u25bc'
+                    : '\u2195';
+                const label = sortButton.textContent.trim().replace(/[\u25b2\u25bc\u2195]/g, '').trim();
+                sortButton.setAttribute(
+                    'aria-label',
+                    `Sort by ${label} ${isActive && direction === 'ascending' ? 'descending' : 'ascending'}`,
+                );
+            });
+        }
+
+        function sortByColumn(column, type) {
+            const isSameColumn = eloTable.dataset.sortColumn === String(column);
+            const direction = isSameColumn
+                && eloTable.dataset.sortDirection === 'ascending'
+                ? 'descending'
+                : 'ascending';
+            const rows = Array.from(eloBody.rows).map((row, index) => ({
+                row,
+                index,
+                value: type === 'text'
+                    ? row.cells[column].textContent.trim()
+                    : Number.parseFloat(row.cells[column].textContent.trim()),
+            }));
+
+            rows.sort((left, right) => {
+                const leftMissing = type === 'text' ? false : Number.isNaN(left.value);
+                const rightMissing = type === 'text' ? false : Number.isNaN(right.value);
+                if (leftMissing !== rightMissing) return leftMissing ? 1 : -1;
+                if (leftMissing || left.value === right.value) return left.index - right.index;
+                return direction === 'ascending'
+                    ? type === 'text'
+                        ? left.value.localeCompare(right.value, undefined, {numeric: true, sensitivity: 'base'})
+                        : left.value - right.value
+                    : type === 'text'
+                        ? right.value.localeCompare(left.value, undefined, {numeric: true, sensitivity: 'base'})
+                        : right.value - left.value;
+            });
+            rows.forEach(({row}) => eloBody.appendChild(row));
+
+            eloTable.dataset.sortColumn = String(column);
+            eloTable.dataset.sortDirection = direction;
+            updateSortControls(column, direction);
+        }
+
+        function pinHeader() {
+            const headerRect = eloTable.tHead.getBoundingClientRect();
+            const tableRect = eloTable.getBoundingClientRect();
+            const containerRect = tableContainer.getBoundingClientRect();
+            const style = getComputedStyle(tableContainer);
+            const paddingLeft = Number.parseFloat(style.paddingLeft) || 0;
+            const paddingRight = Number.parseFloat(style.paddingRight) || 0;
+            const borderLeft = Number.parseFloat(style.borderLeftWidth) || 0;
+            const headerHeight = eloTable.tHead.offsetHeight;
+            const isPinned = headerRect.top < 0 && tableRect.bottom > headerHeight;
+
+            fixedHeader.style.display = isPinned ? 'block' : 'none';
+            eloTable.classList.toggle('elo-header-pinned', isPinned);
+            if (!isPinned) return;
+
+            fixedHeader.style.left = `${containerRect.left + borderLeft + paddingLeft}px`;
+            fixedHeader.style.width = `${tableContainer.clientWidth - paddingLeft - paddingRight}px`;
+            fixedTable.style.width = `${eloTable.offsetWidth}px`;
+            fixedTable.style.transform = `translateX(-${tableContainer.scrollLeft}px)`;
+            Array.from(eloTable.tHead.rows[0].cells).forEach((cell, index) => {
+                fixedHead.rows[0].cells[index].style.width = `${cell.getBoundingClientRect().width}px`;
+            });
+        }
+
+        sortButtons.forEach(button => {
+            button.addEventListener('click', () => sortByColumn(
+                Number(button.dataset.sortColumn), button.dataset.sortType
+            ));
+        });
+        fixedHead.querySelectorAll('.elo-sort').forEach(button => {
+            button.tabIndex = -1;
+            button.addEventListener('click', () => sortByColumn(
+                Number(button.dataset.sortColumn), button.dataset.sortType
+            ));
+        });
+        window.addEventListener('scroll', pinHeader, {passive: true});
+        window.addEventListener('resize', pinHeader);
+        tableContainer.addEventListener('scroll', pinHeader, {passive: true});
+        requestAnimationFrame(pinHeader);
+    </script>
+</body>
+</html>

@@ -119,6 +119,84 @@ body {
     font-weight: 600;
 }
 
+.elo-sidebar .sidebar-content h3 a {
+    color: #ccfc00;
+    text-decoration: none;
+}
+
+.elo-sidebar .section-group ul {
+    display: grid;
+    gap: 4px;
+    max-width: none;
+}
+
+.elo-sidebar .section-group li {
+    min-width: 0;
+}
+
+.elo-method {
+    color: rgba(255,255,255,0.65);
+    margin: -8px 0 16px;
+}
+
+.elo-table {
+    min-width: 1040px;
+}
+
+.elo-table thead th {
+    background: #000000;
+}
+
+.elo-table.elo-header-pinned thead {
+    visibility: hidden;
+}
+
+.elo-fixed-header {
+    display: none;
+    position: fixed;
+    top: 0;
+    overflow: hidden;
+    z-index: 20;
+    background: #000000;
+}
+
+.elo-fixed-table {
+    margin: 0;
+}
+
+.elo-sort {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    cursor: pointer;
+}
+
+.elo-sort:hover,
+.elo-sort:focus-visible {
+    color: #ccfc00;
+}
+
+.elo-sort:focus-visible {
+    outline: 2px solid #ccfc00;
+    outline-offset: 3px;
+}
+
+.elo-sort-indicator {
+    color: #ccfc00;
+    min-width: 1em;
+    text-align: center;
+}
+
+.elo-updated {
+    font-size: 0.9em;
+    margin-top: 10px;
+}
+
 .container {
     flex: 1;
     background: transparent;
