@@ -72,6 +72,8 @@ class DriverPagesTests(unittest.TestCase):
                 index = index_file.read()
 
             self.assertIn('Overall career stats', page)
+            self.assertIn('<title>Greg K. | Driver Profile</title>', page)
+            self.assertIn('<h1>Greg K.</h1>', page)
             self.assertIn('Sprint GT3', page)
             self.assertIn('Average quali pace vs alien', page)
             self.assertIn('101.25%', page)
@@ -83,6 +85,7 @@ class DriverPagesTests(unittest.TestCase):
             self.assertNotIn('Pit stops</span>', page)
             self.assertIn('<strong>1</strong>', page)
             self.assertIn('greg-kachadurian.html', index)
+            self.assertIn('>Greg K.<small>', index)
             self.assertIn('id="profileSearch"', index)
             self.assertIn('data-letter="A"', index)
             self.assertIn('data-letter="Z"', index)

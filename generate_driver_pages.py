@@ -8,6 +8,7 @@ import pandas as pd
 
 import csv_lib
 import elo_lib
+import html_lib
 
 
 ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -277,6 +278,7 @@ def _render_results(records):
 
 
 def render_driver_page(name, profile, generated_date, elo_lookup=None):
+    display_name = html_lib.format_driver_name(name)
     races = profile['race']
     qualis = profile['qualifying']
     all_records = races + qualis
@@ -334,7 +336,7 @@ def render_driver_page(name, profile, generated_date, elo_lookup=None):
         '<nav class="profile-nav"><a href="index.html">Back to all driver profiles</a>'
         '<a href="../index.html"><img class="header-logo" src="../logo.png" alt="OOFS Analytics"></a></nav>'
         '<header class="profile-heading">'
-        f'<h1>{html.escape(name)}</h1>'
+        f'<h1>{html.escape(display_name)}</h1>'
         f'<p>{html.escape(" | ".join(details))}</p>'
         '</header>'
         '<section class="profile-section"><h2>Overall career stats</h2>'
@@ -357,7 +359,7 @@ def render_driver_page(name, profile, generated_date, elo_lookup=None):
         + '</section>'
         + f'<footer class="profile-footer">Generated from OOFS event data on {html.escape(generated_date)}.</footer>'
     )
-    return _base_page(f'{name} | Driver Profile', body)
+    return _base_page(f'{display_name} | Driver Profile', body)
 
 
 def _slugify(name):
@@ -401,7 +403,8 @@ def generate_driver_pages(output_dir=OUTPUT_DIR, data_root=DATA_ROOT,
         profile_links.append(
             f'<a class="profile-entry" data-initial="{html.escape(name[0].upper(), quote=True)}" '
             f'data-name="{html.escape(name.casefold(), quote=True)}" '
-            f'href="{html.escape(slugs[name])}.html">{html.escape(name)}'
+            f'href="{html.escape(slugs[name])}.html">'
+            f'{html.escape(html_lib.format_driver_name(name))}'
             f'<small>{len(profile["race"])} race results | '
             f'{html.escape(", ".join(categories))}</small></a>'
         )

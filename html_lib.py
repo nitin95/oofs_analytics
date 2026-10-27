@@ -15,13 +15,12 @@ from csv_lib import (
 )
 
 
-def format_driver_name(driver_name, rookie_names=(), abbreviated=True):
+def format_driver_name(driver_name, rookie_names=()):
     """Format a visible driver name, adding a rookie marker when applicable."""
     name = str(driver_name)
-    if abbreviated:
-        name_parts = name.split()
-        if len(name_parts) > 1:
-            name = f'{name_parts[0]} {name_parts[-1][0]}.'
+    name_parts = name.split()
+    if len(name_parts) > 1:
+        name = f'{name_parts[0]} {name_parts[-1][0]}.'
     if driver_name in rookie_names:
         name += '*'
     return name
@@ -315,7 +314,7 @@ def create_plotly_json(df_display_renamed, comparison_df, avg_pace_cols, stdev_p
     for _, (_, row) in enumerate(plot_df.iterrows()):
         driver_name = row['Driver_name']
         display_driver_name = format_driver_name(
-            driver_name, rookie_names, abbreviated=False
+            driver_name, rookie_names
         )
 
         if race_type == 'quali':
@@ -341,7 +340,7 @@ def create_plotly_json(df_display_renamed, comparison_df, avg_pace_cols, stdev_p
                 'x': list(xs_fl),
                 'y': list(ys_fl),
                 'mode': mode_fl,
-                'name': driver_name,
+                'name': display_driver_name,
                 'hovertemplate': "%{customdata}<extra></extra>",
                 'customdata': hover_data,
                 'line': {'color': row.get('color'), 'width': 2},
@@ -420,7 +419,7 @@ def create_plotly_json(df_display_renamed, comparison_df, avg_pace_cols, stdev_p
                 'x': list(xs),
                 'y': list(ys),
                 'mode': mode_race,
-                'name': driver_name,
+                'name': display_driver_name,
                 'hovertemplate': "%{customdata}<extra></extra>",
                 'customdata': hover_data,
                 'line': {'color': row.get('color'), 'width': 2},

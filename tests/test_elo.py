@@ -145,8 +145,8 @@ class EloRankingTests(unittest.TestCase):
             'sprint_races': {'s3-sc1-r.xml': {'name': 'Portimao'}},
         })
         self.write_event('season1', 'sprint', 's3-sc1-r.xml', [
-            {'Driver_name': 'Driver A', 'CarClass': 'GT3', 'Position': 1},
-            {'Driver_name': 'Driver B', 'CarClass': 'GT3', 'Position': 2},
+            {'Driver_name': 'Alexandra Drivername', 'CarClass': 'GT3', 'Position': 1},
+            {'Driver_name': 'Madonna', 'CarClass': 'GT3', 'Position': 2},
         ])
 
         output_root = os.path.join(self.root, 'docs')
@@ -159,7 +159,9 @@ class EloRankingTests(unittest.TestCase):
         self.assertEqual(os.path.basename(generated[0]), 'elo.html')
         with open(generated[0], encoding='utf-8') as page_file:
             page = page_file.read()
-        self.assertIn('Driver A', page)
+        self.assertIn('<td>Alexandra D.</td>', page)
+        self.assertIn('<td>Madonna</td>', page)
+        self.assertNotIn('Alexandra Drivername', page)
         self.assertIn('>Race ELO <span class="elo-sort-indicator"', page)
         self.assertIn('>Quali ELO <span class="elo-sort-indicator"', page)
         self.assertIn('>ELO Diff <span class="elo-sort-indicator"', page)

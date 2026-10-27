@@ -8,6 +8,7 @@ from datetime import datetime
 import pandas as pd
 
 import csv_lib
+import html_lib
 
 
 INITIAL_RATING = 1500.0
@@ -282,7 +283,7 @@ def _render_table(standings):
         average_finish = standing['average_finish_position']
         cells = [
             f'<td>{rank}</td>',
-            f'<td>{html.escape(standing["driver"])}</td>',
+            f'<td>{html.escape(html_lib.format_driver_name(standing["driver"]))}</td>',
             f'<td>{race_rating:.1f}</td>' if race_rating is not None else '<td>&mdash;</td>',
             f'<td>{quali_rating:.1f}</td>'
             if quali_rating is not None else '<td>&mdash;</td>',
