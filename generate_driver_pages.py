@@ -333,12 +333,14 @@ def render_driver_page(name, profile, generated_date, elo_lookup=None):
         )
 
     body = (
-        '<nav class="profile-nav"><a href="index.html">Back to all driver profiles</a>'
-        '<a href="../index.html"><img class="header-logo" src="../logo.png" alt="OOFS Analytics"></a></nav>'
+        '<nav class="profile-nav">'
+        '<a href="../index.html"><img class="header-logo" src="../logo.png" alt="OOFS Analytics"></a>'
         '<header class="profile-heading">'
-        f'<h1>{html.escape(display_name)}</h1>'
-        f'<p>{html.escape(" | ".join(details))}</p>'
+                f'<h1>{html.escape(display_name)}</h1>'
+                f'<p>{html.escape(" | ".join(details))}</p>'
         '</header>'
+        '<a href="index.html">Back to all driver profiles</a>'
+        '</nav>'
         '<section class="profile-section"><h2>Overall career stats</h2>'
         + _metric_grid([
             ('Race starts', stats['starts']),
@@ -418,9 +420,11 @@ def generate_driver_pages(output_dir=OUTPUT_DIR, data_root=DATA_ROOT,
         for letter in 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
     )
     index_body = (
-        '<nav class="profile-nav"><a href="../index.html"><img class="header-logo" src="../logo.png" alt="OOFS Analytics"></a></nav>'
+        '<nav class="profile-nav">'
+        '<a href="../index.html"><img class="header-logo" src="../logo.png" alt="OOFS Analytics"></a>'
         '<header class="profile-heading"><h1>Driver Profiles</h1>'
         f'<p>{len(profiles)} drivers from configured event CSVs</p></header>'
+        '</nav>'
         '<section class="profile-section">'
         '<label class="sr-only" for="profileSearch">Search drivers</label>'
         '<input class="profile-search" id="profileSearch" type="search" '
