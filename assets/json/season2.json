@@ -1,170 +1,122 @@
 {
   "season_info": {
-    "name": "Season 4",
-    "year": 2026,
-    "description": "OOFS S4"
-  },
-  "sprint_qualis": {
-    "s4-sc1.xml": {
-      "name": "Imola",
-      "reference_times": {
-        "default": 101.82
-      }
-    },
-    "s4-sc2.xml": {
-      "name": "Barcelona",
-      "reference_times": {
-        "default": 100.6
-      }
-    },
-    "s4-sc3.xml": {
-      "name": "Silverstone",
-      "reference_times": {
-        "default": 117.76
-      }
-    },
-    "s4-sc4.xml": {
-      "name": "Fuji",
-      "reference_times": {
-        "default": 105.0
-      }
-    },
-    "s4-sc5.xml": {
-      "name": "Bahrain (outer)",
-      "reference_times": {
-        "default": 72.01
-      }
-    },
-    "s4-sc6.xml": {
-      "name": "Spa",
-      "reference_times": {
-        "default": 137.03
-      }
-    }
-  },
-  "sprint_races": {
-    "s4-sc1-r.xml": {
-      "name": "Imola",
-      "reference_times": {
-        "default": 102.33
-      }
-    },
-    "s4-sc2-r.xml": {
-      "name": "Barcelona",
-      "reference_times": {
-        "default": 101.1
-      }
-    },
-    "s4-sc3-r.xml": {
-      "name": "Silverstone",
-      "reference_times": {
-        "default": 133.72
-      }
-    },
-    "s4-sc4-r.xml": {
-      "name": "Fuji",
-      "reference_times": {
-        "default": 106.5
-      }
-    },
-    "s4-sc5-r.xml": {
-      "name": "Bahrain (outer)",
-      "reference_times": {
-        "default": 72.37
-      }
-    },
-    "s4-sc6-r.xml": {
-      "name": "Spa",
-      "reference_times": {
-        "default": 137.71
-      }
-    }
+    "name": "Season 2",
+    "year": 2025,
+    "description": "OOFS S2"
   },
   "multiclass_qualis": {
-    "s4-mc1.xml": {
-      "name": "Imola",
+    "s2-mc1.xml": {
+      "name": "Sebring",
       "reference_times": {
-        "hyper": 89.45,
-        "gt3": 101.82
+        "p2ur": 108.0,
+        "gt3": 121.2
       }
     },
-    "s4-mc2.xml": {
-      "name": "Barcelona",
+    "s2-mc2.xml": {
+      "name": "Qatar",
       "reference_times": {
-        "hyper": 88.59,
-        "gt3": 100.6
+        "p2ur": 100.4,
+        "gt3": 115.8
       }
     },
-    "s4-mc3.xml": {
+    "s2-mc3.xml": {
+      "name": "Monza",
+      "reference_times": {
+        "p2ur": 96.9,
+        "gt3": 109.0
+      }
+    },
+    "s2-mc4.xml": {
+      "name": "Le Mans",
+      "reference_times": {
+        "p2ur": 209.6,
+        "gt3": 237.5
+      }
+    },
+    "s2-mc5.xml": {
       "name": "Silverstone",
       "reference_times": {
-        "hyper": 102.23,
-        "gt3": 117.76
+        "p2ur": 114.7,
+        "gt3": 129.6
       }
     },
-    "s4-mc4.xml": {
+    "s2-mc6.xml": {
+      "name": "Bahrain",
+      "reference_times": {
+        "p2ur": 107.9,
+        "gt3": 119.4
+      }
+    },
+    "s2-mc7.xml": {
       "name": "Fuji",
       "reference_times": {
-        "hyper": 93.4,
-        "gt3": 105.0
+        "p2ur": 89.4,
+        "gt3": 99.3
       }
     },
-    "s4-mc5.xml": {
-      "name": "Bahrain (outer)",
-      "reference_times": {
-        "hyper": 63.94,
-        "gt3": 72.01
-      }
-    },
-    "s4-mc6.xml": {
+    "s2-mc8.xml": {
       "name": "Spa",
       "reference_times": {
-        "hyper": 119.97,
-        "gt3": 137.03
+        "p2ur": 121.2,
+        "gt3": 137.9
       }
     }
   },
   "multiclass_races": {
-    "s4-mc1-r.xml": {
-      "name": "Imola",
+    "s2-mc1-r.xml": {
+      "name": "Sebring",
       "reference_times": {
-        "hyper": 89.89,
-        "gt3": 102.33
+        "p2ur": 109.0,
+        "gt3": 122.2
       }
     },
-    "s4-mc2-r.xml": {
-      "name": "Barcelona",
+    "s2-mc2-r.xml": {
+      "name": "Qatar",
       "reference_times": {
-        "hyper": 89.04,
-        "gt3": 101.1
+        "p2ur": 101.5,
+        "gt3": 116.8
       }
     },
-    "s4-mc3-r.xml": {
+    "s2-mc3-r.xml": {
+      "name": "Monza",
+      "reference_times": {
+        "p2ur": 97.9,
+        "gt3": 110.1
+      }
+    },
+    "s2-mc4-r.xml": {
+      "name": "Le Mans",
+      "reference_times": {
+        "p2ur": 211.7,
+        "gt3": 239.6
+      }
+    },
+    "s2-mc5-r.xml": {
       "name": "Silverstone",
       "reference_times": {
-        "hyper": 111.2,
-        "gt3": 127.4
+        "p2ur": 118.3,
+        "gt3": 130.8
       }
     },
-    "s4-mc4-r.xml": {
+    "s2-mc6-r.xml": {
+      "name": "Bahrain",
+      "reference_times": {
+        "p2ur": 108.9,
+        "gt3": 120.5
+      }
+    },
+    "s2-mc7-r.xml": {
       "name": "Fuji",
       "reference_times": {
-        "hyper": 91.0,
-        "gt3": 103.5
+        "p2ur": 90.4,
+        "gt3": 100.3
       }
     },
-    "s4-mc5-r.xml": {
-      "name": "Bahrain (outer)",
-      "reference_times": {
-        "hyper": 64.26,
-        "gt3": 72.37
-      }
-    },
-    "s4-mc6-r.xml": {
+    "s2-mc8-r.xml": {
       "name": "Spa",
       "reference_times": {
-        "hyper": 120.57,
-        "gt3": 137.71
+        "p2ur": 122.5,
+        "gt3": 140.5
       }
     }
   }
