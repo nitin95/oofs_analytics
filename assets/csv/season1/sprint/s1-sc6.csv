@@ -1,0 +1,12 @@
+Driver,Car,CarClass,CarNumber,Position,FinishStatus,Laps,laptime_sec,laptime_pct,laptime_pct_alien,avg_laptime,avg_pace_pct_alien,stdev_laptime,stdev_pace_pct,lap_count,race_pace,pct_race_pace,consistency,reliability,n_tracklimits,n_inchidents,pct_laps,n_stops,pit_lane_pct_times,Driver_name,season_id,series_type,session_type
+Jumpy Whale,Lamborghini Huracan LMGT3 Evo2,GT3,745,1,None,10,105.8071,100.0,102.43,108.130225,104.68,2.6678680794159675,2.58,4,,,,,,,,,,Jumpy Whale,season1,sprint,quali
+Greg Kach,Ford Mustang LMGT3,GT3,123,2,None,5,105.8192,99.99,102.44,106.29573333333333,102.9,0.4870184527647101,0.47,3,,,,,,,,,,Greg Kachadurian,season1,sprint,quali
+Jesse Olsen,Mercedes-AMG LMGT3,GT3,16,3,Finished Normally,10,106.4991,99.35,103.1,106.75335714285713,103.34,0.2784400465518741,0.27,7,,,,,,,,,,Jesse Olsen,season1,sprint,quali
+Abe Wozniak,Aston Martin Vantage AMR LMGT3,GT3,25,4,Finished Normally,12,106.5837,99.27,103.18,106.98889999999999,103.57,0.2582417762485394,0.25,5,,,,,,,,,,Abe Wozniak,season1,sprint,quali
+Kasi Jackman,Lexus RCF LMGT3,GT3,404,5,None,10,107.1886,98.71,103.76,109.33315,105.84,2.599939212750945,2.52,4,,,,,,,,,,Kasi Jackman,season1,sprint,quali
+p thomas,McLaren 720S LMGT3 Evo,GT3,69,6,None,12,107.7607,98.19,104.32,108.06757499999999,104.62,0.2706812685921682,0.26,4,,,,,,,,,,Parker Thomas,season1,sprint,quali
+Dustin Rand,McLaren 720S LMGT3 Evo,GT3,18,7,None,5,107.9665,98.0,104.52,108.85996666666666,105.38,0.9884012410622208,0.96,3,,,,,,,,,,Dustin Rand,season1,sprint,quali
+Nick Johnson,BMW M4 LMGT3,GT3,696,8,None,8,108.1013,97.88,104.65,110.15129999999999,106.63,3.139750018711681,3.04,4,,,,,,,,,,Nick Johnson,season1,sprint,quali
+Dave Paccagnini,Lamborghini Huracan LMGT3 Evo2,GT3,808,9,None,4,108.8476,97.21,105.37,109.1202,105.63,0.3855146171029016,0.37,2,,,,,,,,,,Dave Paccagnini,season1,sprint,quali
+Josh Popov,Mercedes-AMG LMGT3,GT3,661,10,None,5,109.7418,96.41,106.24,109.85714999999999,106.35,0.16312953441973566,0.16,2,,,,,,,,,,Josh Popov,season1,sprint,quali
+Justin Fortuna,Ford Mustang LMGT3,GT3,8,11,None,9,113.1365,93.52,109.52,113.60450000000002,109.98,0.41693265643266947,0.4,3,,,,,,,,,,Justin Fortuna,season1,sprint,quali

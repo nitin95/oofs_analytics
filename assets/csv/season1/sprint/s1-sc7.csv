@@ -1,0 +1,12 @@
+Driver,Car,CarClass,CarNumber,Position,FinishStatus,Laps,laptime_sec,laptime_pct,laptime_pct_alien,avg_laptime,avg_pace_pct_alien,stdev_laptime,stdev_pace_pct,lap_count,race_pace,pct_race_pace,consistency,reliability,n_tracklimits,n_inchidents,pct_laps,n_stops,pit_lane_pct_times,Driver_name,season_id,series_type,session_type
+Greg Kach,Ford Mustang LMGT3,GT3,123,1,None,4,118.3716,100.0,101.09,118.60005000000001,101.28,0.3230770883241368,0.28,2,,,,,,,,,,Greg Kachadurian,season1,sprint,quali
+Jesse Olsen,Mercedes-AMG LMGT3,GT3,16,2,Finished Normally,10,118.6295,99.78,101.31,119.007675,101.63,0.6049071133928998,0.52,4,,,,,,,,,,Jesse Olsen,season1,sprint,quali
+Abe Wozniak,Aston Martin Vantage AMR LMGT3,GT3,25,3,Finished Normally,12,119.2428,99.27,101.83,120.94185999999999,103.28,2.20301764927111,1.88,5,,,,,,,,,,Abe Wozniak,season1,sprint,quali
+Nick Johnson,BMW M4 LMGT3,GT3,696,4,None,8,119.3493,99.18,101.92,120.21189999999999,102.66,1.070082791189542,0.91,4,,,,,,,,,,Nick Johnson,season1,sprint,quali
+Nitin Murthy,Lexus RCF LMGT3,GT3,95,5,Finished Normally,10,119.8439,98.77,102.34,120.41245,102.83,0.8040511208872158,0.69,2,,,,,,,,,,Nitin Murthy,season1,sprint,quali
+Josh Popov,Mercedes-AMG LMGT3,GT3,661,6,None,11,120.0709,98.58,102.54,120.14925,102.6,0.11080363261193252,0.09,2,,,,,,,,,,Josh Popov,season1,sprint,quali
+Nathan Sides,Lexus RCF LMGT3,GT3,12,7,None,7,120.1266,98.54,102.58,120.8475,103.2,0.6209751726115964,0.53,5,,,,,,,,,,Nathan Sides,season1,sprint,quali
+Dave Paccagnini,Lamborghini Huracan LMGT3 Evo2,GT3,808,8,None,4,120.8915,97.92,103.24,121.5513,103.8,0.933098108453774,0.8,2,,,,,,,,,,Dave Paccagnini,season1,sprint,quali
+Dustin Rand,McLaren 720S LMGT3 Evo,GT3,18,9,Finished Normally,9,121.0825,97.76,103.4,121.30883333333333,103.59,0.27989305695806754,0.24,3,,,,,,,,,,Dustin Rand,season1,sprint,quali
+Brian Crane,Ford Mustang LMGT3,GT3,223,10,None,9,121.8489,97.15,104.06,122.28975000000001,104.43,0.4929022181596116,0.42,4,,,,,,,,,,Brian Crane,season1,sprint,quali
+p thomas,McLaren 720S LMGT3 Evo,GT3,69,11,Finished Normally,10,123.1711,96.1,105.18,123.66962000000001,105.61,0.7645036801742705,0.65,5,,,,,,,,,,Parker Thomas,season1,sprint,quali

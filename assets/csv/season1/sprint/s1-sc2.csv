@@ -1,0 +1,12 @@
+Driver,Car,CarClass,CarNumber,Position,FinishStatus,Laps,laptime_sec,laptime_pct,laptime_pct_alien,avg_laptime,avg_pace_pct_alien,stdev_laptime,stdev_pace_pct,lap_count,race_pace,pct_race_pace,consistency,reliability,n_tracklimits,n_inchidents,pct_laps,n_stops,pit_lane_pct_times,Driver_name,season_id,series_type,session_type
+Greg Kach,Ford Mustang LMGT3,GT3,123,1,None,6,103.9386,100.0,101.11,104.03854999999999,101.2,0.14135064555919052,0.14,2,,,,,,,,,,Greg Kachadurian,season1,sprint,quali
+Josh Popov,Aston Martin Vantage AMR LMGT3,GT3,661,2,None,6,104.2279,99.72,101.39,104.31345,101.47,0.12098597026101517,0.12,2,,,,,,,,,,Josh Popov,season1,sprint,quali
+Nick Johnson,BMW M4 LMGT3,GT3,696,3,None,6,104.3801,99.58,101.54,104.94165000000001,102.08,0.7941516259506172,0.77,2,,,,,,,,,,Nick Johnson,season1,sprint,quali
+Abe Wozniak,Aston Martin Vantage AMR LMGT3,GT3,25,4,None,9,104.821,99.16,101.97,106.56620000000001,103.66,1.3562694742073458,1.32,4,,,,,,,,,,Abe Wozniak,season1,sprint,quali
+Dustin Rand,Aston Martin Vantage AMR LMGT3,GT3,18,5,None,6,104.9912,99.0,102.13,106.5391,103.64,1.8982551128163265,1.85,4,,,,,,,,,,Dustin Rand,season1,sprint,quali
+Nitin Murthy,Lexus RCF LMGT3,GT3,95,6,None,6,105.42,98.59,102.55,105.42,102.55,0.0,0.0,1,,,,,,,,,,Nitin Murthy,season1,sprint,quali
+Elliott Brown,Porsche 911 GT3 R LMGT3,GT3,258,7,None,9,105.7671,98.27,102.89,106.11755,103.23,0.2819704062486005,0.27,4,,,,,,,,,,Elliott Brown,season1,sprint,quali
+Brian Crane,Porsche 911 GT3 R LMGT3,GT3,223,8,None,6,105.8587,98.19,102.98,105.9846,103.1,0.17804948750277474,0.17,2,,,,,,,,,,Brian Crane,season1,sprint,quali
+Kasi Jackman,Lexus RCF LMGT3,GT3,404,9,None,8,106.0303,98.03,103.14,107.012575,104.1,1.4492537145602478,1.41,4,,,,,,,,,,Kasi Jackman,season1,sprint,quali
+Dave Paccagnini,Lamborghini Huracan LMGT3 Evo2,GT3,808,10,None,6,106.319,97.76,103.42,108.1107,105.17,3.1464318436391845,3.06,4,,,,,,,,,,Dave Paccagnini,season1,sprint,quali
+Harry Ricker,BMW M4 LMGT3,GT3,8,11,None,9,106.7841,97.34,103.88,107.6664,104.73,0.8884270679127255,0.86,5,,,,,,,,,,Harry Ricker,season1,sprint,quali
