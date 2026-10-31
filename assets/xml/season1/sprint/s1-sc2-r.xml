@@ -1,0 +1,1825 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE rF [
+<!ENTITY rFEnt "rFactor Entity">
+]>
+<rFactorXML version="1.0">
+<RaceResults>
+<Setting>Multiplayer</Setting>
+<ServerName></ServerName>
+<ClientFuelVisible>3</ClientFuelVisible>
+<PlayerFile>Settings</PlayerFile>
+<DateTime>1752795111</DateTime>
+<TimeString>2025/07/17 19:31:51</TimeString>
+<TrackVenue>Autódromo José Carlos Pace</TrackVenue>
+<TrackCourse>Autódromo José Carlos Pace</TrackCourse>
+<TrackEvent>Rolex 6 Hours Of Sao Paulo</TrackEvent>
+<TrackData>C:\Program Files (x86)\Steam\steamapps\common\Le Mans Ultimate\Installed\Locations\Interlagos_2024\1.17\layoutInterlagos.mas</TrackData>
+<TrackLength>4273.2</TrackLength>
+<GameVersion>0.9200</GameVersion>
+<Dedicated>0</Dedicated>
+<ConnectionType upload="40000" download="250000">VDSL SV/Fiber 250M</ConnectionType>
+<RaceLaps>0</RaceLaps>
+<RaceTime>45</RaceTime>
+<MechFailRate>1</MechFailRate>
+<DamageMult>100</DamageMult>
+<FuelMult>2</FuelMult>
+<TireMult>2</TireMult>
+<VehiclesAllowed>Ford_Mustang_LMGT3,</VehiclesAllowed>
+<ParcFerme>3</ParcFerme>
+<FixedSetups>0</FixedSetups>
+<FreeSettings>2147483647</FreeSettings>
+<FixedUpgrades>0</FixedUpgrades>
+<LimitedTires>1</LimitedTires>
+<TireWarmers>1</TireWarmers>
+<Race>
+<DateTime>1752798638</DateTime>
+<TimeString>2025/07/17 20:30:38</TimeString>
+<Laps>2147483647</Laps>
+<Minutes>45</Minutes>
+<Stream>
+<Sent et="0.2">&quot;Harry Ricker&quot; has taken the wheel.</Sent>
+<Sent et="8.7">&quot;Abe Wozniak&quot; has taken the wheel.</Sent>
+<Sent et="9.2">&quot;Kasi Jackman&quot; has taken the wheel.</Sent>
+<Incident et="173.3">Dustin Rand(14) reported contact (222.62) with another vehicle Elliott Brown(3)</Incident>
+<Incident et="173.3">Elliott Brown(3) reported contact (243.52) with another vehicle Dustin Rand(14)</Incident>
+<TrackLimits Driver="Elliott Brown" ID="3" Lap="0" WarningPoints="0" CurrentPoints="0" Resolution="5" et="186.3">No Further Action</TrackLimits>
+<Incident et="192.6">Dave Paccagnini(6) reported contact (69.14) with another vehicle Elliott Brown(3)</Incident>
+<Incident et="192.6">Elliott Brown(3) reported contact (67.02) with another vehicle Dave Paccagnini(6)</Incident>
+<TrackLimits Driver="Dustin Rand" ID="14" Lap="0" WarningPoints="0" CurrentPoints="0" Resolution="5" et="192.7">No Further Action</TrackLimits>
+<Sector Driver="Josh Popov" ID="10" Sector="1" Class="GT3" et="192.8">Josh Popov(10) set new best for sector 1</Sector>
+<Score et="192.9">Josh Popov(10) lap=0 point=1 t=33.177 et=192.620</Score>
+<Score et="192.9">Greg Kach(9) lap=0 point=1 t=33.464 et=192.907</Score>
+<TrackLimits Driver="Kasi Jackman" ID="17" Lap="0" WarningPoints="0" CurrentPoints="0" Resolution="5" et="193.4">No Further Action</TrackLimits>
+<Score et="193.5">Nick Johnson(5) lap=0 point=1 t=33.847 et=193.300</Score>
+<TrackLimits Driver="Dave Paccagnini" ID="6" Lap="0" WarningPoints="0" CurrentPoints="0" Resolution="5" et="193.7">No Further Action</TrackLimits>
+<Score et="193.9">Abe Wozniak(4) lap=0 point=1 t=34.334 et=193.780</Score>
+<Score et="194.3">Nitin Murthy(13) lap=0 point=1 t=34.686 et=194.140</Score>
+<Incident et="196.4">Abe Wozniak(4) reported contact (956.03) with another vehicle Nitin Murthy(13)</Incident>
+<Incident et="196.4">Nitin Murthy(13) reported contact (989.97) with another vehicle Abe Wozniak(4)</Incident>
+<Score et="196.9">Dave Paccagnini(6) lap=0 point=1 t=37.270 et=196.720</Score>
+<Score et="197.1">Elliott Brown(3) lap=0 point=1 t=37.534 et=196.980</Score>
+<Score et="197.5">Brian Crane(8) lap=0 point=1 t=37.856 et=197.300</Score>
+<Score et="197.9">Harry Ricker(1) lap=0 point=1 t=38.250 et=197.700</Score>
+<Score et="198.3">Kasi Jackman(17) lap=0 point=1 t=38.615 et=198.060</Score>
+<Score et="198.4">Dustin Rand(14) lap=0 point=1 t=38.753 et=198.200</Score>
+<TrackLimits Driver="Dave Paccagnini" ID="6" Lap="0" WarningPoints="0" CurrentPoints="0" Resolution="5" et="205.1">No Further Action</TrackLimits>
+<TrackLimits Driver="Harry Ricker" ID="1" Lap="0" WarningPoints="0" CurrentPoints="0" Resolution="5" et="224.3">No Further Action</TrackLimits>
+<TrackLimits Driver="Kasi Jackman" ID="17" Lap="0" WarningPoints="0" CurrentPoints="0" Resolution="5" et="241.4">No Further Action</TrackLimits>
+<Sector Driver="Josh Popov" ID="10" Sector="2" Class="GT3" et="246.6">Josh Popov(10) set new best for sector 2</Sector>
+<Score et="246.6">Greg Kach(9) lap=0 point=2 t=87.182 et=246.625</Score>
+<Score et="246.7">Josh Popov(10) lap=0 point=2 t=86.921 et=246.380</Score>
+<Sector Driver="Greg Kach" ID="9" Sector="2" Class="GT3" et="246.7">Greg Kach(9) set new best for sector 2</Sector>
+<Score et="248.0">Abe Wozniak(4) lap=0 point=2 t=88.442 et=247.900</Score>
+<Score et="248.7">Nick Johnson(5) lap=0 point=2 t=89.097 et=248.540</Score>
+<Score et="249.3">Nitin Murthy(13) lap=0 point=2 t=89.666 et=249.120</Score>
+<Score et="252.7">Brian Crane(8) lap=0 point=2 t=93.105 et=252.560</Score>
+<Score et="253.1">Dave Paccagnini(6) lap=0 point=2 t=93.484 et=252.940</Score>
+<Score et="253.6">Elliott Brown(3) lap=0 point=2 t=93.932 et=253.380</Score>
+<Score et="254.3">Harry Ricker(1) lap=0 point=2 t=94.540 et=254.000</Score>
+<Score et="255.3">Kasi Jackman(17) lap=0 point=2 t=95.624 et=255.080</Score>
+<Score et="256.5">Dustin Rand(14) lap=0 point=2 t=96.796 et=256.240</Score>
+<Sector Driver="Josh Popov" ID="10" Sector="3" Class="GT3" et="269.1">Josh Popov(10) set new best for sector 3</Sector>
+<Score et="269.1">Josh Popov(10) lap=1 point=0 t=109.486 et=268.940</Score>
+<Score et="269.9">Greg Kach(9) lap=1 point=0 t=110.415 et=269.858</Score>
+<Score et="271.3">Abe Wozniak(4) lap=1 point=0 t=111.553 et=271.000</Score>
+<Score et="271.4">Nick Johnson(5) lap=1 point=0 t=111.787 et=271.240</Score>
+<Score et="272.3">Nitin Murthy(13) lap=1 point=0 t=112.642 et=272.100</Score>
+<Score et="275.9">Brian Crane(8) lap=1 point=0 t=116.324 et=275.780</Score>
+<Score et="276.5">Dave Paccagnini(6) lap=1 point=0 t=116.850 et=276.300</Score>
+<Score et="276.9">Elliott Brown(3) lap=1 point=0 t=117.299 et=276.760</Score>
+<Score et="277.2">Harry Ricker(1) lap=1 point=0 t=117.554 et=277.000</Score>
+<Score et="279.0">Kasi Jackman(17) lap=1 point=0 t=119.386 et=278.840</Score>
+<TrackLimits Driver="Greg Kach" ID="9" Lap="1" WarningPoints="0" CurrentPoints="0" Resolution="5" et="279.8">No Further Action</TrackLimits>
+<Score et="280.0">Dustin Rand(14) lap=1 point=0 t=120.274 et=279.720</Score>
+<TrackLimits Driver="Nick Johnson" ID="5" Lap="1" WarningPoints="0" CurrentPoints="0" Resolution="5" et="284.3">No Further Action</TrackLimits>
+<TrackLimits Driver="Brian Crane" ID="8" Lap="1" WarningPoints="0" CurrentPoints="0" Resolution="5" et="286.0">No Further Action</TrackLimits>
+<Sector Driver="Josh Popov" ID="10" Sector="1" Class="GT3" et="296.9">Josh Popov(10) set new best for sector 1</Sector>
+<Score et="297.0">Josh Popov(10) lap=1 point=1 t=27.810 et=296.740</Score>
+<Score et="297.8">Greg Kach(9) lap=1 point=1 t=27.921 et=297.778</Score>
+<Sector Driver="Abe Wozniak" ID="4" Sector="1" Class="GT3" et="298.9">Abe Wozniak(4) set new best for sector 1</Sector>
+<Score et="298.9">Abe Wozniak(4) lap=1 point=1 t=27.799 et=298.800</Score>
+<Score et="299.7">Nick Johnson(5) lap=1 point=1 t=28.224 et=299.460</Score>
+<Score et="300.6">Nitin Murthy(13) lap=1 point=1 t=28.286 et=300.380</Score>
+<TrackLimits Driver="Dustin Rand" ID="14" Lap="1" WarningPoints="0" CurrentPoints="0" Resolution="5" et="302.4">No Further Action</TrackLimits>
+<Score et="304.5">Brian Crane(8) lap=1 point=1 t=28.539 et=304.320</Score>
+<Score et="305.1">Dave Paccagnini(6) lap=1 point=1 t=28.664 et=304.960</Score>
+<Score et="305.9">Elliott Brown(3) lap=1 point=1 t=28.997 et=305.740</Score>
+<Score et="305.9">Harry Ricker(1) lap=1 point=1 t=28.811 et=305.820</Score>
+<Score et="307.8">Kasi Jackman(17) lap=1 point=1 t=28.702 et=307.540</Score>
+<Score et="308.7">Dustin Rand(14) lap=1 point=1 t=28.773 et=308.500</Score>
+<TrackLimits Driver="Elliott Brown" ID="3" Lap="1" WarningPoints="0" CurrentPoints="0" Resolution="5" et="314.0">No Further Action</TrackLimits>
+<TrackLimits Driver="Brian Crane" ID="8" Lap="1" WarningPoints="0.25" CurrentPoints="0.25" Resolution="2" et="314.5">Warning</TrackLimits>
+<TrackLimits Driver="Dave Paccagnini" ID="6" Lap="1" WarningPoints="0" CurrentPoints="0" Resolution="5" et="315.5">No Further Action</TrackLimits>
+<TrackLimits Driver="Dave Paccagnini" ID="6" Lap="1" WarningPoints="0" CurrentPoints="0" Resolution="5" et="336.0">No Further Action</TrackLimits>
+<Score et="350.8">Josh Popov(10) lap=1 point=2 t=81.627 et=350.560</Score>
+<Score et="351.1">Greg Kach(9) lap=1 point=2 t=-1.000 et=351.105</Score>
+<TrackLimits Driver="Greg Kach" ID="9" Lap="1" WarningPoints="0" CurrentPoints="0" Resolution="5" et="351.7">No Further Action</TrackLimits>
+<Score et="352.8">Abe Wozniak(4) lap=1 point=2 t=81.688 et=352.700</Score>
+<Score et="353.5">Nick Johnson(5) lap=1 point=2 t=82.078 et=353.320</Score>
+<Score et="354.8">Nitin Murthy(13) lap=1 point=2 t=82.580 et=354.680</Score>
+<Score et="359.0">Brian Crane(8) lap=1 point=2 t=-1.000 et=358.820</Score>
+<Score et="360.4">Elliott Brown(3) lap=1 point=2 t=83.491 et=360.240</Score>
+<Score et="361.0">Harry Ricker(1) lap=1 point=2 t=83.901 et=360.900</Score>
+<Score et="363.2">Kasi Jackman(17) lap=1 point=2 t=84.054 et=362.900</Score>
+<Score et="364.6">Dustin Rand(14) lap=1 point=2 t=84.780 et=364.500</Score>
+<Score et="366.6">Dave Paccagnini(6) lap=1 point=2 t=90.098 et=366.400</Score>
+<Score et="373.4">Josh Popov(10) lap=2 point=0 t=104.271 et=373.200</Score>
+<Score et="374.2">Greg Kach(9) lap=2 point=0 t=104.323 et=374.181</Score>
+<Sector Driver="Greg Kach" ID="9" Sector="3" Class="GT3" et="374.3">Greg Kach(9) set new best for sector 3</Sector>
+<Score et="375.8">Abe Wozniak(4) lap=2 point=0 t=104.662 et=375.660</Score>
+<Score et="376.7">Nick Johnson(5) lap=2 point=0 t=105.290 et=376.520</Score>
+<Score et="377.8">Nitin Murthy(13) lap=2 point=0 t=105.562 et=377.660</Score>
+<Score et="382.1">Brian Crane(8) lap=2 point=0 t=-1.000 et=381.980</Score>
+<TrackLimits Driver="Kasi Jackman" ID="17" Lap="1" WarningPoints="0.5" CurrentPoints="0.5" Resolution="2" et="382.2">Warning</TrackLimits>
+<Score et="383.6">Elliott Brown(3) lap=2 point=0 t=106.748 et=383.500</Score>
+<Score et="384.5">Harry Ricker(1) lap=2 point=0 t=107.280 et=384.280</Score>
+<Score et="386.4">Kasi Jackman(17) lap=2 point=0 t=-1.000 et=386.280</Score>
+<Score et="387.7">Dustin Rand(14) lap=2 point=0 t=107.760 et=387.480</Score>
+<TrackLimits Driver="Nick Johnson" ID="5" Lap="2" WarningPoints="0" CurrentPoints="0" Resolution="5" et="389.8">No Further Action</TrackLimits>
+<Score et="389.9">Dave Paccagnini(6) lap=2 point=0 t=113.480 et=389.780</Score>
+<TrackLimits Driver="Nitin Murthy" ID="13" Lap="2" WarningPoints="0" CurrentPoints="0" Resolution="5" et="393.0">No Further Action</TrackLimits>
+<Sector Driver="Josh Popov" ID="10" Sector="1" Class="GT3" et="401.1">Josh Popov(10) set new best for sector 1</Sector>
+<Score et="401.2">Josh Popov(10) lap=2 point=1 t=27.735 et=400.940</Score>
+<Score et="401.7">Greg Kach(9) lap=2 point=1 t=27.500 et=401.681</Score>
+<Sector Driver="Greg Kach" ID="9" Sector="1" Class="GT3" et="401.8">Greg Kach(9) set new best for sector 1</Sector>
+<Score et="403.3">Abe Wozniak(4) lap=2 point=1 t=27.557 et=403.220</Score>
+<Score et="404.7">Nick Johnson(5) lap=2 point=1 t=28.041 et=404.580</Score>
+<Score et="405.8">Nitin Murthy(13) lap=2 point=1 t=28.024 et=405.680</Score>
+<TrackLimits Driver="Harry Ricker" ID="1" Lap="2" WarningPoints="0" CurrentPoints="0" Resolution="5" et="405.9">No Further Action</TrackLimits>
+<Score et="410.7">Brian Crane(8) lap=2 point=1 t=28.599 et=410.580</Score>
+<Score et="411.7">Elliott Brown(3) lap=2 point=1 t=28.040 et=411.540</Score>
+<Score et="412.6">Harry Ricker(1) lap=2 point=1 t=28.165 et=412.460</Score>
+<Score et="414.8">Kasi Jackman(17) lap=2 point=1 t=28.447 et=414.720</Score>
+<Score et="415.8">Dustin Rand(14) lap=2 point=1 t=28.137 et=415.620</Score>
+<Score et="418.3">Dave Paccagnini(6) lap=2 point=1 t=28.335 et=418.120</Score>
+<Score et="455.5">Greg Kach(9) lap=2 point=2 t=81.330 et=455.510</Score>
+<Score et="455.9">Josh Popov(10) lap=2 point=2 t=82.465 et=455.680</Score>
+<Score et="457.6">Abe Wozniak(4) lap=2 point=2 t=81.720 et=457.380</Score>
+<TrackLimits Driver="Dave Paccagnini" ID="6" Lap="2" WarningPoints="0" CurrentPoints="0" Resolution="5" et="458.8">No Further Action</TrackLimits>
+<Score et="458.8">Nick Johnson(5) lap=2 point=2 t=82.062 et=458.600</Score>
+<Score et="460.1">Nitin Murthy(13) lap=2 point=2 t=82.221 et=459.880</Score>
+<Score et="465.3">Brian Crane(8) lap=2 point=2 t=83.221 et=465.200</Score>
+<Score et="465.9">Elliott Brown(3) lap=2 point=2 t=82.212 et=465.720</Score>
+<Score et="467.0">Harry Ricker(1) lap=2 point=2 t=82.498 et=466.780</Score>
+<Score et="469.0">Kasi Jackman(17) lap=2 point=2 t=82.486 et=468.760</Score>
+<Score et="470.6">Dustin Rand(14) lap=2 point=2 t=82.983 et=470.460</Score>
+<Score et="478.7">Greg Kach(9) lap=3 point=0 t=104.535 et=478.716</Score>
+<Score et="479.1">Josh Popov(10) lap=3 point=0 t=105.540 et=478.740</Score>
+<Score et="480.2">Abe Wozniak(4) lap=3 point=0 t=104.429 et=480.100</Score>
+<Score et="481.5">Nick Johnson(5) lap=3 point=0 t=104.879 et=481.400</Score>
+<Score et="482.9">Nitin Murthy(13) lap=3 point=0 t=105.086 et=482.740</Score>
+<TrackLimits Driver="Kasi Jackman" ID="17" Lap="2" WarningPoints="0" CurrentPoints="0.5" Resolution="5" et="486.0">No Further Action</TrackLimits>
+<Score et="488.6">Brian Crane(8) lap=3 point=0 t=106.474 et=488.460</Score>
+<Score et="489.1">Elliott Brown(3) lap=3 point=0 t=105.349 et=488.840</Score>
+<Score et="489.8">Harry Ricker(1) lap=3 point=0 t=105.305 et=489.600</Score>
+<Score et="490.3">Dave Paccagnini(6) lap=2 point=2 t=100.352 et=490.140</Score>
+<Score et="492.6">Kasi Jackman(17) lap=3 point=0 t=106.087 et=492.360</Score>
+<TrackLimits Driver="Greg Kach" ID="9" Lap="3" WarningPoints="0" CurrentPoints="0" Resolution="5" et="493.6">No Further Action</TrackLimits>
+<Score et="494.2">Dustin Rand(14) lap=3 point=0 t=106.560 et=494.040</Score>
+<TrackLimits Driver="Nick Johnson" ID="5" Lap="3" WarningPoints="0" CurrentPoints="0" Resolution="5" et="496.6">No Further Action</TrackLimits>
+<TrackLimits Driver="Dave Paccagnini" ID="6" Lap="2" WarningPoints="0" CurrentPoints="0" Resolution="5" et="498.4">No Further Action</TrackLimits>
+<TrackLimits Driver="Abe Wozniak" ID="4" Lap="3" WarningPoints="0" CurrentPoints="0" Resolution="5" et="503.8">No Further Action</TrackLimits>
+<Score et="506.5">Greg Kach(9) lap=3 point=1 t=27.802 et=506.518</Score>
+<Score et="507.2">Josh Popov(10) lap=3 point=1 t=28.180 et=506.940</Score>
+<Score et="507.8">Abe Wozniak(4) lap=3 point=1 t=27.572 et=507.660</Score>
+<Score et="509.5">Nick Johnson(5) lap=3 point=1 t=27.965 et=509.380</Score>
+<Score et="510.9">Nitin Murthy(13) lap=3 point=1 t=27.948 et=510.700</Score>
+<TrackLimits Driver="Elliott Brown" ID="3" Lap="3" WarningPoints="0" CurrentPoints="0" Resolution="5" et="513.2">No Further Action</TrackLimits>
+<TrackLimits Driver="Brian Crane" ID="8" Lap="3" WarningPoints="0.5" CurrentPoints="0.75" Resolution="2" et="514.1">Warning</TrackLimits>
+<TrackLimits Driver="Kasi Jackman" ID="17" Lap="3" WarningPoints="0" CurrentPoints="0.5" Resolution="5" et="514.3">No Further Action</TrackLimits>
+<Score et="514.8">Dave Paccagnini(6) lap=3 point=0 t=124.921 et=514.700</Score>
+<TrackLimits Driver="Dustin Rand" ID="14" Lap="3" WarningPoints="0" CurrentPoints="0" Resolution="5" et="515.7">No Further Action</TrackLimits>
+<Score et="517.0">Brian Crane(8) lap=3 point=1 t=-1.000 et=516.860</Score>
+<Score et="517.3">Elliott Brown(3) lap=3 point=1 t=28.255 et=517.100</Score>
+<Score et="517.3">Harry Ricker(1) lap=3 point=1 t=27.537 et=517.120</Score>
+<TrackLimits Driver="Nick Johnson" ID="5" Lap="3" WarningPoints="0" CurrentPoints="0" Resolution="5" et="517.5">No Further Action</TrackLimits>
+<Incident et="520.1">Harry Ricker(1) reported contact (635.56) with another vehicle Brian Crane(8)</Incident>
+<Incident et="520.1">Brian Crane(8) reported contact (622.53) with another vehicle Harry Ricker(1)</Incident>
+<Score et="520.8">Kasi Jackman(17) lap=3 point=1 t=28.246 et=520.600</Score>
+<Score et="522.1">Dustin Rand(14) lap=3 point=1 t=27.868 et=521.920</Score>
+<TrackLimits Driver="Harry Ricker" ID="1" Lap="3" WarningPoints="0" CurrentPoints="0" Resolution="5" et="531.7">No Further Action</TrackLimits>
+<Score et="543.5">Dave Paccagnini(6) lap=3 point=1 t=28.680 et=543.380</Score>
+<Score et="560.0">Greg Kach(9) lap=3 point=2 t=-1.000 et=559.964</Score>
+<TrackLimits Driver="Greg Kach" ID="9" Lap="3" WarningPoints="0" CurrentPoints="0" Resolution="5" et="560.6">No Further Action</TrackLimits>
+<Score et="561.8">Josh Popov(10) lap=3 point=2 t=82.898 et=561.640</Score>
+<Score et="562.3">Abe Wozniak(4) lap=3 point=2 t=82.020 et=562.120</Score>
+<Sector Driver="Nick Johnson" ID="5" Sector="2" Class="GT3" et="563.2">Nick Johnson(5) set new best for sector 2</Sector>
+<Score et="563.3">Nick Johnson(5) lap=3 point=2 t=81.660 et=563.060</Score>
+<Score et="565.3">Nitin Murthy(13) lap=3 point=2 t=82.341 et=565.080</Score>
+<Score et="571.9">Brian Crane(8) lap=3 point=2 t=-1.000 et=571.700</Score>
+<Score et="573.4">Elliott Brown(3) lap=3 point=2 t=84.325 et=573.180</Score>
+<Score et="574.9">Kasi Jackman(17) lap=3 point=2 t=82.361 et=574.720</Score>
+<Score et="576.8">Dustin Rand(14) lap=3 point=2 t=82.574 et=576.620</Score>
+<Score et="581.9">Harry Ricker(1) lap=3 point=2 t=92.117 et=581.700</Score>
+<Score et="583.0">Greg Kach(9) lap=4 point=0 t=104.268 et=582.984</Score>
+<TrackLimits Driver="Dustin Rand" ID="14" Lap="3" WarningPoints="0" CurrentPoints="0" Resolution="5" et="584.2">No Further Action</TrackLimits>
+<Score et="584.5">Josh Popov(10) lap=4 point=0 t=105.608 et=584.360</Score>
+<Score et="585.1">Abe Wozniak(4) lap=4 point=0 t=104.923 et=585.020</Score>
+<Score et="586.0">Nick Johnson(5) lap=4 point=0 t=104.344 et=585.760</Score>
+<Score et="588.1">Nitin Murthy(13) lap=4 point=0 t=105.207 et=587.940</Score>
+<Score et="595.0">Brian Crane(8) lap=4 point=0 t=-1.000 et=594.820</Score>
+<Score et="596.4">Elliott Brown(3) lap=4 point=0 t=107.348 et=596.200</Score>
+<TrackLimits Driver="Greg Kach" ID="9" Lap="4" WarningPoints="0" CurrentPoints="0" Resolution="5" et="597.8">No Further Action</TrackLimits>
+<Score et="598.0">Kasi Jackman(17) lap=4 point=0 t=105.482 et=597.840</Score>
+<Score et="599.5">Dave Paccagnini(6) lap=3 point=2 t=-1.000 et=599.280</Score>
+<Score et="600.4">Dustin Rand(14) lap=4 point=0 t=106.206 et=600.260</Score>
+<TrackLimits Driver="Dave Paccagnini" ID="6" Lap="3" WarningPoints="0" CurrentPoints="0" Resolution="5" et="602.7">No Further Action</TrackLimits>
+<Score et="604.8">Harry Ricker(1) lap=4 point=0 t=115.042 et=604.640</Score>
+<TrackLimits Driver="Abe Wozniak" ID="4" Lap="4" WarningPoints="0.25" CurrentPoints="0.25" Resolution="2" et="609.1">Warning</TrackLimits>
+<TrackLimits Driver="Josh Popov" ID="10" Lap="4" WarningPoints="0.25" CurrentPoints="0.25" Resolution="2" et="609.5">Warning</TrackLimits>
+<Score et="610.6">Greg Kach(9) lap=4 point=1 t=27.557 et=610.541</Score>
+<TrackLimits Driver="Nick Johnson" ID="5" Lap="4" WarningPoints="0.5" CurrentPoints="0.5" Resolution="2" et="610.6">Warning</TrackLimits>
+<TrackLimits Driver="Nitin Murthy" ID="13" Lap="4" WarningPoints="0.5" CurrentPoints="0.5" Resolution="2" et="612.6">Warning</TrackLimits>
+<Score et="612.8">Josh Popov(10) lap=4 point=1 t=-1.000 et=612.460</Score>
+<Score et="612.8">Abe Wozniak(4) lap=4 point=1 t=-1.000 et=612.700</Score>
+<Score et="613.6">Nick Johnson(5) lap=4 point=1 t=-1.000 et=613.440</Score>
+<Score et="616.2">Nitin Murthy(13) lap=4 point=1 t=-1.000 et=616.040</Score>
+<TrackLimits Driver="Greg Kach" ID="9" Lap="4" WarningPoints="0" CurrentPoints="0" Resolution="5" et="618.4">No Further Action</TrackLimits>
+<TrackLimits Driver="Brian Crane" ID="8" Lap="4" WarningPoints="0.5" CurrentPoints="1.25" Resolution="2" et="620.0">Warning</TrackLimits>
+<Sector Driver="Dave Paccagnini" ID="6" Sector="3" Class="GT3" et="622.8">Dave Paccagnini(6) set new best for sector 3</Sector>
+<Score et="622.9">Dave Paccagnini(6) lap=4 point=0 t=107.980 et=622.680</Score>
+<Score et="623.6">Brian Crane(8) lap=4 point=1 t=-1.000 et=623.400</Score>
+<Score et="624.4">Elliott Brown(3) lap=4 point=1 t=28.017 et=624.220</Score>
+<Score et="626.0">Kasi Jackman(17) lap=4 point=1 t=28.070 et=625.920</Score>
+<Score et="628.3">Dustin Rand(14) lap=4 point=1 t=27.860 et=628.120</Score>
+<Score et="632.9">Harry Ricker(1) lap=4 point=1 t=28.192 et=632.820</Score>
+<Score et="651.3">Dave Paccagnini(6) lap=4 point=1 t=28.481 et=651.160</Score>
+<Score et="663.9">Greg Kach(9) lap=4 point=2 t=80.936 et=663.921</Score>
+<Sector Driver="Greg Kach" ID="9" Sector="2" Class="GT3" et="664.1">Greg Kach(9) set new best for sector 2</Sector>
+<Score et="666.8">Josh Popov(10) lap=4 point=2 t=-1.000 et=666.640</Score>
+<Score et="667.2">Abe Wozniak(4) lap=4 point=2 t=-1.000 et=667.000</Score>
+<Score et="667.9">Nick Johnson(5) lap=4 point=2 t=-1.000 et=667.700</Score>
+<Score et="670.4">Nitin Murthy(13) lap=4 point=2 t=-1.000 et=670.220</Score>
+<Score et="679.2">Brian Crane(8) lap=4 point=2 t=-1.000 et=678.920</Score>
+<Score et="679.5">Elliott Brown(3) lap=4 point=2 t=83.091 et=679.280</Score>
+<Score et="679.9">Kasi Jackman(17) lap=4 point=2 t=81.922 et=679.760</Score>
+<Score et="682.7">Dustin Rand(14) lap=4 point=2 t=82.335 et=682.580</Score>
+<Score et="686.9">Greg Kach(9) lap=5 point=0 t=103.930 et=686.914</Score>
+<Score et="687.1">Harry Ricker(1) lap=4 point=2 t=82.316 et=686.940</Score>
+<TrackLimits Driver="Dave Paccagnini" ID="6" Lap="4" WarningPoints="0" CurrentPoints="0" Resolution="5" et="689.2">No Further Action</TrackLimits>
+<Score et="689.8">Abe Wozniak(4) lap=5 point=0 t=-1.000 et=689.640</Score>
+<Score et="690.1">Josh Popov(10) lap=5 point=0 t=-1.000 et=689.880</Score>
+<Score et="690.6">Nick Johnson(5) lap=5 point=0 t=-1.000 et=690.420</Score>
+<TrackLimits Driver="Dave Paccagnini" ID="6" Lap="4" WarningPoints="0" CurrentPoints="0" Resolution="5" et="693.5">No Further Action</TrackLimits>
+<Score et="693.9">Nitin Murthy(13) lap=5 point=0 t=-1.000 et=693.640</Score>
+<Incident et="698.3">Dave Paccagnini(6) reported contact (64.87) with Sign</Incident>
+<Incident et="698.4">Dave Paccagnini(6) reported contact (68.31) with Sign</Incident>
+<Incident et="699.4">Dave Paccagnini(6) reported contact (13.58) with Sign</Incident>
+<TrackLimits Driver="Dave Paccagnini" ID="6" Lap="4" WarningPoints="0" CurrentPoints="0" Resolution="5" et="700.4">No Further Action</TrackLimits>
+<Score et="702.6">Brian Crane(8) lap=5 point=0 t=-1.000 et=702.360</Score>
+<Score et="702.9">Elliott Brown(3) lap=5 point=0 t=106.497 et=702.700</Score>
+<Score et="703.3">Kasi Jackman(17) lap=5 point=0 t=105.205 et=703.040</Score>
+<Score et="705.7">Dustin Rand(14) lap=5 point=0 t=105.318 et=705.580</Score>
+<Incident et="707.8">Brian Crane(8) reported contact (1171.18) with another vehicle Elliott Brown(3)</Incident>
+<Incident et="707.8">Elliott Brown(3) reported contact (1171.86) with another vehicle Brian Crane(8)</Incident>
+<Score et="709.8">Harry Ricker(1) lap=5 point=0 t=105.022 et=709.660</Score>
+<Score et="714.7">Greg Kach(9) lap=5 point=1 t=27.817 et=714.732</Score>
+<Sector Driver="Abe Wozniak" ID="4" Sector="1" Class="GT3" et="717.2">Abe Wozniak(4) set new best for sector 1</Sector>
+<Score et="717.3">Abe Wozniak(4) lap=5 point=1 t=27.444 et=717.100</Score>
+<Score et="718.2">Josh Popov(10) lap=5 point=1 t=28.132 et=718.020</Score>
+<Score et="718.5">Nick Johnson(5) lap=5 point=1 t=27.885 et=718.320</Score>
+<Score et="719.5">Dave Paccagnini(6) lap=4 point=2 t=96.606 et=719.300</Score>
+<Score et="721.9">Nitin Murthy(13) lap=5 point=1 t=28.090 et=721.720</Score>
+<Score et="731.3">Brian Crane(8) lap=5 point=1 t=28.784 et=731.160</Score>
+<Score et="731.7">Elliott Brown(3) lap=5 point=1 t=28.844 et=731.540</Score>
+<Score et="731.7">Kasi Jackman(17) lap=5 point=1 t=28.472 et=731.520</Score>
+<Score et="733.8">Dustin Rand(14) lap=5 point=1 t=27.912 et=733.480</Score>
+<Score et="737.6">Harry Ricker(1) lap=5 point=1 t=27.746 et=737.400</Score>
+<Score et="743.2">Dave Paccagnini(6) lap=5 point=0 t=120.316 et=743.000</Score>
+<TrackLimits Driver="Harry Ricker" ID="1" Lap="5" WarningPoints="0" CurrentPoints="0" Resolution="5" et="745.5">No Further Action</TrackLimits>
+<TrackLimits Driver="Brian Crane" ID="8" Lap="5" WarningPoints="0" CurrentPoints="1.25" Resolution="5" et="753.0">No Further Action</TrackLimits>
+<TrackLimits Driver="Dave Paccagnini" ID="6" Lap="5" WarningPoints="0" CurrentPoints="0" Resolution="5" et="756.4">No Further Action</TrackLimits>
+<TrackLimits Driver="Harry Ricker" ID="1" Lap="5" WarningPoints="0" CurrentPoints="0" Resolution="5" et="766.3">No Further Action</TrackLimits>
+<Score et="768.2">Greg Kach(9) lap=5 point=2 t=-1.000 et=768.205</Score>
+<TrackLimits Driver="Greg Kach" ID="9" Lap="5" WarningPoints="0" CurrentPoints="0" Resolution="5" et="768.8">No Further Action</TrackLimits>
+<Score et="770.7">Abe Wozniak(4) lap=5 point=2 t=80.974 et=770.620</Score>
+<Score et="772.0">Dave Paccagnini(6) lap=5 point=1 t=28.774 et=771.780</Score>
+<Score et="772.9">Josh Popov(10) lap=5 point=2 t=82.811 et=772.680</Score>
+<TrackLimits Driver="Josh Popov" ID="10" Lap="5" WarningPoints="0" CurrentPoints="0.25" Resolution="5" et="773.1">No Further Action</TrackLimits>
+<Score et="773.2">Nick Johnson(5) lap=5 point=2 t=82.433 et=772.860</Score>
+<Score et="776.8">Nitin Murthy(13) lap=5 point=2 t=82.816 et=776.460</Score>
+<TrackLimits Driver="Josh Popov" ID="10" Lap="5" WarningPoints="0" CurrentPoints="0.25" Resolution="5" et="782.1">No Further Action</TrackLimits>
+<Score et="785.8">Kasi Jackman(17) lap=5 point=2 t=82.500 et=785.540</Score>
+<Score et="787.5">Brian Crane(8) lap=5 point=2 t=84.891 et=787.260</Score>
+<Score et="787.6">Elliott Brown(3) lap=5 point=2 t=84.717 et=787.420</Score>
+<Incident et="787.9">Brian Crane(8) reported contact (581.57) with another vehicle Elliott Brown(3)</Incident>
+<Incident et="787.9">Elliott Brown(3) reported contact (569.05) with another vehicle Brian Crane(8)</Incident>
+<Score et="788.6">Dustin Rand(14) lap=5 point=2 t=82.895 et=788.460</Score>
+<Score et="791.2">Greg Kach(9) lap=6 point=0 t=104.245 et=791.159</Score>
+<Score et="792.5">Harry Ricker(1) lap=5 point=2 t=82.644 et=792.300</Score>
+<Score et="793.7">Abe Wozniak(4) lap=6 point=0 t=103.918 et=793.560</Score>
+<Score et="796.1">Nick Johnson(5) lap=6 point=0 t=105.439 et=795.860</Score>
+<Incident et="797.3">Nitin Murthy(13) reported contact (131.55) with another vehicle Josh Popov(10)</Incident>
+<Incident et="797.4">Josh Popov(10) reported contact (178.06) with another vehicle Nitin Murthy(13)</Incident>
+<Score et="800.0">Nitin Murthy(13) lap=6 point=0 t=106.136 et=799.780</Score>
+<Score et="800.2">Josh Popov(10) lap=6 point=0 t=109.980 et=799.860</Score>
+<Score et="808.9">Kasi Jackman(17) lap=6 point=0 t=105.517 et=808.560</Score>
+<Score et="811.1">Elliott Brown(3) lap=6 point=0 t=108.148 et=810.840</Score>
+<Score et="811.4">Brian Crane(8) lap=6 point=0 t=108.828 et=811.200</Score>
+<Score et="811.6">Dustin Rand(14) lap=6 point=0 t=105.849 et=811.420</Score>
+<Score et="815.4">Harry Ricker(1) lap=6 point=0 t=105.556 et=815.220</Score>
+<TrackLimits Driver="Abe Wozniak" ID="4" Lap="6" WarningPoints="0.25" CurrentPoints="0.5" Resolution="2" et="817.6">Warning</TrackLimits>
+<Score et="818.8">Greg Kach(9) lap=6 point=1 t=27.587 et=818.746</Score>
+<Score et="821.4">Abe Wozniak(4) lap=6 point=1 t=-1.000 et=821.260</Score>
+<TrackLimits Driver="Dave Paccagnini" ID="6" Lap="5" WarningPoints="0" CurrentPoints="0" Resolution="5" et="822.0">No Further Action</TrackLimits>
+<TrackLimits Driver="Brian Crane" ID="8" Lap="6" WarningPoints="0" CurrentPoints="1.25" Resolution="5" et="823.6">No Further Action</TrackLimits>
+<Score et="823.6">Nick Johnson(5) lap=6 point=1 t=27.514 et=823.380</Score>
+<TrackLimits Driver="Nitin Murthy" ID="13" Lap="6" WarningPoints="0" CurrentPoints="0.5" Resolution="5" et="824.4">No Further Action</TrackLimits>
+<Score et="828.5">Nitin Murthy(13) lap=6 point=1 t=28.470 et=828.240</Score>
+<Score et="828.9">Josh Popov(10) lap=6 point=1 t=28.798 et=828.660</Score>
+<TrackLimits Driver="Kasi Jackman" ID="17" Lap="6" WarningPoints="0" CurrentPoints="0.5" Resolution="5" et="832.6">No Further Action</TrackLimits>
+<TrackLimits Driver="Nitin Murthy" ID="13" Lap="6" WarningPoints="0" CurrentPoints="0.5" Resolution="5" et="836.5">No Further Action</TrackLimits>
+<Score et="836.9">Kasi Jackman(17) lap=6 point=1 t=28.076 et=836.640</Score>
+<Score et="838.9">Elliott Brown(3) lap=6 point=1 t=27.912 et=838.760</Score>
+<Score et="840.0">Brian Crane(8) lap=6 point=1 t=28.683 et=839.880</Score>
+<Score et="840.3">Dustin Rand(14) lap=6 point=1 t=28.783 et=840.200</Score>
+<Score et="843.3">Harry Ricker(1) lap=6 point=1 t=28.019 et=843.220</Score>
+<Score et="844.2">Dave Paccagnini(6) lap=5 point=2 t=100.969 et=843.980</Score>
+<TrackLimits Driver="Harry Ricker" ID="1" Lap="6" WarningPoints="0" CurrentPoints="0" Resolution="5" et="851.3">No Further Action</TrackLimits>
+<Score et="867.4">Dave Paccagnini(6) lap=6 point=0 t=124.250 et=867.260</Score>
+<Score et="871.9">Greg Kach(9) lap=6 point=2 t=80.715 et=871.874</Score>
+<Sector Driver="Greg Kach" ID="9" Sector="2" Class="GT3" et="872.1">Greg Kach(9) set new best for sector 2</Sector>
+<Score et="875.0">Abe Wozniak(4) lap=6 point=2 t=-1.000 et=874.840</Score>
+<Score et="877.1">Nick Johnson(5) lap=6 point=2 t=81.068 et=876.940</Score>
+<Incident et="880.9">Dave Paccagnini(6) reported contact (1150.60) with Immovable</Incident>
+<Incident et="881.4">Dave Paccagnini(6) reported contact (4.76) with Wing</Incident>
+<Incident et="881.5">Dave Paccagnini(6) reported contact (5.02) with Wing</Incident>
+<Incident et="881.6">Dave Paccagnini(6) reported contact (14.85) with Wing</Incident>
+<Incident et="881.7">Dave Paccagnini(6) reported contact (9.06) with Wing</Incident>
+<Incident et="881.7">Dave Paccagnini(6) reported contact (19.07) with Wing</Incident>
+<Score et="883.1">Nitin Murthy(13) lap=6 point=2 t=83.065 et=882.840</Score>
+<Score et="883.9">Josh Popov(10) lap=6 point=2 t=83.860 et=883.720</Score>
+<Score et="890.4">Kasi Jackman(17) lap=6 point=2 t=81.704 et=890.260</Score>
+<Score et="893.6">Elliott Brown(3) lap=6 point=2 t=82.576 et=893.420</Score>
+<Score et="894.8">Greg Kach(9) lap=7 point=0 t=103.653 et=894.812</Score>
+<Score et="894.8">Brian Crane(8) lap=6 point=2 t=83.461 et=894.660</Score>
+<Score et="895.6">Dustin Rand(14) lap=6 point=2 t=84.047 et=895.460</Score>
+<Score et="897.7">Abe Wozniak(4) lap=7 point=0 t=-1.000 et=897.620</Score>
+<Score et="897.9">Harry Ricker(1) lap=6 point=2 t=82.574 et=897.780</Score>
+<Score et="899.9">Nick Johnson(5) lap=7 point=0 t=103.657 et=899.520</Score>
+<Score et="905.9">Nitin Murthy(13) lap=7 point=0 t=105.992 et=905.760</Score>
+<Score et="906.7">Josh Popov(10) lap=7 point=0 t=106.549 et=906.400</Score>
+<Score et="913.4">Kasi Jackman(17) lap=7 point=0 t=104.653 et=913.220</Score>
+<Score et="916.7">Elliott Brown(3) lap=7 point=0 t=105.719 et=916.560</Score>
+<Score et="916.9">Dave Paccagnini(6) lap=6 point=1 t=49.555 et=916.800</Score>
+<Score et="918.2">Brian Crane(8) lap=7 point=0 t=106.787 et=917.980</Score>
+<Score et="920.0">Dustin Rand(14) lap=7 point=0 t=108.469 et=919.880</Score>
+<Score et="920.7">Harry Ricker(1) lap=7 point=0 t=105.254 et=920.460</Score>
+<Score et="922.5">Greg Kach(9) lap=7 point=1 t=27.703 et=922.515</Score>
+<TrackLimits Driver="Nick Johnson" ID="5" Lap="7" WarningPoints="0.5" CurrentPoints="1" Resolution="2" et="923.6">Warning</TrackLimits>
+<Score et="925.4">Abe Wozniak(4) lap=7 point=1 t=27.574 et=925.180</Score>
+<Score et="927.3">Nick Johnson(5) lap=7 point=1 t=-1.000 et=926.980</Score>
+<TrackLimits Driver="Nitin Murthy" ID="13" Lap="7" WarningPoints="0" CurrentPoints="0.5" Resolution="5" et="927.8">No Further Action</TrackLimits>
+<TrackLimits Driver="Greg Kach" ID="9" Lap="7" WarningPoints="0" CurrentPoints="0" Resolution="5" et="931.3">No Further Action</TrackLimits>
+<Score et="934.3">Nitin Murthy(13) lap=7 point=1 t=28.302 et=934.060</Score>
+<Score et="934.7">Josh Popov(10) lap=7 point=1 t=28.031 et=934.440</Score>
+<TrackLimits Driver="Kasi Jackman" ID="17" Lap="7" WarningPoints="0" CurrentPoints="0.5" Resolution="5" et="934.8">No Further Action</TrackLimits>
+<Score et="941.2">Kasi Jackman(17) lap=7 point=1 t=27.775 et=941.000</Score>
+<TrackLimits Driver="Harry Ricker" ID="1" Lap="7" WarningPoints="0.5" CurrentPoints="0.5" Resolution="2" et="944.7">Warning</TrackLimits>
+<Score et="944.9">Elliott Brown(3) lap=7 point=1 t=28.146 et=944.700</Score>
+<TrackLimits Driver="Dave Paccagnini" ID="6" Lap="6" WarningPoints="0" CurrentPoints="0" Resolution="5" et="946.0">No Further Action</TrackLimits>
+<Score et="946.6">Brian Crane(8) lap=7 point=1 t=28.368 et=946.360</Score>
+<Score et="947.6">Dustin Rand(14) lap=7 point=1 t=27.573 et=947.460</Score>
+<Score et="948.1">Harry Ricker(1) lap=7 point=1 t=-1.000 et=947.920</Score>
+<TrackLimits Driver="Elliott Brown" ID="3" Lap="7" WarningPoints="0" CurrentPoints="0" Resolution="5" et="952.9">No Further Action</TrackLimits>
+<TrackLimits Driver="Dustin Rand" ID="14" Lap="7" WarningPoints="0" CurrentPoints="0" Resolution="5" et="955.8">No Further Action</TrackLimits>
+<TrackLimits Driver="Brian Crane" ID="8" Lap="7" WarningPoints="0" CurrentPoints="1.25" Resolution="5" et="956.9">No Further Action</TrackLimits>
+<TrackLimits Driver="Harry Ricker" ID="1" Lap="7" WarningPoints="0" CurrentPoints="0.5" Resolution="5" et="976.7">No Further Action</TrackLimits>
+<Score et="976.7">Greg Kach(9) lap=7 point=2 t=81.888 et=976.700</Score>
+<Score et="979.3">Abe Wozniak(4) lap=7 point=2 t=81.529 et=979.140</Score>
+<Score et="980.7">Nick Johnson(5) lap=7 point=2 t=-1.000 et=980.560</Score>
+<TrackLimits Driver="Nick Johnson" ID="5" Lap="7" WarningPoints="0" CurrentPoints="1" Resolution="5" et="980.9">No Further Action</TrackLimits>
+<Score et="988.8">Nitin Murthy(13) lap=7 point=2 t=82.821 et=988.580</Score>
+<Score et="989.8">Josh Popov(10) lap=7 point=2 t=-1.000 et=989.560</Score>
+<TrackLimits Driver="Josh Popov" ID="10" Lap="7" WarningPoints="0" CurrentPoints="0.25" Resolution="5" et="992.6">No Further Action</TrackLimits>
+<Score et="994.9">Kasi Jackman(17) lap=7 point=2 t=81.557 et=994.780</Score>
+<Score et="999.6">Greg Kach(9) lap=8 point=0 t=104.818 et=999.631</Score>
+<Score et="999.7">Elliott Brown(3) lap=7 point=2 t=82.966 et=999.520</Score>
+<Score et="1000.4">Dave Paccagnini(6) lap=6 point=2 t=133.024 et=1000.280</Score>
+<TrackLimits Driver="Dave Paccagnini" ID="6" Lap="6" WarningPoints="0" CurrentPoints="0" Resolution="5" et="1000.7">No Further Action</TrackLimits>
+<Score et="1002.0">Abe Wozniak(4) lap=8 point=0 t=104.176 et=1001.780</Score>
+<Score et="1002.4">Brian Crane(8) lap=7 point=2 t=84.200 et=1002.180</Score>
+<Score et="1002.6">Harry Ricker(1) lap=7 point=2 t=-1.000 et=1002.440</Score>
+<Score et="1003.3">Dustin Rand(14) lap=7 point=2 t=83.244 et=1003.140</Score>
+<Incident et="1003.3">Harry Ricker(1) reported contact (1531.21) with another vehicle Brian Crane(8)</Incident>
+<Incident et="1003.3">Brian Crane(8) reported contact (774.86) with another vehicle Harry Ricker(1)</Incident>
+<Score et="1003.6">Nick Johnson(5) lap=8 point=0 t=-1.000 et=1003.460</Score>
+<Score et="1011.6">Nitin Murthy(13) lap=8 point=0 t=105.711 et=1011.480</Score>
+<Score et="1012.4">Josh Popov(10) lap=8 point=0 t=105.840 et=1012.240</Score>
+<Sector et="1016.9">Dave Paccagnini(6) reports new suspension damage</Sector>
+<Incident et="1017.0">Dave Paccagnini(6) reported contact (7064.28) with Immovable</Incident>
+<Incident et="1017.9">Dave Paccagnini(6) reported contact (768.21) with Immovable</Incident>
+<Score et="1017.9">Kasi Jackman(17) lap=8 point=0 t=104.475 et=1017.700</Score>
+<TrackLimits Driver="Dave Paccagnini" ID="6" Lap="6" WarningPoints="0" CurrentPoints="0" Resolution="5" et="1020.1">No Further Action</TrackLimits>
+<Score et="1023.0">Elliott Brown(3) lap=8 point=0 t=106.284 et=1022.840</Score>
+<Score et="1026.0">Brian Crane(8) lap=8 point=0 t=107.847 et=1025.820</Score>
+<Score et="1026.1">Harry Ricker(1) lap=8 point=0 t=-1.000 et=1025.940</Score>
+<Score et="1026.9">Dustin Rand(14) lap=8 point=0 t=106.819 et=1026.700</Score>
+<Score et="1027.1">Greg Kach(9) lap=8 point=1 t=27.422 et=1027.053</Score>
+<Sector Driver="Greg Kach" ID="9" Sector="1" Class="GT3" et="1027.2">Greg Kach(9) set new best for sector 1</Sector>
+<TrackLimits Driver="Nick Johnson" ID="5" Lap="8" WarningPoints="0" CurrentPoints="1" Resolution="5" et="1028.0">No Further Action</TrackLimits>
+<Score et="1031.0">Abe Wozniak(4) lap=8 point=1 t=29.049 et=1030.840</Score>
+<Score et="1031.6">Nick Johnson(5) lap=8 point=1 t=27.961 et=1031.420</Score>
+<TrackLimits Driver="Nitin Murthy" ID="13" Lap="8" WarningPoints="0" CurrentPoints="0.5" Resolution="5" et="1036.1">No Further Action</TrackLimits>
+<Score et="1038.6">Dave Paccagnini(6) lap=7 point=0 t=171.213 et=1038.460</Score>
+<Score et="1040.4">Nitin Murthy(13) lap=8 point=1 t=28.568 et=1040.040</Score>
+<Score et="1040.6">Josh Popov(10) lap=8 point=1 t=28.135 et=1040.380</Score>
+<Score et="1045.7">Kasi Jackman(17) lap=8 point=1 t=27.858 et=1045.560</Score>
+<TrackLimits Driver="Harry Ricker" ID="1" Lap="8" WarningPoints="0" CurrentPoints="0.5" Resolution="5" et="1048.3">No Further Action</TrackLimits>
+<TrackLimits Driver="Dustin Rand" ID="14" Lap="8" WarningPoints="0" CurrentPoints="0" Resolution="5" et="1049.1">No Further Action</TrackLimits>
+<Score et="1051.2">Elliott Brown(3) lap=8 point=1 t=28.141 et=1050.980</Score>
+<Score et="1054.7">Brian Crane(8) lap=8 point=1 t=28.724 et=1054.560</Score>
+<Score et="1054.9">Harry Ricker(1) lap=8 point=1 t=28.832 et=1054.780</Score>
+<Score et="1055.2">Dustin Rand(14) lap=8 point=1 t=28.352 et=1055.060</Score>
+<Incident et="1075.9">Harry Ricker(1) reported contact (290.94) with another vehicle Brian Crane(8)</Incident>
+<Incident et="1075.9">Brian Crane(8) reported contact (250.74) with another vehicle Harry Ricker(1)</Incident>
+<Score et="1080.3">Greg Kach(9) lap=8 point=2 t=-1.000 et=1080.250</Score>
+<TrackLimits Driver="Brian Crane" ID="8" Lap="8" WarningPoints="0" CurrentPoints="1.25" Resolution="5" et="1080.8">No Further Action</TrackLimits>
+<TrackLimits Driver="Greg Kach" ID="9" Lap="8" WarningPoints="0" CurrentPoints="0" Resolution="5" et="1082.7">No Further Action</TrackLimits>
+<Score et="1084.9">Abe Wozniak(4) lap=8 point=2 t=82.964 et=1084.760</Score>
+<Score et="1085.7">Nick Johnson(5) lap=8 point=2 t=82.018 et=1085.480</Score>
+<TrackLimits Driver="Greg Kach" ID="9" Lap="8" WarningPoints="0" CurrentPoints="0" Resolution="5" et="1087.6">No Further Action</TrackLimits>
+<Score et="1095.1">Nitin Murthy(13) lap=8 point=2 t=-1.000 et=1094.920</Score>
+<TrackLimits Driver="Nitin Murthy" ID="13" Lap="8" WarningPoints="0" CurrentPoints="0.5" Resolution="5" et="1095.5">No Further Action</TrackLimits>
+<Score et="1095.6">Josh Popov(10) lap=8 point=2 t=83.098 et=1095.340</Score>
+<Score et="1099.3">Kasi Jackman(17) lap=8 point=2 t=81.423 et=1099.120</Score>
+<TrackLimits Driver="Josh Popov" ID="10" Lap="8" WarningPoints="0" CurrentPoints="0.25" Resolution="5" et="1100.3">No Further Action</TrackLimits>
+<TrackLimits Driver="Elliott Brown" ID="3" Lap="8" WarningPoints="0" CurrentPoints="0" Resolution="5" et="1102.3">No Further Action</TrackLimits>
+<Score et="1103.7">Greg Kach(9) lap=9 point=0 t=104.067 et=1103.698</Score>
+<Score et="1104.8">Elliott Brown(3) lap=8 point=2 t=-1.000 et=1104.600</Score>
+<TrackLimits Driver="Elliott Brown" ID="3" Lap="8" WarningPoints="0" CurrentPoints="0" Resolution="5" et="1105.6">No Further Action</TrackLimits>
+<Score et="1107.6">Abe Wozniak(4) lap=9 point=0 t=105.643 et=1107.440</Score>
+<Score et="1108.5">Nick Johnson(5) lap=9 point=0 t=104.735 et=1108.200</Score>
+<Score et="1110.7">Brian Crane(8) lap=8 point=2 t=84.765 et=1110.600</Score>
+<Score et="1111.3">Dustin Rand(14) lap=8 point=2 t=84.462 et=1111.180</Score>
+<Score et="1112.0">Harry Ricker(1) lap=8 point=2 t=85.946 et=1111.900</Score>
+<Score et="1118.1">Nitin Murthy(13) lap=9 point=0 t=106.479 et=1117.960</Score>
+<Score et="1118.2">Josh Popov(10) lap=9 point=0 t=105.813 et=1118.060</Score>
+<Score et="1122.3">Kasi Jackman(17) lap=9 point=0 t=104.449 et=1122.140</Score>
+<Score et="1128.2">Elliott Brown(3) lap=9 point=0 t=105.148 et=1128.000</Score>
+<Score et="1131.5">Greg Kach(9) lap=9 point=1 t=27.752 et=1131.450</Score>
+<Score et="1133.9">Brian Crane(8) lap=9 point=0 t=107.926 et=1133.760</Score>
+<Score et="1134.5">Dustin Rand(14) lap=9 point=0 t=107.506 et=1134.220</Score>
+<Score et="1134.9">Harry Ricker(1) lap=9 point=0 t=108.867 et=1134.820</Score>
+<Score et="1135.5">Abe Wozniak(4) lap=9 point=1 t=27.852 et=1135.280</Score>
+<Score et="1136.2">Nick Johnson(5) lap=9 point=1 t=27.907 et=1136.100</Score>
+<TrackLimits Driver="Elliott Brown" ID="3" Lap="9" WarningPoints="0" CurrentPoints="0" Resolution="5" et="1141.6">No Further Action</TrackLimits>
+<TrackLimits Driver="Kasi Jackman" ID="17" Lap="9" WarningPoints="0" CurrentPoints="0.5" Resolution="5" et="1144.3">No Further Action</TrackLimits>
+<Score et="1146.6">Nitin Murthy(13) lap=9 point=1 t=28.392 et=1146.340</Score>
+<Score et="1146.8">Josh Popov(10) lap=9 point=1 t=28.469 et=1146.520</Score>
+<Score et="1150.3">Kasi Jackman(17) lap=9 point=1 t=27.975 et=1150.120</Score>
+<Score et="1156.3">Elliott Brown(3) lap=9 point=1 t=28.131 et=1156.120</Score>
+<TrackLimits Driver="Harry Ricker" ID="1" Lap="9" WarningPoints="0" CurrentPoints="0.5" Resolution="5" et="1157.1">No Further Action</TrackLimits>
+<Incident et="1157.3">Dustin Rand(14) reported contact (503.44) with another vehicle Brian Crane(8)</Incident>
+<Incident et="1157.3">Brian Crane(8) reported contact (439.55) with another vehicle Dustin Rand(14)</Incident>
+<Score et="1162.7">Dustin Rand(14) lap=9 point=1 t=28.359 et=1162.580</Score>
+<Score et="1162.9">Brian Crane(8) lap=9 point=1 t=28.896 et=1162.660</Score>
+<Score et="1163.2">Harry Ricker(1) lap=9 point=1 t=28.209 et=1163.020</Score>
+<Score et="1184.8">Greg Kach(9) lap=9 point=2 t=81.056 et=1184.753</Score>
+<Sector Driver="Abe Wozniak" ID="4" Sector="2" Class="GT3" et="1188.5">Abe Wozniak(4) set new best for sector 2</Sector>
+<Score et="1188.6">Abe Wozniak(4) lap=9 point=2 t=80.924 et=1188.360</Score>
+<Score et="1189.5">Nick Johnson(5) lap=9 point=2 t=81.129 et=1189.320</Score>
+<TrackLimits Driver="Harry Ricker" ID="1" Lap="9" WarningPoints="0" CurrentPoints="0.5" Resolution="5" et="1192.5">No Further Action</TrackLimits>
+<Score et="1202.0">Josh Popov(10) lap=9 point=2 t=83.652 et=1201.720</Score>
+<Score et="1202.2">Nitin Murthy(13) lap=9 point=2 t=84.132 et=1202.080</Score>
+<Score et="1204.0">Kasi Jackman(17) lap=9 point=2 t=81.744 et=1203.880</Score>
+<Score et="1207.7">Greg Kach(9) lap=10 point=0 t=104.009 et=1207.707</Score>
+<Score et="1209.8">Elliott Brown(3) lap=9 point=2 t=81.554 et=1209.540</Score>
+<Score et="1211.1">Abe Wozniak(4) lap=10 point=0 t=103.444 et=1210.880</Score>
+<Score et="1212.2">Nick Johnson(5) lap=10 point=0 t=103.740 et=1211.940</Score>
+<Score et="1217.7">Dustin Rand(14) lap=9 point=2 t=83.420 et=1217.640</Score>
+<Score et="1218.3">Brian Crane(8) lap=9 point=2 t=84.318 et=1218.080</Score>
+<Score et="1218.5">Harry Ricker(1) lap=9 point=2 t=83.626 et=1218.440</Score>
+<Score et="1225.2">Josh Popov(10) lap=10 point=0 t=106.900 et=1224.960</Score>
+<Score et="1227.2">Kasi Jackman(17) lap=10 point=0 t=104.964 et=1227.100</Score>
+<Score et="1231.2">Nitin Murthy(13) lap=10 point=0 t=113.000 et=1230.960</Score>
+<TrackLimits Driver="Abe Wozniak" ID="4" Lap="10" WarningPoints="0" CurrentPoints="0.5" Resolution="5" et="1232.2">No Further Action</TrackLimits>
+<Score et="1232.8">Elliott Brown(3) lap=10 point=0 t=104.598 et=1232.600</Score>
+<Score et="1235.2">Greg Kach(9) lap=10 point=1 t=27.509 et=1235.216</Score>
+<Score et="1238.8">Abe Wozniak(4) lap=10 point=1 t=27.783 et=1238.660</Score>
+<Score et="1240.0">Nick Johnson(5) lap=10 point=1 t=27.788 et=1239.720</Score>
+<Score et="1241.3">Dustin Rand(14) lap=10 point=0 t=106.784 et=1241.000</Score>
+<Score et="1241.5">Harry Ricker(1) lap=10 point=0 t=106.444 et=1241.260</Score>
+<TrackLimits Driver="Brian Crane" ID="8" Lap="9" WarningPoints="0" CurrentPoints="1.25" Resolution="5" et="1246.7">No Further Action</TrackLimits>
+<Score et="1246.8">Brian Crane(8) lap=10 point=0 t=112.842 et=1246.600</Score>
+<TrackLimits Driver="Josh Popov" ID="10" Lap="10" WarningPoints="0" CurrentPoints="0.25" Resolution="5" et="1249.4">No Further Action</TrackLimits>
+<TrackLimits Driver="Dustin Rand" ID="14" Lap="10" WarningPoints="0" CurrentPoints="0" Resolution="5" et="1250.8">No Further Action</TrackLimits>
+<TrackLimits Driver="Kasi Jackman" ID="17" Lap="10" WarningPoints="0.25" CurrentPoints="0.75" Resolution="2" et="1251.5">Warning</TrackLimits>
+<Score et="1253.4">Josh Popov(10) lap=10 point=1 t=28.266 et=1253.220</Score>
+<Score et="1255.4">Kasi Jackman(17) lap=10 point=1 t=-1.000 et=1255.200</Score>
+<Score et="1258.7">Dave Paccagnini(6) lap=7 point=1 t=220.012 et=1258.480</Score>
+<Score et="1261.0">Elliott Brown(3) lap=10 point=1 t=28.136 et=1260.720</Score>
+<Score et="1268.9">Dustin Rand(14) lap=10 point=1 t=27.769 et=1268.760</Score>
+<Score et="1269.5">Harry Ricker(1) lap=10 point=1 t=28.117 et=1269.380</Score>
+<TrackLimits Driver="Dustin Rand" ID="14" Lap="10" WarningPoints="0" CurrentPoints="0" Resolution="5" et="1276.7">No Further Action</TrackLimits>
+<Score et="1288.4">Greg Kach(9) lap=10 point=2 t=80.732 et=1288.439</Score>
+<TrackLimits Driver="Harry Ricker" ID="1" Lap="10" WarningPoints="0" CurrentPoints="0.5" Resolution="5" et="1291.0">No Further Action</TrackLimits>
+<Score et="1292.5">Abe Wozniak(4) lap=10 point=2 t=81.495 et=1292.380</Score>
+<Score et="1293.6">Nick Johnson(5) lap=10 point=2 t=81.549 et=1293.480</Score>
+<TrackLimits Driver="Nick Johnson" ID="5" Lap="10" WarningPoints="0" CurrentPoints="1" Resolution="5" et="1298.5">No Further Action</TrackLimits>
+<TrackLimits Driver="Nitin Murthy" ID="13" Lap="10" WarningPoints="0" CurrentPoints="0.5" Resolution="5" et="1305.1">No Further Action</TrackLimits>
+<Score et="1308.4">Josh Popov(10) lap=10 point=2 t=83.229 et=1308.180</Score>
+<TrackLimits Driver="Dustin Rand" ID="14" Lap="10" WarningPoints="0" CurrentPoints="0" Resolution="5" et="1308.7">No Further Action</TrackLimits>
+<Score et="1309.2">Kasi Jackman(17) lap=10 point=2 t=-1.000 et=1308.980</Score>
+<Score et="1311.4">Greg Kach(9) lap=11 point=0 t=103.656 et=1311.363</Score>
+<Score et="1313.7">Dave Paccagnini(6) lap=7 point=2 t=275.095 et=1313.560</Score>
+<Score et="1314.7">Elliott Brown(3) lap=10 point=2 t=81.955 et=1314.540</Score>
+<Score et="1315.1">Abe Wozniak(4) lap=11 point=0 t=104.132 et=1315.000</Score>
+<Score et="1316.6">Nick Johnson(5) lap=11 point=0 t=104.417 et=1316.360</Score>
+<Score et="1321.4">Nitin Murthy(13) lap=10 point=1 t=90.258 et=1321.220</Score>
+<Score et="1324.3">Dustin Rand(14) lap=10 point=2 t=83.064 et=1324.060</Score>
+<Score et="1324.9">Harry Ricker(1) lap=10 point=2 t=-1.000 et=1324.740</Score>
+<TrackLimits Driver="Harry Ricker" ID="1" Lap="10" WarningPoints="0" CurrentPoints="0.5" Resolution="5" et="1325.8">No Further Action</TrackLimits>
+<Score et="1331.6">Josh Popov(10) lap=11 point=0 t=106.410 et=1331.360</Score>
+<Score et="1332.2">Kasi Jackman(17) lap=11 point=0 t=-1.000 et=1332.040</Score>
+<TrackLimits Driver="Dustin Rand" ID="14" Lap="10" WarningPoints="0" CurrentPoints="0" Resolution="5" et="1333.7">No Further Action</TrackLimits>
+<Score et="1337.0">Dave Paccagnini(6) lap=8 point=0 t=298.370 et=1336.840</Score>
+<Score et="1337.9">Elliott Brown(3) lap=11 point=0 t=105.120 et=1337.720</Score>
+<TrackLimits Driver="Nick Johnson" ID="5" Lap="11" WarningPoints="0" CurrentPoints="1" Resolution="5" et="1338.3">No Further Action</TrackLimits>
+<Score et="1338.9">Greg Kach(9) lap=11 point=1 t=27.543 et=1338.906</Score>
+<Score et="1343.0">Abe Wozniak(4) lap=11 point=1 t=27.768 et=1342.780</Score>
+<Score et="1344.5">Nick Johnson(5) lap=11 point=1 t=27.899 et=1344.260</Score>
+<Score et="1347.6">Harry Ricker(1) lap=11 point=0 t=106.192 et=1347.460</Score>
+<Score et="1352.2">Dustin Rand(14) lap=11 point=0 t=111.042 et=1352.040</Score>
+<Score et="1359.7">Josh Popov(10) lap=11 point=1 t=28.105 et=1359.480</Score>
+<Score et="1360.4">Kasi Jackman(17) lap=11 point=1 t=28.147 et=1360.200</Score>
+<Score et="1365.2">Brian Crane(8) lap=10 point=1 t=118.400 et=1365.000</Score>
+<Score et="1365.6">Dave Paccagnini(6) lap=8 point=1 t=28.595 et=1365.420</Score>
+<Score et="1366.1">Elliott Brown(3) lap=11 point=1 t=28.217 et=1365.920</Score>
+<TrackLimits Driver="Dave Paccagnini" ID="6" Lap="8" WarningPoints="0" CurrentPoints="0" Resolution="5" et="1373.6">No Further Action</TrackLimits>
+<Score et="1375.2">Nitin Murthy(13) lap=10 point=2 t=144.081 et=1375.040</Score>
+<Score et="1376.0">Harry Ricker(1) lap=11 point=1 t=28.422 et=1375.880</Score>
+<Score et="1380.4">Dustin Rand(14) lap=11 point=1 t=28.182 et=1380.220</Score>
+<Score et="1392.4">Greg Kach(9) lap=11 point=2 t=81.074 et=1392.437</Score>
+<Score et="1396.9">Abe Wozniak(4) lap=11 point=2 t=81.755 et=1396.760</Score>
+<Score et="1398.1">Nick Johnson(5) lap=11 point=2 t=81.594 et=1397.940</Score>
+<Score et="1398.3">Nitin Murthy(13) lap=11 point=0 t=167.241 et=1398.200</Score>
+<Score et="1414.3">Josh Popov(10) lap=11 point=2 t=82.796 et=1414.160</Score>
+<Score et="1414.7">Kasi Jackman(17) lap=11 point=2 t=-1.000 et=1414.580</Score>
+<Score et="1415.4">Greg Kach(9) lap=12 point=0 t=104.014 et=1415.377</Score>
+<TrackLimits Driver="Kasi Jackman" ID="17" Lap="11" WarningPoints="0" CurrentPoints="0.75" Resolution="5" et="1417.3">No Further Action</TrackLimits>
+<TrackLimits Driver="Elliott Brown" ID="3" Lap="11" WarningPoints="0" CurrentPoints="0" Resolution="5" et="1418.8">No Further Action</TrackLimits>
+<Score et="1419.6">Brian Crane(8) lap=10 point=2 t=172.835 et=1419.440</Score>
+<Score et="1419.9">Abe Wozniak(4) lap=12 point=0 t=104.776 et=1419.780</Score>
+<Score et="1420.4">Dave Paccagnini(6) lap=8 point=2 t=83.377 et=1420.220</Score>
+<Score et="1421.2">Elliott Brown(3) lap=11 point=2 t=83.335 et=1421.040</Score>
+<Score et="1426.4">Nitin Murthy(13) lap=11 point=1 t=27.944 et=1426.140</Score>
+<Score et="1428.4">Nick Johnson(5) lap=12 point=0 t=111.901 et=1428.260</Score>
+<Score et="1431.5">Harry Ricker(1) lap=11 point=2 t=83.842 et=1431.300</Score>
+<Score et="1435.2">Dustin Rand(14) lap=11 point=2 t=83.049 et=1435.080</Score>
+<TrackLimits Driver="Greg Kach" ID="9" Lap="12" WarningPoints="0" CurrentPoints="0" Resolution="5" et="1436.8">No Further Action</TrackLimits>
+<Score et="1437.2">Josh Popov(10) lap=12 point=0 t=105.581 et=1436.960</Score>
+<TrackLimits Driver="Harry Ricker" ID="1" Lap="11" WarningPoints="0" CurrentPoints="0.5" Resolution="5" et="1437.8">No Further Action</TrackLimits>
+<Score et="1438.1">Kasi Jackman(17) lap=12 point=0 t=105.881 et=1437.920</Score>
+<Score et="1443.0">Brian Crane(8) lap=11 point=0 t=196.116 et=1442.720</Score>
+<Score et="1443.1">Greg Kach(9) lap=12 point=1 t=27.727 et=1443.104</Score>
+<Score et="1443.6">Dave Paccagnini(6) lap=9 point=0 t=106.634 et=1443.460</Score>
+<Score et="1444.5">Elliott Brown(3) lap=12 point=0 t=106.600 et=1444.320</Score>
+<Score et="1447.9">Abe Wozniak(4) lap=12 point=1 t=27.837 et=1447.620</Score>
+<TrackLimits Driver="Josh Popov" ID="10" Lap="12" WarningPoints="0" CurrentPoints="0.25" Resolution="5" et="1448.9">No Further Action</TrackLimits>
+<Score et="1456.0">Harry Ricker(1) lap=12 point=0 t=108.356 et=1455.800</Score>
+<Score et="1458.9">Dustin Rand(14) lap=12 point=0 t=106.702 et=1458.740</Score>
+<Score et="1465.2">Josh Popov(10) lap=12 point=1 t=28.141 et=1465.100</Score>
+<Score et="1466.2">Kasi Jackman(17) lap=12 point=1 t=28.080 et=1466.000</Score>
+<TrackLimits Driver="Elliott Brown" ID="3" Lap="12" WarningPoints="0" CurrentPoints="0" Resolution="5" et="1466.5">No Further Action</TrackLimits>
+<Score et="1471.5">Brian Crane(8) lap=11 point=1 t=28.603 et=1471.320</Score>
+<Score et="1472.0">Dave Paccagnini(6) lap=9 point=1 t=28.344 et=1471.820</Score>
+<Score et="1472.6">Elliott Brown(3) lap=12 point=1 t=28.189 et=1472.500</Score>
+<Score et="1480.2">Nitin Murthy(13) lap=11 point=2 t=81.869 et=1480.060</Score>
+<Score et="1484.8">Harry Ricker(1) lap=12 point=1 t=28.755 et=1484.560</Score>
+<Score et="1486.8">Dustin Rand(14) lap=12 point=1 t=27.890 et=1486.640</Score>
+<Penalty et="1492.2">Nick Johnson received Stop/Go penalty, 10s, 0laps for &quot;Speeding In Pitlane&quot;. Result: penalties=1, 1st=Stop/Go,10s</Penalty>
+<Score et="1496.8">Greg Kach(9) lap=12 point=2 t=81.421 et=1496.798</Score>
+<Score et="1501.9">Abe Wozniak(4) lap=12 point=2 t=82.012 et=1501.800</Score>
+<Score et="1503.2">Nitin Murthy(13) lap=12 point=0 t=104.851 et=1503.040</Score>
+<Score et="1517.9">Nick Johnson(5) lap=12 point=1 t=89.444 et=1517.700</Score>
+<Score et="1519.8">Greg Kach(9) lap=13 point=0 t=104.372 et=1519.749</Score>
+<Score et="1520.7">Josh Popov(10) lap=12 point=2 t=-1.000 et=1520.520</Score>
+<Score et="1521.1">Kasi Jackman(17) lap=12 point=2 t=83.012 et=1520.940</Score>
+<Score et="1524.8">Abe Wozniak(4) lap=13 point=0 t=104.829 et=1524.620</Score>
+<Score et="1525.6">Brian Crane(8) lap=11 point=2 t=82.741 et=1525.460</Score>
+<Score et="1526.7">Dave Paccagnini(6) lap=9 point=2 t=83.141 et=1526.600</Score>
+<Score et="1527.4">Elliott Brown(3) lap=12 point=2 t=82.956 et=1527.260</Score>
+<TrackLimits Driver="Josh Popov" ID="10" Lap="12" WarningPoints="0" CurrentPoints="0.25" Resolution="5" et="1528.8">No Further Action</TrackLimits>
+<Score et="1531.2">Nitin Murthy(13) lap=12 point=1 t=28.077 et=1531.120</Score>
+<Score et="1539.5">Harry Ricker(1) lap=12 point=2 t=-1.000 et=1539.240</Score>
+<TrackLimits Driver="Harry Ricker" ID="1" Lap="12" WarningPoints="0" CurrentPoints="0.5" Resolution="5" et="1540.3">No Further Action</TrackLimits>
+<TrackLimits Driver="Dustin Rand" ID="14" Lap="12" WarningPoints="0" CurrentPoints="0" Resolution="5" et="1541.7">No Further Action</TrackLimits>
+<Score et="1542.3">Dustin Rand(14) lap=12 point=2 t=83.226 et=1541.960</Score>
+<Score et="1544.4">Kasi Jackman(17) lap=13 point=0 t=106.193 et=1544.120</Score>
+<Score et="1547.5">Greg Kach(9) lap=13 point=1 t=27.738 et=1547.487</Score>
+<Score et="1548.8">Brian Crane(8) lap=12 point=0 t=106.000 et=1548.720</Score>
+<Score et="1550.1">Dave Paccagnini(6) lap=10 point=0 t=106.476 et=1549.940</Score>
+<Score et="1550.7">Elliott Brown(3) lap=13 point=0 t=106.136 et=1550.440</Score>
+<Score et="1552.6">Abe Wozniak(4) lap=13 point=1 t=27.778 et=1552.400</Score>
+<TrackLimits Driver="Josh Popov" ID="10" Lap="12" WarningPoints="0" CurrentPoints="0.25" Resolution="5" et="1552.6">No Further Action</TrackLimits>
+<Score et="1552.8">Josh Popov(10) lap=13 point=0 t=115.586 et=1552.540</Score>
+<Score et="1562.5">Harry Ricker(1) lap=13 point=0 t=106.474 et=1562.280</Score>
+<Score et="1565.3">Dustin Rand(14) lap=13 point=0 t=106.415 et=1565.160</Score>
+<TrackLimits Driver="Kasi Jackman" ID="17" Lap="13" WarningPoints="0.25" CurrentPoints="1" Resolution="2" et="1568.9">Warning</TrackLimits>
+<Score et="1572.6">Kasi Jackman(17) lap=13 point=1 t=-1.000 et=1572.480</Score>
+<Score et="1574.9">Nick Johnson(5) lap=12 point=2 t=146.482 et=1574.740</Score>
+<TrackLimits Driver="Elliott Brown" ID="3" Lap="13" WarningPoints="0" CurrentPoints="0" Resolution="5" et="1575.5">No Further Action</TrackLimits>
+<Score et="1577.3">Brian Crane(8) lap=12 point=1 t=28.498 et=1577.220</Score>
+<Score et="1578.6">Dave Paccagnini(6) lap=10 point=1 t=28.505 et=1578.440</Score>
+<Score et="1579.5">Elliott Brown(3) lap=13 point=1 t=28.825 et=1579.280</Score>
+<TrackLimits Driver="Brian Crane" ID="8" Lap="12" WarningPoints="0" CurrentPoints="1.25" Resolution="5" et="1585.4">No Further Action</TrackLimits>
+<Score et="1585.7">Nitin Murthy(13) lap=12 point=2 t=82.494 et=1585.540</Score>
+<Score et="1591.2">Harry Ricker(1) lap=13 point=1 t=28.706 et=1590.980</Score>
+<Score et="1593.2">Dustin Rand(14) lap=13 point=1 t=27.947 et=1593.100</Score>
+<Score et="1601.3">Greg Kach(9) lap=13 point=2 t=81.516 et=1601.264</Score>
+<Score et="1605.9">Nick Johnson(5) lap=13 point=0 t=177.458 et=1605.720</Score>
+<Score et="1607.0">Abe Wozniak(4) lap=13 point=2 t=82.233 et=1606.840</Score>
+<Score et="1608.7">Nitin Murthy(13) lap=13 point=0 t=105.526 et=1608.580</Score>
+<Penalty et="1612.1">Nick Johnson served 1st Stop/Go penalty, result: penalties=0, 1st=Stop/Go,10s</Penalty>
+<Penalty et="1621.5">Josh Popov received Drive Thru penalty, 10s, 0laps for &quot;Speeding In Pitlane&quot;. Result: penalties=1, 1st=Drive Thru,10s</Penalty>
+<Score et="1624.4">Greg Kach(9) lap=14 point=0 t=104.664 et=1624.413</Score>
+<Score et="1627.2">Kasi Jackman(17) lap=13 point=2 t=-1.000 et=1626.960</Score>
+<Score et="1629.9">Abe Wozniak(4) lap=14 point=0 t=105.011 et=1629.620</Score>
+<TrackLimits Driver="Dustin Rand" ID="14" Lap="13" WarningPoints="0" CurrentPoints="0" Resolution="5" et="1630.3">No Further Action</TrackLimits>
+<Score et="1632.6">Brian Crane(8) lap=12 point=2 t=83.722 et=1632.440</Score>
+<Score et="1633.7">Dave Paccagnini(6) lap=10 point=2 t=83.618 et=1633.560</Score>
+<Score et="1634.3">Elliott Brown(3) lap=13 point=2 t=83.698 et=1634.140</Score>
+<Score et="1637.0">Nitin Murthy(13) lap=13 point=1 t=28.175 et=1636.740</Score>
+<Score et="1646.8">Harry Ricker(1) lap=13 point=2 t=84.286 et=1646.560</Score>
+<Score et="1647.5">Josh Popov(10) lap=13 point=1 t=94.718 et=1647.260</Score>
+<Score et="1650.1">Dustin Rand(14) lap=13 point=2 t=84.766 et=1649.920</Score>
+<Score et="1650.4">Kasi Jackman(17) lap=14 point=0 t=-1.000 et=1650.160</Score>
+<Score et="1652.3">Greg Kach(9) lap=14 point=1 t=27.896 et=1652.309</Score>
+<Score et="1656.0">Brian Crane(8) lap=13 point=0 t=107.135 et=1655.840</Score>
+<Score et="1657.4">Dave Paccagnini(6) lap=11 point=0 t=107.196 et=1657.140</Score>
+<Score et="1658.1">Abe Wozniak(4) lap=14 point=1 t=28.343 et=1657.960</Score>
+<Score et="1664.5">Nick Johnson(5) lap=13 point=1 t=58.552 et=1664.260</Score>
+<Score et="1664.6">Elliott Brown(3) lap=14 point=0 t=113.918 et=1664.360</Score>
+<Score et="1669.6">Harry Ricker(1) lap=14 point=0 t=107.144 et=1669.420</Score>
+<Score et="1673.8">Dustin Rand(14) lap=14 point=0 t=108.377 et=1673.540</Score>
+<Score et="1678.8">Kasi Jackman(17) lap=14 point=1 t=28.445 et=1678.620</Score>
+<Score et="1684.9">Brian Crane(8) lap=13 point=1 t=28.761 et=1684.600</Score>
+<Score et="1685.9">Dave Paccagnini(6) lap=11 point=1 t=28.625 et=1685.760</Score>
+<Score et="1691.6">Nitin Murthy(13) lap=13 point=2 t=82.850 et=1691.420</Score>
+<Score et="1698.8">Harry Ricker(1) lap=14 point=1 t=29.200 et=1698.620</Score>
+<Score et="1702.1">Josh Popov(10) lap=13 point=2 t=149.310 et=1701.840</Score>
+<Score et="1702.2">Dustin Rand(14) lap=14 point=1 t=28.445 et=1701.980</Score>
+<Score et="1706.7">Greg Kach(9) lap=14 point=2 t=-1.000 et=1706.710</Score>
+<TrackLimits Driver="Greg Kach" ID="9" Lap="14" WarningPoints="0" CurrentPoints="0" Resolution="5" et="1707.4">No Further Action</TrackLimits>
+<TrackLimits Driver="Dustin Rand" ID="14" Lap="14" WarningPoints="0" CurrentPoints="0" Resolution="5" et="1710.0">No Further Action</TrackLimits>
+<Score et="1713.0">Abe Wozniak(4) lap=14 point=2 t=83.217 et=1712.840</Score>
+<Score et="1714.8">Nitin Murthy(13) lap=14 point=0 t=105.947 et=1714.520</Score>
+<Score et="1718.6">Nick Johnson(5) lap=13 point=2 t=112.757 et=1718.480</Score>
+<TrackLimits Driver="Dave Paccagnini" ID="6" Lap="11" WarningPoints="0" CurrentPoints="0" Resolution="5" et="1721.2">No Further Action</TrackLimits>
+<Score et="1730.2">Josh Popov(10) lap=14 point=0 t=177.458 et=1730.000</Score>
+<Score et="1734.1">Kasi Jackman(17) lap=14 point=2 t=83.784 et=1733.940</Score>
+<Score et="1735.5">Greg Kach(9) lap=15 point=0 t=111.102 et=1735.515</Score>
+<Score et="1739.7">Brian Crane(8) lap=13 point=2 t=83.668 et=1739.520</Score>
+<Score et="1740.9">Dave Paccagnini(6) lap=11 point=2 t=83.656 et=1740.800</Score>
+<Score et="1741.7">Nick Johnson(5) lap=14 point=0 t=135.722 et=1741.440</Score>
+<Score et="1742.6">Nitin Murthy(13) lap=14 point=1 t=27.939 et=1742.460</Score>
+<Score et="1744.6">Abe Wozniak(4) lap=15 point=0 t=114.795 et=1744.420</Score>
+<Penalty et="1749.5">Josh Popov served 1st Drive Thru penalty, result: penalties=0, 1st=Drive Thru,10s</Penalty>
+<Penalty et="1749.5">Josh Popov received Drive Thru penalty, 10s, 0laps for &quot;Speeding In Pitlane&quot;. Result: penalties=1, 1st=Drive Thru,10s</Penalty>
+<Score et="1755.4">Harry Ricker(1) lap=14 point=2 t=85.858 et=1755.280</Score>
+<Score et="1757.4">Kasi Jackman(17) lap=15 point=0 t=107.013 et=1757.180</Score>
+<Score et="1759.2">Dustin Rand(14) lap=14 point=2 t=85.500 et=1759.040</Score>
+<Score et="1759.2">Elliott Brown(3) lap=14 point=1 t=94.717 et=1759.080</Score>
+<Score et="1763.2">Brian Crane(8) lap=14 point=0 t=107.148 et=1763.000</Score>
+<Score et="1764.7">Dave Paccagnini(6) lap=12 point=0 t=107.319 et=1764.460</Score>
+<Score et="1769.6">Nick Johnson(5) lap=14 point=1 t=27.959 et=1769.400</Score>
+<Score et="1775.5">Josh Popov(10) lap=14 point=1 t=45.262 et=1775.260</Score>
+<Score et="1785.5">Harry Ricker(1) lap=15 point=0 t=115.870 et=1785.300</Score>
+<Score et="1785.8">Kasi Jackman(17) lap=15 point=1 t=28.343 et=1785.520</Score>
+<Score et="1789.7">Dustin Rand(14) lap=15 point=0 t=115.961 et=1789.500</Score>
+<Score et="1792.1">Brian Crane(8) lap=14 point=1 t=28.830 et=1791.820</Score>
+<Score et="1793.2">Dave Paccagnini(6) lap=12 point=1 t=28.547 et=1793.000</Score>
+<Score et="1797.6">Nitin Murthy(13) lap=14 point=2 t=82.976 et=1797.500</Score>
+<Score et="1813.9">Elliott Brown(3) lap=14 point=2 t=-1.000 et=1813.700</Score>
+<TrackLimits Driver="Elliott Brown" ID="3" Lap="14" WarningPoints="0" CurrentPoints="0" Resolution="5" et="1814.1">No Further Action</TrackLimits>
+<Score et="1817.6">Greg Kach(9) lap=15 point=1 t=82.110 et=1817.625</Score>
+<Score et="1820.8">Nitin Murthy(13) lap=15 point=0 t=106.037 et=1820.560</Score>
+<TrackLimits Driver="Dave Paccagnini" ID="6" Lap="12" WarningPoints="0" CurrentPoints="0" Resolution="5" et="1822.2">No Further Action</TrackLimits>
+<Score et="1824.0">Nick Johnson(5) lap=14 point=2 t=82.315 et=1823.760</Score>
+<Score et="1828.2">Abe Wozniak(4) lap=15 point=1 t=83.598 et=1828.020</Score>
+<Score et="1830.1">Josh Popov(10) lap=14 point=2 t=99.871 et=1829.860</Score>
+<Score et="1837.5">Elliott Brown(3) lap=15 point=0 t=172.949 et=1837.320</Score>
+<Score et="1840.6">Kasi Jackman(17) lap=15 point=2 t=83.107 et=1840.280</Score>
+<Score et="1847.1">Nick Johnson(5) lap=15 point=0 t=105.416 et=1846.860</Score>
+<Score et="1847.2">Brian Crane(8) lap=14 point=2 t=83.955 et=1846.960</Score>
+<Score et="1848.5">Dave Paccagnini(6) lap=12 point=2 t=83.848 et=1848.300</Score>
+<Score et="1849.4">Nitin Murthy(13) lap=15 point=1 t=28.495 et=1849.060</Score>
+<Score et="1859.6">Josh Popov(10) lap=15 point=0 t=129.478 et=1859.480</Score>
+<Score et="1863.7">Kasi Jackman(17) lap=16 point=0 t=106.259 et=1863.440</Score>
+<Score et="1865.8">Elliott Brown(3) lap=15 point=1 t=28.333 et=1865.640</Score>
+<Score et="1870.6">Brian Crane(8) lap=15 point=0 t=107.469 et=1870.460</Score>
+<Score et="1871.9">Dave Paccagnini(6) lap=13 point=0 t=107.264 et=1871.720</Score>
+<Score et="1872.0">Greg Kach(9) lap=15 point=2 t=136.520 et=1872.035</Score>
+<Score et="1874.9">Nick Johnson(5) lap=15 point=1 t=27.799 et=1874.660</Score>
+<Penalty et="1879.1">Josh Popov served 1st Drive Thru penalty, result: penalties=0, 1st=Drive Thru,10s</Penalty>
+<Penalty et="1879.1">Josh Popov received Drive Thru penalty, 10s, 0laps for &quot;Speeding In Pitlane&quot;. Result: penalties=1, 1st=Drive Thru,10s</Penalty>
+<Score et="1883.1">Abe Wozniak(4) lap=15 point=2 t=138.540 et=1882.960</Score>
+<TrackLimits Driver="Harry Ricker" ID="1" Lap="15" WarningPoints="0" CurrentPoints="0.5" Resolution="5" et="1886.5">No Further Action</TrackLimits>
+<Score et="1887.9">Harry Ricker(1) lap=15 point=1 t=102.449 et=1887.740</Score>
+<Score et="1892.2">Kasi Jackman(17) lap=16 point=1 t=28.536 et=1891.980</Score>
+<Score et="1895.3">Greg Kach(9) lap=16 point=0 t=159.754 et=1895.269</Score>
+<Score et="1899.3">Brian Crane(8) lap=15 point=1 t=28.610 et=1899.080</Score>
+<Score et="1900.3">Dave Paccagnini(6) lap=13 point=1 t=28.374 et=1900.100</Score>
+<Score et="1904.1">Nitin Murthy(13) lap=15 point=2 t=83.295 et=1903.860</Score>
+<Score et="1906.2">Abe Wozniak(4) lap=16 point=0 t=161.553 et=1905.980</Score>
+<TrackLimits Driver="Brian Crane" ID="8" Lap="15" WarningPoints="0" CurrentPoints="1.25" Resolution="5" et="1907.3">No Further Action</TrackLimits>
+<Score et="1907.7">Josh Popov(10) lap=15 point=1 t=47.978 et=1907.460</Score>
+<TrackLimits Driver="Dave Paccagnini" ID="6" Lap="13" WarningPoints="0" CurrentPoints="0" Resolution="5" et="1909.1">No Further Action</TrackLimits>
+<Score et="1910.9">Dustin Rand(14) lap=15 point=1 t=121.123 et=1910.620</Score>
+<Score et="1920.0">Elliott Brown(3) lap=15 point=2 t=82.613 et=1919.920</Score>
+<Score et="1923.1">Greg Kach(9) lap=16 point=1 t=27.869 et=1923.138</Score>
+<Score et="1927.1">Nitin Murthy(13) lap=16 point=0 t=106.407 et=1926.960</Score>
+<Score et="1929.8">Nick Johnson(5) lap=15 point=2 t=82.748 et=1929.600</Score>
+<Score et="1934.2">Abe Wozniak(4) lap=16 point=1 t=28.164 et=1934.140</Score>
+<Score et="1943.2">Harry Ricker(1) lap=15 point=2 t=157.803 et=1943.100</Score>
+<Score et="1943.4">Elliott Brown(3) lap=16 point=0 t=105.908 et=1943.220</Score>
+<TrackLimits Driver="Dustin Rand" ID="14" Lap="15" WarningPoints="0" CurrentPoints="0" Resolution="5" et="1944.0">No Further Action</TrackLimits>
+<Score et="1947.1">Kasi Jackman(17) lap=16 point=2 t=83.432 et=1946.860</Score>
+<Score et="1952.6">Nick Johnson(5) lap=16 point=0 t=105.521 et=1952.380</Score>
+<Score et="1955.2">Brian Crane(8) lap=15 point=2 t=84.479 et=1954.940</Score>
+<Score et="1955.3">Nitin Murthy(13) lap=16 point=1 t=28.108 et=1955.080</Score>
+<Score et="1956.2">Dave Paccagnini(6) lap=13 point=2 t=84.382 et=1956.100</Score>
+<TrackLimits Driver="Elliott Brown" ID="3" Lap="16" WarningPoints="0" CurrentPoints="0" Resolution="5" et="1956.7">No Further Action</TrackLimits>
+<Score et="1962.4">Josh Popov(10) lap=15 point=2 t=102.782 et=1962.260</Score>
+<Score et="1966.5">Harry Ricker(1) lap=16 point=0 t=180.884 et=1966.180</Score>
+<TrackLimits Driver="Kasi Jackman" ID="17" Lap="16" WarningPoints="0" CurrentPoints="1" Resolution="5" et="1970.6">No Further Action</TrackLimits>
+<Score et="1971.7">Elliott Brown(3) lap=16 point=1 t=28.270 et=1971.500</Score>
+<Score et="1975.2">Dustin Rand(14) lap=15 point=2 t=185.610 et=1975.100</Score>
+<Score et="1976.4">Kasi Jackman(17) lap=17 point=0 t=112.809 et=1976.240</Score>
+<Score et="1977.0">Greg Kach(9) lap=16 point=2 t=81.695 et=1976.964</Score>
+<Score et="1978.5">Brian Crane(8) lap=16 point=0 t=107.922 et=1978.380</Score>
+<Score et="1979.5">Dave Paccagnini(6) lap=14 point=0 t=107.648 et=1979.380</Score>
+<Score et="1980.6">Nick Johnson(5) lap=16 point=1 t=28.056 et=1980.420</Score>
+<TrackLimits Driver="Nitin Murthy" ID="13" Lap="16" WarningPoints="0" CurrentPoints="0.5" Resolution="5" et="1984.0">No Further Action</TrackLimits>
+<TrackLimits Driver="Nick Johnson" ID="5" Lap="16" WarningPoints="0" CurrentPoints="1" Resolution="5" et="1988.5">No Further Action</TrackLimits>
+<Score et="1989.3">Abe Wozniak(4) lap=16 point=2 t=83.125 et=1989.100</Score>
+<Score et="1992.7">Josh Popov(10) lap=16 point=0 t=132.908 et=1992.380</Score>
+<Score et="1994.8">Harry Ricker(1) lap=16 point=1 t=28.440 et=1994.620</Score>
+<Score et="1998.8">Dustin Rand(14) lap=16 point=0 t=209.092 et=1998.580</Score>
+<Score et="2000.2">Greg Kach(9) lap=17 point=0 t=104.898 et=2000.167</Score>
+<Score et="2007.3">Brian Crane(8) lap=16 point=1 t=28.743 et=2007.120</Score>
+<Score et="2008.4">Dave Paccagnini(6) lap=14 point=1 t=28.914 et=2008.280</Score>
+<Score et="2009.9">Nitin Murthy(13) lap=16 point=2 t=82.802 et=2009.760</Score>
+<Penalty et="2011.9">Josh Popov served 1st Drive Thru penalty, result: penalties=0, 1st=Drive Thru,10s</Penalty>
+<Score et="2012.4">Abe Wozniak(4) lap=17 point=0 t=106.182 et=2012.160</Score>
+<TrackLimits Driver="Dave Paccagnini" ID="6" Lap="14" WarningPoints="0" CurrentPoints="0" Resolution="5" et="2016.7">No Further Action</TrackLimits>
+<TrackLimits Driver="Harry Ricker" ID="1" Lap="16" WarningPoints="0" CurrentPoints="0.5" Resolution="5" et="2023.5">No Further Action</TrackLimits>
+<Score et="2026.5">Elliott Brown(3) lap=16 point=2 t=83.084 et=2026.300</Score>
+<Score et="2028.0">Greg Kach(9) lap=17 point=1 t=27.831 et=2027.999</Score>
+<Score et="2028.8">Dustin Rand(14) lap=16 point=1 t=29.965 et=2028.560</Score>
+<Score et="2033.2">Nitin Murthy(13) lap=17 point=0 t=106.013 et=2032.980</Score>
+<Score et="2035.1">Nick Johnson(5) lap=16 point=2 t=82.643 et=2035.020</Score>
+<TrackLimits Driver="Greg Kach" ID="9" Lap="17" WarningPoints="0" CurrentPoints="0" Resolution="5" et="2035.9">No Further Action</TrackLimits>
+<Score et="2037.2">Josh Popov(10) lap=16 point=1 t=44.638 et=2037.020</Score>
+<Score et="2040.4">Abe Wozniak(4) lap=17 point=1 t=28.121 et=2040.280</Score>
+<Score et="2049.9">Elliott Brown(3) lap=17 point=0 t=106.444 et=2049.660</Score>
+<Score et="2050.0">Harry Ricker(1) lap=16 point=2 t=83.674 et=2049.860</Score>
+<Score et="2056.4">Kasi Jackman(17) lap=17 point=1 t=79.930 et=2056.180</Score>
+<Score et="2057.9">Nick Johnson(5) lap=17 point=0 t=105.375 et=2057.740</Score>
+<Score et="2061.1">Nitin Murthy(13) lap=17 point=1 t=28.033 et=2061.000</Score>
+<Score et="2062.9">Brian Crane(8) lap=16 point=2 t=84.251 et=2062.640</Score>
+<TrackLimits Driver="Elliott Brown" ID="3" Lap="17" WarningPoints="0" CurrentPoints="0" Resolution="5" et="2063.1">No Further Action</TrackLimits>
+<Score et="2064.5">Dave Paccagnini(6) lap=14 point=2 t=84.955 et=2064.320</Score>
+<TrackLimits Driver="Nick Johnson" ID="5" Lap="17" WarningPoints="0" CurrentPoints="1" Resolution="5" et="2070.8">No Further Action</TrackLimits>
+<Score et="2073.2">Harry Ricker(1) lap=17 point=0 t=106.853 et=2073.040</Score>
+<Score et="2078.7">Elliott Brown(3) lap=17 point=1 t=28.808 et=2078.480</Score>
+<Score et="2081.8">Greg Kach(9) lap=17 point=2 t=81.604 et=2081.771</Score>
+<Score et="2084.7">Dustin Rand(14) lap=16 point=2 t=85.981 et=2084.560</Score>
+<Score et="2086.1">Nick Johnson(5) lap=17 point=1 t=28.099 et=2085.840</Score>
+<Score et="2086.1">Brian Crane(8) lap=17 point=0 t=107.604 et=2086.000</Score>
+<Score et="2087.7">Dave Paccagnini(6) lap=15 point=0 t=108.254 et=2087.620</Score>
+<Score et="2091.9">Josh Popov(10) lap=16 point=2 t=99.348 et=2091.740</Score>
+<TrackLimits Driver="Nick Johnson" ID="5" Lap="17" WarningPoints="0" CurrentPoints="1" Resolution="5" et="2093.7">No Further Action</TrackLimits>
+<Score et="2095.7">Abe Wozniak(4) lap=17 point=2 t=83.358 et=2095.520</Score>
+<TrackLimits Driver="Brian Crane" ID="8" Lap="17" WarningPoints="0" CurrentPoints="1.25" Resolution="5" et="2099.7">No Further Action</TrackLimits>
+<Score et="2101.1">Harry Ricker(1) lap=17 point=1 t=27.902 et=2100.940</Score>
+<Score et="2104.9">Greg Kach(9) lap=18 point=0 t=104.694 et=2104.861</Score>
+<Score et="2108.2">Dustin Rand(14) lap=17 point=0 t=109.365 et=2107.960</Score>
+<TrackLimits Driver="Harry Ricker" ID="1" Lap="17" WarningPoints="0" CurrentPoints="0.5" Resolution="5" et="2108.2">No Further Action</TrackLimits>
+<Score et="2111.4">Kasi Jackman(17) lap=17 point=2 t=134.920 et=2111.160</Score>
+<Score et="2114.6">Josh Popov(10) lap=17 point=0 t=122.018 et=2114.400</Score>
+<Score et="2115.1">Brian Crane(8) lap=17 point=1 t=28.988 et=2114.980</Score>
+<Score et="2115.8">Nitin Murthy(13) lap=17 point=2 t=82.617 et=2115.600</Score>
+<Score et="2116.0">Dave Paccagnini(6) lap=15 point=1 t=28.229 et=2115.860</Score>
+<Score et="2118.7">Abe Wozniak(4) lap=18 point=0 t=106.410 et=2118.560</Score>
+<TrackLimits Driver="Greg Kach" ID="9" Lap="18" WarningPoints="0" CurrentPoints="0" Resolution="5" et="2120.0">No Further Action</TrackLimits>
+<TrackLimits Driver="Elliott Brown" ID="3" Lap="17" WarningPoints="0" CurrentPoints="0" Resolution="5" et="2130.5">No Further Action</TrackLimits>
+<Score et="2132.7">Greg Kach(9) lap=18 point=1 t=27.836 et=2132.698</Score>
+<Score et="2132.9">Elliott Brown(3) lap=17 point=2 t=-1.000 et=2132.760</Score>
+<TrackLimits Driver="Elliott Brown" ID="3" Lap="17" WarningPoints="0" CurrentPoints="0" Resolution="5" et="2133.8">No Further Action</TrackLimits>
+<Score et="2134.5">Kasi Jackman(17) lap=18 point=0 t=158.136 et=2134.380</Score>
+<Score et="2136.4">Dustin Rand(14) lap=17 point=1 t=28.282 et=2136.240</Score>
+<Score et="2138.9">Nitin Murthy(13) lap=18 point=0 t=105.773 et=2138.740</Score>
+<Score et="2140.4">Nick Johnson(5) lap=17 point=2 t=82.428 et=2140.180</Score>
+<Score et="2142.6">Josh Popov(10) lap=17 point=1 t=27.943 et=2142.340</Score>
+<Score et="2146.6">Abe Wozniak(4) lap=18 point=1 t=27.871 et=2146.440</Score>
+<Score et="2156.2">Elliott Brown(3) lap=18 point=0 t=106.354 et=2156.020</Score>
+<Score et="2157.1">Harry Ricker(1) lap=17 point=2 t=83.875 et=2156.900</Score>
+<Score et="2162.6">Kasi Jackman(17) lap=18 point=1 t=27.995 et=2162.380</Score>
+<Score et="2163.1">Nick Johnson(5) lap=18 point=0 t=105.164 et=2162.920</Score>
+<TrackLimits Driver="Nitin Murthy" ID="13" Lap="18" WarningPoints="0.25" CurrentPoints="0.75" Resolution="2" et="2163.6">Warning</TrackLimits>
+<Score et="2167.0">Nitin Murthy(13) lap=18 point=1 t=-1.000 et=2166.900</Score>
+<Score et="2170.5">Brian Crane(8) lap=17 point=2 t=84.309 et=2170.300</Score>
+<Score et="2171.6">Dave Paccagnini(6) lap=15 point=2 t=83.723 et=2171.340</Score>
+<TrackLimits Driver="Nitin Murthy" ID="13" Lap="18" WarningPoints="0" CurrentPoints="0.75" Resolution="5" et="2177.0">No Further Action</TrackLimits>
+<Score et="2180.1">Harry Ricker(1) lap=18 point=0 t=106.825 et=2179.860</Score>
+<Score et="2184.6">Elliott Brown(3) lap=18 point=1 t=28.393 et=2184.420</Score>
+<Score et="2186.4">Greg Kach(9) lap=18 point=2 t=81.509 et=2186.371</Score>
+<TrackLimits Driver="Nick Johnson" ID="5" Lap="18" WarningPoints="0.25" CurrentPoints="1.25" Resolution="2" et="2187.5">Warning</TrackLimits>
+<Score et="2191.2">Nick Johnson(5) lap=18 point=1 t=-1.000 et=2190.980</Score>
+<Score et="2191.6">Dustin Rand(14) lap=17 point=2 t=83.432 et=2191.380</Score>
+<TrackLimits Driver="Harry Ricker" ID="1" Lap="18" WarningPoints="0" CurrentPoints="0.5" Resolution="5" et="2192.8">No Further Action</TrackLimits>
+<Score et="2193.7">Brian Crane(8) lap=18 point=0 t=107.509 et=2193.500</Score>
+<Score et="2194.7">Dave Paccagnini(6) lap=16 point=0 t=106.942 et=2194.560</Score>
+<Score et="2196.9">Josh Popov(10) lap=17 point=2 t=82.250 et=2196.660</Score>
+<TrackLimits Driver="Nick Johnson" ID="5" Lap="18" WarningPoints="0" CurrentPoints="1.25" Resolution="5" et="2198.9">No Further Action</TrackLimits>
+<Score et="2203.6">Abe Wozniak(4) lap=18 point=2 t=84.914 et=2203.480</Score>
+<Score et="2208.2">Harry Ricker(1) lap=18 point=1 t=28.216 et=2208.080</Score>
+<Score et="2209.4">Greg Kach(9) lap=19 point=0 t=104.524 et=2209.386</Score>
+<Score et="2214.6">Dustin Rand(14) lap=18 point=0 t=106.565 et=2214.520</Score>
+<Score et="2216.6">Kasi Jackman(17) lap=18 point=2 t=82.057 et=2216.440</Score>
+<Score et="2219.8">Josh Popov(10) lap=18 point=0 t=105.251 et=2219.660</Score>
+<Score et="2221.6">Nitin Murthy(13) lap=18 point=2 t=-1.000 et=2221.460</Score>
+<Score et="2222.5">Brian Crane(8) lap=18 point=1 t=28.916 et=2222.420</Score>
+<Score et="2223.2">Dave Paccagnini(6) lap=16 point=1 t=28.459 et=2223.020</Score>
+<Score et="2226.5">Abe Wozniak(4) lap=19 point=0 t=107.839 et=2226.400</Score>
+<TrackLimits Driver="Dave Paccagnini" ID="6" Lap="16" WarningPoints="0" CurrentPoints="0" Resolution="5" et="2231.6">No Further Action</TrackLimits>
+<Score et="2236.9">Greg Kach(9) lap=19 point=1 t=27.514 et=2236.900</Score>
+<Score et="2239.0">Elliott Brown(3) lap=18 point=2 t=82.657 et=2238.680</Score>
+<Score et="2239.7">Kasi Jackman(17) lap=19 point=0 t=105.241 et=2239.620</Score>
+<Score et="2243.4">Dustin Rand(14) lap=18 point=1 t=28.758 et=2243.280</Score>
+<Score et="2244.6">Nitin Murthy(13) lap=19 point=0 t=-1.000 et=2244.440</Score>
+<Score et="2245.9">Nick Johnson(5) lap=18 point=2 t=-1.000 et=2245.800</Score>
+<Score et="2247.5">Josh Popov(10) lap=18 point=1 t=27.697 et=2247.340</Score>
+<Score et="2254.6">Abe Wozniak(4) lap=19 point=1 t=28.045 et=2254.440</Score>
+<Score et="2261.9">Elliott Brown(3) lap=19 point=0 t=105.771 et=2261.800</Score>
+<Score et="2263.2">Harry Ricker(1) lap=18 point=2 t=83.233 et=2263.080</Score>
+<Score et="2267.7">Kasi Jackman(17) lap=19 point=1 t=27.992 et=2267.620</Score>
+<TrackLimits Driver="Abe Wozniak" ID="4" Lap="19" WarningPoints="0" CurrentPoints="0.5" Resolution="5" et="2267.9">No Further Action</TrackLimits>
+<Score et="2268.9">Nick Johnson(5) lap=19 point=0 t=-1.000 et=2268.720</Score>
+<TrackLimits Driver="Dave Paccagnini" ID="6" Lap="16" WarningPoints="0" CurrentPoints="0" Resolution="5" et="2272.8">No Further Action</TrackLimits>
+<Score et="2273.1">Nitin Murthy(13) lap=19 point=1 t=28.427 et=2272.860</Score>
+<Score et="2277.5">Brian Crane(8) lap=18 point=2 t=83.906 et=2277.400</Score>
+<Score et="2285.9">Harry Ricker(1) lap=19 point=0 t=105.929 et=2285.780</Score>
+<Score et="2290.2">Elliott Brown(3) lap=19 point=1 t=28.242 et=2290.040</Score>
+<TrackLimits Driver="Greg Kach" ID="9" Lap="19" WarningPoints="0" CurrentPoints="0" Resolution="5" et="2290.6">No Further Action</TrackLimits>
+<Score et="2290.6">Greg Kach(9) lap=19 point=2 t=81.231 et=2290.617</Score>
+<Score et="2296.7">Nick Johnson(5) lap=19 point=1 t=27.852 et=2296.560</Score>
+<Score et="2299.0">Dustin Rand(14) lap=18 point=2 t=84.253 et=2298.780</Score>
+<Score et="2300.7">Brian Crane(8) lap=19 point=0 t=107.058 et=2300.560</Score>
+<Score et="2302.0">Josh Popov(10) lap=18 point=2 t=82.167 et=2301.820</Score>
+<TrackLimits Driver="Nick Johnson" ID="5" Lap="19" WarningPoints="0" CurrentPoints="1.25" Resolution="5" et="2304.6">No Further Action</TrackLimits>
+<TrackLimits Driver="Harry Ricker" ID="1" Lap="19" WarningPoints="0" CurrentPoints="0.5" Resolution="5" et="2307.5">No Further Action</TrackLimits>
+<Score et="2309.7">Abe Wozniak(4) lap=19 point=2 t=83.117 et=2309.520</Score>
+<Score et="2313.6">Greg Kach(9) lap=20 point=0 t=104.228 et=2313.613</Score>
+<Score et="2314.3">Harry Ricker(1) lap=19 point=1 t=28.316 et=2314.100</Score>
+<TrackLimits Driver="Josh Popov" ID="10" Lap="18" WarningPoints="0.5" CurrentPoints="0.75" Resolution="2" et="2321.0">Warning</TrackLimits>
+<Score et="2321.3">Kasi Jackman(17) lap=19 point=2 t=81.566 et=2321.180</Score>
+<Score et="2322.5">Dustin Rand(14) lap=19 point=0 t=107.729 et=2322.240</Score>
+<Score et="2324.8">Josh Popov(10) lap=19 point=0 t=-1.000 et=2324.620</Score>
+<Score et="2327.1">Nitin Murthy(13) lap=19 point=2 t=82.510 et=2326.940</Score>
+<Score et="2329.4">Brian Crane(8) lap=19 point=1 t=28.671 et=2329.220</Score>
+<Score et="2332.6">Abe Wozniak(4) lap=20 point=0 t=105.990 et=2332.400</Score>
+<Score et="2341.1">Greg Kach(9) lap=20 point=1 t=27.484 et=2341.097</Score>
+<Score et="2344.3">Elliott Brown(3) lap=19 point=2 t=82.222 et=2344.020</Score>
+<Score et="2344.6">Kasi Jackman(17) lap=20 point=0 t=104.738 et=2344.360</Score>
+<Score et="2350.0">Nitin Murthy(13) lap=20 point=0 t=105.326 et=2349.760</Score>
+<Score et="2350.4">Dustin Rand(14) lap=19 point=1 t=28.023 et=2350.280</Score>
+<Score et="2351.3">Nick Johnson(5) lap=19 point=2 t=82.406 et=2351.120</Score>
+<Score et="2352.8">Josh Popov(10) lap=19 point=1 t=27.949 et=2352.560</Score>
+<Score et="2360.6">Abe Wozniak(4) lap=20 point=1 t=28.030 et=2360.420</Score>
+<Score et="2367.3">Elliott Brown(3) lap=20 point=0 t=105.377 et=2367.160</Score>
+<TrackLimits Driver="Abe Wozniak" ID="4" Lap="20" WarningPoints="0" CurrentPoints="0.5" Resolution="5" et="2368.3">No Further Action</TrackLimits>
+<Score et="2369.6">Harry Ricker(1) lap=19 point=2 t=83.624 et=2369.400</Score>
+<Score et="2372.3">Kasi Jackman(17) lap=20 point=1 t=27.766 et=2372.120</Score>
+<Score et="2374.1">Nick Johnson(5) lap=20 point=0 t=105.098 et=2373.820</Score>
+<TrackLimits Driver="Elliott Brown" ID="3" Lap="20" WarningPoints="0" CurrentPoints="0" Resolution="5" et="2377.5">No Further Action</TrackLimits>
+<Score et="2377.9">Nitin Murthy(13) lap=20 point=1 t=27.981 et=2377.740</Score>
+<TrackLimits Driver="Elliott Brown" ID="3" Lap="20" WarningPoints="0" CurrentPoints="0" Resolution="5" et="2380.9">No Further Action</TrackLimits>
+<Score et="2383.8">Brian Crane(8) lap=19 point=2 t=83.077 et=2383.640</Score>
+<TrackLimits Driver="Nitin Murthy" ID="13" Lap="20" WarningPoints="0" CurrentPoints="0.75" Resolution="5" et="2385.9">No Further Action</TrackLimits>
+<Score et="2392.3">Harry Ricker(1) lap=20 point=0 t=106.354 et=2392.140</Score>
+<Score et="2394.6">Greg Kach(9) lap=20 point=2 t=80.964 et=2394.578</Score>
+<Score et="2395.8">Elliott Brown(3) lap=20 point=1 t=28.507 et=2395.680</Score>
+<Score et="2401.5">Nick Johnson(5) lap=20 point=1 t=27.529 et=2401.340</Score>
+<Score et="2405.4">Dustin Rand(14) lap=19 point=2 t=82.884 et=2405.140</Score>
+<Score et="2407.3">Brian Crane(8) lap=20 point=0 t=106.516 et=2407.080</Score>
+<Score et="2408.2">Josh Popov(10) lap=19 point=2 t=83.395 et=2408.020</Score>
+<Score et="2415.6">Abe Wozniak(4) lap=20 point=2 t=83.086 et=2415.480</Score>
+<Score et="2417.5">Greg Kach(9) lap=21 point=0 t=103.879 et=2417.492</Score>
+<Score et="2420.4">Harry Ricker(1) lap=20 point=1 t=28.192 et=2420.340</Score>
+<Score et="2425.7">Kasi Jackman(17) lap=20 point=2 t=81.134 et=2425.500</Score>
+<TrackLimits Driver="Harry Ricker" ID="1" Lap="20" WarningPoints="0" CurrentPoints="0.5" Resolution="5" et="2428.2">No Further Action</TrackLimits>
+<Score et="2428.5">Dustin Rand(14) lap=20 point=0 t=106.140 et=2428.380</Score>
+<Score et="2430.9">Josh Popov(10) lap=20 point=0 t=106.027 et=2430.640</Score>
+<Score et="2432.2">Nitin Murthy(13) lap=20 point=2 t=-1.000 et=2432.020</Score>
+<TrackLimits Driver="Nitin Murthy" ID="13" Lap="20" WarningPoints="0" CurrentPoints="0.75" Resolution="5" et="2432.5">No Further Action</TrackLimits>
+<Score et="2436.1">Brian Crane(8) lap=20 point=1 t=28.804 et=2435.880</Score>
+<Score et="2438.6">Abe Wozniak(4) lap=21 point=0 t=106.122 et=2438.520</Score>
+<Score et="2445.0">Greg Kach(9) lap=21 point=1 t=27.505 et=2444.998</Score>
+<Score et="2448.7">Kasi Jackman(17) lap=21 point=0 t=104.129 et=2448.500</Score>
+<Score et="2450.3">Elliott Brown(3) lap=20 point=2 t=82.852 et=2450.020</Score>
+<Score et="2455.1">Nitin Murthy(13) lap=21 point=0 t=105.231 et=2455.000</Score>
+<Score et="2455.7">Nick Johnson(5) lap=20 point=2 t=81.688 et=2455.500</Score>
+<Score et="2456.5">Dustin Rand(14) lap=20 point=1 t=27.961 et=2456.340</Score>
+<Score et="2458.6">Josh Popov(10) lap=20 point=1 t=27.649 et=2458.300</Score>
+<Score et="2466.6">Abe Wozniak(4) lap=21 point=1 t=28.034 et=2466.540</Score>
+<Score et="2473.5">Elliott Brown(3) lap=21 point=0 t=106.047 et=2473.220</Score>
+<Score et="2475.5">Harry Ricker(1) lap=20 point=2 t=83.215 et=2475.360</Score>
+<Score et="2476.6">Kasi Jackman(17) lap=21 point=1 t=27.978 et=2476.460</Score>
+<Score et="2478.4">Nick Johnson(5) lap=21 point=0 t=104.317 et=2478.140</Score>
+<TrackLimits Driver="Harry Ricker" ID="1" Lap="20" WarningPoints="0" CurrentPoints="0.5" Resolution="5" et="2482.7">No Further Action</TrackLimits>
+<Score et="2482.9">Nitin Murthy(13) lap=21 point=1 t=27.684 et=2482.680</Score>
+<TrackLimits Driver="Nitin Murthy" ID="13" Lap="21" WarningPoints="0" CurrentPoints="0.75" Resolution="5" et="2491.0">No Further Action</TrackLimits>
+<Score et="2491.1">Brian Crane(8) lap=20 point=2 t=83.810 et=2490.880</Score>
+<Score et="2498.5">Greg Kach(9) lap=21 point=2 t=80.948 et=2498.441</Score>
+<Score et="2498.7">Harry Ricker(1) lap=21 point=0 t=106.373 et=2498.520</Score>
+<Score et="2501.6">Elliott Brown(3) lap=21 point=1 t=28.104 et=2501.320</Score>
+<TrackLimits Driver="Nick Johnson" ID="5" Lap="21" WarningPoints="0.5" CurrentPoints="1.75" Resolution="2" et="2502.6">Warning</TrackLimits>
+<Score et="2505.9">Nick Johnson(5) lap=21 point=1 t=-1.000 et=2505.720</Score>
+<TrackLimits Driver="Dustin Rand" ID="14" Lap="20" WarningPoints="0" CurrentPoints="0" Resolution="5" et="2509.3">No Further Action</TrackLimits>
+<Score et="2512.9">Josh Popov(10) lap=20 point=2 t=82.099 et=2512.740</Score>
+<Score et="2514.4">Brian Crane(8) lap=21 point=0 t=107.047 et=2514.120</Score>
+<Score et="2521.4">Greg Kach(9) lap=22 point=0 t=103.944 et=2521.436</Score>
+<Score et="2521.5">Abe Wozniak(4) lap=21 point=2 t=-1.000 et=2521.380</Score>
+<TrackLimits Driver="Abe Wozniak" ID="4" Lap="21" WarningPoints="0" CurrentPoints="0.5" Resolution="5" et="2522.2">No Further Action</TrackLimits>
+<Score et="2526.7">Harry Ricker(1) lap=21 point=1 t=28.003 et=2526.520</Score>
+<Score et="2530.1">Kasi Jackman(17) lap=21 point=2 t=81.480 et=2529.980</Score>
+<Score et="2535.6">Josh Popov(10) lap=21 point=0 t=104.710 et=2535.360</Score>
+<Score et="2538.2">Nitin Murthy(13) lap=21 point=2 t=82.885 et=2537.880</Score>
+<Score et="2539.4">Dustin Rand(14) lap=20 point=2 t=110.840 et=2539.220</Score>
+<Score et="2543.1">Brian Crane(8) lap=21 point=1 t=28.797 et=2542.920</Score>
+<Score et="2544.3">Abe Wozniak(4) lap=22 point=0 t=105.605 et=2544.120</Score>
+<Score et="2548.9">Greg Kach(9) lap=22 point=1 t=27.462 et=2548.898</Score>
+<Score et="2553.1">Kasi Jackman(17) lap=22 point=0 t=104.397 et=2552.880</Score>
+<TrackLimits Driver="Elliott Brown" ID="3" Lap="21" WarningPoints="0" CurrentPoints="0" Resolution="5" et="2553.5">No Further Action</TrackLimits>
+<Score et="2556.3">Elliott Brown(3) lap=21 point=2 t=82.860 et=2556.080</Score>
+<TrackLimits Driver="Josh Popov" ID="10" Lap="21" WarningPoints="0.25" CurrentPoints="1" Resolution="2" et="2559.4">Warning</TrackLimits>
+<Score et="2559.8">Nick Johnson(5) lap=21 point=2 t=-1.000 et=2559.720</Score>
+<Score et="2561.2">Nitin Murthy(13) lap=22 point=0 t=106.033 et=2561.020</Score>
+<Score et="2562.8">Dustin Rand(14) lap=21 point=0 t=134.153 et=2562.540</Score>
+<Score et="2563.4">Josh Popov(10) lap=21 point=1 t=-1.000 et=2563.220</Score>
+<Score et="2572.5">Abe Wozniak(4) lap=22 point=1 t=28.307 et=2572.420</Score>
+<TrackLimits Driver="Kasi Jackman" ID="17" Lap="22" WarningPoints="0.5" CurrentPoints="1.5" Resolution="2" et="2577.3">Warning</TrackLimits>
+<Score et="2579.4">Elliott Brown(3) lap=22 point=0 t=105.954 et=2579.160</Score>
+<Score et="2580.8">Harry Ricker(1) lap=21 point=2 t=82.058 et=2580.560</Score>
+<Score et="2580.9">Kasi Jackman(17) lap=22 point=1 t=-1.000 et=2580.700</Score>
+<Score et="2582.6">Nick Johnson(5) lap=22 point=0 t=-1.000 et=2582.440</Score>
+<TrackLimits Driver="Nitin Murthy" ID="13" Lap="22" WarningPoints="0.5" CurrentPoints="1.25" Resolution="2" et="2585.3">Warning</TrackLimits>
+<Score et="2589.2">Nitin Murthy(13) lap=22 point=1 t=-1.000 et=2589.020</Score>
+<Score et="2591.5">Dustin Rand(14) lap=21 point=1 t=28.760 et=2591.300</Score>
+<TrackLimits Driver="Elliott Brown" ID="3" Lap="22" WarningPoints="0" CurrentPoints="0" Resolution="5" et="2592.5">No Further Action</TrackLimits>
+<TrackLimits Driver="Nitin Murthy" ID="13" Lap="22" WarningPoints="0" CurrentPoints="1.25" Resolution="5" et="2596.9">No Further Action</TrackLimits>
+<Score et="2598.2">Brian Crane(8) lap=21 point=2 t=83.874 et=2598.000</Score>
+<Score et="2602.2">Greg Kach(9) lap=22 point=2 t=80.749 et=2602.185</Score>
+<Score et="2603.4">Harry Ricker(1) lap=22 point=0 t=104.664 et=2603.180</Score>
+<TrackLimits Driver="Greg Kach" ID="9" Lap="22" WarningPoints="0" CurrentPoints="0" Resolution="5" et="2606.9">No Further Action</TrackLimits>
+<Score et="2607.6">Elliott Brown(3) lap=22 point=1 t=28.231 et=2607.400</Score>
+<Score et="2610.2">Nick Johnson(5) lap=22 point=1 t=27.578 et=2610.000</Score>
+<Score et="2617.9">Josh Popov(10) lap=21 point=2 t=-1.000 et=2617.700</Score>
+<Score et="2621.4">Brian Crane(8) lap=22 point=0 t=107.060 et=2621.180</Score>
+<TrackLimits Driver="Harry Ricker" ID="1" Lap="22" WarningPoints="0" CurrentPoints="0.5" Resolution="5" et="2624.7">No Further Action</TrackLimits>
+<Score et="2625.2">Greg Kach(9) lap=23 point=0 t=103.724 et=2625.160</Score>
+<Score et="2627.1">Abe Wozniak(4) lap=22 point=2 t=82.850 et=2626.960</Score>
+<Score et="2631.5">Harry Ricker(1) lap=22 point=1 t=28.174 et=2631.340</Score>
+<TrackLimits Driver="Dustin Rand" ID="14" Lap="21" WarningPoints="0" CurrentPoints="0" Resolution="5" et="2634.0">No Further Action</TrackLimits>
+<Score et="2634.1">Kasi Jackman(17) lap=22 point=2 t=-1.000 et=2634.000</Score>
+<TrackLimits Driver="Greg Kach" ID="9" Lap="23" WarningPoints="0" CurrentPoints="0" Resolution="5" et="2640.1">No Further Action</TrackLimits>
+<Score et="2640.5">Josh Popov(10) lap=22 point=0 t=-1.000 et=2640.340</Score>
+<Score et="2644.3">Nitin Murthy(13) lap=22 point=2 t=-1.000 et=2644.140</Score>
+<TrackLimits Driver="Nitin Murthy" ID="13" Lap="22" WarningPoints="0" CurrentPoints="1.25" Resolution="5" et="2648.9">No Further Action</TrackLimits>
+<Score et="2649.9">Brian Crane(8) lap=22 point=1 t=28.640 et=2649.820</Score>
+<Score et="2650.2">Abe Wozniak(4) lap=23 point=0 t=105.861 et=2649.980</Score>
+<Score et="2652.7">Greg Kach(9) lap=23 point=1 t=27.532 et=2652.692</Score>
+<Score et="2657.1">Kasi Jackman(17) lap=23 point=0 t=-1.000 et=2657.000</Score>
+<TrackLimits Driver="Elliott Brown" ID="3" Lap="22" WarningPoints="0" CurrentPoints="0" Resolution="5" et="2659.4">No Further Action</TrackLimits>
+<TrackLimits Driver="Dustin Rand" ID="14" Lap="21" WarningPoints="0" CurrentPoints="0" Resolution="5" et="2660.8">No Further Action</TrackLimits>
+<Score et="2661.8">Elliott Brown(3) lap=22 point=2 t=82.435 et=2661.600</Score>
+<TrackLimits Driver="Greg Kach" ID="9" Lap="23" WarningPoints="0" CurrentPoints="0" Resolution="5" et="2663.3">No Further Action</TrackLimits>
+<Score et="2666.0">Nick Johnson(5) lap=22 point=2 t=83.436 et=2665.860</Score>
+<Score et="2667.1">Nitin Murthy(13) lap=23 point=0 t=-1.000 et=2667.000</Score>
+<Score et="2668.4">Josh Popov(10) lap=22 point=1 t=27.861 et=2668.200</Score>
+<Score et="2678.0">Abe Wozniak(4) lap=23 point=1 t=27.932 et=2677.920</Score>
+<TrackLimits Driver="Josh Popov" ID="10" Lap="22" WarningPoints="0.25" CurrentPoints="1.25" Resolution="2" et="2683.4">Warning</TrackLimits>
+<Score et="2684.9">Elliott Brown(3) lap=23 point=0 t=105.521 et=2684.700</Score>
+<Score et="2685.2">Kasi Jackman(17) lap=23 point=1 t=27.899 et=2684.900</Score>
+<Score et="2685.7">Harry Ricker(1) lap=22 point=2 t=82.462 et=2685.640</Score>
+<Score et="2688.6">Nick Johnson(5) lap=23 point=0 t=106.038 et=2688.480</Score>
+<Score et="2690.9">Dustin Rand(14) lap=21 point=2 t=128.035 et=2690.580</Score>
+<Score et="2695.2">Nitin Murthy(13) lap=23 point=1 t=28.110 et=2695.120</Score>
+<Score et="2704.9">Brian Crane(8) lap=22 point=2 t=83.629 et=2704.800</Score>
+<Score et="2706.4">Greg Kach(9) lap=23 point=2 t=81.244 et=2706.404</Score>
+<Score et="2710.7">Harry Ricker(1) lap=23 point=0 t=107.387 et=2710.560</Score>
+<Score et="2712.7">Elliott Brown(3) lap=23 point=1 t=27.864 et=2712.560</Score>
+<Score et="2713.9">Dustin Rand(14) lap=22 point=0 t=151.263 et=2713.800</Score>
+<Score et="2716.5">Nick Johnson(5) lap=23 point=1 t=27.881 et=2716.360</Score>
+<Score et="2723.2">Josh Popov(10) lap=22 point=2 t=-1.000 et=2722.860</Score>
+<TrackLimits Driver="Josh Popov" ID="10" Lap="22" WarningPoints="0" CurrentPoints="1.25" Resolution="5" et="2727.1">No Further Action</TrackLimits>
+<Score et="2728.2">Brian Crane(8) lap=23 point=0 t=106.787 et=2727.960</Score>
+<Score et="2729.4">Greg Kach(9) lap=24 point=0 t=104.228 et=2729.388</Score>
+<Score et="2732.6">Abe Wozniak(4) lap=23 point=2 t=82.533 et=2732.520</Score>
+<TrackLimits Driver="Harry Ricker" ID="1" Lap="23" WarningPoints="0" CurrentPoints="0.5" Resolution="5" et="2734.8">No Further Action</TrackLimits>
+<Score et="2738.7">Kasi Jackman(17) lap=23 point=2 t=81.426 et=2738.420</Score>
+<Score et="2738.8">Harry Ricker(1) lap=23 point=1 t=28.179 et=2738.740</Score>
+<Score et="2746.2">Josh Popov(10) lap=23 point=0 t=-1.000 et=2745.960</Score>
+<TrackLimits Driver="Dustin Rand" ID="14" Lap="22" WarningPoints="0" CurrentPoints="0" Resolution="5" et="2748.5">No Further Action</TrackLimits>
+<Score et="2749.5">Nitin Murthy(13) lap=23 point=2 t=82.289 et=2749.300</Score>
+<Score et="2755.5">Abe Wozniak(4) lap=24 point=0 t=105.384 et=2755.360</Score>
+<Score et="2757.0">Greg Kach(9) lap=24 point=1 t=27.572 et=2756.959</Score>
+<Score et="2757.6">Brian Crane(8) lap=23 point=1 t=29.443 et=2757.420</Score>
+<Score et="2761.7">Kasi Jackman(17) lap=24 point=0 t=104.489 et=2761.480</Score>
+<Score et="2762.8">Dustin Rand(14) lap=22 point=1 t=48.836 et=2762.640</Score>
+<TrackLimits Driver="Greg Kach" ID="9" Lap="24" WarningPoints="0" CurrentPoints="0" Resolution="5" et="2764.8">No Further Action</TrackLimits>
+<Score et="2766.7">Elliott Brown(3) lap=23 point=2 t=81.775 et=2766.460</Score>
+<Score et="2770.4">Nick Johnson(5) lap=23 point=2 t=81.718 et=2770.180</Score>
+<TrackLimits Driver="Dustin Rand" ID="14" Lap="22" WarningPoints="0" CurrentPoints="0" Resolution="5" et="2771.3">No Further Action</TrackLimits>
+<Score et="2772.5">Nitin Murthy(13) lap=24 point=0 t=105.263 et=2772.280</Score>
+<Score et="2773.7">Josh Popov(10) lap=23 point=1 t=27.612 et=2773.560</Score>
+<Score et="2783.4">Abe Wozniak(4) lap=24 point=1 t=27.873 et=2783.240</Score>
+<Score et="2789.4">Kasi Jackman(17) lap=24 point=1 t=27.732 et=2789.220</Score>
+<Score et="2789.7">Elliott Brown(3) lap=24 point=0 t=104.820 et=2789.520</Score>
+<Score et="2793.1">Nick Johnson(5) lap=24 point=0 t=104.435 et=2792.900</Score>
+<Score et="2793.4">Harry Ricker(1) lap=23 point=2 t=82.645 et=2793.200</Score>
+<TrackLimits Driver="Nitin Murthy" ID="13" Lap="24" WarningPoints="0" CurrentPoints="1.25" Resolution="5" et="2796.2">No Further Action</TrackLimits>
+<Sector et="2798.3">Brian Crane(8) reports new suspension damage</Sector>
+<Incident et="2798.4">Brian Crane(8) reported contact (644.54) with Immovable</Incident>
+<Score et="2800.5">Nitin Murthy(13) lap=24 point=1 t=27.990 et=2800.260</Score>
+<TrackLimits Driver="Elliott Brown" ID="3" Lap="24" WarningPoints="0" CurrentPoints="0" Resolution="5" et="2802.9">No Further Action</TrackLimits>
+<TrackLimits Driver="Nitin Murthy" ID="13" Lap="24" WarningPoints="0" CurrentPoints="1.25" Resolution="5" et="2808.7">No Further Action</TrackLimits>
+<Score et="2810.2">Greg Kach(9) lap=24 point=2 t=-1.000 et=2810.224</Score>
+<TrackLimits Driver="Greg Kach" ID="9" Lap="24" WarningPoints="0" CurrentPoints="0" Resolution="5" et="2810.8">No Further Action</TrackLimits>
+<Score et="2813.6">Brian Crane(8) lap=23 point=2 t=85.365 et=2813.340</Score>
+<Score et="2815.8">Harry Ricker(1) lap=24 point=0 t=105.153 et=2815.720</Score>
+<Score et="2817.7">Elliott Brown(3) lap=24 point=1 t=28.000 et=2817.520</Score>
+<Score et="2819.7">Dustin Rand(14) lap=22 point=2 t=105.821 et=2819.620</Score>
+<Score et="2820.7">Nick Johnson(5) lap=24 point=1 t=27.679 et=2820.580</Score>
+<Score et="2828.7">Josh Popov(10) lap=23 point=2 t=82.475 et=2828.420</Score>
+<TrackLimits Driver="Nick Johnson" ID="5" Lap="24" WarningPoints="0" CurrentPoints="1.75" Resolution="5" et="2828.9">No Further Action</TrackLimits>
+<Score et="2833.1">Greg Kach(9) lap=25 point=0 t=103.735 et=2833.123</Score>
+<Score et="2836.6">Brian Crane(8) lap=24 point=0 t=108.434 et=2836.400</Score>
+<Score et="2838.3">Abe Wozniak(4) lap=24 point=2 t=82.765 et=2838.120</Score>
+<Score et="2843.1">Kasi Jackman(17) lap=24 point=2 t=81.522 et=2843.000</Score>
+<Score et="2843.2">Dustin Rand(14) lap=23 point=0 t=129.232 et=2843.040</Score>
+<Score et="2843.6">Harry Ricker(1) lap=24 point=1 t=27.691 et=2843.400</Score>
+<Score et="2851.2">Josh Popov(10) lap=24 point=0 t=105.087 et=2851.040</Score>
+<Score et="2855.1">Nitin Murthy(13) lap=24 point=2 t=82.682 et=2854.960</Score>
+<Score et="2860.6">Greg Kach(9) lap=25 point=1 t=27.469 et=2860.593</Score>
+<Score et="2861.0">Abe Wozniak(4) lap=25 point=0 t=105.469 et=2860.840</Score>
+<Score et="2865.2">Brian Crane(8) lap=24 point=1 t=28.704 et=2865.100</Score>
+<Score et="2866.2">Kasi Jackman(17) lap=25 point=0 t=104.518 et=2866.000</Score>
+<Score et="2871.2">Elliott Brown(3) lap=24 point=2 t=81.581 et=2871.100</Score>
+<Score et="2873.0">Dustin Rand(14) lap=23 point=1 t=29.794 et=2872.820</Score>
+<Score et="2874.9">Nick Johnson(5) lap=24 point=2 t=81.764 et=2874.660</Score>
+<Score et="2878.1">Nitin Murthy(13) lap=25 point=0 t=105.489 et=2877.760</Score>
+<Score et="2878.9">Josh Popov(10) lap=24 point=1 t=27.613 et=2878.660</Score>
+<Score et="2888.9">Abe Wozniak(4) lap=25 point=1 t=27.905 et=2888.740</Score>
+<Score et="2893.7">Kasi Jackman(17) lap=25 point=1 t=27.591 et=2893.600</Score>
+<Score et="2894.7">Elliott Brown(3) lap=25 point=0 t=104.939 et=2894.460</Score>
+<Score et="2897.4">Nick Johnson(5) lap=25 point=0 t=104.344 et=2897.240</Score>
+<Score et="2898.8">Harry Ricker(1) lap=24 point=2 t=82.932 et=2898.640</Score>
+<Score et="2906.0">Nitin Murthy(13) lap=25 point=1 t=28.025 et=2905.780</Score>
+<TrackLimits Driver="Elliott Brown" ID="3" Lap="25" WarningPoints="0" CurrentPoints="0" Resolution="5" et="2907.8">No Further Action</TrackLimits>
+<TrackLimits Driver="Nick Johnson" ID="5" Lap="25" WarningPoints="0" CurrentPoints="1.75" Resolution="5" et="2910.6">No Further Action</TrackLimits>
+<Score et="2913.7">Greg Kach(9) lap=25 point=2 t=80.523 et=2913.646</Score>
+<Sector Driver="Greg Kach" ID="9" Sector="2" Class="GT3" et="2913.8">Greg Kach(9) set new best for sector 2</Sector>
+<TrackLimits Driver="Abe Wozniak" ID="4" Lap="25" WarningPoints="0" CurrentPoints="0.5" Resolution="5" et="2917.5">No Further Action</TrackLimits>
+<Score et="2919.9">Brian Crane(8) lap=24 point=2 t=83.351 et=2919.760</Score>
+<Score et="2921.6">Harry Ricker(1) lap=25 point=0 t=105.684 et=2921.400</Score>
+<TrackLimits Driver="Nick Johnson" ID="5" Lap="25" WarningPoints="0.75" CurrentPoints="2.5" Resolution="2" et="2922.2">Warning</TrackLimits>
+<Score et="2922.8">Elliott Brown(3) lap=25 point=1 t=28.067 et=2922.520</Score>
+<Score et="2925.0">Nick Johnson(5) lap=25 point=1 t=-1.000 et=2924.860</Score>
+<Score et="2929.3">Dustin Rand(14) lap=23 point=2 t=86.097 et=2929.140</Score>
+<Score et="2933.8">Josh Popov(10) lap=24 point=2 t=82.530 et=2933.580</Score>
+<Score et="2936.6">Checkered for Greg Kach, laps=26/2147483647, endET=2936.579346/2859.442383, crossedAfterTime=0</Score>
+<Score et="2936.6">Greg Kach(9) lap=26 point=0 t=103.456 et=2936.579</Score>
+<Score et="2943.1">Brian Crane(8) lap=25 point=0 t=106.473 et=2942.880</Score>
+<Score et="2943.6">Abe Wozniak(4) lap=25 point=2 t=82.573 et=2943.400</Score>
+<Score et="2947.7">Kasi Jackman(17) lap=25 point=2 t=81.535 et=2947.540</Score>
+<Score et="2949.5">Harry Ricker(1) lap=25 point=1 t=27.969 et=2949.360</Score>
+<Score et="2952.7">Dustin Rand(14) lap=24 point=0 t=109.472 et=2952.500</Score>
+<Score et="2956.5">Josh Popov(10) lap=25 point=0 t=105.285 et=2956.320</Score>
+<Score et="2960.0">Nitin Murthy(13) lap=25 point=2 t=82.013 et=2959.780</Score>
+<Score et="2966.3">Abe Wozniak(4) lap=26 point=0 t=105.359 et=2966.180</Score>
+<Score et="2970.6">Kasi Jackman(17) lap=26 point=0 t=104.430 et=2970.440</Score>
+<Score et="2976.6">Elliott Brown(3) lap=25 point=2 t=81.823 et=2976.280</Score>
+<Score et="2979.2">Nick Johnson(5) lap=25 point=2 t=-1.000 et=2979.040</Score>
+<Score et="2982.6">Nitin Murthy(13) lap=26 point=0 t=104.693 et=2982.460</Score>
+<Score et="2999.6">Elliott Brown(3) lap=26 point=0 t=104.846 et=2999.300</Score>
+<Score et="3001.9">Nick Johnson(5) lap=26 point=0 t=-1.000 et=3001.660</Score>
+<Score et="3003.5">Harry Ricker(1) lap=25 point=2 t=81.802 et=3003.200</Score>
+<Score et="3026.1">Harry Ricker(1) lap=26 point=0 t=104.521 et=3025.920</Score>
+</Stream>
+<FormationAndStart>1</FormationAndStart>
+<MostLapsCompleted>26</MostLapsCompleted>
+<Driver>
+<Name>Abe Wozniak</Name>
+<Connected>1</Connected>
+<VehFile>397_24_AMV.VEH</VehFile>
+<UpgradeCode>00000000 00000000 00000000 00000000</UpgradeCode>
+<VehName>AMR GT3 Custom Team #397</VehName>
+<Category>WEC 2024, GT3, Aston Martin Vantage AMR LMGT3</Category>
+<CarType>Aston Martin Vantage AMR LMGT3</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>25</CarNumber>
+<TeamName>Abe Wozniak</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<GridPos>4</GridPos>
+<Position>2</Position>
+<ClassGridPos>4</ClassGridPos>
+<ClassPosition>2</ClassPosition>
+<LapRankIncludingDiscos>19</LapRankIncludingDiscos>
+<Lap num="1" p="3" et="159.4425" s1="34.3336" s2="54.1080" s3="23.1117" topspeed="248.19" fuel="0.639" fuelUsed="-0.139" ve="0.910" veUsed="0.090" twfl="0.976" twfr="0.976" twrl="0.976" twrr="0.976" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">111.5533</Lap>
+<Lap num="2" p="3" et="271.0000" s1="27.7987" s2="53.8891" s3="22.9745" topspeed="253.60" fuel="0.596" fuelUsed="0.043" ve="0.847" veUsed="0.063" twfl="0.961" twfr="0.957" twrl="0.957" twrr="0.961" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">104.6623</Lap>
+<Lap num="3" p="3" et="375.6599" s1="27.5566" s2="54.1636" s3="22.7084" topspeed="253.15" fuel="0.557" fuelUsed="0.039" ve="0.780" veUsed="0.067" twfl="0.937" twfr="0.929" twrl="0.937" twrr="0.941" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">104.4286</Lap>
+<Lap num="4" p="3" et="480.1001" s1="27.5722" s2="54.4474" s3="22.9030" topspeed="254.50" fuel="0.514" fuelUsed="0.043" ve="0.718" veUsed="0.063" twfl="0.918" twfr="0.914" twrl="0.922" twrr="0.929" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">104.9226</Lap>
+<Lap num="5" p="2" et="585.0200" topspeed="254.05" fuel="0.471" fuelUsed="0.043" ve="0.651" veUsed="0.067" twfl="0.898" twfr="0.890" twrl="0.906" twrr="0.910" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">--.----</Lap>
+<Lap num="6" p="2" et="689.6399" s1="27.4437" s2="53.5304" s3="22.9443" topspeed="254.50" fuel="0.427" fuelUsed="0.043" ve="0.588" veUsed="0.063" twfl="0.875" twfr="0.863" twrl="0.886" twrr="0.894" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">103.9184</Lap>
+<Lap num="7" p="2" et="793.5601" topspeed="254.50" fuel="0.388" fuelUsed="0.039" ve="0.525" veUsed="0.063" twfl="0.847" twfr="0.835" twrl="0.871" twrr="0.878" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">--.----</Lap>
+<Lap num="8" p="2" et="897.6201" s1="27.5744" s2="53.9542" s3="22.6476" topspeed="254.05" fuel="0.345" fuelUsed="0.043" ve="0.459" veUsed="0.067" twfl="0.824" twfr="0.812" twrl="0.851" twrr="0.863" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">104.1762</Lap>
+<Lap num="9" p="2" et="1001.7800" s1="29.0490" s2="53.9154" s3="22.6782" topspeed="254.95" fuel="0.302" fuelUsed="0.043" ve="0.392" veUsed="0.067" twfl="0.796" twfr="0.784" twrl="0.827" twrr="0.827" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">105.6426</Lap>
+<Lap num="10" p="2" et="1107.4399" s1="27.8524" s2="53.0717" s3="22.5198" topspeed="254.50" fuel="0.259" fuelUsed="0.043" ve="0.325" veUsed="0.067" twfl="0.776" twfr="0.757" twrl="0.804" twrr="0.808" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">103.4438</Lap>
+<Lap num="11" p="2" et="1210.8799" s1="27.7833" s2="53.7120" s3="22.6362" topspeed="254.95" fuel="0.216" fuelUsed="0.043" ve="0.263" veUsed="0.063" twfl="0.757" twfr="0.733" twrl="0.788" twrr="0.792" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">104.1316</Lap>
+<Lap num="12" p="2" et="1315.0000" s1="27.7679" s2="53.9867" s3="23.0215" topspeed="254.95" fuel="0.173" fuelUsed="0.043" ve="0.196" veUsed="0.067" twfl="0.733" twfr="0.710" twrl="0.769" twrr="0.773" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">104.7761</Lap>
+<Lap num="13" p="2" et="1419.7800" s1="27.8370" s2="54.1746" s3="22.8174" topspeed="254.95" fuel="0.129" fuelUsed="0.043" ve="0.133" veUsed="0.063" twfl="0.714" twfr="0.686" twrl="0.753" twrr="0.761" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">104.8290</Lap>
+<Lap num="14" p="2" et="1524.6201" s1="27.7783" s2="54.4546" s3="22.7777" topspeed="254.95" fuel="0.090" fuelUsed="0.039" ve="0.071" veUsed="0.063" twfl="0.694" twfr="0.663" twrl="0.737" twrr="0.745" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">105.0106</Lap>
+<Lap num="15" p="2" et="1629.6201" s1="28.3431" s2="54.8740" s3="31.5776" topspeed="254.95" fuel="0.051" fuelUsed="0.039" ve="0.012" veUsed="0.059" twfl="0.675" twfr="0.647" twrl="0.725" twrr="0.733" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet" pit="1">114.7948</Lap>
+<Lap num="16" p="3" et="1744.4199" s1="83.5978" s2="54.9426" s3="23.0122" topspeed="248.64" fuel="0.596" fuelUsed="-0.545" ve="0.847" veUsed="-0.835" twfl="0.655" twfr="0.624" twrl="0.690" twrr="0.710" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">161.5526</Lap>
+<Lap num="17" p="3" et="1905.9800" s1="28.1638" s2="54.9611" s3="23.0568" topspeed="254.05" fuel="0.553" fuelUsed="0.043" ve="0.784" veUsed="0.063" twfl="0.635" twfr="0.604" twrl="0.678" twrr="0.694" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">106.1816</Lap>
+<Lap num="18" p="2" et="2012.1599" s1="28.1212" s2="55.2368" s3="23.0518" topspeed="254.05" fuel="0.510" fuelUsed="0.043" ve="0.722" veUsed="0.063" twfl="0.616" twfr="0.584" twrl="0.663" twrr="0.682" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">106.4098</Lap>
+<Lap num="19" p="2" et="2118.5601" s1="27.8713" s2="57.0427" s3="22.9253" topspeed="254.05" fuel="0.471" fuelUsed="0.039" ve="0.659" veUsed="0.063" twfl="0.596" twfr="0.561" twrl="0.647" twrr="0.671" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">107.8394</Lap>
+<Lap num="20" p="2" et="2226.3999" s1="28.0447" s2="55.0723" s3="22.8728" topspeed="254.05" fuel="0.427" fuelUsed="0.043" ve="0.592" veUsed="0.067" twfl="0.573" twfr="0.537" twrl="0.631" twrr="0.655" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">105.9897</Lap>
+<Lap num="21" p="2" et="2332.3999" s1="28.0298" s2="55.0559" s3="23.0359" topspeed="254.05" fuel="0.388" fuelUsed="0.039" ve="0.529" veUsed="0.063" twfl="0.549" twfr="0.514" twrl="0.620" twrr="0.643" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">106.1216</Lap>
+<Lap num="22" p="2" et="2438.5200" s1="28.0342" topspeed="254.05" fuel="0.345" fuelUsed="0.043" ve="0.467" veUsed="0.063" twfl="0.529" twfr="0.486" twrl="0.604" twrr="0.631" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">105.6050</Lap>
+<Lap num="23" p="2" et="2544.1201" s1="28.3066" s2="54.5430" s3="23.0112" topspeed="254.50" fuel="0.302" fuelUsed="0.043" ve="0.404" veUsed="0.063" twfl="0.510" twfr="0.463" twrl="0.592" twrr="0.616" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">105.8608</Lap>
+<Lap num="24" p="2" et="2649.9800" s1="27.9321" s2="54.6011" s3="22.8503" topspeed="254.95" fuel="0.263" fuelUsed="0.039" ve="0.341" veUsed="0.063" twfl="0.482" twfr="0.435" twrl="0.576" twrr="0.604" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">105.3835</Lap>
+<Lap num="25" p="2" et="2755.3601" s1="27.8726" s2="54.8928" s3="22.7031" topspeed="254.50" fuel="0.220" fuelUsed="0.043" ve="0.278" veUsed="0.063" twfl="0.459" twfr="0.412" twrl="0.561" twrr="0.588" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">105.4685</Lap>
+<Lap num="26" p="2" et="2860.8401" s1="27.9045" s2="54.6682" s3="22.7864" topspeed="254.50" fuel="0.180" fuelUsed="0.039" ve="0.216" veUsed="0.063" twfl="0.435" twfr="0.384" twrl="0.549" twrr="0.576" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">105.3591</Lap>
+<BestLapTime>103.4438</BestLapTime>
+<FinishTime>2806.7374</FinishTime>
+<Laps>26</Laps>
+<Pitstops>1</Pitstops>
+<FinishStatus>Finished Normally</FinishStatus>
+<ControlAndAids startLap="1" endLap="26">PlayerControl,Clutch,AutoBlip</ControlAndAids>
+</Driver>
+<Driver>
+<Name>Greg Kach</Name>
+<Connected>1</Connected>
+<VehFile>77_24_PROT22E06525.VEH</VehFile>
+<UpgradeCode>31460100 00000000 00000000 00000000</UpgradeCode>
+<VehName>Proton Racing 2024 #77:WEC</VehName>
+<Category>WEC 2024, GT3, Ford Mustang LMGT3</Category>
+<CarType>Ford Mustang LMGT3</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>123</CarNumber>
+<TeamName>Greg Kach</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<GridPos>1</GridPos>
+<Position>1</Position>
+<ClassGridPos>1</ClassGridPos>
+<ClassPosition>1</ClassPosition>
+<LapRankIncludingDiscos>19</LapRankIncludingDiscos>
+<Lap num="1" p="2" et="159.4425" s1="33.4641" s2="53.7184" s3="23.2327" topspeed="241.44" fuel="0.667" fuelUsed="0.046" ve="0.937" veUsed="0.063" twfl="0.980" twfr="0.976" twrl="0.980" twrr="0.980" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">110.4152</Lap>
+<Lap num="2" p="2" et="269.8577" s1="27.9208" topspeed="247.74" fuel="0.627" fuelUsed="0.039" ve="0.878" veUsed="0.059" twfl="0.957" twfr="0.949" twrl="0.961" twrr="0.961" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">104.3232</Lap>
+<Lap num="3" p="1" et="374.1809" s1="27.5000" s2="53.8296" s3="23.2054" topspeed="248.64" fuel="0.588" fuelUsed="0.039" ve="0.824" veUsed="0.055" twfl="0.929" twfr="0.922" twrl="0.941" twrr="0.945" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">104.5349</Lap>
+<Lap num="4" p="1" et="478.7158" s1="27.8020" topspeed="247.74" fuel="0.549" fuelUsed="0.039" ve="0.765" veUsed="0.059" twfl="0.906" twfr="0.898" twrl="0.922" twrr="0.925" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">104.2684</Lap>
+<Lap num="5" p="1" et="582.9843" s1="27.5566" s2="53.3797" s3="22.9938" topspeed="248.64" fuel="0.510" fuelUsed="0.039" ve="0.710" veUsed="0.055" twfl="0.882" twfr="0.871" twrl="0.902" twrr="0.906" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">103.9301</Lap>
+<Lap num="6" p="1" et="686.9143" s1="27.8174" topspeed="248.64" fuel="0.471" fuelUsed="0.039" ve="0.655" veUsed="0.055" twfl="0.859" twfr="0.843" twrl="0.882" twrr="0.886" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">104.2449</Lap>
+<Lap num="7" p="1" et="791.1592" s1="27.5872" s2="53.1275" s3="22.9387" topspeed="248.64" fuel="0.431" fuelUsed="0.039" ve="0.596" veUsed="0.059" twfl="0.831" twfr="0.816" twrl="0.863" twrr="0.871" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">103.6533</Lap>
+<Lap num="8" p="1" et="894.8125" s1="27.7029" s2="54.1847" s3="22.9305" topspeed="249.09" fuel="0.392" fuelUsed="0.039" ve="0.541" veUsed="0.055" twfl="0.808" twfr="0.792" twrl="0.843" twrr="0.851" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">104.8182</Lap>
+<Lap num="9" p="1" et="999.6307" s1="27.4223" topspeed="249.09" fuel="0.353" fuelUsed="0.039" ve="0.486" veUsed="0.055" twfl="0.784" twfr="0.761" twrl="0.824" twrr="0.831" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">104.0670</Lap>
+<Lap num="10" p="1" et="1103.6976" s1="27.7522" s2="53.3033" s3="22.9539" topspeed="248.19" fuel="0.318" fuelUsed="0.035" ve="0.431" veUsed="0.055" twfl="0.761" twfr="0.737" twrl="0.808" twrr="0.816" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">104.0094</Lap>
+<Lap num="11" p="1" et="1207.7070" s1="27.5093" s2="53.2225" s3="22.9243" topspeed="248.77" fuel="0.278" fuelUsed="0.039" ve="0.376" veUsed="0.055" twfl="0.737" twfr="0.710" twrl="0.788" twrr="0.800" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">103.6561</Lap>
+<Lap num="12" p="1" et="1311.3632" s1="27.5433" s2="53.5308" s3="22.9395" topspeed="249.09" fuel="0.239" fuelUsed="0.039" ve="0.318" veUsed="0.059" twfl="0.714" twfr="0.682" twrl="0.773" twrr="0.780" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">104.0135</Lap>
+<Lap num="13" p="1" et="1415.3767" s1="27.7272" s2="53.6937" s3="22.9512" topspeed="249.09" fuel="0.200" fuelUsed="0.039" ve="0.267" veUsed="0.051" twfl="0.690" twfr="0.659" twrl="0.753" twrr="0.765" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">104.3721</Lap>
+<Lap num="14" p="1" et="1519.7488" s1="27.7383" s2="53.7772" s3="23.1483" topspeed="249.09" fuel="0.165" fuelUsed="0.035" ve="0.212" veUsed="0.055" twfl="0.671" twfr="0.635" twrl="0.737" twrr="0.749" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">104.6638</Lap>
+<Lap num="15" p="1" et="1624.4126" s1="27.8965" topspeed="249.25" fuel="0.125" fuelUsed="0.039" ve="0.157" veUsed="0.055" twfl="0.651" twfr="0.616" twrl="0.722" twrr="0.733" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet" pit="1">111.1024</Lap>
+<Lap num="16" p="2" et="1735.5150" s1="82.1101" s2="54.4099" s3="23.2341" topspeed="241.57" fuel="0.455" fuelUsed="-0.329" ve="0.647" veUsed="-0.490" twfl="0.988" twfr="0.984" twrl="0.984" twrr="0.984" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">159.7542</Lap>
+<Lap num="17" p="2" et="1895.2692" s1="27.8688" s2="53.8260" s3="23.2035" topspeed="247.85" fuel="0.416" fuelUsed="0.039" ve="0.592" veUsed="0.055" twfl="0.969" twfr="0.965" twrl="0.965" twrr="0.969" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">104.8983</Lap>
+<Lap num="18" p="1" et="2000.1675" s1="27.8313" s2="53.7725" s3="23.0901" topspeed="248.31" fuel="0.376" fuelUsed="0.039" ve="0.537" veUsed="0.055" twfl="0.949" twfr="0.945" twrl="0.949" twrr="0.953" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">104.6938</Lap>
+<Lap num="19" p="1" et="2104.8613" s1="27.8362" s2="53.6731" s3="23.0151" topspeed="248.75" fuel="0.341" fuelUsed="0.035" ve="0.482" veUsed="0.055" twfl="0.933" twfr="0.925" twrl="0.933" twrr="0.933" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">104.5244</Lap>
+<Lap num="20" p="1" et="2209.3857" s1="27.5142" s2="53.7173" s3="22.9961" topspeed="249.09" fuel="0.302" fuelUsed="0.039" ve="0.427" veUsed="0.055" twfl="0.914" twfr="0.906" twrl="0.914" twrr="0.918" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">104.2275</Lap>
+<Lap num="21" p="1" et="2313.6133" s1="27.4841" s2="53.4802" s3="22.9148" topspeed="248.66" fuel="0.263" fuelUsed="0.039" ve="0.373" veUsed="0.055" twfl="0.894" twfr="0.882" twrl="0.894" twrr="0.898" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">103.8792</Lap>
+<Lap num="22" p="1" et="2417.4924" s1="27.5054" s2="53.4429" s3="22.9954" topspeed="248.66" fuel="0.227" fuelUsed="0.035" ve="0.318" veUsed="0.055" twfl="0.878" twfr="0.863" twrl="0.878" twrr="0.882" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">103.9436</Lap>
+<Lap num="23" p="1" et="2521.4360" s1="27.4619" s2="53.2866" s3="22.9756" topspeed="249.18" fuel="0.188" fuelUsed="0.039" ve="0.263" veUsed="0.055" twfl="0.859" twfr="0.839" twrl="0.859" twrr="0.863" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">103.7241</Lap>
+<Lap num="24" p="1" et="2625.1602" s1="27.5317" s2="53.7119" s3="22.9839" topspeed="249.09" fuel="0.149" fuelUsed="0.039" ve="0.208" veUsed="0.055" twfl="0.839" twfr="0.816" twrl="0.843" twrr="0.847" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">104.2275</Lap>
+<Lap num="25" p="1" et="2729.3877" s1="27.5718" topspeed="248.84" fuel="0.110" fuelUsed="0.039" ve="0.153" veUsed="0.055" twfl="0.820" twfr="0.796" twrl="0.824" twrr="0.831" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">103.7354</Lap>
+<Lap num="26" p="1" et="2833.1230" s1="27.4695" s2="53.0537" s3="22.9331" topspeed="249.09" fuel="0.075" fuelUsed="0.035" ve="0.098" veUsed="0.055" twfl="0.796" twfr="0.773" twrl="0.804" twrr="0.812" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">103.4563</Lap>
+<BestLapTime>103.4563</BestLapTime>
+<FinishTime>2777.1368</FinishTime>
+<Laps>26</Laps>
+<Pitstops>1</Pitstops>
+<FinishStatus>Finished Normally</FinishStatus>
+<ControlAndAids startLap="1" endLap="26">PlayerControl</ControlAndAids>
+</Driver>
+<Driver>
+<Name>Nick Johnson</Name>
+<Connected>1</Connected>
+<VehFile>46_24_WRT_F1E39333.VEH</VehFile>
+<UpgradeCode>00000000 00000000 00000000 00000000</UpgradeCode>
+<VehName>Team WRT 2024 #46:WE2</VehName>
+<Category>WEC 2024, GT3, BMW M4 LMGT3</Category>
+<CarType>BMW M4 LMGT3</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>696</CarNumber>
+<TeamName>Nick Johnson</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<GridPos>3</GridPos>
+<Position>6</Position>
+<ClassGridPos>3</ClassGridPos>
+<ClassPosition>6</ClassPosition>
+<LapRankIncludingDiscos>19</LapRankIncludingDiscos>
+<Lap num="1" p="4" et="159.4425" s1="33.8468" s2="55.2503" s3="22.6903" topspeed="248.64" fuel="0.651" fuelUsed="-0.151" ve="0.933" veUsed="0.067" twfl="0.980" twfr="0.976" twrl="0.980" twrr="0.984" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">111.7875</Lap>
+<Lap num="2" p="4" et="271.2400" s1="28.2241" s2="53.8537" s3="23.2119" topspeed="254.50" fuel="0.608" fuelUsed="0.043" ve="0.875" veUsed="0.059" twfl="0.965" twfr="0.957" twrl="0.965" twrr="0.969" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">105.2897</Lap>
+<Lap num="3" p="4" et="376.5200" s1="28.0411" s2="54.0210" s3="22.8172" topspeed="254.05" fuel="0.565" fuelUsed="0.043" ve="0.812" veUsed="0.063" twfl="0.945" twfr="0.933" twrl="0.949" twrr="0.953" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">104.8794</Lap>
+<Lap num="4" p="4" et="481.3999" s1="27.9645" s2="53.6952" s3="22.6843" topspeed="254.50" fuel="0.525" fuelUsed="0.039" ve="0.753" veUsed="0.059" twfl="0.929" twfr="0.914" twrl="0.933" twrr="0.941" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">104.3440</Lap>
+<Lap num="5" p="4" et="585.7600" topspeed="254.95" fuel="0.482" fuelUsed="0.043" ve="0.694" veUsed="0.059" twfl="0.914" twfr="0.894" twrl="0.918" twrr="0.925" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">--.----</Lap>
+<Lap num="6" p="3" et="690.4199" s1="27.8848" s2="54.5485" s3="23.0059" topspeed="254.95" fuel="0.439" fuelUsed="0.043" ve="0.635" veUsed="0.059" twfl="0.894" twfr="0.867" twrl="0.898" twrr="0.910" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">105.4391</Lap>
+<Lap num="7" p="3" et="795.8601" s1="27.5140" s2="53.5544" s3="22.5883" topspeed="255.40" fuel="0.396" fuelUsed="0.043" ve="0.573" veUsed="0.063" twfl="0.875" twfr="0.839" twrl="0.882" twrr="0.894" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">103.6567</Lap>
+<Lap num="8" p="3" et="899.5200" topspeed="255.40" fuel="0.353" fuelUsed="0.043" ve="0.514" veUsed="0.059" twfl="0.851" twfr="0.812" twrl="0.863" twrr="0.878" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">--.----</Lap>
+<Lap num="9" p="3" et="1003.4600" s1="27.9614" s2="54.0568" s3="22.7172" topspeed="254.95" fuel="0.310" fuelUsed="0.043" ve="0.455" veUsed="0.059" twfl="0.831" twfr="0.788" twrl="0.847" twrr="0.867" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">104.7353</Lap>
+<Lap num="10" p="3" et="1108.2000" s1="27.9067" s2="53.2220" s3="22.6110" topspeed="254.95" fuel="0.271" fuelUsed="0.039" ve="0.396" veUsed="0.059" twfl="0.812" twfr="0.765" twrl="0.831" twrr="0.851" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">103.7397</Lap>
+<Lap num="11" p="3" et="1211.9399" s1="27.7882" s2="53.7611" s3="22.8672" topspeed="255.40" fuel="0.227" fuelUsed="0.043" ve="0.337" veUsed="0.059" twfl="0.788" twfr="0.733" twrl="0.816" twrr="0.839" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">104.4165</Lap>
+<Lap num="12" p="3" et="1316.3601" s1="27.8988" s2="53.6957" s3="30.3065" topspeed="255.85" fuel="0.188" fuelUsed="0.039" ve="0.282" veUsed="0.055" twfl="0.769" twfr="0.706" twrl="0.800" twrr="0.824" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet" pit="1">111.9010</Lap>
+<Lap num="13" p="8" et="1428.2600" s1="89.4445" s2="57.0371" s3="30.9762" topspeed="231.08" fuel="0.663" fuelUsed="-0.475" ve="0.953" veUsed="-0.671" twfl="0.988" twfr="0.984" twrl="0.973" twrr="0.980" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet" pit="1">177.4578</Lap>
+<Lap num="14" p="9" et="1605.7200" s1="58.5515" s2="54.2058" s3="22.9646" topspeed="248.19" fuel="0.624" fuelUsed="0.039" ve="0.898" veUsed="0.055" twfl="0.973" twfr="0.969" twrl="0.945" twrr="0.961" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">135.7219</Lap>
+<Lap num="15" p="8" et="1741.4399" s1="27.9586" s2="54.3567" s3="23.1006" topspeed="254.50" fuel="0.580" fuelUsed="0.043" ve="0.835" veUsed="0.063" twfl="0.953" twfr="0.945" twrl="0.929" twrr="0.945" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">105.4159</Lap>
+<Lap num="16" p="6" et="1846.8601" s1="27.7990" s2="54.9493" s3="22.7731" topspeed="254.50" fuel="0.537" fuelUsed="0.043" ve="0.776" veUsed="0.059" twfl="0.937" twfr="0.925" twrl="0.918" twrr="0.933" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">105.5214</Lap>
+<Lap num="17" p="6" et="1952.3799" s1="28.0555" s2="54.5876" s3="22.7316" topspeed="254.50" fuel="0.494" fuelUsed="0.043" ve="0.718" veUsed="0.059" twfl="0.922" twfr="0.906" twrl="0.902" twrr="0.922" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">105.3748</Lap>
+<Lap num="18" p="6" et="2057.7400" s1="28.0991" s2="54.3286" s3="22.7361" topspeed="254.50" fuel="0.451" fuelUsed="0.043" ve="0.659" veUsed="0.059" twfl="0.906" twfr="0.886" twrl="0.886" twrr="0.906" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">105.1638</Lap>
+<Lap num="19" p="6" et="2162.9199" topspeed="254.95" fuel="0.412" fuelUsed="0.039" ve="0.600" veUsed="0.059" twfl="0.886" twfr="0.863" twrl="0.871" twrr="0.894" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">--.----</Lap>
+<Lap num="20" p="6" et="2268.7200" s1="27.8516" s2="54.5540" s3="22.6926" topspeed="254.95" fuel="0.369" fuelUsed="0.043" ve="0.541" veUsed="0.059" twfl="0.871" twfr="0.843" twrl="0.859" twrr="0.878" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">105.0981</Lap>
+<Lap num="21" p="6" et="2373.8201" s1="27.5288" s2="54.1587" s3="22.6296" topspeed="255.40" fuel="0.325" fuelUsed="0.043" ve="0.478" veUsed="0.063" twfl="0.855" twfr="0.820" twrl="0.843" twrr="0.867" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">104.3171</Lap>
+<Lap num="22" p="6" et="2478.1399" topspeed="255.40" fuel="0.282" fuelUsed="0.043" ve="0.420" veUsed="0.059" twfl="0.831" twfr="0.792" twrl="0.827" twrr="0.851" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">--.----</Lap>
+<Lap num="23" p="6" et="2582.4399" s1="27.5776" s2="55.8586" s3="22.6021" topspeed="254.95" fuel="0.239" fuelUsed="0.043" ve="0.357" veUsed="0.063" twfl="0.816" twfr="0.769" twrl="0.812" twrr="0.835" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">106.0383</Lap>
+<Lap num="24" p="6" et="2688.4800" s1="27.8813" s2="53.8367" s3="22.7168" topspeed="255.85" fuel="0.196" fuelUsed="0.043" ve="0.298" veUsed="0.059" twfl="0.796" twfr="0.741" twrl="0.796" twrr="0.824" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">104.4348</Lap>
+<Lap num="25" p="6" et="2792.8999" s1="27.6790" s2="54.0847" s3="22.5803" topspeed="255.40" fuel="0.153" fuelUsed="0.043" ve="0.235" veUsed="0.063" twfl="0.776" twfr="0.714" twrl="0.780" twrr="0.808" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">104.3440</Lap>
+<Lap num="26" p="6" et="2897.2400" topspeed="255.85" fuel="0.110" fuelUsed="0.043" ve="0.176" veUsed="0.059" twfl="0.749" twfr="0.682" twrl="0.765" twrr="0.792" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">--.----</Lap>
+<BestLapTime>103.6567</BestLapTime>
+<FinishTime>2842.2174</FinishTime>
+<Laps>26</Laps>
+<Pitstops>2</Pitstops>
+<FinishStatus>Finished Normally</FinishStatus>
+<ControlAndAids startLap="1" endLap="26">PlayerControl,Clutch,AutoBlip</ControlAndAids>
+</Driver>
+<Driver>
+<Name>Kasi Jackman</Name>
+<Connected>1</Connected>
+<VehFile>78_24_AKKOF01B86D7.VEH</VehFile>
+<UpgradeCode>31460100 00000000 00000000 00000000</UpgradeCode>
+<VehName>Akkodis ASP Team 2024 #78:LM</VehName>
+<Category>WEC 2024, GT3, Lexus RCF LMGT3</Category>
+<CarType>Lexus RCF LMGT3</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>404</CarNumber>
+<TeamName>Kasi Jackman</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<GridPos>9</GridPos>
+<Position>3</Position>
+<ClassGridPos>9</ClassGridPos>
+<ClassPosition>3</ClassPosition>
+<LapRankIncludingDiscos>19</LapRankIncludingDiscos>
+<Lap num="1" p="10" et="159.4425" s1="38.6148" s2="57.0095" s3="23.7620" topspeed="239.63" fuel="0.784" fuelUsed="-0.284" ve="0.941" veUsed="0.059" twfl="0.973" twfr="0.965" twrl="0.969" twrr="0.969" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">119.3863</Lap>
+<Lap num="2" p="9" et="278.8401" s1="28.7022" s2="55.3518" topspeed="244.59" fuel="0.741" fuelUsed="0.043" ve="0.886" veUsed="0.055" twfl="0.953" twfr="0.937" twrl="0.949" twrr="0.953" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">--.----</Lap>
+<Lap num="3" p="9" et="386.2800" s1="28.4467" s2="54.0392" s3="23.6006" topspeed="245.49" fuel="0.698" fuelUsed="0.043" ve="0.831" veUsed="0.055" twfl="0.925" twfr="0.906" twrl="0.929" twrr="0.933" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">106.0865</Lap>
+<Lap num="4" p="8" et="492.3601" s1="28.2464" s2="54.1143" s3="23.1217" topspeed="243.24" fuel="0.655" fuelUsed="0.043" ve="0.776" veUsed="0.055" twfl="0.898" twfr="0.875" twrl="0.910" twrr="0.918" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">105.4824</Lap>
+<Lap num="5" p="8" et="597.8401" s1="28.0699" s2="53.8516" s3="23.2834" topspeed="246.84" fuel="0.612" fuelUsed="0.043" ve="0.722" veUsed="0.055" twfl="0.871" twfr="0.843" twrl="0.894" twrr="0.898" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">105.2050</Lap>
+<Lap num="6" p="6" et="703.0400" s1="28.4716" s2="54.0289" s3="23.0170" topspeed="247.29" fuel="0.565" fuelUsed="0.047" ve="0.667" veUsed="0.055" twfl="0.851" twfr="0.816" twrl="0.875" twrr="0.882" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">105.5174</Lap>
+<Lap num="7" p="6" et="808.5601" s1="28.0763" s2="53.6277" s3="22.9487" topspeed="247.29" fuel="0.522" fuelUsed="0.043" ve="0.612" veUsed="0.055" twfl="0.816" twfr="0.780" twrl="0.855" twrr="0.867" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">104.6528</Lap>
+<Lap num="8" p="6" et="913.2200" s1="27.7751" s2="53.7817" s3="22.9185" topspeed="247.74" fuel="0.478" fuelUsed="0.043" ve="0.557" veUsed="0.055" twfl="0.788" twfr="0.745" twrl="0.835" twrr="0.847" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">104.4753</Lap>
+<Lap num="9" p="6" et="1017.7000" s1="27.8582" s2="53.5647" s3="23.0265" topspeed="247.74" fuel="0.431" fuelUsed="0.047" ve="0.502" veUsed="0.055" twfl="0.757" twfr="0.706" twrl="0.816" twrr="0.831" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">104.4493</Lap>
+<Lap num="10" p="6" et="1122.1399" s1="27.9753" s2="53.7684" s3="23.2202" topspeed="247.74" fuel="0.388" fuelUsed="0.043" ve="0.443" veUsed="0.059" twfl="0.725" twfr="0.663" twrl="0.796" twrr="0.812" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">104.9640</Lap>
+<Lap num="11" p="5" et="1227.1001" topspeed="247.74" fuel="0.345" fuelUsed="0.043" ve="0.388" veUsed="0.055" twfl="0.694" twfr="0.627" twrl="0.776" twrr="0.796" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">--.----</Lap>
+<Lap num="12" p="5" et="1332.0400" s1="28.1466" topspeed="248.19" fuel="0.302" fuelUsed="0.043" ve="0.333" veUsed="0.055" twfl="0.663" twfr="0.592" twrl="0.761" twrr="0.780" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">105.8812</Lap>
+<Lap num="13" p="3" et="1437.9199" s1="28.0804" s2="54.9313" s3="23.1818" topspeed="247.74" fuel="0.255" fuelUsed="0.047" ve="0.278" veUsed="0.055" twfl="0.639" twfr="0.561" twrl="0.741" twrr="0.765" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">106.1935</Lap>
+<Lap num="14" p="3" et="1544.1201" topspeed="247.74" fuel="0.212" fuelUsed="0.043" ve="0.224" veUsed="0.055" twfl="0.612" twfr="0.529" twrl="0.725" twrr="0.749" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">--.----</Lap>
+<Lap num="15" p="3" et="1650.1599" s1="28.4454" s2="55.3381" s3="23.2299" topspeed="247.74" fuel="0.169" fuelUsed="0.043" ve="0.169" veUsed="0.055" twfl="0.588" twfr="0.502" twrl="0.710" twrr="0.733" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">107.0134</Lap>
+<Lap num="16" p="1" et="1757.1799" s1="28.3429" s2="54.7644" s3="23.1519" topspeed="247.74" fuel="0.125" fuelUsed="0.043" ve="0.114" veUsed="0.055" twfl="0.565" twfr="0.478" twrl="0.698" twrr="0.722" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">106.2592</Lap>
+<Lap num="17" p="1" et="1863.4399" s1="28.5359" s2="54.8959" s3="29.3768" topspeed="247.74" fuel="0.086" fuelUsed="0.039" ve="0.063" veUsed="0.051" twfl="0.541" twfr="0.451" twrl="0.682" twrr="0.710" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet" pit="1">112.8086</Lap>
+<Lap num="18" p="3" et="1976.2400" s1="79.9298" s2="54.9900" s3="23.2166" topspeed="240.53" fuel="0.392" fuelUsed="-0.306" ve="0.467" veUsed="-0.404" twfl="0.984" twfr="0.980" twrl="0.984" twrr="0.984" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">158.1364</Lap>
+<Lap num="19" p="3" et="2134.3799" s1="27.9946" s2="54.0623" s3="23.1838" topspeed="246.39" fuel="0.349" fuelUsed="0.043" ve="0.412" veUsed="0.055" twfl="0.961" twfr="0.957" twrl="0.965" twrr="0.969" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">105.2407</Lap>
+<Lap num="20" p="3" et="2239.6201" s1="27.9919" s2="53.5740" s3="23.1724" topspeed="247.29" fuel="0.302" fuelUsed="0.047" ve="0.357" veUsed="0.055" twfl="0.933" twfr="0.925" twrl="0.945" twrr="0.949" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">104.7383</Lap>
+<Lap num="21" p="3" et="2344.3601" s1="27.7664" s2="53.3674" s3="22.9951" topspeed="247.29" fuel="0.259" fuelUsed="0.043" ve="0.302" veUsed="0.055" twfl="0.910" twfr="0.898" twrl="0.925" twrr="0.929" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">104.1289</Lap>
+<Lap num="22" p="3" et="2448.5000" s1="27.9775" s2="53.5022" s3="22.9175" topspeed="247.74" fuel="0.216" fuelUsed="0.043" ve="0.247" veUsed="0.055" twfl="0.882" twfr="0.867" twrl="0.906" twrr="0.914" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">104.3972</Lap>
+<Lap num="23" p="3" et="2552.8799" topspeed="247.74" fuel="0.173" fuelUsed="0.043" ve="0.192" veUsed="0.055" twfl="0.851" twfr="0.835" twrl="0.886" twrr="0.894" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">--.----</Lap>
+<Lap num="24" p="3" et="2657.0000" s1="27.8987" s2="53.5271" s3="23.0635" topspeed="247.74" fuel="0.125" fuelUsed="0.047" ve="0.137" veUsed="0.055" twfl="0.824" twfr="0.800" twrl="0.867" twrr="0.878" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">104.4893</Lap>
+<Lap num="25" p="3" et="2761.4800" s1="27.7317" s2="53.7903" s3="22.9956" topspeed="248.19" fuel="0.082" fuelUsed="0.043" ve="0.082" veUsed="0.055" twfl="0.796" twfr="0.769" twrl="0.851" twrr="0.859" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">104.5176</Lap>
+<Lap num="26" p="3" et="2866.0000" s1="27.5913" s2="53.9441" s3="22.8943" topspeed="248.19" fuel="0.039" fuelUsed="0.043" ve="0.027" veUsed="0.055" twfl="0.765" twfr="0.737" twrl="0.831" twrr="0.843" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">104.4297</Lap>
+<BestLapTime>104.1289</BestLapTime>
+<FinishTime>2810.9974</FinishTime>
+<Laps>26</Laps>
+<Pitstops>1</Pitstops>
+<FinishStatus>Finished Normally</FinishStatus>
+<ControlAndAids startLap="1" endLap="26">PlayerControl,Clutch,AutoBlip</ControlAndAids>
+</Driver>
+<Driver>
+<Name>Josh Popov</Name>
+<Connected>1</Connected>
+<VehFile>777_24_DST8B5349B6.VEH</VehFile>
+<UpgradeCode>00000000 00000000 00000000 00000000</UpgradeCode>
+<VehName>D&apos;Station Racing 2024 #777:LM</VehName>
+<Category>WEC 2024, GT3, Aston Martin Vantage AMR LMGT3</Category>
+<CarType>Aston Martin Vantage AMR LMGT3</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>661</CarNumber>
+<TeamName>Josh Popov</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<GridPos>2</GridPos>
+<Position>9</Position>
+<ClassGridPos>2</ClassGridPos>
+<ClassPosition>9</ClassPosition>
+<LapRankIncludingDiscos>19</LapRankIncludingDiscos>
+<Lap num="1" p="1" et="159.4425" s1="33.1775" s2="53.7435" s3="22.5653" topspeed="247.29" fuel="0.647" fuelUsed="-0.147" ve="0.925" veUsed="0.075" twfl="0.965" twfr="0.961" twrl="0.976" twrr="0.980" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">109.4863</Lap>
+<Lap num="2" p="1" et="268.9399" s1="27.8099" s2="53.8174" s3="22.6435" topspeed="252.70" fuel="0.604" fuelUsed="0.043" ve="0.859" veUsed="0.067" twfl="0.933" twfr="0.925" twrl="0.953" twrr="0.957" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">104.2708</Lap>
+<Lap num="3" p="2" et="373.2000" s1="27.7350" s2="54.7303" s3="23.0750" topspeed="252.25" fuel="0.565" fuelUsed="0.039" ve="0.792" veUsed="0.067" twfl="0.898" twfr="0.882" twrl="0.937" twrr="0.941" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">105.5404</Lap>
+<Lap num="4" p="2" et="478.7400" s1="28.1805" s2="54.7177" s3="22.7096" topspeed="253.15" fuel="0.522" fuelUsed="0.043" ve="0.729" veUsed="0.063" twfl="0.859" twfr="0.839" twrl="0.914" twrr="0.922" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">105.6078</Lap>
+<Lap num="5" p="3" et="584.3601" topspeed="253.15" fuel="0.478" fuelUsed="0.043" ve="0.663" veUsed="0.067" twfl="0.820" twfr="0.788" twrl="0.894" twrr="0.906" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">--.----</Lap>
+<Lap num="6" p="5" et="689.8799" s1="28.1318" s2="54.6793" s3="27.1693" topspeed="254.05" fuel="0.435" fuelUsed="0.043" ve="0.600" veUsed="0.063" twfl="0.784" twfr="0.741" twrl="0.875" twrr="0.886" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">109.9803</Lap>
+<Lap num="7" p="5" et="799.8601" s1="28.7980" s2="55.0620" s3="22.6886" topspeed="248.19" fuel="0.396" fuelUsed="0.039" ve="0.537" veUsed="0.063" twfl="0.745" twfr="0.694" twrl="0.855" twrr="0.867" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">106.5486</Lap>
+<Lap num="8" p="5" et="906.3999" s1="28.0307" topspeed="253.15" fuel="0.353" fuelUsed="0.043" ve="0.475" veUsed="0.063" twfl="0.706" twfr="0.651" twrl="0.839" twrr="0.851" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">105.8395</Lap>
+<Lap num="9" p="5" et="1012.2400" s1="28.1354" s2="54.9630" s3="22.7146" topspeed="252.70" fuel="0.314" fuelUsed="0.039" ve="0.408" veUsed="0.067" twfl="0.667" twfr="0.604" twrl="0.820" twrr="0.831" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">105.8130</Lap>
+<Lap num="10" p="4" et="1118.0601" s1="28.4690" s2="55.1829" s3="23.2482" topspeed="254.95" fuel="0.271" fuelUsed="0.043" ve="0.345" veUsed="0.063" twfl="0.631" twfr="0.561" twrl="0.800" twrr="0.812" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">106.9000</Lap>
+<Lap num="11" p="4" et="1224.9600" s1="28.2661" s2="54.9630" s3="23.1805" topspeed="253.15" fuel="0.227" fuelUsed="0.043" ve="0.278" veUsed="0.067" twfl="0.584" twfr="0.506" twrl="0.780" twrr="0.796" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">106.4097</Lap>
+<Lap num="12" p="4" et="1331.3601" s1="28.1047" s2="54.6908" s3="22.7850" topspeed="253.15" fuel="0.188" fuelUsed="0.039" ve="0.216" veUsed="0.063" twfl="0.537" twfr="0.455" twrl="0.761" twrr="0.780" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">105.5806</Lap>
+<Lap num="13" p="5" et="1436.9600" s1="28.1407" topspeed="253.60" fuel="0.149" fuelUsed="0.039" ve="0.157" veUsed="0.059" twfl="0.494" twfr="0.404" twrl="0.741" twrr="0.761" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet" pit="1">115.5863</Lap>
+<Lap num="14" p="8" et="1552.5400" s1="94.7177" s2="54.5924" s3="28.1482" topspeed="231.98" fuel="0.659" fuelUsed="-0.510" ve="0.941" veUsed="-0.784" twfl="0.969" twfr="0.965" twrl="0.980" twrr="0.980" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet" pit="1">177.4583</Lap>
+<Lap num="15" p="9" et="1730.0000" s1="45.2616" s2="54.6096" s3="29.6072" topspeed="231.53" fuel="0.624" fuelUsed="0.035" ve="0.886" veUsed="0.055" twfl="0.945" twfr="0.933" twrl="0.961" twrr="0.961" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet" pit="1">129.4784</Lap>
+<Lap num="16" p="9" et="1859.4800" s1="47.9783" s2="54.8041" s3="30.1261" topspeed="226.57" fuel="0.584" fuelUsed="0.039" ve="0.831" veUsed="0.055" twfl="0.918" twfr="0.906" twrl="0.941" twrr="0.945" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet" pit="1">132.9084</Lap>
+<Lap num="17" p="10" et="1992.3799" s1="44.6376" s2="54.7106" s3="22.6697" topspeed="246.84" fuel="0.541" fuelUsed="0.043" ve="0.769" veUsed="0.063" twfl="0.890" twfr="0.875" twrl="0.922" twrr="0.925" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">122.0178</Lap>
+<Lap num="18" p="10" et="2114.3999" s1="27.9429" s2="54.3074" s3="23.0005" topspeed="252.70" fuel="0.498" fuelUsed="0.043" ve="0.702" veUsed="0.067" twfl="0.855" twfr="0.839" twrl="0.902" twrr="0.906" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">105.2507</Lap>
+<Lap num="19" p="10" et="2219.6599" s1="27.6968" s2="54.4707" topspeed="252.70" fuel="0.459" fuelUsed="0.039" ve="0.635" veUsed="0.067" twfl="0.824" twfr="0.800" twrl="0.882" twrr="0.890" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">--.----</Lap>
+<Lap num="20" p="10" et="2324.6201" s1="27.9490" s2="55.4458" s3="22.6321" topspeed="252.70" fuel="0.412" fuelUsed="0.047" ve="0.569" veUsed="0.067" twfl="0.788" twfr="0.765" twrl="0.859" twrr="0.871" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">106.0269</Lap>
+<Lap num="21" p="9" et="2430.6399" s1="27.6487" s2="54.4504" s3="22.6111" topspeed="253.15" fuel="0.373" fuelUsed="0.039" ve="0.502" veUsed="0.067" twfl="0.757" twfr="0.725" twrl="0.839" twrr="0.851" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">104.7102</Lap>
+<Lap num="22" p="9" et="2535.3601" topspeed="253.15" fuel="0.329" fuelUsed="0.043" ve="0.439" veUsed="0.063" twfl="0.722" twfr="0.686" twrl="0.820" twrr="0.831" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">--.----</Lap>
+<Lap num="23" p="9" et="2640.3401" s1="27.8608" topspeed="253.60" fuel="0.286" fuelUsed="0.043" ve="0.373" veUsed="0.067" twfl="0.682" twfr="0.643" twrl="0.800" twrr="0.812" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">--.----</Lap>
+<Lap num="24" p="9" et="2745.9600" s1="27.6118" s2="54.8635" s3="22.6121" topspeed="253.15" fuel="0.243" fuelUsed="0.043" ve="0.306" veUsed="0.067" twfl="0.651" twfr="0.608" twrl="0.780" twrr="0.792" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">105.0874</Lap>
+<Lap num="25" p="9" et="2851.0400" s1="27.6133" s2="54.9170" s3="22.7549" topspeed="253.60" fuel="0.200" fuelUsed="0.043" ve="0.243" veUsed="0.063" twfl="0.612" twfr="0.565" twrl="0.757" twrr="0.773" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">105.2852</Lap>
+<BestLapTime>104.2708</BestLapTime>
+<FinishTime>2796.8776</FinishTime>
+<Laps>25</Laps>
+<Pitstops>1</Pitstops>
+<FinishStatus>Finished Normally</FinishStatus>
+<ControlAndAids startLap="1" endLap="25">PlayerControl,Clutch,AutoBlip</ControlAndAids>
+</Driver>
+<Driver>
+<Name>Harry Ricker</Name>
+<Connected>1</Connected>
+<VehFile>31_24_WRT_C033B08A.VEH</VehFile>
+<UpgradeCode>00000000 00000000 00000000 00000000</UpgradeCode>
+<VehName>Team WRT 2024 #31:WE2</VehName>
+<Category>WEC 2024, GT3, BMW M4 LMGT3</Category>
+<CarType>BMW M4 LMGT3</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>8</CarNumber>
+<TeamName>Harry Ricker</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<GridPos>11</GridPos>
+<Position>7</Position>
+<ClassGridPos>11</ClassGridPos>
+<ClassPosition>7</ClassPosition>
+<LapRankIncludingDiscos>19</LapRankIncludingDiscos>
+<Lap num="1" p="9" et="159.4425" s1="38.2496" s2="56.2903" s3="23.0140" topspeed="233.78" fuel="0.651" fuelUsed="-0.151" ve="0.933" veUsed="0.067" twfl="0.973" twfr="0.969" twrl="0.933" twrr="0.937" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">117.5540</Lap>
+<Lap num="2" p="8" et="277.0000" s1="28.8112" s2="55.0900" s3="23.3785" topspeed="246.84" fuel="0.608" fuelUsed="0.043" ve="0.875" veUsed="0.059" twfl="0.953" twfr="0.945" twrl="0.918" twrr="0.922" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">107.2797</Lap>
+<Lap num="3" p="8" et="384.2800" s1="28.1647" s2="54.3335" s3="22.8072" topspeed="253.60" fuel="0.565" fuelUsed="0.043" ve="0.816" veUsed="0.059" twfl="0.929" twfr="0.918" twrl="0.902" twrr="0.906" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">105.3053</Lap>
+<Lap num="4" p="10" et="489.6001" s1="27.5369" s2="64.5803" s3="22.9244" topspeed="254.05" fuel="0.522" fuelUsed="0.043" ve="0.753" veUsed="0.063" twfl="0.906" twfr="0.882" twrl="0.859" twrr="0.816" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">115.0415</Lap>
+<Lap num="5" p="10" et="604.6399" s1="28.1924" s2="54.1234" s3="22.7061" topspeed="254.50" fuel="0.478" fuelUsed="0.043" ve="0.694" veUsed="0.059" twfl="0.882" twfr="0.859" twrl="0.839" twrr="0.800" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">105.0219</Lap>
+<Lap num="6" p="10" et="709.6599" s1="27.7463" s2="54.8981" s3="22.9119" topspeed="254.05" fuel="0.439" fuelUsed="0.039" ve="0.635" veUsed="0.059" twfl="0.855" twfr="0.827" twrl="0.820" twrr="0.780" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">105.5563</Lap>
+<Lap num="7" p="10" et="815.2200" s1="28.0186" s2="54.5550" s3="22.6808" topspeed="254.05" fuel="0.392" fuelUsed="0.047" ve="0.576" veUsed="0.059" twfl="0.827" twfr="0.792" twrl="0.804" twrr="0.761" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">105.2543</Lap>
+<Lap num="8" p="9" et="920.4600" topspeed="255.40" fuel="0.353" fuelUsed="0.039" ve="0.518" veUsed="0.059" twfl="0.800" twfr="0.761" twrl="0.784" twrr="0.745" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">--.----</Lap>
+<Lap num="9" p="10" et="1025.9399" s1="28.8318" s2="57.1143" s3="22.9207" topspeed="248.19" fuel="0.310" fuelUsed="0.043" ve="0.459" veUsed="0.059" twfl="0.780" twfr="0.737" twrl="0.769" twrr="0.733" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">108.8667</Lap>
+<Lap num="10" p="9" et="1134.8201" s1="28.2094" s2="55.4163" s3="22.8182" topspeed="254.95" fuel="0.267" fuelUsed="0.043" ve="0.400" veUsed="0.059" twfl="0.761" twfr="0.710" twrl="0.753" twrr="0.718" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">106.4438</Lap>
+<Lap num="11" p="7" et="1241.2600" s1="28.1166" topspeed="255.85" fuel="0.224" fuelUsed="0.043" ve="0.341" veUsed="0.059" twfl="0.737" twfr="0.682" twrl="0.737" twrr="0.702" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">106.1915</Lap>
+<Lap num="12" p="7" et="1347.4600" s1="28.4219" s2="55.4202" s3="24.5139" topspeed="254.05" fuel="0.180" fuelUsed="0.043" ve="0.278" veUsed="0.063" twfl="0.710" twfr="0.655" twrl="0.718" twrr="0.686" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">108.3560</Lap>
+<Lap num="13" p="6" et="1455.8000" s1="28.7548" topspeed="253.60" fuel="0.141" fuelUsed="0.039" ve="0.224" veUsed="0.055" twfl="0.690" twfr="0.631" twrl="0.702" twrr="0.675" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">106.4739</Lap>
+<Lap num="14" p="5" et="1562.2800" s1="28.7057" s2="55.5807" s3="22.8573" topspeed="251.35" fuel="0.098" fuelUsed="0.043" ve="0.165" veUsed="0.059" twfl="0.675" twfr="0.612" twrl="0.690" twrr="0.663" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">107.1437</Lap>
+<Lap num="15" p="4" et="1669.4199" s1="29.2003" s2="56.6577" s3="30.0123" topspeed="254.05" fuel="0.059" fuelUsed="0.039" ve="0.114" veUsed="0.051" twfl="0.655" twfr="0.596" twrl="0.678" twrr="0.655" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet" pit="1">115.8704</Lap>
+<Lap num="16" p="7" et="1785.3000" s1="102.4489" s2="55.3539" s3="23.0812" topspeed="245.94" fuel="0.659" fuelUsed="-0.600" ve="0.945" veUsed="-0.831" twfl="0.984" twfr="0.984" twrl="0.965" twrr="0.976" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">180.8839</Lap>
+<Lap num="17" p="7" et="1966.1799" s1="28.4404" s2="55.2333" s3="23.1790" topspeed="252.25" fuel="0.616" fuelUsed="0.043" ve="0.882" veUsed="0.063" twfl="0.965" twfr="0.961" twrl="0.949" twrr="0.961" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">106.8527</Lap>
+<Lap num="18" p="7" et="2073.0400" s1="27.9023" s2="55.9724" s3="22.9507" topspeed="251.35" fuel="0.573" fuelUsed="0.043" ve="0.824" veUsed="0.059" twfl="0.949" twfr="0.941" twrl="0.933" twrr="0.945" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">106.8254</Lap>
+<Lap num="19" p="7" et="2179.8601" s1="28.2161" s2="55.0168" s3="22.6965" topspeed="253.15" fuel="0.529" fuelUsed="0.043" ve="0.765" veUsed="0.059" twfl="0.929" twfr="0.922" twrl="0.914" twrr="0.929" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">105.9294</Lap>
+<Lap num="20" p="7" et="2285.7800" s1="28.3157" s2="55.3081" s3="22.7297" topspeed="253.60" fuel="0.486" fuelUsed="0.043" ve="0.702" veUsed="0.063" twfl="0.906" twfr="0.898" twrl="0.894" twrr="0.914" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">106.3535</Lap>
+<Lap num="21" p="7" et="2392.1399" s1="28.1924" s2="55.0225" s3="23.1577" topspeed="253.60" fuel="0.443" fuelUsed="0.043" ve="0.643" veUsed="0.059" twfl="0.890" twfr="0.878" twrl="0.878" twrr="0.898" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">106.3726</Lap>
+<Lap num="22" p="7" et="2498.5200" s1="28.0027" s2="54.0552" s3="22.6060" topspeed="253.60" fuel="0.400" fuelUsed="0.043" ve="0.584" veUsed="0.059" twfl="0.867" twfr="0.855" twrl="0.859" twrr="0.878" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">104.6638</Lap>
+<Lap num="23" p="7" et="2603.1799" s1="28.1736" s2="54.2881" s3="24.9258" topspeed="254.05" fuel="0.357" fuelUsed="0.043" ve="0.525" veUsed="0.059" twfl="0.847" twfr="0.827" twrl="0.839" twrr="0.863" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">107.3875</Lap>
+<Lap num="24" p="7" et="2710.5601" s1="28.1794" s2="54.4651" s3="22.5088" topspeed="252.25" fuel="0.314" fuelUsed="0.043" ve="0.463" veUsed="0.063" twfl="0.827" twfr="0.804" twrl="0.824" twrr="0.847" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">105.1533</Lap>
+<Lap num="25" p="7" et="2815.7200" s1="27.6912" s2="55.2410" s3="22.7517" topspeed="254.05" fuel="0.271" fuelUsed="0.043" ve="0.404" veUsed="0.059" twfl="0.804" twfr="0.780" twrl="0.808" twrr="0.831" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">105.6838</Lap>
+<Lap num="26" p="7" et="2921.3999" s1="27.9690" s2="53.8335" s3="22.7190" topspeed="254.05" fuel="0.227" fuelUsed="0.043" ve="0.345" veUsed="0.059" twfl="0.784" twfr="0.757" twrl="0.792" twrr="0.816" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">104.5215</Lap>
+<BestLapTime>104.5215</BestLapTime>
+<FinishTime>2866.4774</FinishTime>
+<Laps>26</Laps>
+<Pitstops>1</Pitstops>
+<FinishStatus>Finished Normally</FinishStatus>
+<ControlAndAids startLap="1" endLap="26">PlayerControl,Clutch,AutoBlip</ControlAndAids>
+</Driver>
+<Driver>
+<Name>Elliott Brown</Name>
+<Connected>1</Connected>
+<VehFile>92_24_MANT5488007D.VEH</VehFile>
+<UpgradeCode>31460100 00000000 00000000 00000000</UpgradeCode>
+<VehName>Manthey PureRxcing 2024 #92:LM</VehName>
+<Category>WEC 2024, GT3, Porsche 911 GT3 R LMGT3</Category>
+<CarType>Porsche 911 GT3 R LMGT3</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>258</CarNumber>
+<TeamName>Elliott Brown</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<GridPos>7</GridPos>
+<Position>5</Position>
+<ClassGridPos>7</ClassGridPos>
+<ClassPosition>5</ClassPosition>
+<LapRankIncludingDiscos>19</LapRankIncludingDiscos>
+<Lap num="1" p="8" et="159.4425" s1="37.5337" s2="56.3987" s3="23.3663" topspeed="241.89" fuel="0.667" fuelUsed="-0.167" ve="0.933" veUsed="0.067" twfl="0.984" twfr="0.980" twrl="0.973" twrr="0.973" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">117.2986</Lap>
+<Lap num="2" p="7" et="276.7600" s1="28.9969" s2="54.4941" s3="23.2572" topspeed="248.19" fuel="0.624" fuelUsed="0.043" ve="0.878" veUsed="0.055" twfl="0.961" twfr="0.957" twrl="0.953" twrr="0.953" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">106.7482</Lap>
+<Lap num="3" p="7" et="383.5000" s1="28.0400" s2="54.1717" s3="23.1377" topspeed="246.84" fuel="0.580" fuelUsed="0.043" ve="0.820" veUsed="0.059" twfl="0.937" twfr="0.929" twrl="0.933" twrr="0.933" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">105.3494</Lap>
+<Lap num="4" p="7" et="488.8401" s1="28.2549" s2="56.0699" s3="23.0234" topspeed="247.74" fuel="0.541" fuelUsed="0.039" ve="0.761" veUsed="0.059" twfl="0.910" twfr="0.898" twrl="0.910" twrr="0.914" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">107.3482</Lap>
+<Lap num="5" p="7" et="596.2000" s1="28.0165" s2="55.0741" s3="23.4069" topspeed="246.84" fuel="0.498" fuelUsed="0.043" ve="0.706" veUsed="0.055" twfl="0.890" twfr="0.871" twrl="0.890" twrr="0.894" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">106.4975</Lap>
+<Lap num="6" p="7" et="702.7000" s1="28.8444" s2="55.8730" s3="23.4309" topspeed="247.74" fuel="0.455" fuelUsed="0.043" ve="0.647" veUsed="0.059" twfl="0.867" twfr="0.847" twrl="0.871" twrr="0.875" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">108.1484</Lap>
+<Lap num="7" p="7" et="810.8401" s1="27.9124" s2="54.6633" s3="23.1432" topspeed="245.49" fuel="0.412" fuelUsed="0.043" ve="0.588" veUsed="0.059" twfl="0.843" twfr="0.820" twrl="0.851" twrr="0.855" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">105.7189</Lap>
+<Lap num="8" p="7" et="916.5601" s1="28.1456" s2="54.8209" s3="23.3173" topspeed="245.49" fuel="0.373" fuelUsed="0.039" ve="0.537" veUsed="0.051" twfl="0.824" twfr="0.796" twrl="0.831" twrr="0.835" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">106.2837</Lap>
+<Lap num="9" p="7" et="1022.8401" s1="28.1414" topspeed="246.39" fuel="0.333" fuelUsed="0.039" ve="0.478" veUsed="0.059" twfl="0.796" twfr="0.765" twrl="0.808" twrr="0.812" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">105.1478</Lap>
+<Lap num="10" p="7" et="1128.0000" s1="28.1311" s2="53.4225" s3="23.0442" topspeed="246.39" fuel="0.290" fuelUsed="0.043" ve="0.424" veUsed="0.055" twfl="0.769" twfr="0.733" twrl="0.788" twrr="0.792" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">104.5978</Lap>
+<Lap num="11" p="6" et="1232.6001" s1="28.1357" s2="53.8192" s3="23.1652" topspeed="246.84" fuel="0.251" fuelUsed="0.039" ve="0.365" veUsed="0.059" twfl="0.749" twfr="0.706" twrl="0.769" twrr="0.776" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">105.1201</Lap>
+<Lap num="12" p="6" et="1337.7200" s1="28.2173" s2="55.1177" s3="23.2648" topspeed="246.84" fuel="0.208" fuelUsed="0.043" ve="0.310" veUsed="0.055" twfl="0.725" twfr="0.682" twrl="0.753" twrr="0.757" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">106.5997</Lap>
+<Lap num="13" p="5" et="1444.3201" s1="28.1891" s2="54.7670" s3="23.1802" topspeed="247.29" fuel="0.165" fuelUsed="0.043" ve="0.251" veUsed="0.059" twfl="0.706" twfr="0.659" twrl="0.733" twrr="0.737" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">106.1362</Lap>
+<Lap num="14" p="4" et="1550.4399" s1="28.8246" s2="54.8738" s3="30.2197" topspeed="247.29" fuel="0.125" fuelUsed="0.039" ve="0.200" veUsed="0.051" twfl="0.686" twfr="0.631" twrl="0.714" twrr="0.718" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet" pit="1">113.9181</Lap>
+<Lap num="15" p="7" et="1664.3601" s1="94.7173" topspeed="238.73" fuel="0.675" fuelUsed="-0.549" ve="0.945" veUsed="-0.745" twfl="0.980" twfr="0.980" twrl="0.969" twrr="0.973" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">172.9489</Lap>
+<Lap num="16" p="5" et="1837.3201" s1="28.3330" s2="54.2804" s3="23.2947" topspeed="244.59" fuel="0.635" fuelUsed="0.039" ve="0.890" veUsed="0.055" twfl="0.961" twfr="0.957" twrl="0.949" twrr="0.957" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">105.9081</Lap>
+<Lap num="17" p="5" et="1943.2200" s1="28.2703" s2="54.8137" s3="23.3597" topspeed="245.94" fuel="0.592" fuelUsed="0.043" ve="0.835" veUsed="0.055" twfl="0.941" twfr="0.933" twrl="0.933" twrr="0.937" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">106.4437</Lap>
+<Lap num="18" p="5" et="2049.6599" s1="28.8081" topspeed="245.49" fuel="0.553" fuelUsed="0.039" ve="0.776" veUsed="0.059" twfl="0.922" twfr="0.910" twrl="0.914" twrr="0.922" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">106.3545</Lap>
+<Lap num="19" p="5" et="2156.0200" s1="28.3926" s2="54.2644" s3="23.1143" topspeed="245.49" fuel="0.510" fuelUsed="0.043" ve="0.722" veUsed="0.055" twfl="0.898" twfr="0.882" twrl="0.894" twrr="0.902" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">105.7712</Lap>
+<Lap num="20" p="5" et="2261.8000" s1="28.2417" s2="53.9807" s3="23.1548" topspeed="245.49" fuel="0.467" fuelUsed="0.043" ve="0.667" veUsed="0.055" twfl="0.871" twfr="0.855" twrl="0.878" twrr="0.886" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">105.3772</Lap>
+<Lap num="21" p="5" et="2367.1599" s1="28.5066" s2="54.3455" s3="23.1948" topspeed="245.94" fuel="0.427" fuelUsed="0.039" ve="0.608" veUsed="0.059" twfl="0.847" twfr="0.827" twrl="0.859" twrr="0.867" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">106.0469</Lap>
+<Lap num="22" p="5" et="2473.2200" s1="28.1038" s2="54.7559" s3="23.0942" topspeed="245.94" fuel="0.384" fuelUsed="0.043" ve="0.553" veUsed="0.055" twfl="0.827" twfr="0.804" twrl="0.839" twrr="0.847" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">105.9539</Lap>
+<Lap num="23" p="5" et="2579.1599" s1="28.2314" s2="54.2039" s3="23.0862" topspeed="246.84" fuel="0.341" fuelUsed="0.043" ve="0.494" veUsed="0.059" twfl="0.804" twfr="0.776" twrl="0.816" twrr="0.827" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">105.5215</Lap>
+<Lap num="24" p="5" et="2684.7000" s1="27.8640" s2="53.9114" s3="23.0449" topspeed="246.84" fuel="0.302" fuelUsed="0.039" ve="0.439" veUsed="0.055" twfl="0.780" twfr="0.753" twrl="0.800" twrr="0.808" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">104.8203</Lap>
+<Lap num="25" p="5" et="2789.5200" s1="27.9998" s2="53.5811" s3="23.3584" topspeed="246.39" fuel="0.259" fuelUsed="0.043" ve="0.380" veUsed="0.059" twfl="0.757" twfr="0.725" twrl="0.780" twrr="0.788" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">104.9392</Lap>
+<Lap num="26" p="5" et="2894.4600" s1="28.0671" s2="53.7554" s3="23.0232" topspeed="246.84" fuel="0.220" fuelUsed="0.039" ve="0.325" veUsed="0.055" twfl="0.733" twfr="0.702" twrl="0.761" twrr="0.769" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">104.8457</Lap>
+<BestLapTime>104.5978</BestLapTime>
+<FinishTime>2839.8575</FinishTime>
+<Laps>26</Laps>
+<Pitstops>1</Pitstops>
+<FinishStatus>Finished Normally</FinishStatus>
+<ControlAndAids startLap="1" endLap="26">PlayerControl,Clutch,AutoBlip</ControlAndAids>
+</Driver>
+<Driver>
+<Name>Nitin Murthy</Name>
+<Connected>1</Connected>
+<VehFile>87_24_AKKO45998AA0.VEH</VehFile>
+<UpgradeCode>31460100 00000000 00000000 00000000</UpgradeCode>
+<VehName>Akkodis ASP Team 2024 #87:LM</VehName>
+<Category>WEC 2024, GT3, Lexus RCF LMGT3</Category>
+<CarType>Lexus RCF LMGT3</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>95</CarNumber>
+<TeamName>Nitin Murthy</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<GridPos>6</GridPos>
+<Position>4</Position>
+<ClassGridPos>6</ClassGridPos>
+<ClassPosition>4</ClassPosition>
+<LapRankIncludingDiscos>19</LapRankIncludingDiscos>
+<Lap num="1" p="5" et="159.4425" s1="34.6862" s2="54.9803" s3="22.9752" topspeed="243.69" fuel="0.745" fuelUsed="-0.245" ve="0.933" veUsed="0.067" twfl="0.973" twfr="0.965" twrl="0.973" twrr="0.973" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">112.6416</Lap>
+<Lap num="2" p="5" et="272.1001" s1="28.2865" s2="54.2932" s3="22.9823" topspeed="249.54" fuel="0.698" fuelUsed="0.047" ve="0.878" veUsed="0.055" twfl="0.937" twfr="0.925" twrl="0.949" twrr="0.953" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">105.5620</Lap>
+<Lap num="3" p="5" et="377.6599" s1="28.0238" s2="54.1968" s3="22.8650" topspeed="249.54" fuel="0.655" fuelUsed="0.043" ve="0.820" veUsed="0.059" twfl="0.902" twfr="0.886" twrl="0.925" twrr="0.929" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">105.0856</Lap>
+<Lap num="4" p="5" et="482.7400" s1="27.9485" s2="54.3930" s3="22.8659" topspeed="249.54" fuel="0.612" fuelUsed="0.043" ve="0.765" veUsed="0.055" twfl="0.871" twfr="0.847" twrl="0.902" twrr="0.914" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">105.2073</Lap>
+<Lap num="5" p="5" et="587.9399" topspeed="249.54" fuel="0.569" fuelUsed="0.043" ve="0.710" veUsed="0.055" twfl="0.839" twfr="0.800" twrl="0.882" twrr="0.890" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">--.----</Lap>
+<Lap num="6" p="4" et="693.6399" s1="28.0898" s2="54.7258" s3="23.3201" topspeed="249.54" fuel="0.522" fuelUsed="0.047" ve="0.655" veUsed="0.055" twfl="0.800" twfr="0.761" twrl="0.863" twrr="0.871" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">106.1357</Lap>
+<Lap num="7" p="4" et="799.7800" s1="28.4695" s2="54.5959" s3="22.9263" topspeed="249.99" fuel="0.478" fuelUsed="0.043" ve="0.600" veUsed="0.055" twfl="0.761" twfr="0.710" twrl="0.843" twrr="0.855" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">105.9917</Lap>
+<Lap num="8" p="4" et="905.7600" s1="28.3016" s2="54.5198" s3="22.8899" topspeed="250.44" fuel="0.435" fuelUsed="0.043" ve="0.545" veUsed="0.055" twfl="0.718" twfr="0.659" twrl="0.824" twrr="0.835" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">105.7113</Lap>
+<Lap num="9" p="4" et="1011.4800" s1="28.5678" topspeed="250.44" fuel="0.388" fuelUsed="0.047" ve="0.486" veUsed="0.059" twfl="0.675" twfr="0.608" twrl="0.804" twrr="0.820" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">106.4794</Lap>
+<Lap num="10" p="6" et="1117.9600" s1="28.3923" s2="55.7400" s3="28.8674" topspeed="249.54" fuel="0.349" fuelUsed="0.039" ve="0.435" veUsed="0.051" twfl="0.631" twfr="0.561" twrl="0.784" twrr="0.800" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet" pit="1">112.9998</Lap>
+<Lap num="11" p="9" et="1230.9600" s1="90.2578" s2="53.8229" s3="23.1606" topspeed="243.24" fuel="0.757" fuelUsed="-0.408" ve="0.945" veUsed="-0.510" twfl="0.969" twfr="0.965" twrl="0.973" twrr="0.976" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">167.2413</Lap>
+<Lap num="12" p="9" et="1398.2000" s1="27.9442" s2="53.9243" s3="22.9822" topspeed="249.09" fuel="0.710" fuelUsed="0.047" ve="0.890" veUsed="0.055" twfl="0.937" twfr="0.922" twrl="0.953" twrr="0.957" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">104.8507</Lap>
+<Lap num="13" p="9" et="1503.0400" s1="28.0770" s2="54.4165" s3="23.0330" topspeed="249.54" fuel="0.667" fuelUsed="0.043" ve="0.831" veUsed="0.059" twfl="0.906" twfr="0.886" twrl="0.933" twrr="0.937" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">105.5265</Lap>
+<Lap num="14" p="7" et="1608.5801" s1="28.1747" s2="54.6757" s3="23.0966" topspeed="249.54" fuel="0.620" fuelUsed="0.047" ve="0.776" veUsed="0.055" twfl="0.875" twfr="0.847" twrl="0.914" twrr="0.918" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">105.9469</Lap>
+<Lap num="15" p="6" et="1714.5200" s1="27.9390" s2="55.0370" s3="23.0612" topspeed="249.54" fuel="0.576" fuelUsed="0.043" ve="0.722" veUsed="0.055" twfl="0.847" twfr="0.816" twrl="0.890" twrr="0.898" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">106.0371</Lap>
+<Lap num="16" p="4" et="1820.5601" s1="28.4955" s2="54.7994" s3="23.1122" topspeed="249.99" fuel="0.529" fuelUsed="0.047" ve="0.663" veUsed="0.059" twfl="0.820" twfr="0.780" twrl="0.875" twrr="0.882" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">106.4071</Lap>
+<Lap num="17" p="4" et="1926.9600" s1="28.1078" s2="54.6945" s3="23.2108" topspeed="249.99" fuel="0.486" fuelUsed="0.043" ve="0.608" veUsed="0.055" twfl="0.792" twfr="0.745" twrl="0.855" twrr="0.863" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">106.0131</Lap>
+<Lap num="18" p="4" et="2032.9800" s1="28.0328" s2="54.5842" s3="23.1562" topspeed="249.54" fuel="0.443" fuelUsed="0.043" ve="0.553" veUsed="0.055" twfl="0.765" twfr="0.710" twrl="0.839" twrr="0.847" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">105.7733</Lap>
+<Lap num="19" p="4" et="2138.7400" topspeed="249.99" fuel="0.400" fuelUsed="0.043" ve="0.498" veUsed="0.055" twfl="0.733" twfr="0.675" twrl="0.820" twrr="0.831" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">--.----</Lap>
+<Lap num="20" p="4" et="2244.4399" s1="28.4268" s2="54.0833" s3="22.8164" topspeed="250.44" fuel="0.357" fuelUsed="0.043" ve="0.443" veUsed="0.055" twfl="0.706" twfr="0.639" twrl="0.800" twrr="0.812" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">105.3264</Lap>
+<Lap num="21" p="4" et="2349.7600" s1="27.9810" topspeed="250.44" fuel="0.314" fuelUsed="0.043" ve="0.388" veUsed="0.055" twfl="0.678" twfr="0.600" twrl="0.780" twrr="0.796" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">105.2312</Lap>
+<Lap num="22" p="4" et="2455.0000" s1="27.6836" s2="55.2012" s3="23.1479" topspeed="250.90" fuel="0.267" fuelUsed="0.047" ve="0.333" veUsed="0.055" twfl="0.647" twfr="0.557" twrl="0.761" twrr="0.776" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">106.0327</Lap>
+<Lap num="23" p="4" et="2561.0200" topspeed="250.44" fuel="0.224" fuelUsed="0.043" ve="0.278" veUsed="0.055" twfl="0.612" twfr="0.514" twrl="0.745" twrr="0.761" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">--.----</Lap>
+<Lap num="24" p="4" et="2667.0000" s1="28.1096" s2="54.1794" s3="22.9741" topspeed="250.90" fuel="0.180" fuelUsed="0.043" ve="0.224" veUsed="0.055" twfl="0.580" twfr="0.478" twrl="0.725" twrr="0.745" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">105.2632</Lap>
+<Lap num="25" p="4" et="2772.2800" s1="27.9900" s2="54.6919" s3="22.8066" topspeed="250.90" fuel="0.137" fuelUsed="0.043" ve="0.173" veUsed="0.051" twfl="0.545" twfr="0.439" twrl="0.710" twrr="0.725" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">105.4885</Lap>
+<Lap num="26" p="4" et="2877.7600" s1="28.0254" s2="53.9878" s3="22.6802" topspeed="250.44" fuel="0.094" fuelUsed="0.043" ve="0.114" veUsed="0.059" twfl="0.514" twfr="0.404" twrl="0.690" twrr="0.710" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">104.6934</Lap>
+<BestLapTime>104.6934</BestLapTime>
+<FinishTime>2823.0175</FinishTime>
+<Laps>26</Laps>
+<Pitstops>1</Pitstops>
+<FinishStatus>Finished Normally</FinishStatus>
+<ControlAndAids startLap="1" endLap="26">PlayerControl,Clutch,AutoBlip</ControlAndAids>
+</Driver>
+<Driver>
+<Name>Dustin Rand</Name>
+<Connected>1</Connected>
+<VehFile>397_24_AMV.VEH</VehFile>
+<UpgradeCode>00000000 00000000 00000000 00000000</UpgradeCode>
+<VehName>AMR GT3 Custom Team #397</VehName>
+<Category>WEC 2024, GT3, Aston Martin Vantage AMR LMGT3</Category>
+<CarType>Aston Martin Vantage AMR LMGT3</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>18</CarNumber>
+<TeamName>Dustin Rand</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<GridPos>5</GridPos>
+<Position>10</Position>
+<ClassGridPos>5</ClassGridPos>
+<ClassPosition>10</ClassPosition>
+<LapRankIncludingDiscos>19</LapRankIncludingDiscos>
+<Lap num="1" p="11" et="159.4425" s1="38.7530" s2="58.0429" s3="23.4781" topspeed="246.39" fuel="0.651" fuelUsed="-0.151" ve="0.929" veUsed="0.071" twfl="0.980" twfr="0.976" twrl="0.965" twrr="0.969" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">120.2740</Lap>
+<Lap num="2" p="10" et="279.7200" s1="28.7734" s2="56.0068" s3="22.9802" topspeed="252.25" fuel="0.608" fuelUsed="0.043" ve="0.867" veUsed="0.063" twfl="0.961" twfr="0.953" twrl="0.949" twrr="0.953" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">107.7604</Lap>
+<Lap num="3" p="10" et="387.4800" s1="28.1373" s2="54.8456" s3="23.5775" topspeed="253.15" fuel="0.569" fuelUsed="0.039" ve="0.800" veUsed="0.067" twfl="0.937" twfr="0.925" twrl="0.929" twrr="0.933" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">106.5604</Lap>
+<Lap num="4" p="9" et="494.0400" s1="27.8677" s2="54.7064" s3="23.6315" topspeed="253.60" fuel="0.525" fuelUsed="0.043" ve="0.737" veUsed="0.063" twfl="0.914" twfr="0.898" twrl="0.906" twrr="0.918" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">106.2056</Lap>
+<Lap num="5" p="9" et="600.2600" s1="27.8603" s2="54.4747" s3="22.9834" topspeed="252.70" fuel="0.482" fuelUsed="0.043" ve="0.671" veUsed="0.067" twfl="0.882" twfr="0.867" twrl="0.886" twrr="0.898" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">105.3184</Lap>
+<Lap num="6" p="9" et="705.5801" s1="27.9123" s2="54.9824" s3="22.9543" topspeed="253.60" fuel="0.439" fuelUsed="0.043" ve="0.604" veUsed="0.067" twfl="0.859" twfr="0.839" twrl="0.867" twrr="0.882" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">105.8490</Lap>
+<Lap num="7" p="9" et="811.4199" s1="28.7833" s2="55.2634" s3="24.4227" topspeed="251.80" fuel="0.400" fuelUsed="0.039" ve="0.545" veUsed="0.059" twfl="0.843" twfr="0.820" twrl="0.851" twrr="0.867" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">108.4694</Lap>
+<Lap num="8" p="10" et="919.8799" s1="27.5729" s2="55.6714" s3="23.5750" topspeed="253.15" fuel="0.357" fuelUsed="0.043" ve="0.478" veUsed="0.067" twfl="0.816" twfr="0.792" twrl="0.827" twrr="0.843" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">106.8193</Lap>
+<Lap num="9" p="9" et="1026.7000" s1="28.3516" s2="56.1102" s3="23.0441" topspeed="252.70" fuel="0.314" fuelUsed="0.043" ve="0.416" veUsed="0.063" twfl="0.796" twfr="0.769" twrl="0.808" twrr="0.824" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">107.5059</Lap>
+<Lap num="10" p="8" et="1134.2200" s1="28.3595" s2="55.0609" s3="23.3634" topspeed="254.95" fuel="0.271" fuelUsed="0.043" ve="0.353" veUsed="0.063" twfl="0.761" twfr="0.729" twrl="0.784" twrr="0.808" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">106.7838</Lap>
+<Lap num="11" p="8" et="1241.0000" s1="27.7686" s2="55.2953" s3="27.9783" topspeed="250.90" fuel="0.231" fuelUsed="0.039" ve="0.286" veUsed="0.067" twfl="0.729" twfr="0.694" twrl="0.749" twrr="0.776" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">111.0421</Lap>
+<Lap num="12" p="8" et="1352.0400" s1="28.1824" s2="54.8667" s3="23.6532" topspeed="252.70" fuel="0.188" fuelUsed="0.043" ve="0.220" veUsed="0.067" twfl="0.698" twfr="0.663" twrl="0.725" twrr="0.753" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">106.7023</Lap>
+<Lap num="13" p="7" et="1458.7400" s1="27.8904" s2="55.3352" s3="23.1890" topspeed="253.60" fuel="0.145" fuelUsed="0.043" ve="0.157" veUsed="0.063" twfl="0.671" twfr="0.631" twrl="0.706" twrr="0.737" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">106.4146</Lap>
+<Lap num="14" p="6" et="1565.1599" s1="27.9473" s2="56.8185" s3="23.6117" topspeed="254.50" fuel="0.102" fuelUsed="0.043" ve="0.090" veUsed="0.067" twfl="0.647" twfr="0.604" twrl="0.686" twrr="0.718" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">108.3774</Lap>
+<Lap num="15" p="5" et="1673.5400" s1="28.4446" s2="57.0559" s3="30.4607" topspeed="254.05" fuel="0.063" fuelUsed="0.039" ve="0.031" veUsed="0.059" twfl="0.620" twfr="0.573" twrl="0.667" twrr="0.698" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet" pit="1">115.9612</Lap>
+<Lap num="16" p="10" et="1789.5000" s1="121.1228" s2="64.4873" s3="23.4814" topspeed="245.04" fuel="0.659" fuelUsed="-0.596" ve="0.937" veUsed="-0.906" twfl="0.961" twfr="0.973" twrl="0.722" twrr="0.863" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">209.0916</Lap>
+<Lap num="17" p="9" et="1998.5801" s1="29.9648" s2="56.0164" s3="23.3843" topspeed="251.80" fuel="0.616" fuelUsed="0.043" ve="0.875" veUsed="0.063" twfl="0.941" twfr="0.953" twrl="0.702" twrr="0.843" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">109.3655</Lap>
+<Lap num="18" p="9" et="2107.9600" s1="28.2820" s2="55.1504" s3="23.1331" topspeed="252.70" fuel="0.573" fuelUsed="0.043" ve="0.812" veUsed="0.063" twfl="0.922" twfr="0.929" twrl="0.678" twrr="0.820" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">106.5654</Lap>
+<Lap num="19" p="9" et="2214.5200" s1="28.7576" s2="55.4958" s3="23.4751" topspeed="252.70" fuel="0.529" fuelUsed="0.043" ve="0.745" veUsed="0.067" twfl="0.898" twfr="0.906" twrl="0.651" twrr="0.796" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">107.7285</Lap>
+<Lap num="20" p="9" et="2322.2400" s1="28.0232" s2="54.8611" s3="23.2556" topspeed="252.25" fuel="0.490" fuelUsed="0.039" ve="0.682" veUsed="0.063" twfl="0.875" twfr="0.882" twrl="0.627" twrr="0.776" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">106.1399</Lap>
+<Lap num="21" p="10" et="2428.3799" s1="27.9609" s2="82.8794" s3="23.3127" topspeed="253.15" fuel="0.447" fuelUsed="0.043" ve="0.616" veUsed="0.067" twfl="0.835" twfr="0.851" twrl="0.580" twrr="0.733" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">134.1531</Lap>
+<Lap num="22" p="10" et="2562.5400" s1="28.7595" s2="99.2759" s3="23.2280" topspeed="252.25" fuel="0.400" fuelUsed="0.047" ve="0.553" veUsed="0.063" twfl="0.765" twfr="0.812" twrl="0.478" twrr="0.643" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">151.2634</Lap>
+<Lap num="23" p="10" et="2713.8000" s1="48.8364" s2="56.9849" s3="23.4106" topspeed="252.70" fuel="0.361" fuelUsed="0.039" ve="0.490" veUsed="0.063" twfl="0.737" twfr="0.792" twrl="0.439" twrr="0.620" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">129.2319</Lap>
+<Lap num="24" p="10" et="2843.0400" s1="29.7944" s2="56.3030" s3="23.3748" topspeed="253.15" fuel="0.322" fuelUsed="0.039" ve="0.427" veUsed="0.063" twfl="0.718" twfr="0.769" twrl="0.420" twrr="0.592" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">109.4722</Lap>
+<BestLapTime>105.3184</BestLapTime>
+<FinishTime>2793.0575</FinishTime>
+<Laps>24</Laps>
+<Pitstops>1</Pitstops>
+<FinishStatus>Finished Normally</FinishStatus>
+<ControlAndAids startLap="1" endLap="24">PlayerControl</ControlAndAids>
+</Driver>
+<Driver>
+<Name>Brian Crane</Name>
+<Connected>1</Connected>
+<VehFile>397_24_911GT3R.VEH</VehFile>
+<UpgradeCode>31460100 00000000 00000000 00000000</UpgradeCode>
+<VehName>911GT3R Custom Team 2024 #397</VehName>
+<Category>WEC 2024, GT3, Porsche 911 GT3 R LMGT3</Category>
+<CarType>Porsche 911 GT3 R LMGT3</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>223</CarNumber>
+<TeamName>Brian Crane</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<GridPos>8</GridPos>
+<Position>8</Position>
+<ClassGridPos>8</ClassGridPos>
+<ClassPosition>8</ClassPosition>
+<LapRankIncludingDiscos>19</LapRankIncludingDiscos>
+<Lap num="1" p="6" et="159.4425" s1="37.8558" s2="55.2496" s3="23.2182" topspeed="241.44" fuel="0.667" fuelUsed="-0.167" ve="0.933" veUsed="0.067" twfl="0.976" twfr="0.973" twrl="0.980" twrr="0.980" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">116.3236</Lap>
+<Lap num="2" p="6" et="275.7800" s1="28.5391" topspeed="246.39" fuel="0.624" fuelUsed="0.043" ve="0.875" veUsed="0.059" twfl="0.949" twfr="0.945" twrl="0.961" twrr="0.965" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">--.----</Lap>
+<Lap num="3" p="6" et="381.9800" s1="28.5989" s2="54.6225" s3="23.2524" topspeed="246.39" fuel="0.580" fuelUsed="0.043" ve="0.816" veUsed="0.059" twfl="0.918" twfr="0.910" twrl="0.945" twrr="0.949" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">106.4738</Lap>
+<Lap num="4" p="6" et="488.4600" topspeed="246.39" fuel="0.537" fuelUsed="0.043" ve="0.757" veUsed="0.059" twfl="0.882" twfr="0.871" twrl="0.925" twrr="0.929" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">--.----</Lap>
+<Lap num="5" p="6" et="594.8201" topspeed="246.84" fuel="0.494" fuelUsed="0.043" ve="0.702" veUsed="0.055" twfl="0.847" twfr="0.835" twrl="0.906" twrr="0.914" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">--.----</Lap>
+<Lap num="6" p="8" et="702.3601" s1="28.7837" s2="56.1074" s3="23.9368" topspeed="246.39" fuel="0.451" fuelUsed="0.043" ve="0.643" veUsed="0.059" twfl="0.812" twfr="0.796" twrl="0.890" twrr="0.898" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">108.8279</Lap>
+<Lap num="7" p="8" et="811.2000" s1="28.6826" s2="54.7787" s3="23.3253" topspeed="246.39" fuel="0.408" fuelUsed="0.043" ve="0.584" veUsed="0.059" twfl="0.780" twfr="0.761" twrl="0.871" twrr="0.882" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">106.7866</Lap>
+<Lap num="8" p="8" et="917.9800" s1="28.3683" s2="55.8320" s3="23.6467" topspeed="246.84" fuel="0.369" fuelUsed="0.039" ve="0.529" veUsed="0.055" twfl="0.749" twfr="0.725" twrl="0.855" twrr="0.867" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">107.8470</Lap>
+<Lap num="9" p="8" et="1025.8201" s1="28.7244" s2="56.0408" s3="23.1611" topspeed="245.04" fuel="0.325" fuelUsed="0.043" ve="0.471" veUsed="0.059" twfl="0.710" twfr="0.686" twrl="0.839" twrr="0.851" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">107.9263</Lap>
+<Lap num="10" p="10" et="1133.7600" s1="28.8955" s2="55.4227" s3="28.5237" topspeed="246.39" fuel="0.286" fuelUsed="0.039" ve="0.420" veUsed="0.051" twfl="0.678" twfr="0.647" twrl="0.820" twrr="0.831" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet" pit="1">112.8419</Lap>
+<Lap num="11" p="10" et="1246.6001" s1="118.3999" s2="54.4355" s3="23.2802" topspeed="240.99" fuel="0.675" fuelUsed="-0.388" ve="0.945" veUsed="-0.525" twfl="0.976" twfr="0.973" twrl="0.980" twrr="0.984" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">196.1156</Lap>
+<Lap num="12" p="10" et="1442.7200" s1="28.6033" s2="54.1373" s3="23.2592" topspeed="245.94" fuel="0.635" fuelUsed="0.039" ve="0.886" veUsed="0.059" twfl="0.945" twfr="0.937" twrl="0.965" twrr="0.965" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">105.9998</Lap>
+<Lap num="13" p="10" et="1548.7200" s1="28.4980" s2="55.2242" s3="23.4124" topspeed="246.39" fuel="0.592" fuelUsed="0.043" ve="0.831" veUsed="0.055" twfl="0.914" twfr="0.902" twrl="0.945" twrr="0.949" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">107.1346</Lap>
+<Lap num="14" p="10" et="1655.8401" s1="28.7615" s2="54.9070" s3="23.4795" topspeed="246.39" fuel="0.549" fuelUsed="0.043" ve="0.773" veUsed="0.059" twfl="0.886" twfr="0.875" twrl="0.929" twrr="0.933" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">107.1479</Lap>
+<Lap num="15" p="10" et="1763.0000" s1="28.8297" s2="55.1249" s3="23.5139" topspeed="246.39" fuel="0.506" fuelUsed="0.043" ve="0.714" veUsed="0.059" twfl="0.863" twfr="0.847" twrl="0.914" twrr="0.922" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">107.4685</Lap>
+<Lap num="16" p="8" et="1870.4600" s1="28.6104" s2="55.8691" s3="23.4429" topspeed="246.84" fuel="0.463" fuelUsed="0.043" ve="0.659" veUsed="0.055" twfl="0.835" twfr="0.820" twrl="0.898" twrr="0.906" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">107.9224</Lap>
+<Lap num="17" p="8" et="1978.3799" s1="28.7430" s2="55.5076" s3="23.3533" topspeed="246.84" fuel="0.420" fuelUsed="0.043" ve="0.600" veUsed="0.059" twfl="0.812" twfr="0.792" twrl="0.886" twrr="0.890" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">107.6039</Lap>
+<Lap num="18" p="8" et="2086.0000" s1="28.9875" s2="55.3210" s3="23.2004" topspeed="246.84" fuel="0.380" fuelUsed="0.039" ve="0.541" veUsed="0.059" twfl="0.788" twfr="0.765" twrl="0.871" twrr="0.878" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">107.5090</Lap>
+<Lap num="19" p="8" et="2193.5000" s1="28.9160" s2="54.9905" s3="23.1514" topspeed="246.84" fuel="0.337" fuelUsed="0.043" ve="0.486" veUsed="0.055" twfl="0.761" twfr="0.737" twrl="0.855" twrr="0.863" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">107.0579</Lap>
+<Lap num="20" p="8" et="2300.5601" s1="28.6707" s2="54.4065" s3="23.4387" topspeed="246.84" fuel="0.294" fuelUsed="0.043" ve="0.427" veUsed="0.059" twfl="0.733" twfr="0.706" twrl="0.839" twrr="0.847" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">106.5159</Lap>
+<Lap num="21" p="8" et="2407.0801" s1="28.8044" s2="55.0051" s3="23.2378" topspeed="246.84" fuel="0.251" fuelUsed="0.043" ve="0.373" veUsed="0.055" twfl="0.706" twfr="0.678" twrl="0.824" twrr="0.835" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">107.0474</Lap>
+<Lap num="22" p="8" et="2514.1201" s1="28.7969" s2="55.0767" s3="23.1868" topspeed="247.29" fuel="0.212" fuelUsed="0.039" ve="0.314" veUsed="0.059" twfl="0.682" twfr="0.651" twrl="0.808" twrr="0.820" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">107.0603</Lap>
+<Lap num="23" p="8" et="2621.1799" s1="28.6401" s2="54.9888" s3="23.1582" topspeed="247.29" fuel="0.169" fuelUsed="0.043" ve="0.255" veUsed="0.059" twfl="0.655" twfr="0.620" twrl="0.792" twrr="0.808" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">106.7871</Lap>
+<Lap num="24" p="8" et="2727.9600" s1="29.4434" s2="55.9221" s3="23.0686" topspeed="247.29" fuel="0.125" fuelUsed="0.043" ve="0.200" veUsed="0.055" twfl="0.631" twfr="0.592" twrl="0.780" twrr="0.792" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">108.4341</Lap>
+<Lap num="25" p="8" et="2836.3999" s1="28.7041" s2="54.6472" s3="23.1221" topspeed="247.29" fuel="0.082" fuelUsed="0.043" ve="0.145" veUsed="0.055" twfl="0.604" twfr="0.561" twrl="0.765" twrr="0.780" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">106.4734</Lap>
+<BestLapTime>105.9998</BestLapTime>
+<FinishTime>2783.4374</FinishTime>
+<Laps>25</Laps>
+<Pitstops>1</Pitstops>
+<FinishStatus>Finished Normally</FinishStatus>
+<ControlAndAids startLap="1" endLap="25">PlayerControl,Clutch,AutoBlip</ControlAndAids>
+</Driver>
+<Driver>
+<Name>Dave Paccagnini</Name>
+<Connected>1</Connected>
+<VehFile>397_24_HURACAN.VEH</VehFile>
+<UpgradeCode>628c0200 00000000 00000000 00000000</UpgradeCode>
+<VehName>Huracan Custom Team 2024 #397</VehName>
+<Category>WEC 2024, GT3, Lamborghini Huracan LMGT3 Evo2</Category>
+<CarType>Lamborghini Huracan LMGT3 Evo2</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>808</CarNumber>
+<TeamName>Dave Paccagnini</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<GridPos>10</GridPos>
+<Position>11</Position>
+<ClassGridPos>10</ClassGridPos>
+<ClassPosition>11</ClassPosition>
+<LapRankIncludingDiscos>19</LapRankIncludingDiscos>
+<Lap num="1" p="7" et="159.4425" s1="37.2703" s2="56.2135" s3="23.3660" topspeed="244.59" fuel="0.761" fuelUsed="-0.261" ve="0.918" veUsed="0.082" twfl="0.961" twfr="0.953" twrl="0.953" twrr="0.957" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">116.8498</Lap>
+<Lap num="2" p="11" et="276.3000" s1="28.6636" s2="61.4348" s3="23.3820" topspeed="250.90" fuel="0.710" fuelUsed="0.051" ve="0.859" veUsed="0.059" twfl="0.890" twfr="0.890" twrl="0.757" twrr="0.757" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">113.4803</Lap>
+<Lap num="3" p="11" et="389.7800" s1="28.3354" s2="72.0165" s3="24.5693" topspeed="250.90" fuel="0.659" fuelUsed="0.051" ve="0.804" veUsed="0.055" twfl="0.827" twfr="0.847" twrl="0.647" twrr="0.706" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">124.9212</Lap>
+<Lap num="4" p="11" et="514.7000" s1="28.6804" topspeed="248.64" fuel="0.608" fuelUsed="0.051" ve="0.745" veUsed="0.059" twfl="0.804" twfr="0.816" twrl="0.620" twrr="0.678" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">107.9805</Lap>
+<Lap num="5" p="11" et="622.6799" s1="28.4814" s2="68.1248" s3="23.7101" topspeed="250.90" fuel="0.557" fuelUsed="0.051" ve="0.690" veUsed="0.055" twfl="0.773" twfr="0.788" twrl="0.553" twrr="0.624" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">120.3164</Lap>
+<Lap num="6" p="11" et="743.0000" s1="28.7739" s2="72.1954" s3="23.2808" topspeed="250.44" fuel="0.506" fuelUsed="0.051" ve="0.635" veUsed="0.055" twfl="0.729" twfr="0.737" twrl="0.376" twrr="0.447" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">124.2500</Lap>
+<Lap num="7" p="11" et="867.2600" s1="49.5554" s2="83.4687" s3="38.1892" topspeed="249.99" fuel="0.467" fuelUsed="0.039" ve="0.592" veUsed="0.043" twfl="0.706" twfr="0.678" twrl="0.255" twrr="0.255" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet" pit="1">171.2133</Lap>
+<Lap num="8" p="11" et="1038.4600" s1="220.0122" s2="55.0825" s3="23.2758" topspeed="244.14" fuel="0.780" fuelUsed="-0.314" ve="0.945" veUsed="-0.353" twfl="0.980" twfr="0.976" twrl="0.976" twrr="0.980" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">298.3705</Lap>
+<Lap num="9" p="11" et="1336.8401" s1="28.5952" s2="54.7822" s3="23.2561" topspeed="249.54" fuel="0.733" fuelUsed="0.047" ve="0.890" veUsed="0.055" twfl="0.957" twfr="0.945" twrl="0.957" twrr="0.957" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">106.6335</Lap>
+<Lap num="10" p="11" et="1443.4600" s1="28.3438" s2="54.7971" s3="23.3348" topspeed="250.90" fuel="0.686" fuelUsed="0.047" ve="0.835" veUsed="0.055" twfl="0.933" twfr="0.914" twrl="0.933" twrr="0.937" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">106.4757</Lap>
+<Lap num="11" p="11" et="1549.9399" s1="28.5054" s2="55.1124" s3="23.5784" topspeed="250.44" fuel="0.635" fuelUsed="0.051" ve="0.776" veUsed="0.059" twfl="0.914" twfr="0.886" twrl="0.918" twrr="0.918" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">107.1962</Lap>
+<Lap num="12" p="11" et="1657.1399" s1="28.6249" s2="55.0314" s3="23.6624" topspeed="250.90" fuel="0.588" fuelUsed="0.047" ve="0.722" veUsed="0.055" twfl="0.890" twfr="0.859" twrl="0.898" twrr="0.902" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">107.3186</Lap>
+<Lap num="13" p="11" et="1764.4600" s1="28.5472" s2="55.3011" s3="23.4152" topspeed="249.54" fuel="0.537" fuelUsed="0.051" ve="0.667" veUsed="0.055" twfl="0.871" twfr="0.831" twrl="0.878" twrr="0.882" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">107.2635</Lap>
+<Lap num="14" p="11" et="1871.7200" s1="28.3741" s2="56.0077" s3="23.2666" topspeed="250.90" fuel="0.490" fuelUsed="0.047" ve="0.608" veUsed="0.059" twfl="0.851" twfr="0.804" twrl="0.859" twrr="0.863" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">107.6484</Lap>
+<Lap num="15" p="11" et="1979.3799" s1="28.9139" s2="56.0411" s3="23.2991" topspeed="250.90" fuel="0.439" fuelUsed="0.051" ve="0.553" veUsed="0.055" twfl="0.827" twfr="0.776" twrl="0.839" twrr="0.847" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">108.2542</Lap>
+<Lap num="16" p="11" et="2087.6201" s1="28.2285" s2="55.4941" s3="23.2192" topspeed="250.90" fuel="0.388" fuelUsed="0.051" ve="0.494" veUsed="0.059" twfl="0.812" twfr="0.753" twrl="0.820" twrr="0.827" fcompound="1,Wet" rcompound="1,Wet" FL="1,Wet" FR="1,Wet" RL="1,Wet" RR="1,Wet">106.9419</Lap>
+<BestLapTime>106.4757</BestLapTime>
+<Laps>16</Laps>
+<Pitstops>2</Pitstops>
+<FinishStatus>DNF</FinishStatus>
+<DNFReason>DNF</DNFReason>
+<ControlAndAids startLap="1" endLap="16">PlayerControl</ControlAndAids>
+</Driver>
+<Driver>
+<Name>Michael Quandt</Name>
+<Connected>1</Connected>
+<VehFile>81_24_TFS_F0B5E0D0.VEH</VehFile>
+<UpgradeCode>31460100 00000000 00000000 00000000</UpgradeCode>
+<VehName>TF Sport #81:LM</VehName>
+<Category>WEC 2024, GT3, Chevrolet Corvette Z06 LMGT3.R</Category>
+<CarType>Chevrolet Corvette Z06 LMGT3.R</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>106</CarNumber>
+<TeamName>Michael Quandt</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<GridPos>18</GridPos>
+<Position>12</Position>
+<ClassGridPos>18</ClassGridPos>
+<ClassPosition>12</ClassPosition>
+<LapRankIncludingDiscos>19</LapRankIncludingDiscos>
+<Laps>0</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>DNF</FinishStatus>
+<DNFReason>DNF</DNFReason>
+</Driver>
+<Driver>
+<Name>Jeremy Goeringer</Name>
+<Connected>1</Connected>
+<VehFile>70_24_INCEE7C900BF.VEH</VehFile>
+<UpgradeCode>628c0200 00000000 00000000 00000000</UpgradeCode>
+<VehName>Inception Racing 2024 #70:LM</VehName>
+<Category>WEC 2024, GT3, McLaren 720S LMGT3 Evo</Category>
+<CarType>McLaren 720S LMGT3 Evo</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>70</CarNumber>
+<TeamName>Jeremy Goeringer</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<GridPos>17</GridPos>
+<Position>13</Position>
+<ClassGridPos>17</ClassGridPos>
+<ClassPosition>13</ClassPosition>
+<LapRankIncludingDiscos>19</LapRankIncludingDiscos>
+<Laps>0</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>DNF</FinishStatus>
+<DNFReason>DNF</DNFReason>
+</Driver>
+<Driver>
+<Name>jaydan lussier</Name>
+<Connected>1</Connected>
+<VehFile>77_24_PROTF290ED44.VEH</VehFile>
+<UpgradeCode>31460100 00000000 00000000 00000000</UpgradeCode>
+<VehName>Proton Racing 2024 #77:LM</VehName>
+<Category>WEC 2024, GT3, Ford Mustang LMGT3</Category>
+<CarType>Ford Mustang LMGT3</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>222</CarNumber>
+<TeamName>jaydan lussier</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<GridPos>14</GridPos>
+<Position>14</Position>
+<ClassGridPos>14</ClassGridPos>
+<ClassPosition>14</ClassPosition>
+<LapRankIncludingDiscos>19</LapRankIncludingDiscos>
+<Laps>0</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>DNF</FinishStatus>
+<DNFReason>DNF</DNFReason>
+</Driver>
+<Driver>
+<Name>Jumpy Whale</Name>
+<Connected>1</Connected>
+<VehFile>397_24_911GT3R.VEH</VehFile>
+<UpgradeCode>31460100 00000000 00000000 00000000</UpgradeCode>
+<VehName>911GT3R Custom Team 2024 #397</VehName>
+<Category>WEC 2024, GT3, Porsche 911 GT3 R LMGT3</Category>
+<CarType>Porsche 911 GT3 R LMGT3</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>745</CarNumber>
+<TeamName>Jumpy Whale</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<GridPos>13</GridPos>
+<Position>15</Position>
+<ClassGridPos>13</ClassGridPos>
+<ClassPosition>15</ClassPosition>
+<LapRankIncludingDiscos>19</LapRankIncludingDiscos>
+<Laps>0</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>DNF</FinishStatus>
+<DNFReason>DNF</DNFReason>
+</Driver>
+<Driver>
+<Name>Matt Quandt</Name>
+<Connected>1</Connected>
+<VehFile>46_24_WRT_C8F1B81C.VEH</VehFile>
+<UpgradeCode>00000000 00000000 00000000 00000000</UpgradeCode>
+<VehName>Team WRT 2024 #46:LM</VehName>
+<Category>WEC 2024, GT3, BMW M4 LMGT3</Category>
+<CarType>BMW M4 LMGT3</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>416</CarNumber>
+<TeamName>Matt Quandt</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<GridPos>15</GridPos>
+<Position>16</Position>
+<ClassGridPos>15</ClassGridPos>
+<ClassPosition>16</ClassPosition>
+<LapRankIncludingDiscos>19</LapRankIncludingDiscos>
+<Laps>0</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>DNF</FinishStatus>
+<DNFReason>DNF</DNFReason>
+</Driver>
+<Driver>
+<Name>Adrian Zeh</Name>
+<Connected>1</Connected>
+<VehFile>54_24_AFCO29D9A0D4.VEH</VehFile>
+<UpgradeCode>628c0200 00000000 00000000 00000000</UpgradeCode>
+<VehName>Vista AF Corse 2024 #54:EC</VehName>
+<Category>WEC 2024, GT3, Ferrari 296 LMGT3</Category>
+<CarType>Ferrari 296 LMGT3</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>50</CarNumber>
+<TeamName>Adrian Zeh</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<GridPos>12</GridPos>
+<Position>17</Position>
+<ClassGridPos>12</ClassGridPos>
+<ClassPosition>17</ClassPosition>
+<LapRankIncludingDiscos>19</LapRankIncludingDiscos>
+<Laps>0</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>DNF</FinishStatus>
+<DNFReason>DNF</DNFReason>
+</Driver>
+<Driver>
+<Name>Hunter Lynch</Name>
+<Connected>1</Connected>
+<VehFile>397_24_Z06GT3R.VEH</VehFile>
+<UpgradeCode>31460100 00000000 00000000 00000000</UpgradeCode>
+<VehName>Z06GT3R Custom Team #397</VehName>
+<Category>WEC 2024, GT3, Chevrolet Corvette Z06 LMGT3.R</Category>
+<CarType>Chevrolet Corvette Z06 LMGT3.R</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>41</CarNumber>
+<TeamName>Hunter Lynch</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<GridPos>16</GridPos>
+<Position>18</Position>
+<ClassGridPos>16</ClassGridPos>
+<ClassPosition>18</ClassPosition>
+<LapRankIncludingDiscos>19</LapRankIncludingDiscos>
+<Laps>0</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>DNF</FinishStatus>
+<DNFReason>DNF</DNFReason>
+</Driver>
+</Race>
+</RaceResults>
+</rFactorXML>
