@@ -7,10 +7,18 @@ from unittest.mock import patch
 import pandas as pd
 
 import csv_lib
+import driver_blacklist
 import generate_driver_pages
 
 
 class DriverPagesTests(unittest.TestCase):
+    def setUp(self):
+        self.blacklist_patcher = patch.object(
+            driver_blacklist, 'load_blacklisted_names', return_value=set()
+        )
+        self.blacklist_patcher.start()
+        self.addCleanup(self.blacklist_patcher.stop)
+
     def test_generate_driver_pages_builds_canonical_category_profile(self):
         config = {
             'season_info': {'name': 'Season 1'},
@@ -92,6 +100,49 @@ class DriverPagesTests(unittest.TestCase):
             self.assertIn("profileSearch.addEventListener('input', () => {", index)
             self.assertIn("activeLetter = 'all';", index)
             self.assertIn("button.disabled = button.dataset.letter !== 'all'", index)
+
+    def test_blacklisted_driver_is_omitted_from_profiles_and_index(self):
+        config = {
+            'season_info': {'name': 'Season 1'},
+            'sprint_races': {'s1-sc1-r.xml': {'name': 'Test Circuit'}},
+        }
+
+        with tempfile.TemporaryDirectory() as root:
+            config_root = os.path.join(root, 'json')
+            data_root = os.path.join(root, 'csv')
+            output_dir = os.path.join(root, 'profiles')
+            os.makedirs(config_root)
+            with open(os.path.join(config_root, 'season1.json'), 'w', encoding='utf-8') as config_file:
+                json.dump(config, config_file)
+
+            race_path = csv_lib.build_csv_path(
+                'season1', 'sprint', 's1-sc1-r.xml', data_root
+            )
+            os.makedirs(os.path.dirname(race_path), exist_ok=True)
+            pd.DataFrame([{
+                'Driver': 'Greg Kach', 'Driver_name': 'Greg Kach',
+                'CarClass': 'GT3', 'Position': 1,
+            }]).to_csv(race_path, index=False)
+
+            with (
+                patch.dict(csv_lib.SEASONS, {'season1': {'name': 'Season 1'}}, clear=True),
+                patch.object(
+                    driver_blacklist,
+                    'load_blacklisted_names',
+                    return_value={'Greg Kachadurian'},
+                ),
+                patch.object(generate_driver_pages.elo_lib, 'build_rankings', return_value=[]),
+            ):
+                driver_count = generate_driver_pages.generate_driver_pages(
+                    output_dir, data_root, config_root, generated_date='2026-10-26'
+                )
+
+            with open(os.path.join(output_dir, 'index.html'), encoding='utf-8') as index_file:
+                index = index_file.read()
+
+        self.assertEqual(driver_count, 0)
+        self.assertNotIn('Greg K.', index)
+        self.assertFalse(os.path.exists(os.path.join(output_dir, 'greg-kachadurian.html')))
 
 
 if __name__ == '__main__':

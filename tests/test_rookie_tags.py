@@ -8,6 +8,7 @@ from unittest.mock import patch
 import pandas as pd
 
 import csv_lib as stats
+import driver_blacklist
 import html_lib
 from lmu_descriptors import LMUDescriptor
 
@@ -18,6 +19,11 @@ class RookieTagTests(unittest.TestCase):
         self.original_seasons = stats.SEASONS
         self.temp_dir = tempfile.TemporaryDirectory()
         os.chdir(self.temp_dir.name)
+        self.blacklist_patcher = patch.object(
+            driver_blacklist, 'load_blacklisted_names', return_value=set()
+        )
+        self.blacklist_patcher.start()
+        self.addCleanup(self.blacklist_patcher.stop)
         stats.SEASONS = {'season1': {}, 'season2': {}, 'season3': {}}
         for season_id in stats.SEASONS:
             self.write_config(season_id, {})
@@ -268,6 +274,22 @@ class RookieTagTests(unittest.TestCase):
                 for trace in plot_data['traces']
                 for value in trace['y']
             ))
+
+    def test_comparison_excludes_blacklisted_driver(self):
+        event_df = pd.DataFrame([
+            {'Driver_name': 'Blocked Driver', 'avg_pace_pct_alien': 101.0},
+            {'Driver_name': 'Allowed Driver', 'avg_pace_pct_alien': 102.0},
+        ])
+        with patch.object(
+            driver_blacklist,
+            'load_blacklisted_names',
+            return_value={'Blocked Driver'},
+        ):
+            comparison_df, _, _, _, _ = stats.process_races_into_comparison_df(
+                {'Test Track': event_df}, ['sc1'], {'sc1': 'Test Track'}
+            )
+
+        self.assertEqual(comparison_df['Driver_name'].tolist(), ['Allowed Driver'])
 
     def test_race_descriptors_are_class_scoped_and_qualifying_is_pace_only(self):
         xml_path = self.write_descriptor_xml('race.xml', [

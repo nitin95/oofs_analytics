@@ -8,6 +8,20 @@ import html_lib
 
 
 class StatsPageTests(unittest.TestCase):
+    def test_main_fails_before_clearing_html_when_blacklist_is_unavailable(self):
+        with (
+            patch.object(
+                generate_stats_page.driver_blacklist,
+                'load_blacklisted_names',
+                side_effect=RuntimeError('blacklist unavailable'),
+            ),
+            patch.object(generate_stats_page, 'clear_generated_html') as clear_html,
+        ):
+            with self.assertRaisesRegex(RuntimeError, 'blacklist unavailable'):
+                generate_stats_page.main()
+
+        clear_html.assert_not_called()
+
     def test_clear_generated_html_removes_nested_html_only(self):
         with tempfile.TemporaryDirectory() as output_dir:
             season_dir = os.path.join(output_dir, 'season1')

@@ -7,6 +7,7 @@ import re
 import pandas as pd
 
 import csv_lib
+import driver_blacklist
 import elo_lib
 import html_lib
 
@@ -45,6 +46,9 @@ def _read_event_csv(path):
 
 def collect_driver_records(data_root=DATA_ROOT, config_root=CONFIG_ROOT):
     """Collect qualifying and race records keyed by canonical driver name."""
+    blacklisted_names = driver_blacklist.load_blacklisted_names(
+        csv_lib.normalize_driver_name
+    )
     profiles = {}
     season_ids = list(csv_lib.SEASONS)
 
@@ -73,6 +77,8 @@ def collect_driver_records(data_root=DATA_ROOT, config_root=CONFIG_ROOT):
                             continue
 
                         name = csv_lib.normalize_driver_name(driver_value)
+                        if name in blacklisted_names:
+                            continue
                         category = csv_lib.get_driver_category(
                             row.get('CarClass', ''), series
                         )
@@ -316,7 +322,7 @@ def render_driver_page(name, profile, generated_date, elo_lookup=None):
                 ('Wins', category_stats['wins']),
                 ('Podiums', category_stats['podiums']),
                 ('Poles', category_stats['poles']),
-                ('Best finish', _format_number(category_stats['best_finish'])),
+                ('Best finish', 'P'+_format_number(category_stats['best_finish'])),
                 ('Average finish', _format_number(category_stats['average_finish'], 2)),
                 ('Average qualifying', _format_number(category_stats['average_qualifying'], 2)),
                 ('Average quali pace vs alien', _format_number(category_stats['average_quali_pace'], 2) + '%'),
@@ -347,7 +353,7 @@ def render_driver_page(name, profile, generated_date, elo_lookup=None):
             ('Wins', stats['wins']),
             ('Podiums', stats['podiums']),
             ('Pole positions', stats['poles']),
-            ('Best finish', _format_number(stats['best_finish'])),
+            ('Best finish', 'P'+_format_number(stats['best_finish'])),
             ('Average finish', _format_number(stats['average_finish'], 2)),
             ('DNFs', stats['dnfs']),
             ('Categories', len(categories)),

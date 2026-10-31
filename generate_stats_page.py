@@ -4,6 +4,7 @@ import html
 import os
 
 import csv_lib
+import driver_blacklist
 import elo_lib
 import generate_driver_pages
 import html_lib
@@ -71,6 +72,7 @@ def generate_index_page(output_dir='docs'):
 def main():
     """Main execution function - process all seasons and generate pages"""
     import shutil
+    driver_blacklist.load_blacklisted_names(csv_lib.normalize_driver_name)
     print("[*] OOFS Stats Page Generator\n")
     print("=" * 60)
 

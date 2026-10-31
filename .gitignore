@@ -9,6 +9,7 @@ _site/
 .vscode/
 __pycache__/
 archive/
+assets/driver_blacklist.json
 # Additional Ruby/bundler ignore for when you run: bundle install
 /vendor
 

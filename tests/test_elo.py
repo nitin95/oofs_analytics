@@ -2,9 +2,11 @@ import json
 import os
 import tempfile
 import unittest
+from unittest.mock import patch
 
 import pandas as pd
 
+import driver_blacklist
 import elo_lib
 
 
@@ -15,6 +17,11 @@ class EloRankingTests(unittest.TestCase):
         self.config_root = os.path.join(self.root, 'json')
         self.csv_root = os.path.join(self.root, 'csv')
         os.makedirs(self.config_root)
+        self.blacklist_patcher = patch.object(
+            driver_blacklist, 'load_blacklisted_names', return_value=set()
+        )
+        self.blacklist_patcher.start()
+        self.addCleanup(self.blacklist_patcher.stop)
 
     def tearDown(self):
         self.temp_dir.cleanup()
@@ -55,6 +62,29 @@ class EloRankingTests(unittest.TestCase):
         ratings = elo_lib.update_event_ratings({}, {'Winner': 1, 'Loser': 2})
 
         self.assertEqual(ratings, {'Winner': 1516.0, 'Loser': 1484.0})
+
+    def test_blacklisted_driver_is_removed_before_elo_updates(self):
+        self.write_season('season1', 'Season 3', {
+            'sprint_races': {'s3-sc1-r.xml': {'name': 'Portimao'}},
+        })
+        self.write_event('season1', 'sprint', 's3-sc1-r.xml', [
+            {'Driver_name': 'Allowed Winner', 'CarClass': 'GT3', 'Position': 1},
+            {'Driver_name': 'Allowed Runner-up', 'CarClass': 'GT3', 'Position': 2},
+            {'Driver_name': 'Excluded Driver', 'CarClass': 'GT3', 'Position': 3},
+        ])
+
+        with patch.object(
+            driver_blacklist,
+            'load_blacklisted_names',
+            return_value={'Excluded Driver'},
+        ):
+            rankings = elo_lib.build_rankings(self.config_root, self.csv_root)
+
+        standings = rankings[0]['standings']
+        by_name = {standing['driver']: standing for standing in standings}
+        self.assertNotIn('Excluded Driver', by_name)
+        self.assertEqual(by_name['Allowed Winner']['race_rating'], 1532.0)
+        self.assertEqual(by_name['Allowed Runner-up']['race_rating'], 1468.0)
 
     def test_rankings_follow_first_race_and_separate_classes(self):
         self.write_season('season1', 'Season 3', {

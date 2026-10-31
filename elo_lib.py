@@ -8,6 +8,7 @@ from datetime import datetime
 import pandas as pd
 
 import csv_lib
+import driver_blacklist
 import html_lib
 
 
@@ -95,6 +96,9 @@ def _calculate_ratings(events):
 
 def build_rankings(config_root='assets/json', csv_root='assets/csv'):
     """Build race and qualifying Elo standings for each series/class."""
+    blacklisted_names = driver_blacklist.load_blacklisted_names(
+        csv_lib.normalize_driver_name
+    )
     seasons = csv_lib.load_season_metadata(config_root)
     category_events = {
         spec[3]: {'race': [], 'quali': []} for spec in CATEGORY_SPECS
@@ -149,6 +153,11 @@ def build_rankings(config_root='assets/json', csv_root='assets/csv'):
                         category_rows = category_rows[
                             category_rows['_driver'].ne('')
                             & category_rows['_position'].notna()
+                        ]
+                        category_rows = category_rows.loc[
+                            ~category_rows['_driver'].map(
+                                csv_lib.normalize_driver_name
+                            ).isin(blacklisted_names)
                         ]
                         if category_rows.empty:
                             continue

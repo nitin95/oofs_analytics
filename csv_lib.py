@@ -7,6 +7,7 @@ import os
 import numpy as np
 import pandas as pd
 
+import driver_blacklist
 from lmu_descriptors import LMUDescriptor
 
 
@@ -339,6 +340,10 @@ def process_races_into_comparison_df(
     for column in avg_pace_cols:
         comparison_df[column] = comparison_df[column].replace(0.0, np.nan)
     comparison_df = comparison_df.dropna(subset=avg_pace_cols, how='all')
+    blacklisted_names = driver_blacklist.load_blacklisted_names(normalize_driver_name)
+    comparison_df = comparison_df.loc[
+        ~comparison_df['Driver_name'].map(normalize_driver_name).isin(blacklisted_names)
+    ]
     comparison_df = comparison_df.sort_values('Driver_name').reset_index(drop=True)
 
     if season_id and series_type:

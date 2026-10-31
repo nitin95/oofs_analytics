@@ -4,10 +4,10 @@ OOFS Analytics turns Le Mans Ultimate result XMLs into per-event pace and race-d
 
 ## Setup
 
-Use Python 3 with `pandas` and `numpy` installed:
+Use Python 3 with `pandas`, `numpy`, and `cryptography` installed:
 
 ```powershell
-python -m pip install pandas numpy
+python -m pip install pandas numpy cryptography
 ```
 
 Run commands from the repository root so the default `assets/` and `docs/` paths resolve correctly.
@@ -34,9 +34,23 @@ Repeat `--season` to select multiple seasons. The CSV generator also accepts `--
 
 ## GitHub Pages
 
-The `Build and deploy GitHub Pages` workflow rebuilds the site when any branch is pushed. It publishes the repository's default branch at the site root and other branches under `/<branch>/`. Both `.github/workflows/pages.yml` and `.github/scripts/build_pages.py` must be present on a branch for its pushes to build; merge both into existing branches once, and create future branches from the default branch.
+The `Build and deploy GitHub Pages` workflow publishes only the repository's default branch. Branch-specific preview sites are no longer generated because the build decrypts the private driver blacklist. Store `OOFS_DRIVER_BLACKLIST_KEY` as a secret in the `github-pages` environment and restrict that environment to the default branch under **Settings > Environments > github-pages > Deployment branches and tags**. The workflow checks the triggering ref before running its secret-bearing build step.
 
-After merging the workflow, set **Settings > Pages > Build and deployment > Source** to **GitHub Actions**. In **Settings > Environments > github-pages > Deployment branches and tags**, choose **Selected branches and tags** and add explicit rules such as `*` for branch names without slashes. GitHub's unrestricted setting may still limit Pages deployments to the default branch when no explicit environment branch rules exist. Wildcards do not match `/`; add matching patterns such as `*/*` for branches with one slash. The workflow builds each remote branch in isolation and deploys one combined site.
+After merging the workflow, set **Settings > Pages > Build and deployment > Source** to **GitHub Actions**. In the `github-pages` environment, select **Selected branches and tags** and allow only the default branch; configure the environment secret there.
+
+## Driver Blacklist
+
+The encrypted blacklist is `assets/driver_blacklist.enc`. Its plaintext working file, `assets/driver_blacklist.json`, is ignored by Git and should contain entries with a canonicalizable name and a private reason:
+
+```json
+{
+	"drivers": [
+		{"name": "Driver Name", "reason": "Private administrative note"}
+	]
+}
+```
+
+Generate a Fernet key with `python driver_blacklist.py --generate-key`, store it in the local `OOFS_DRIVER_BLACKLIST_KEY` environment variable, and add the same value as the `github-pages` environment secret. In PowerShell, set the local value with `$env:OOFS_DRIVER_BLACKLIST_KEY = '<generated-key>'`. Create or update the ignored plaintext JSON, then encrypt it with `python driver_blacklist.py --encrypt` and commit only `assets/driver_blacklist.enc`. Never commit the key or plaintext file. Report generation stops if the encrypted file or key is missing or invalid.
 
 ## Event Configuration
 
