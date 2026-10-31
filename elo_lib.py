@@ -296,7 +296,7 @@ def _render_table(standings):
             f'<td>{standing["wins"]}</td>',
             f'<td>{standing["pole_positions"]}</td>',
             f'<td>{standing["podiums"]}</td>',
-            f'<td>{html.escape(standing["last_event"])}</td>',
+            f'<td>{html.escape(standing.get("last_event", "—"))}</td>',
         ]
         rows.append(f'<tr>{"".join(cells)}</tr>')
     return '\n'.join(rows)

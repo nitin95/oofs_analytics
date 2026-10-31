@@ -19,6 +19,24 @@ class EloRankingTests(unittest.TestCase):
     def tearDown(self):
         self.temp_dir.cleanup()
 
+    def test_table_renders_standing_without_last_event(self):
+        standing = {
+            'driver': 'Quali-only Driver',
+            'race_rating': None,
+            'quali_rating': 1500.0,
+            'elo_differential': None,
+            'starts': 0,
+            'average_finish_position': None,
+            'dnfs': 0,
+            'wins': 0,
+            'pole_positions': 1,
+            'podiums': 0,
+        }
+
+        rendered = elo_lib._render_table([standing])
+
+        self.assertIn('<td>—</td>', rendered)
+
     def write_season(self, season_id, name, races):
         with open(
             os.path.join(self.config_root, f'{season_id}.json'),

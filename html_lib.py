@@ -3,6 +3,7 @@
 import colorsys
 import json
 import os
+import re
 
 import numpy as np
 import pandas as pd
@@ -25,7 +26,7 @@ def format_driver_name(driver_name, rookie_names=()):
         name += '*'
     return name
 
-def get_sidebar_html(active_page, season_id='season1'):
+def get_sidebar_html(active_page, season_id='season1', available_pages=None):
     """Generate sidebar navigation HTML with season selector"""
     pages = {}
     has_split_sprint_classes = season_has_sprint_class_data(season_id)
@@ -72,6 +73,8 @@ def get_sidebar_html(active_page, season_id='season1'):
     current_section = None
     active_page_id = os.path.splitext(active_page)[0]
     for page_key, (section, subsection) in pages.items():
+        if available_pages is not None and f'{page_key}.html' not in available_pages:
+            continue
         if section != current_section:
             if current_section is not None:
                 sidebar_html += '</ul></div>'
@@ -84,6 +87,39 @@ def get_sidebar_html(active_page, season_id='season1'):
     
     sidebar_html += '</ul></div></nav>'
     return sidebar_html
+
+
+def refresh_sidebar_links(output_root, season_ids):
+    """Remove sidebar links whose generated report pages do not exist."""
+    page_keys = {
+        'sprint_race', 'sprint_quali',
+        'sprint_lmp3_race', 'sprint_lmp3_quali',
+        'sprint_gt3_race', 'sprint_gt3_quali',
+        'multiclass_p2ur_race', 'multiclass_p2ur_quali',
+        'multiclass_gt3_race', 'multiclass_gt3_quali',
+    }
+    for season_id in season_ids:
+        season_dir = os.path.join(output_root, season_id)
+        if not os.path.isdir(season_dir):
+            continue
+        available_pages = set(os.listdir(season_dir))
+        for page_name in available_pages:
+            if os.path.splitext(page_name)[0] not in page_keys:
+                continue
+            page_path = os.path.join(season_dir, page_name)
+            with open(page_path, 'r', encoding='utf-8-sig') as page_file:
+                page = page_file.read()
+            sidebar = get_sidebar_html(page_name, season_id, available_pages)
+            updated_page, replacements = re.subn(
+                r'<nav class="sidebar">.*?</nav>',
+                sidebar,
+                page,
+                count=1,
+                flags=re.DOTALL,
+            )
+            if replacements:
+                with open(page_path, 'w', encoding='utf-8-sig') as page_file:
+                    page_file.write(updated_page)
 
 def build_driver_color_map(driver_names):
     """Build a stable color map for drivers based on alphabetical name order."""

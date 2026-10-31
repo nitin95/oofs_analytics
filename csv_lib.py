@@ -22,6 +22,7 @@ DRIVER_REPLACEMENTS = {
     'p thomas': 'Parker Thomas',
     'DAN POULIN': 'Dan Jr Poulin',
     'David Carter': 'Dave Carter',
+    'David Carter#4131': 'Dave Carter',
     'David Carter#5529': 'Dave Carter',
     'John P': 'John Pflibsen',
     'Ayrton Senna': 'Ayrton Torres',
