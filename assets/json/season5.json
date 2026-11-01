@@ -22,8 +22,8 @@
     "s5-sc3.xml": {
       "name": "Interlagos",
       "reference_times": {
-        "lmp3": 97.9,
-        "gt3": 102.29
+        "lmp3": 88.3,
+        "gt3": 93.29
       }
     },
     "s5-sc4.xml": {
@@ -66,8 +66,8 @@
     "s5-sc3-r.xml": {
       "name": "Interlagos",
       "reference_times": {
-        "lmp3": 103.28,
-        "gt3": 107.42
+        "lmp3": 89.0,
+        "gt3": 94.0
       }
     },
     "s5-sc4-r.xml": {
@@ -110,7 +110,7 @@
     "s5-mc3.xml": {
       "name": "Interlagos",
       "reference_times": {
-        "hyper": 82.52,
+        "hyper": 82.337,
         "gt3": 93.29
       }
     },
@@ -154,8 +154,8 @@
     "s5-mc3-r.xml": {
       "name": "Interlagos",
       "reference_times": {
-        "hyper": 96.36,
-        "gt3": 106.87
+        "hyper": 83.1,
+        "gt3": 94.0
       }
     },
     "s5-mc4-r.xml": {

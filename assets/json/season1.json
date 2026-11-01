@@ -14,7 +14,7 @@
     "s1-sc2.xml": {
       "name": "Interlagos",
       "reference_times": {
-        "default": 102.8
+        "default": 95.0
       }
     },
     "s1-sc3.xml": {
@@ -64,7 +64,7 @@
     "s1-sc2-r.xml": {
       "name": "Interlagos",
       "reference_times": {
-        "default": 103.8
+        "default": 96.0
       }
     },
     "s1-sc3-r.xml": {

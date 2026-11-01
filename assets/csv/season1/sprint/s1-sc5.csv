@@ -1,11 +1,11 @@
-Driver,Car,CarClass,CarNumber,Position,FinishStatus,Laps,laptime_sec,laptime_pct,laptime_pct_alien,avg_laptime,avg_pace_pct_alien,stdev_laptime,stdev_pace_pct,lap_count,race_pace,pct_race_pace,consistency,reliability,n_tracklimits,n_inchidents,pct_laps,n_stops,pit_lane_pct_times,Driver_name,season_id,series_type,session_type
-Kasi Jackman,Lexus RCF LMGT3,GT3,404,1,None,10,129.3247,100.0,101.59,130.15045,102.24,0.623450428395604,0.49,4,,,,,,,,,,Kasi Jackman,season1,sprint,quali
-Greg Kach,Ford Mustang LMGT3,GT3,123,2,None,5,130.0193,99.47,102.14,130.2403666666667,102.31,0.29527596131981226,0.23,3,,,,,,,,,,Greg Kachadurian,season1,sprint,quali
-Nick Johnson,BMW M4 LMGT3,GT3,696,3,Finished Normally,10,130.4141,99.16,102.45,132.299925,103.93,1.4714779879993694,1.16,4,,,,,,,,,,Nick Johnson,season1,sprint,quali
-Abe Wozniak,Aston Martin Vantage AMR LMGT3,GT3,25,4,None,10,130.9585,98.75,102.87,131.99456666666666,103.69,1.4077878545197575,1.11,3,,,,,,,,,,Abe Wozniak,season1,sprint,quali
-Zachary Martin,Aston Martin Vantage AMR LMGT3,GT3,101,5,None,10,130.9949,98.72,102.9,131.30974,103.15,0.3591913181022024,0.28,5,,,,,,,,,,Zachary Martin,season1,sprint,quali
-Jesse Olsen,Mercedes-AMG LMGT3,GT3,16,6,None,8,131.3651,98.45,103.19,131.82055,103.55,0.42110210519540214,0.33,6,,,,,,,,,,Jesse Olsen,season1,sprint,quali
-Michael Quandt,Chevrolet Corvette Z06 LMGT3.R,GT3,106,7,Finished Normally,12,131.5908,98.28,103.37,137.71195,108.18,8.656613347320071,6.8,2,,,,,,,,,,Michael Quandt,season1,sprint,quali
-Grayson Head,Chevrolet Corvette Z06 LMGT3.R,GT3,43,8,None,11,132.0308,97.95,103.72,132.0308,103.72,0.0,0.0,1,,,,,,,,,,Grayson Head,season1,sprint,quali
-Brian Crane,Ford Mustang LMGT3,GT3,223,9,None,7,132.2639,97.78,103.9,132.3894,104.0,0.13806958390607815,0.11,3,,,,,,,,,,Brian Crane,season1,sprint,quali
-Dustin Rand,Aston Martin Vantage AMR LMGT3,GT3,18,10,None,8,133.0651,97.19,104.53,138.41815,108.73,8.510955402107726,6.69,4,,,,,,,,,,Dustin Rand,season1,sprint,quali
+Driver,Car,CarClass,CarNumber,Position,FinishStatus,Laps,laptime_sec,laptime_pct,laptime_pct_alien,avg_laptime,avg_pace_pct_alien,stdev_laptime,stdev_pace_pct,lap_count,race_pace,pct_race_pace,consistency,reliability,n_tracklimits,n_inchidents,n_incidents_vehicle,n_incidents_object,pct_laps,n_stops,pit_lane_pct_times,Driver_name,season_id,series_type,session_type
+Kasi Jackman,Lexus RCF LMGT3,GT3,404,1,None,10,129.3247,100.0,101.59,130.15045,102.24,0.623450428395604,0.49,4,,,,,,,,,,,,Kasi Jackman,season1,sprint,quali
+Greg Kach,Ford Mustang LMGT3,GT3,123,2,None,5,130.0193,99.46,102.14,130.2403666666667,102.31,0.29527596131981226,0.23,3,,,,,,,,,,,,Greg Kachadurian,season1,sprint,quali
+Nick Johnson,BMW M4 LMGT3,GT3,696,3,Finished Normally,10,130.4141,99.16,102.45,132.299925,103.93,1.4714779879993694,1.16,4,,,,,,,,,,,,Nick Johnson,season1,sprint,quali
+Abe Wozniak,Aston Martin Vantage AMR LMGT3,GT3,25,4,None,10,130.9585,98.76,102.87,131.99456666666666,103.69,1.4077878545197575,1.11,3,,,,,,,,,,,,Abe Wozniak,season1,sprint,quali
+Zachary Martin,Aston Martin Vantage AMR LMGT3,GT3,101,5,None,10,130.9949,98.73,102.9,131.30974,103.15,0.3591913181022024,0.28,5,,,,,,,,,,,,Zachary Martin,season1,sprint,quali
+Jesse Olsen,Mercedes-AMG LMGT3,GT3,16,6,None,8,131.3651,98.45,103.19,131.82055,103.55,0.42110210519540214,0.33,6,,,,,,,,,,,,Jesse Olsen,season1,sprint,quali
+Michael Quandt,Chevrolet Corvette Z06 LMGT3.R,GT3,106,7,Finished Normally,12,131.5908,98.28,103.37,131.5908,103.37,0.0,0.0,1,,,,,,,,,,,,Michael Quandt,season1,sprint,quali
+Grayson Head,Chevrolet Corvette Z06 LMGT3.R,GT3,43,8,None,11,132.0308,97.95,103.72,132.0308,103.72,0.0,0.0,1,,,,,,,,,,,,Grayson Head,season1,sprint,quali
+Brian Crane,Ford Mustang LMGT3,GT3,223,9,None,7,132.2639,97.78,103.9,132.3894,104.0,0.13806958390607815,0.11,3,,,,,,,,,,,,Brian Crane,season1,sprint,quali
+Dustin Rand,Aston Martin Vantage AMR LMGT3,GT3,18,10,None,8,133.0651,97.19,104.53,133.12279999999998,104.57,0.0816001225489233,0.06,2,,,,,,,,,,,,Dustin Rand,season1,sprint,quali

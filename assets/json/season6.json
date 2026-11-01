@@ -16,7 +16,7 @@
       "name": "Barcelona",
       "reference_times": {
         "lmp3": 94.647,
-        "gt3": 100.860
+        "gt3": 100.668
       }
     },
     "s6-sc3.xml":{
@@ -45,8 +45,8 @@
     "s6-sc2-r.xml": { 
       "name": "Barcelona",
       "reference_times": {
-        "lmp3": 106.755,
-        "gt3": 112.896
+        "lmp3": 95.76,
+        "gt3": 102.17
       }
     },
     "s6-sc3-r.xml": {
@@ -75,7 +75,7 @@
     "s6-mc2.xml": {
       "name": "Barcelona",
       "reference_times": {
-        "hyper": 88.335,
+        "hyper": 88.221,
         "gt3": 100.860
       }
     },
@@ -105,8 +105,8 @@
     "s6-mc2-r.xml": {
       "name": "Barcelona",
       "reference_times": {
-        "hyper": 98.166,
-        "gt3": 110.679
+        "hyper": 90.215,
+        "gt3": 102.17
       }
     },
     "s6-mc3-r.xml": {

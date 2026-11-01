@@ -221,11 +221,13 @@ def generate_html_tables(comparison_df, improvement_df, avg_pace_cols, track_nam
 def generate_descriptor_tables(comparison_df, race_codes, track_names):
     """Build round-by-round tables for race descriptors present in the data."""
     descriptor_specs = [
-        ('race_pace', 'Clean Race Pace (s)', 'number'),
+        ('race_pace', 'Clean Race Pace (%)', 'number'),
         ('consistency', 'Consistency (%)', 'fraction'),
         ('reliability', 'Reliability (%)', 'fraction'),
         ('n_tracklimits', 'Track Limits', 'integer'),
         ('n_inchidents', 'Incidents', 'integer'),
+        ('n_incidents_vehicle', 'Vehicle Incidents', 'integer'),
+        ('n_incidents_object', 'Object Incidents', 'integer'),
         ('pct_laps', 'Laps Completed (%)', 'number'),
         ('n_stops', 'Pit Stops', 'integer'),
         ('pit_lane_pct_times', 'Pit Lane Loss (lap equivalents)', 'number'),
@@ -301,7 +303,8 @@ def create_plotly_json(df_display_renamed, comparison_df, avg_pace_cols, stdev_p
     
     descriptor_metrics = [
         'position', 'race_pace', 'pct_race_pace', 'consistency', 'reliability',
-        'n_tracklimits', 'n_inchidents', 'pct_laps', 'n_stops',
+        'n_tracklimits', 'n_inchidents', 'n_incidents_vehicle',
+        'n_incidents_object', 'pct_laps', 'n_stops',
         'pit_lane_pct_times',
     ]
     descriptor_cols = [
@@ -409,7 +412,9 @@ def create_plotly_json(df_display_renamed, comparison_df, avg_pace_cols, stdev_p
                 consistency_col = f'consistency_{race_code}'
                 consistency_value = row.get(consistency_col)
                 if pd.isna(consistency_value):
-                    consistency_value = 1 - row.get(sd_col, np.nan) / 100
+                    consistency_value = (
+                        1 - row.get(sd_col, np.nan) / avg_val if avg_val else np.nan
+                    )
                 hover_text = f"{display_driver_name}<br>Avg Pace: {avg_val:.2f}%<br>Fastest Lap: {fastest_lap_str}"
 
                 if pd.notna(consistency_value):
@@ -417,11 +422,13 @@ def create_plotly_json(df_display_renamed, comparison_df, avg_pace_cols, stdev_p
 
                 descriptor_specs = [
                     ('position', 'Finishing Position', 'integer'),
-                    ('race_pace', 'Clean Race Pace', 'seconds'),
+                    ('race_pace', 'Clean Race Pace', 'percent'),
                     ('pct_race_pace', 'Race Pace vs Class Leader', 'percent'),
                     ('reliability', 'Reliability', 'fraction'),
                     ('n_tracklimits', 'Track Limits', 'integer'),
                     ('n_inchidents', 'Incidents', 'integer'),
+                    ('n_incidents_vehicle', 'Vehicle Incidents', 'integer'),
+                    ('n_incidents_object', 'Object Incidents', 'integer'),
                     ('pct_laps', 'Laps Completed', 'percent'),
                     ('n_stops', 'Pit Stops', 'integer'),
                     ('pit_lane_pct_times', 'Pit Lane Loss (lap equivalents)', 'number'),

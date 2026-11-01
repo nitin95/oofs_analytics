@@ -106,6 +106,13 @@ def collect_driver_records(data_root=DATA_ROOT, config_root=CONFIG_ROOT):
                             'consistency': _as_number(row.get('consistency')),
                             'reliability': _as_number(row.get('reliability')),
                             'incidents': _as_number(row.get('n_inchidents')),
+                            'vehicle_incidents': _as_number(
+                                row.get('n_incidents_vehicle')
+                            ),
+                            'object_incidents': _as_number(
+                                row.get('n_incidents_object')
+                            ),
+                            'track_limits': _as_number(row.get('n_tracklimits')),
                             '_season_order': season_order,
                             '_event_order': event_order,
                             '_session_order': session_order,
@@ -171,6 +178,15 @@ def _category_stats(races, qualis):
         'average_consistency': _mean(races, 'consistency'),
         'average_reliability': _mean(races, 'reliability'),
         'incidents': sum(record['incidents'] or 0 for record in races),
+        'average_incidents': _mean(races, 'incidents'),
+        'vehicle_incidents': sum(
+            record['vehicle_incidents'] or 0 for record in races
+        ),
+        'object_incidents': sum(
+            record['object_incidents'] or 0 for record in races
+        ),
+        'track_limits': sum(record['track_limits'] or 0 for record in races),
+        'average_track_limits': _mean(races, 'track_limits'),
     }
 
 
@@ -331,7 +347,12 @@ def render_driver_page(name, profile, generated_date, elo_lookup=None):
                 ('Average race pace vs alien', _format_number(category_stats['average_pace'], 2) + '%'),
                 ('Average consistency', _format_number(category_stats['average_consistency'], 3)),
                 ('Average reliability', _format_number(category_stats['average_reliability'], 3)),
-                ('Incidents', category_stats['incidents']),
+                ('Track limits', _format_number(category_stats['track_limits'])),
+                ('Average track limits per race', _format_number(category_stats['average_track_limits'], 2)),
+                ('Incidents', _format_number(category_stats['incidents'])),
+                ('Average incidents per race', _format_number(category_stats['average_incidents'], 2)),
+                ('Vehicle incidents', _format_number(category_stats['vehicle_incidents'])),
+                ('Object incidents', _format_number(category_stats['object_incidents'])),
                 ('Category ELO', _format_number(category_elo.get('rating'), 1)),
                 ('Driver rank', f"#{category_elo['rank']}" if category_elo else 'N/A'),
             ])

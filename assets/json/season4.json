@@ -24,9 +24,9 @@
       }
     },
     "s4-sc4.xml": {
-      "name": "Fuji",
+      "name": "Fuji (Classic)",
       "reference_times": {
-        "default": 105.0
+        "default": 95.68
       }
     },
     "s4-sc5.xml": {
@@ -62,9 +62,9 @@
       }
     },
     "s4-sc4-r.xml": {
-      "name": "Fuji",
+      "name": "Fuji (Classic)",
       "reference_times": {
-        "default": 106.5
+        "default": 96.5
       }
     },
     "s4-sc5-r.xml": {
@@ -103,10 +103,10 @@
       }
     },
     "s4-mc4.xml": {
-      "name": "Fuji",
+      "name": "Fuji (Classic)",
       "reference_times": {
-        "hyper": 93.4,
-        "gt3": 105.0
+        "hyper": 84.2,
+        "gt3": 96.5
       }
     },
     "s4-mc5.xml": {
@@ -147,10 +147,10 @@
       }
     },
     "s4-mc4-r.xml": {
-      "name": "Fuji",
+      "name": "Fuji (Classic)",
       "reference_times": {
-        "hyper": 91.0,
-        "gt3": 103.5
+        "hyper": 85.0,
+        "gt3": 96.5
       }
     },
     "s4-mc5-r.xml": {

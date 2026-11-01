@@ -23,7 +23,10 @@ class DriverPagesTests(unittest.TestCase):
         config = {
             'season_info': {'name': 'Season 1'},
             'sprint_qualis': {'s1-sc1.xml': {'name': 'Test Circuit'}},
-            'sprint_races': {'s1-sc1-r.xml': {'name': 'Test Circuit'}},
+            'sprint_races': {
+                's1-sc1-r.xml': {'name': 'Test Circuit'},
+                's1-sc2-r.xml': {'name': 'Second Circuit'},
+            },
         }
 
         with tempfile.TemporaryDirectory() as root:
@@ -40,6 +43,9 @@ class DriverPagesTests(unittest.TestCase):
             race_path = csv_lib.build_csv_path(
                 'season1', 'sprint', 's1-sc1-r.xml', data_root
             )
+            second_race_path = csv_lib.build_csv_path(
+                'season1', 'sprint', 's1-sc2-r.xml', data_root
+            )
             os.makedirs(os.path.dirname(qualifying_path), exist_ok=True)
             qualifying = {
                 'Driver': 'Greg Kach', 'Driver_name': 'Greg Kach',
@@ -48,9 +54,27 @@ class DriverPagesTests(unittest.TestCase):
                 'avg_pace_pct_alien': 101.25, 'consistency': 1, 'reliability': 1,
                 'n_inchidents': 0, 'n_tracklimits': 0, 'n_stops': 0,
             }
-            race = dict(qualifying, Position=2, Laps=20)
+            race = dict(
+                qualifying,
+                Position=2,
+                Laps=20,
+                n_tracklimits=4,
+                n_inchidents=3,
+                n_incidents_vehicle=2,
+                n_incidents_object=1,
+            )
+            second_race = dict(
+                qualifying,
+                Position=3,
+                Laps=18,
+                n_tracklimits=2,
+                n_inchidents=5,
+                n_incidents_vehicle=3,
+                n_incidents_object=2,
+            )
             pd.DataFrame([qualifying]).to_csv(qualifying_path, index=False)
             pd.DataFrame([race]).to_csv(race_path, index=False)
+            pd.DataFrame([second_race]).to_csv(second_race_path, index=False)
 
             with (
                 patch.dict(csv_lib.SEASONS, {'season1': {'name': 'Season 1'}}, clear=True),
@@ -84,12 +108,26 @@ class DriverPagesTests(unittest.TestCase):
             self.assertIn('<h1>Greg K.</h1>', page)
             self.assertIn('Sprint GT3', page)
             self.assertIn('Average quali pace vs alien', page)
+            self.assertIn('<span>Track limits</span><strong>6</strong>', page)
+            self.assertIn(
+                '<span>Average track limits per race</span><strong>3.00</strong>',
+                page,
+            )
+            self.assertIn(
+                '<span>Average incidents per race</span><strong>4.00</strong>',
+                page,
+            )
+            self.assertIn(
+                '<span>Vehicle incidents</span><strong>5</strong>', page
+            )
+            self.assertIn(
+                '<span>Object incidents</span><strong>3</strong>', page
+            )
             self.assertIn('101.25%', page)
             self.assertIn('Category ELO', page)
             self.assertIn('1,612.3', page)
             self.assertIn('Driver rank', page)
             self.assertIn('#1', page)
-            self.assertNotIn('Track limits</span>', page)
             self.assertNotIn('Pit stops</span>', page)
             self.assertIn('<strong>1</strong>', page)
             self.assertIn('greg-kachadurian.html', index)

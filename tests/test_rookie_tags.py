@@ -53,7 +53,7 @@ class RookieTagTests(unittest.TestCase):
         config.setdefault(section, {})[filename] = {'name': 'Test Track'}
         self.write_config(season_id, config)
 
-    def write_descriptor_xml(self, path, drivers):
+    def write_descriptor_xml(self, path, drivers, incidents=(), track_limits=()):
         parent = os.path.dirname(path)
         if parent:
             os.makedirs(parent, exist_ok=True)
@@ -69,13 +69,23 @@ class RookieTagTests(unittest.TestCase):
             ET.SubElement(driver, 'FinishStatus').text = 'Finished'
             times = driver_data['times']
             ET.SubElement(driver, 'Laps').text = str(len(times) + 1)
-            ET.SubElement(driver, 'Lap', {'num': '1', 'et': '--.---'}).text = '--.----'
+            first_lap_attributes = driver_data.get('lap_attributes', {}).get(1, {})
+            ET.SubElement(
+                driver, 'Lap', {'num': '1', 'et': '--.---', **first_lap_attributes}
+            ).text = '--.----'
             for lap_num, lap_time in enumerate(times, start=2):
                 elapsed = driver_data.get('elapsed', {}).get(lap_num, (lap_num - 1) * 100)
                 value = '--.----' if lap_time is None else str(lap_time)
+                lap_attributes = driver_data.get('lap_attributes', {}).get(lap_num, {})
                 ET.SubElement(
-                    driver, 'Lap', {'num': str(lap_num), 'et': str(elapsed)}
+                    driver, 'Lap', {
+                        'num': str(lap_num), 'et': str(elapsed), **lap_attributes
+                    }
                 ).text = value
+        for attributes, text in incidents:
+            ET.SubElement(root, 'Incident', attributes).text = text
+        for attributes, text in track_limits:
+            ET.SubElement(root, 'TrackLimits', attributes).text = text
         ET.ElementTree(root).write(path, encoding='utf-8')
         return path
 
@@ -217,7 +227,6 @@ class RookieTagTests(unittest.TestCase):
             'stdev_pace_pct_sc1': 0.5,
             'laptime_pct_alien_sc1': 101.0,
             'race_pace_sc1': 100.5,
-            'reliability_sc1': 1.0,
         }])
 
         with patch.object(html_lib, 'generate_page', side_effect=lambda *args: args):
@@ -278,7 +287,10 @@ class RookieTagTests(unittest.TestCase):
     def test_comparison_excludes_blacklisted_driver(self):
         event_df = pd.DataFrame([
             {'Driver_name': 'Blocked Driver', 'avg_pace_pct_alien': 101.0},
-            {'Driver_name': 'Allowed Driver', 'avg_pace_pct_alien': 102.0},
+            {
+                'Driver_name': 'Allowed Driver', 'avg_pace_pct_alien': 102.0,
+                'n_incidents_vehicle': 2, 'n_incidents_object': 1,
+            },
         ])
         with patch.object(
             driver_blacklist,
@@ -290,6 +302,8 @@ class RookieTagTests(unittest.TestCase):
             )
 
         self.assertEqual(comparison_df['Driver_name'].tolist(), ['Allowed Driver'])
+        self.assertEqual(comparison_df.loc[0, 'n_incidents_vehicle_sc1'], 2)
+        self.assertEqual(comparison_df.loc[0, 'n_incidents_object_sc1'], 1)
 
     def test_race_descriptors_are_class_scoped_and_qualifying_is_pace_only(self):
         xml_path = self.write_descriptor_xml('race.xml', [
@@ -299,21 +313,198 @@ class RookieTagTests(unittest.TestCase):
                 'times': [100, None, 100], 'elapsed': {2: 100, 3: 205, 4: 305},
             },
             {'name': 'Prototype Driver', 'class': 'Hyper', 'position': 1, 'times': [80, 80, 80]},
-        ])
+        ], track_limits=[(
+            {
+                'Driver': 'Incident Driver', 'Lap': '2', 'WarningPoints': '0.5',
+                'CurrentPoints': '0.5', 'Resolution': '2', 'et': '200',
+            },
+            'Warning',
+        )])
         descriptor = LMUDescriptor()
-        race_data = descriptor.get_descriptors(xml_path)
+        reference_times = {'gt3': 100, 'hyper': 80}
+        race_data = descriptor.get_descriptors(xml_path, reference_times)
         incident = race_data[race_data['Driver'] == 'Incident Driver'].iloc[0]
         prototype = race_data[race_data['Driver'] == 'Prototype Driver'].iloc[0]
-        quali_data = descriptor.get_quali_descriptors(xml_path)
+        quali_data = descriptor.get_quali_descriptors(xml_path, reference_times)
 
         self.assertEqual(incident['n_tracklimits'], 1)
-        self.assertEqual(incident['n_inchidents'], 1)
-        self.assertAlmostEqual(incident['reliability'], 1 / 3)
-        self.assertAlmostEqual(incident['race_pace'], 101.6667, places=3)
-        self.assertAlmostEqual(incident['pct_race_pace'], 100 * 101.6667 / 99.3333, places=2)
+        self.assertEqual(incident['n_inchidents'], 0)
+        self.assertEqual(incident['n_incidents_vehicle'], 0)
+        self.assertEqual(incident['n_incidents_object'], 0)
+        self.assertAlmostEqual(incident['reliability'], 0.5)
+        self.assertAlmostEqual(incident['race_pace'], 100.0)
+        self.assertAlmostEqual(incident['pct_race_pace'], 100 * 100 / 99.3333, places=2)
         self.assertEqual(prototype['pct_race_pace'], 100.0)
         self.assertTrue(quali_data['reliability'].isna().all())
         self.assertTrue(quali_data['pct_race_pace'].isna().all())
+
+    def test_race_incidents_and_track_limits_come_from_event_tags(self):
+        incidents = [
+            ({'et': '200.0'}, 'A Driver(1) reported contact (100) with another vehicle B Driver(2)'),
+            ({'et': '200.2'}, 'B Driver(2) reported contact (100) with another vehicle A Driver(1)'),
+            ({'et': '205.0'}, 'A Driver(1) reported contact (100) with another vehicle B Driver(2)'),
+            ({'et': '205.21'}, 'B Driver(2) reported contact (100) with another vehicle A Driver(1)'),
+            ({'et': '206.0'}, 'A Driver(1) reported contact (100) with Immovable'),
+            ({'et': '207.0'}, 'B Driver(2) reported contact (100) with Sign'),
+        ]
+        awarded_limits = {
+            'Driver': 'A Driver', 'Lap': '2', 'WarningPoints': '0.5',
+            'CurrentPoints': '0.5', 'Resolution': '4', 'et': '300.0',
+        }
+        track_limits = [
+            (awarded_limits, 'Warning'),
+            (dict(awarded_limits), 'Warning'),
+            ({
+                'Driver': 'A Driver', 'Lap': '2', 'WarningPoints': '0.25',
+                'CurrentPoints': '0', 'Resolution': '2', 'et': '301.0',
+            }, 'Drive Through Penalty'),
+            ({
+                'Driver': 'B Driver', 'Lap': '2', 'WarningPoints': '0',
+                'CurrentPoints': '0.5', 'Resolution': '5', 'et': '302.0',
+            }, 'No Further Action'),
+        ]
+        xml_path = self.write_descriptor_xml('event-metrics.xml', [
+            {'name': 'A Driver', 'class': 'GT3', 'position': 1, 'times': [100, 100]},
+            {'name': 'B Driver', 'class': 'GT3', 'position': 2, 'times': [101, 101]},
+        ], incidents, track_limits)
+
+        race_data = LMUDescriptor().get_descriptors(xml_path, {'gt3': 100})
+        driver_a = race_data[race_data['Driver'] == 'A Driver'].iloc[0]
+        driver_b = race_data[race_data['Driver'] == 'B Driver'].iloc[0]
+
+        self.assertEqual(driver_a['n_tracklimits'], 2)
+        self.assertEqual(driver_b['n_tracklimits'], 0)
+        self.assertEqual(driver_a['n_incidents_vehicle'], 2)
+        self.assertEqual(driver_a['n_incidents_object'], 1)
+        self.assertEqual(driver_a['n_inchidents'], 3)
+        self.assertEqual(driver_b['n_incidents_vehicle'], 2)
+        self.assertEqual(driver_b['n_incidents_object'], 1)
+        self.assertEqual(driver_b['n_inchidents'], 3)
+
+    def test_quali_wet_majority_uses_moving_reference(self):
+        wet = {'fcompound': '1,Wet', 'rcompound': '1,Wet'}
+        dry = {'fcompound': '0,Medium', 'rcompound': '0,Medium'}
+        xml_path = self.write_descriptor_xml('wet-quali.xml', [
+            {
+                'name': 'Fast Wet Driver', 'class': 'GT3', 'position': 1,
+                'times': [100], 'lap_attributes': {2: wet},
+            },
+            {
+                'name': 'Wet Driver', 'class': 'GT3', 'position': 2,
+                'times': [101], 'lap_attributes': {2: wet},
+            },
+            {
+                'name': 'Dry Driver', 'class': 'GT3', 'position': 3,
+                'times': [102], 'lap_attributes': {2: dry},
+            },
+        ])
+
+        quali_data = LMUDescriptor().get_quali_descriptors(
+            xml_path, {'gt3': 100}
+        )
+        fastest = quali_data[quali_data['Driver'] == 'Fast Wet Driver'].iloc[0]
+
+        self.assertAlmostEqual(fastest['laptime_pct_alien'], 100 * 100 / 98.5, places=2)
+        self.assertAlmostEqual(fastest['avg_pace_pct_alien'], 100 * 100 / 98.5, places=2)
+
+    def test_107_percent_filter_uses_active_reference(self):
+        xml_path = self.write_descriptor_xml('slow-quali.xml', [
+            {'name': 'Slow Driver', 'class': 'GT3', 'position': 1, 'times': [108, 108]},
+        ])
+
+        quali_data = LMUDescriptor().get_quali_descriptors(xml_path, {'gt3': 100})
+        driver = quali_data.iloc[0]
+
+        self.assertEqual(driver['lap_count'], 0)
+        self.assertTrue(pd.isna(driver['avg_pace_pct_alien']))
+
+    def test_pit_in_and_out_laps_are_excluded_and_counted_as_loss(self):
+        xml_path = self.write_descriptor_xml('pit-race.xml', [
+            {
+                'name': 'Pit Driver', 'class': 'GT3', 'position': 1,
+                'times': [100, 130, 120, 100],
+                'lap_attributes': {3: {'pit': '1'}},
+            },
+        ])
+
+        race_data = LMUDescriptor().get_descriptors(xml_path, {'gt3': 100})
+        driver = race_data.iloc[0]
+
+        self.assertEqual(driver['lap_count'], 2)
+        self.assertEqual(driver['n_stops'], 1)
+        self.assertAlmostEqual(driver['race_pace'], 100.0)
+        self.assertAlmostEqual(driver['pit_lane_pct_times'], 0.5)
+
+    def test_race_wet_vote_is_event_wide_and_uses_completed_laps(self):
+        wet = {'p': '2', 'fcompound': '1,Wet', 'rcompound': '1,Wet'}
+        dry = {'p': '1', 'fcompound': '0,Medium', 'rcompound': '0,Medium'}
+        xml_path = self.write_descriptor_xml('wet-race.xml', [
+            {
+                'name': 'GT3 Leader', 'class': 'GT3', 'position': 1,
+                'times': [100, 100],
+                'lap_attributes': {2: {**dry, 'p': '1'}, 3: {**dry, 'p': '1'}},
+            },
+            {
+                'name': 'GT3 Wet Driver', 'class': 'GT3', 'position': 2,
+                'times': [101, 101],
+                'lap_attributes': {2: {**wet, 'p': '3'}, 3: {**wet, 'p': '3'}},
+            },
+            {
+                'name': 'Hyper Wet Driver', 'class': 'Hyper', 'position': 1,
+                'times': [None, 80],
+                'lap_attributes': {2: {**wet, 'p': '2'}, 3: {**wet, 'p': '2'}},
+            },
+        ])
+
+        race_data = LMUDescriptor().get_descriptors(
+            xml_path, {'gt3': 100, 'hyper': 80}
+        )
+        leader = race_data[race_data['Driver'] == 'GT3 Leader'].iloc[0]
+
+        self.assertAlmostEqual(leader['race_pace'], 102.56, places=2)
+
+    def test_greasy_reference_activates_and_recovers_after_two_laps(self):
+        dry = {'fcompound': '0,Medium', 'rcompound': '0,Medium'}
+        wet = {'fcompound': '1,Wet', 'rcompound': '1,Wet'}
+
+        def lap_attributes(position, wet_laps=()):
+            return {
+                lap_num: {
+                    **(wet if lap_num in wet_laps else dry),
+                    'p': str(position),
+                }
+                for lap_num in range(2, 7)
+            }
+
+        xml_path = self.write_descriptor_xml('greasy-race.xml', [
+            {
+                'name': 'GT3 Leader', 'class': 'GT3', 'position': 1,
+                'times': [105, 105, 103, 103, 100],
+                'lap_attributes': lap_attributes(1),
+            },
+            {
+                'name': 'GT3 Wet Driver', 'class': 'GT3', 'position': 3,
+                'times': [106, 106, 104, 104, 101],
+                'lap_attributes': lap_attributes(3, {2, 3, 4, 5}),
+            },
+            {
+                'name': 'Hyper Leader', 'class': 'Hyper', 'position': 2,
+                'times': [84, 84, 82.4, 82.4, 80],
+                'lap_attributes': lap_attributes(2),
+            },
+            {
+                'name': 'Hyper Driver', 'class': 'Hyper', 'position': 4,
+                'times': [85, 85, 83, 83, 81],
+                'lap_attributes': lap_attributes(4),
+            },
+        ])
+
+        race_data = LMUDescriptor().get_descriptors(
+            xml_path, {'gt3': 100, 'hyper': 80}
+        )
+        leader = race_data[race_data['Driver'] == 'GT3 Leader'].iloc[0]
+
+        self.assertAlmostEqual(leader['race_pace'], 102.54, places=2)
 
     def test_csv_generator_writes_same_stem_quali_and_race_files(self):
         config = {
@@ -354,16 +545,20 @@ class RookieTagTests(unittest.TestCase):
             'stdev_pace_pct_sc1': 0.5,
             'laptime_pct_alien_sc1': 101.0,
             'position_sc1': 2,
+            'race_pace_sc1': 100.5,
             'pct_race_pace_sc1': 102.5,
             'consistency_sc1': 0.99,
             'reliability_sc1': 0.95,
             'n_tracklimits_sc1': 2,
             'n_inchidents_sc1': 1,
+            'n_incidents_vehicle_sc1': 1,
+            'n_incidents_object_sc1': 0,
             'pct_laps_sc1': 98.0,
             'n_stops_sc1': 1,
             'pit_lane_pct_times_sc1': 0.2,
         }])
         tables = html_lib.generate_descriptor_tables(comparison_df, ['sc1'], ['Fuji'])
+        self.assertIn('Clean Race Pace (%)', tables)
         display_df, _ = html_lib.create_display_df(
             comparison_df, ['avg_pace_pct_alien_sc1'], ['stdev_pace_pct_sc1'], ['Fuji']
         )
@@ -383,7 +578,12 @@ class RookieTagTests(unittest.TestCase):
         self.assertNotIn('<h3>Race Pace vs Class Leader (%)</h3>', tables)
         self.assertIn('data-driver="A Driver"', tables)
         self.assertIn('Reliability: 95.00%', race_hover)
+        self.assertIn('Clean Race Pace: 100.50%', race_hover)
         self.assertIn('Track Limits: 2', race_hover)
+        self.assertIn('Vehicle Incidents: 1', race_hover)
+        self.assertIn('Object Incidents: 0', race_hover)
+        self.assertIn('<h3>Vehicle Incidents</h3>', tables)
+        self.assertIn('<h3>Object Incidents</h3>', tables)
         self.assertIn('Consistency: 99.00%', race_hover)
         self.assertNotIn('Reliability', quali_hover)
 

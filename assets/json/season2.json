@@ -36,8 +36,8 @@
     "s2-mc5.xml": {
       "name": "Silverstone",
       "reference_times": {
-        "p2ur": 114.7,
-        "gt3": 129.6
+        "p2ur": 103.0,
+        "gt3": 118.5
       }
     },
     "s2-mc6.xml": {
@@ -94,8 +94,8 @@
     "s2-mc5-r.xml": {
       "name": "Silverstone",
       "reference_times": {
-        "p2ur": 118.3,
-        "gt3": 130.8
+        "p2ur": 104.0,
+        "gt3": 119.5
       }
     },
     "s2-mc6-r.xml": {

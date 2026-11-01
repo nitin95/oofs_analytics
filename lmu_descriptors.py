@@ -1,5 +1,6 @@
 """Generate normalized pace and race descriptors from LMU result XML."""
 
+import re
 import xml.etree.ElementTree as ET
 
 import numpy as np
@@ -13,7 +14,8 @@ PACE_COLUMNS = [
 ]
 RACE_DESCRIPTOR_COLUMNS = [
     'race_pace', 'pct_race_pace', 'consistency', 'reliability', 'n_tracklimits',
-    'n_inchidents', 'pct_laps', 'n_stops', 'pit_lane_pct_times',
+    'n_inchidents', 'n_incidents_vehicle', 'n_incidents_object', 'pct_laps',
+    'n_stops', 'pit_lane_pct_times',
 ]
 
 
@@ -42,20 +44,13 @@ class LMUDescriptor:
         drivers = []
         for driver in root.iter('Driver'):
             car_class = driver.findtext('CarClass', '') or ''
-            if not self._matches_class(car_class):
-                continue
-
             overall_position = self._to_int(driver.findtext('Position'))
             class_position = self._to_int(driver.findtext('ClassPosition'))
             position = class_position if class_position is not None else overall_position
             if position is None:
                 continue
 
-            all_laps = list(driver.findall('Lap'))
-            valid_laps = self._valid_lap_times(all_laps)
-            if not valid_laps:
-                continue
-
+            all_laps = [self._lap_record(lap, position) for lap in driver.findall('Lap')]
             row = {
                 'Driver': driver.findtext('Name', 'Unknown'),
                 'Car': driver.findtext('CarType', 'Unknown'),
@@ -64,77 +59,149 @@ class LMUDescriptor:
                 'Position': position,
                 'FinishStatus': driver.findtext('FinishStatus', ''),
                 'Laps': self._to_int(driver.findtext('Laps')) or len(all_laps),
-                'lap_count': len(valid_laps),
-                'laptime_sec': float(min(valid_laps)),
-                'avg_laptime': float(np.mean(valid_laps)),
-                'stdev_laptime': float(np.std(valid_laps, ddof=1)) if len(valid_laps) > 1 else 0.0,
+                'lap_count': 0,
+                'laptime_sec': np.nan,
+                'avg_laptime': np.nan,
+                'stdev_laptime': np.nan,
             }
             row['laptime_pct'] = np.nan
             row['laptime_pct_alien'] = np.nan
             row['avg_pace_pct_alien'] = np.nan
             row['stdev_pace_pct'] = np.nan
             row.update({column: np.nan for column in RACE_DESCRIPTOR_COLUMNS})
-            row['_reference_times'] = reference_times or {}
-            drivers.append((row, all_laps))
+            drivers.append({'row': row, 'laps': all_laps})
 
         if not drivers:
             return pd.DataFrame(columns=PACE_COLUMNS + RACE_DESCRIPTOR_COLUMNS)
 
-        class_best = {}
-        class_leaders = {}
-        class_race_pace = {}
-        race_stats = {}
-        for row, _ in drivers:
-            class_key = self._class_key(row['CarClass'])
-            class_best[class_key] = min(class_best.get(class_key, row['laptime_sec']), row['laptime_sec'])
-            class_leaders[class_key] = max(class_leaders.get(class_key, 0), row['Laps'])
-
         if include_race:
-            for row, all_laps in drivers:
-                race_laps, tracklimits, in_laps, out_laps, n_stops = self._race_laps(all_laps)
-                if not race_laps:
-                    continue
-                race_pace = float(np.mean(race_laps))
-                class_key = self._class_key(row['CarClass'])
-                class_race_pace[class_key] = min(
-                    class_race_pace.get(class_key, race_pace), race_pace
-                )
-                race_stats[id(row)] = (
-                    race_pace, tracklimits, in_laps, out_laps, n_stops, race_laps
-                )
+            event_metrics = self._race_event_metrics(root, drivers)
+            reference_by_lap = self._build_race_references(
+                drivers, reference_times, event_metrics
+            )
+        else:
+            reference_by_class = self._build_quali_references(drivers, reference_times)
+            reference_by_lap = None
 
-        output = []
-        for row, all_laps in drivers:
+        class_fastest_pct = {}
+        class_race_pace = {}
+        class_lap_leaders = {}
+        for entry in drivers:
+            row = entry['row']
+            if not self._matches_class(row['CarClass']):
+                continue
+
             class_key = self._class_key(row['CarClass'])
-            reference_time = self._get_reference_time(row['CarClass'], reference_times)
-            row['laptime_pct'] = round(100 * class_best[class_key] / row['laptime_sec'], 2)
-            row['laptime_pct_alien'] = round(100 * row['laptime_sec'] / reference_time, 2) if reference_time else np.nan
-            row['avg_pace_pct_alien'] = round(100 * row['avg_laptime'] / reference_time, 2) if reference_time else np.nan
-            row['stdev_pace_pct'] = round(100 * row['stdev_laptime'] / reference_time, 2) if reference_time else np.nan
+            if include_race:
+                source_laps = entry['clean_laps']
+                tracklimits = entry['tracklimits']
+                in_laps = entry['in_laps']
+                out_laps = entry['out_laps']
+                n_stops = entry['n_stops']
+                class_lap_leaders[class_key] = max(
+                    class_lap_leaders.get(class_key, 0), row['Laps']
+                )
+            else:
+                source_laps = self._qualifying_laps(entry['laps'])
+
+            pace_samples = []
+            for lap in source_laps:
+                if include_race:
+                    reference_time = reference_by_lap.get((lap['num'], class_key))
+                else:
+                    reference_time = reference_by_class.get(class_key)
+                if reference_time is None or reference_time <= 0:
+                    continue
+                if lap['time'] > reference_time * 1.07:
+                    continue
+                pace_samples.append({
+                    'num': lap['num'],
+                    'time': lap['time'],
+                    'reference': reference_time,
+                    'pct': 100 * lap['time'] / reference_time,
+                })
+
+            entry['pace_samples'] = pace_samples
+            pace_values = [sample['pct'] for sample in pace_samples]
+            raw_values = [sample['time'] for sample in pace_samples]
+            row['lap_count'] = len(pace_samples)
+            if pace_samples:
+                fastest_pct = min(pace_values)
+                class_fastest_pct[class_key] = min(
+                    class_fastest_pct.get(class_key, fastest_pct), fastest_pct
+                )
+                row['laptime_sec'] = float(min(raw_values))
+                row['avg_laptime'] = float(np.mean(raw_values))
+                row['stdev_laptime'] = (
+                    float(np.std(raw_values, ddof=1)) if len(raw_values) > 1 else 0.0
+                )
+                row['laptime_pct_alien'] = round(fastest_pct, 2)
+                row['avg_pace_pct_alien'] = round(float(np.mean(pace_values)), 2)
+                row['stdev_pace_pct'] = round(
+                    float(np.std(pace_values, ddof=1)) if len(pace_values) > 1 else 0.0,
+                    2,
+                )
 
             if include_race:
-                stats = race_stats.get(id(row))
-                if stats:
-                    race_pace, tracklimits, in_laps, out_laps, n_stops, race_laps = stats
-                    row['race_pace'] = race_pace
-                    row['pct_race_pace'] = max(
-                        100.0, 100 * race_pace / class_race_pace[class_key]
+                race_values = [sample['pct'] for sample in pace_samples]
+                incident_metrics = event_metrics[self._event_name_key(row['Driver'])]
+                tracklimits = incident_metrics['tracklimits']
+                incidents = (
+                    incident_metrics['vehicle_incidents']
+                    + incident_metrics['object_incidents']
+                )
+                row['n_tracklimits'] = tracklimits
+                row['n_inchidents'] = incidents
+                row['n_incidents_vehicle'] = incident_metrics['vehicle_incidents']
+                row['n_incidents_object'] = incident_metrics['object_incidents']
+                row['n_stops'] = n_stops
+                race_mean = float(np.mean(race_values)) if race_values else np.nan
+                entry['race_mean'] = race_mean
+                if race_values:
+                    class_race_pace[class_key] = min(
+                        class_race_pace.get(class_key, race_mean), race_mean
                     )
-                    row['consistency'] = 1 - float(np.std(race_laps)) / race_pace
-                    incidents = sum(lap > race_pace * 1.02 for lap in race_laps)
-                    row['n_tracklimits'] = tracklimits
-                    row['n_inchidents'] = incidents
-                    row['reliability'] = max(0.0, 1 - (tracklimits + incidents) / len(race_laps))
-                    leader_laps = class_leaders[class_key]
-                    row['pct_laps'] = 100 * row['Laps'] / leader_laps if leader_laps else np.nan
-                    row['n_stops'] = n_stops
-                    if in_laps and len(in_laps) == len(out_laps):
-                        row['pit_lane_pct_times'] = (
-                            (sum(in_laps) + sum(out_laps) - len(in_laps) * 2 * race_pace)
-                            / race_pace
+                    race_std = float(np.std(race_values))
+                    row['race_pace'] = race_mean
+                    row['consistency'] = 1 - race_std / race_mean if race_mean else np.nan
+                    row['reliability'] = max(
+                        0.0, 1 - (tracklimits + incidents) / (2*len(race_values))
+                    )
+                    leader_laps = class_lap_leaders.get(class_key, 0)
+                    row['pct_laps'] = (
+                        100 * row['Laps'] / leader_laps if leader_laps else np.nan
+                    )
+
+                if in_laps and len(in_laps) == len(out_laps) and race_values:
+                    clean_mean = float(np.mean(race_values))
+                    pit_values = []
+                    for lap in in_laps + out_laps:
+                        reference_time = reference_by_lap.get((lap['num'], class_key))
+                        if reference_time is None or reference_time <= 0:
+                            pit_values = []
+                            break
+                        pit_values.append(100 * lap['time'] / reference_time)
+                    if len(pit_values) == len(in_laps) + len(out_laps):
+                        row['pit_lane_pct_times'] = sum(
+                            value / clean_mean - 1 for value in pit_values
                         )
 
-            row.pop('_reference_times')
+        output = []
+        for entry in drivers:
+            row = entry['row']
+            if not self._matches_class(row['CarClass']):
+                continue
+            class_key = self._class_key(row['CarClass'])
+            if entry['pace_samples']:
+                row['laptime_pct'] = round(
+                    100 * class_fastest_pct[class_key] / row['laptime_pct_alien'], 2
+                )
+            if include_race and pd.notna(entry.get('race_mean')):
+                row['pct_race_pace'] = max(
+                    100.0, 100 * entry['race_mean'] / class_race_pace[class_key]
+                )
+            if not any(lap['time'] is not None for lap in entry['laps']):
+                continue
             output.append(row)
 
         return pd.DataFrame(output, columns=PACE_COLUMNS + RACE_DESCRIPTOR_COLUMNS)
@@ -177,58 +244,316 @@ class LMUDescriptor:
                 return reference_times[candidate]
         return reference_times.get('default')
 
-    @staticmethod
-    def _valid_lap_times(laps):
-        valid = []
-        for lap in laps:
-            try:
-                lap_time = float(lap.text)
-            except (TypeError, ValueError):
+    @classmethod
+    def _lap_record(cls, lap, fallback_position):
+        front = lap.get('fcompound')
+        rear = lap.get('rcompound')
+        front = front.strip() if front else None
+        rear = rear.strip() if rear else None
+        lap_time = cls._to_float(lap.text)
+        return {
+            'num': cls._to_int(lap.get('num')),
+            'time': lap_time if lap_time is not None and lap_time > 0 else None,
+            'elapsed': cls._to_float(lap.get('et')),
+            'position': cls._to_int(lap.get('p')) or fallback_position,
+            'front_compound': front,
+            'rear_compound': rear,
+            'compound_known': bool(front and rear),
+            'wet': front == '1,Wet' and rear == '1,Wet',
+            'pit': lap.get('pit') == '1',
+        }
+
+    @classmethod
+    def _rounded_reference(cls, lap_time, divisor):
+        if lap_time is None or lap_time <= 0:
+            return None
+        return float(np.floor((lap_time / divisor) * 10) / 10)
+
+    def _qualifying_laps(self, lap_records):
+        pit_laps = {
+            lap['num'] for lap in lap_records
+            if lap['num'] is not None and lap['pit'] and not self.no_pit
+        }
+        out_laps = {lap_num + 1 for lap_num in pit_laps}
+        return [
+            lap for lap in lap_records
+            if lap['time'] is not None
+            and lap['time'] > 0
+            and not (lap['num'] in pit_laps or lap['num'] in out_laps)
+        ]
+
+    def _build_quali_references(self, drivers, reference_times):
+        fastest_by_driver = []
+        fastest_by_class = {}
+        wet_votes = 0
+        known_votes = 0
+
+        for entry in drivers:
+            laps = self._qualifying_laps(entry['laps'])
+            if not laps:
                 continue
-            if lap_time > 0:
-                if valid and lap_time > min(valid) * 1.07:
+            fastest = min(laps, key=lambda lap: lap['time'])
+            fastest_by_driver.append((entry, fastest))
+            class_key = self._class_key(entry['row']['CarClass'])
+            current = fastest_by_class.get(class_key)
+            if current is None or fastest['time'] < current['time']:
+                fastest_by_class[class_key] = fastest
+            if fastest['compound_known']:
+                known_votes += 1
+                wet_votes += int(fastest['wet'])
+
+        wet_session = known_votes > 0 and wet_votes > known_votes / 2
+        references = {}
+        for entry, _ in fastest_by_driver:
+            class_key = self._class_key(entry['row']['CarClass'])
+            if class_key in references:
+                continue
+            if wet_session:
+                fastest = fastest_by_class.get(class_key)
+                reference_time = self._rounded_reference(
+                    fastest['time'], 1.015
+                ) if fastest else None
+            else:
+                reference_time = self._get_reference_time(
+                    entry['row']['CarClass'], reference_times
+                )
+            references[class_key] = reference_time
+        return references
+
+    def _build_race_references(self, drivers, reference_times, event_metrics):
+        votes_by_lap = {}
+        leaders_by_lap = {}
+        completed_lap_numbers = set()
+        class_names = {}
+        class_keys = set()
+
+        for entry in drivers:
+            row = entry['row']
+            class_key = self._class_key(row['CarClass'])
+            class_keys.add(class_key)
+            class_names.setdefault(class_key, row['CarClass'])
+            clean_laps, in_laps, out_laps, n_stops = self._race_laps(
+                entry['laps']
+            )
+            tracklimits = event_metrics[self._event_name_key(row['Driver'])]['tracklimits']
+            entry.update({
+                'clean_laps': clean_laps,
+                'tracklimits': tracklimits,
+                'in_laps': in_laps,
+                'out_laps': out_laps,
+                'n_stops': n_stops,
+            })
+
+            for lap in entry['laps']:
+                lap_num = lap['num']
+                if lap_num is None or lap_num <= 1:
                     continue
-                valid.append(lap_time)
-        return valid
+                completed_lap_numbers.add(lap_num)
+                if not lap['compound_known']:
+                    continue
+                vote = votes_by_lap.setdefault(lap_num, {'known': 0, 'wet': 0})
+                vote['known'] += 1
+                vote['wet'] += int(lap['wet'])
+
+            for lap in clean_laps:
+                leaders = leaders_by_lap.setdefault(lap['num'], {})
+                current = leaders.get(class_key)
+                if current is None or lap['position'] < current['position']:
+                    leaders[class_key] = lap
+
+        references = {}
+        lap_numbers = sorted(
+            completed_lap_numbers | set(votes_by_lap) | set(leaders_by_lap)
+        )
+        greasy_active = False
+        activation_streak = 0
+        recovery_streak = 0
+
+        for lap_num in lap_numbers:
+            votes = votes_by_lap.get(lap_num, {'known': 0, 'wet': 0})
+            wet_majority = votes['known'] > 0 and votes['wet'] > votes['known'] / 2
+            leaders = leaders_by_lap.get(lap_num, {})
+            any_leader_over = False
+            all_leaders_under = bool(class_keys)
+
+            for class_key in class_keys:
+                leader = leaders.get(class_key)
+                json_reference = self._get_reference_time(
+                    class_names[class_key], reference_times
+                )
+                if leader is None or not json_reference or json_reference <= 0:
+                    all_leaders_under = False
+                    continue
+                over_threshold = leader['time'] > json_reference * 1.04
+                any_leader_over = any_leader_over or over_threshold
+                all_leaders_under = all_leaders_under and not over_threshold
+
+            if wet_majority:
+                condition = 'wet'
+                activation_streak = 0
+                recovery_streak = 0
+            elif greasy_active:
+                condition = 'greasy'
+                if all_leaders_under:
+                    recovery_streak += 1
+                    if recovery_streak >= 2:
+                        greasy_active = False
+                        recovery_streak = 0
+                else:
+                    recovery_streak = 0
+            else:
+                condition = 'dry'
+                if votes['wet'] > 0 and any_leader_over:
+                    activation_streak += 1
+                else:
+                    activation_streak = 0
+                if activation_streak >= 2:
+                    greasy_active = True
+                    condition = 'greasy'
+                    activation_streak = 0
+
+            for class_key in class_keys:
+                if condition in ('wet', 'greasy'):
+                    leader = leaders.get(class_key)
+                    reference_time = self._rounded_reference(
+                        leader['time'], 1.025
+                    ) if leader else None
+                else:
+                    reference_time = self._get_reference_time(
+                        class_names[class_key], reference_times
+                    )
+                references[(lap_num, class_key)] = reference_time
+
+        return references
+
+    def _race_event_metrics(self, root, drivers):
+        metrics = {
+            self._event_name_key(entry['row']['Driver']): {
+                'tracklimits': 0,
+                'vehicle_incidents': 0,
+                'object_incidents': 0,
+            }
+            for entry in drivers
+        }
+
+        seen_tracklimits = set()
+        for element in root.iter('TrackLimits'):
+            driver_key = self._event_name_key(element.get('Driver', ''))
+            warning_points = self._to_float(element.get('WarningPoints'))
+            if driver_key not in metrics or warning_points is None or warning_points <= 0:
+                continue
+
+            signature = (
+                tuple(sorted(element.attrib.items())),
+                (element.text or '').strip(),
+            )
+            if signature in seen_tracklimits:
+                continue
+            seen_tracklimits.add(signature)
+            metrics[driver_key]['tracklimits'] += 1
+
+        driver_keys = set(metrics)
+        reports = []
+        for index, element in enumerate(root.iter('Incident')):
+            text = (element.text or '').strip()
+            actor_match = re.match(r'^(.+?)\(\d+\)\s+reported\b', text, re.IGNORECASE)
+            if not actor_match:
+                continue
+
+            reporter = self._event_name_key(actor_match.group(1))
+            if reporter not in metrics:
+                continue
+
+            vehicle_match = re.search(
+                r'\bwith\s+another vehicle\s+(.+?)\(\d+\)\s*$',
+                text,
+                re.IGNORECASE,
+            )
+            target = self._event_name_key(vehicle_match.group(1)) if vehicle_match else None
+            reports.append({
+                'index': index,
+                'reporter': reporter,
+                'target': target if target in driver_keys else None,
+                'category': 'vehicle' if 'another vehicle' in text.lower() else 'object',
+                'time': self._to_float(element.get('et')),
+            })
+
+        possible_pairs = []
+        for left_index, left in enumerate(reports):
+            if left['target'] is None or left['time'] is None:
+                continue
+            for right_index in range(left_index + 1, len(reports)):
+                right = reports[right_index]
+                if (
+                    right['target'] == left['reporter']
+                    and right['reporter'] == left['target']
+                    and right['time'] is not None
+                ):
+                    time_delta = abs(left['time'] - right['time'])
+                    if time_delta <= 0.2:
+                        possible_pairs.append((time_delta, left['index'], right['index'], left_index, right_index))
+
+        paired = set()
+        for _, _, _, left_index, right_index in sorted(possible_pairs):
+            if left_index in paired or right_index in paired:
+                continue
+            left = reports[left_index]
+            right = reports[right_index]
+            metrics[left['reporter']]['vehicle_incidents'] += 1
+            metrics[right['reporter']]['vehicle_incidents'] += 1
+            paired.update((left_index, right_index))
+
+        for report_index, report in enumerate(reports):
+            if report_index in paired:
+                continue
+            category = 'vehicle_incidents' if report['category'] == 'vehicle' else 'object_incidents'
+            metrics[report['reporter']][category] += 1
+
+        return metrics
+
+    @staticmethod
+    def _event_name_key(name):
+        name = str(name).strip()
+        if 'LMGT3' in name:
+            name = name.split('LMGT3')[0].strip()
+        return name.casefold()
 
     def _race_laps(self, lap_elements):
         race_laps = []
-        tracklimits = 0
         in_laps = []
         out_laps = []
         n_stops = 0
         pit_lap_num = None
-        previous_elapsed = None
 
         for lap in lap_elements:
-            lap_num = self._to_int(lap.get('num'))
-            if lap_num == 1:
+            lap_num = lap['num']
+            if lap_num is None or lap_num == 1:
                 continue
 
-            elapsed = self._to_float(lap.get('et'))
-            lap_time = self._to_float(lap.text)
-            if lap_time is None and elapsed is not None and previous_elapsed is not None:
-                lap_time = elapsed - previous_elapsed
-                tracklimits += 1
+            is_pit_lap = lap['pit'] and not self.no_pit
+            is_out_lap = (
+                not self.no_pit
+                and pit_lap_num is not None
+                and lap_num == pit_lap_num + 1
+            )
+            if is_pit_lap:
+                pit_lap_num = lap_num
+                n_stops += 1
+            elif is_out_lap:
+                pit_lap_num = None
+
+            lap_time = lap['time']
             if lap_time is None:
                 continue
 
-            if not self.no_pit and lap.get('pit') is not None:
-                pit_lap_num = lap_num
-                in_laps.append(lap_time)
-                n_stops += 1
-                previous_elapsed = elapsed
-                continue
-            if not self.no_pit and pit_lap_num is not None and lap_num == pit_lap_num + 1:
-                out_laps.append(lap_time)
-                pit_lap_num = None
-                previous_elapsed = elapsed
-                continue
-
-            race_laps.append(lap_time)
-            previous_elapsed = elapsed
-
-        return race_laps, tracklimits, in_laps, out_laps, n_stops
+            lap_with_time = {**lap, 'time': lap_time}
+            if is_pit_lap:
+                in_laps.append(lap_with_time)
+            elif is_out_lap:
+                out_laps.append(lap_with_time)
+            else:
+                race_laps.append(lap_with_time)
+        return race_laps, in_laps, out_laps, n_stops
 
     @staticmethod
     def _to_int(value):
