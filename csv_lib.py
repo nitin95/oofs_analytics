@@ -25,6 +25,7 @@ DRIVER_REPLACEMENTS = {
     'David Carter': 'Dave Carter',
     'David Carter#4131': 'Dave Carter',
     'David Carter#5529': 'Dave Carter',
+    'Honest Kirby': 'Willie Mangram',
     'John P': 'John Pflibsen',
     'Ayrton Senna': 'Ayrton Torres',
     'Avi Ganti': 'Avinash Ganti',

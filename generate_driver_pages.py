@@ -205,7 +205,8 @@ def _metric(label, value):
 
 def _metric_grid(metrics):
     return '<div class="metric-grid">' + ''.join(
-        _metric(label, value) for label, value in metrics
+        metric if isinstance(metric, str) else _metric(*metric)
+        for metric in metrics
     ) + '</div>'
 
 
@@ -227,6 +228,16 @@ def _profile_styles():
     .metric { background: #14161f; padding: 14px; min-height: 78px; }
     .metric span { display: block; color: #b5b8c2; font-size: .82em; }
     .metric strong { display: block; margin-top: 4px; color: white; font-size: 1.25em; }
+    .detail-metric { position: relative; z-index: 1; }
+    .detail-metric:hover, .detail-metric:focus-within { z-index: 2; }
+    .detail-trigger { width: 100%; padding: 0; border: 0; background: none; color: inherit; text-align: left; font: inherit; cursor: help; }
+    .detail-trigger:focus-visible { outline: 2px solid #ccfc00; outline-offset: 4px; }
+    .metric-popover { display: none; position: absolute; top: calc(100% - 4px); left: 0; z-index: 3; width: min(300px, calc(100vw - 32px)); padding: 12px; border: 1px solid #555963; background: #20232d; color: #fff; box-shadow: 0 8px 20px #0009; }
+    .detail-metric:hover .metric-popover, .detail-metric:focus-within .metric-popover { display: block; }
+    .metric-popover h3 { margin: 0 0 8px; font-size: .95em; }
+    .metric-popover ul { margin: 0; padding-left: 18px; }
+    .metric-popover li + li { margin-top: 7px; }
+    .metric-popover small { display: block; color: #b5b8c2; }
     .profile-table-wrap { overflow-x: auto; }
     .profile-table { width: 100%; border-collapse: collapse; min-width: 640px; }
     .profile-table th, .profile-table td { padding: 10px 12px; border-bottom: 1px solid #41444c; text-align: left; white-space: nowrap; }
@@ -299,6 +310,57 @@ def _render_results(records):
     )
 
 
+def _dnf_metric(records, identifier):
+    dnfs = [
+        record for record in records
+        if 'dnf' in record['finish_status'].lower()
+    ][-5:]
+    dnfs.reverse()
+    items = ''.join(
+        '<li>'
+        f'{html.escape(record["season_name"])} · {html.escape(record["event"])}'
+        f'<small>{html.escape(record["category_label"])} · '
+        f'{html.escape(record["finish_status"])}</small></li>'
+        for record in dnfs
+    )
+    if not items:
+        items = '<li>No DNFs recorded.</li>'
+    count = sum('dnf' in record['finish_status'].lower() for record in records)
+    return (
+        '<div class="metric detail-metric">'
+        f'<button class="detail-trigger" type="button" aria-describedby="{identifier}-details">'
+        f'<span>DNFs</span><strong>{count}</strong>'
+        '</button>'
+        f'<div class="metric-popover" id="{identifier}-details" role="dialog" aria-label="Previous DNF races">'
+        f'<h3>Previous DNF races</h3><ul>{items}</ul></div>'
+        '</div>'
+    )
+
+
+def _incident_metric(label, value, stats, identifier):
+    total = stats['incidents']
+    races = stats['starts']
+    details = []
+    for kind in ('vehicle', 'object'):
+        count = stats[f'{kind}_incidents']
+        percentage = count / total * 100 if total else 0
+        average = count / races if races else 0
+        details.append(
+            f'<li>{kind.title()}: {_format_number(count)} '
+            f'({_format_number(percentage, 1)}%)'
+            f'<small>{_format_number(average, 2)} per race</small></li>'
+        )
+    return (
+        '<div class="metric detail-metric">'
+        f'<button class="detail-trigger" type="button" aria-describedby="{identifier}-details">'
+        f'<span>{html.escape(label)}</span><strong>{html.escape(str(value))}</strong>'
+        '</button>'
+        f'<div class="metric-popover" id="{identifier}-details" role="dialog" aria-label="Incident breakdown">'
+        '<h3>Incident breakdown</h3><ul>' + ''.join(details) + '</ul></div>'
+        '</div>'
+    )
+
+
 def render_driver_page(name, profile, generated_date, elo_lookup=None):
     display_name = html_lib.format_driver_name(name)
     races = profile['race']
@@ -342,17 +404,17 @@ def render_driver_page(name, profile, generated_date, elo_lookup=None):
                 ('Average finish', _format_number(category_stats['average_finish'], 2)),
                 ('Average qualifying', _format_number(category_stats['average_qualifying'], 2)),
                 ('Average quali pace vs alien', _format_number(category_stats['average_quali_pace'], 2) + '%'),
-                ('DNFs', category_stats['dnfs']),
+                _dnf_metric(category_races, f'{series}-{category}-dnfs'),
                 ('Laps completed', _format_number(category_stats['laps'])),
                 ('Average race pace vs alien', _format_number(category_stats['average_pace'], 2) + '%'),
                 ('Average consistency', _format_number(category_stats['average_consistency'], 3)),
                 ('Average reliability', _format_number(category_stats['average_reliability'], 3)),
                 ('Track limits', _format_number(category_stats['track_limits'])),
                 ('Average track limits per race', _format_number(category_stats['average_track_limits'], 2)),
-                ('Incidents', _format_number(category_stats['incidents'])),
-                ('Average incidents per race', _format_number(category_stats['average_incidents'], 2)),
-                ('Vehicle incidents', _format_number(category_stats['vehicle_incidents'])),
-                ('Object incidents', _format_number(category_stats['object_incidents'])),
+                _incident_metric(
+                    'Incidents', _format_number(category_stats['incidents']),
+                    category_stats, f'{series}-{category}-incidents',
+                ),
                 ('Category ELO', _format_number(category_elo.get('rating'), 1)),
                 ('Driver rank', f"#{category_elo['rank']}" if category_elo else 'N/A'),
             ])
@@ -376,10 +438,14 @@ def render_driver_page(name, profile, generated_date, elo_lookup=None):
             ('Pole positions', stats['poles']),
             ('Best finish', 'P'+_format_number(stats['best_finish'])),
             ('Average finish', _format_number(stats['average_finish'], 2)),
-            ('DNFs', stats['dnfs']),
+            _dnf_metric(races, 'career-dnfs'),
             ('Categories', len(categories)),
             ('Seasons raced', len({record['season_id'] for record in races})),
             ('Laps completed', _format_number(stats['laps'])),
+            _incident_metric(
+                'Incidents', _format_number(stats['incidents']), stats,
+                'career-incidents',
+            ),
         ])
         + '</section>'
         + ''.join(category_sections)

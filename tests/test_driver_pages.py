@@ -19,6 +19,44 @@ class DriverPagesTests(unittest.TestCase):
         self.blacklist_patcher.start()
         self.addCleanup(self.blacklist_patcher.stop)
 
+    def test_dnf_metric_lists_only_five_latest_races(self):
+        records = [
+            {
+                'season_id': 'season1',
+                'season_name': 'Season 1',
+                'event': f'Race {index}',
+                'category_label': 'Sprint GT3',
+                'finish_status': 'DNF',
+                'session': 'race',
+                'series': 'sprint',
+                'category': 'GT3',
+                'position': None,
+                'laps': 0,
+                'car': 'GT3 car',
+                'car_number': '44',
+                'avg_pace_pct_alien': None,
+                'consistency': None,
+                'reliability': None,
+                'incidents': 0,
+                'vehicle_incidents': 0,
+                'object_incidents': 0,
+                'track_limits': 0,
+            }
+            for index in range(1, 7)
+        ]
+
+        page = generate_driver_pages.render_driver_page(
+            'Test Driver', {'race': records, 'qualifying': []}, '2026-10-26'
+        )
+        popover = page.split('id="career-dnfs-details"', 1)[1].split('</div>', 1)[0]
+
+        self.assertIn('<table class="profile-table">', page)
+        self.assertIn('<span>DNFs</span><strong>6</strong>', page)
+        self.assertIn('Race 6', popover)
+        self.assertIn('Race 2', popover)
+        self.assertNotIn('Race 1', popover)
+        self.assertLess(popover.index('Race 6'), popover.index('Race 5'))
+
     def test_generate_driver_pages_builds_canonical_category_profile(self):
         config = {
             'season_info': {'name': 'Season 1'},
@@ -113,16 +151,11 @@ class DriverPagesTests(unittest.TestCase):
                 '<span>Average track limits per race</span><strong>3.00</strong>',
                 page,
             )
-            self.assertIn(
-                '<span>Average incidents per race</span><strong>4.00</strong>',
-                page,
-            )
-            self.assertIn(
-                '<span>Vehicle incidents</span><strong>5</strong>', page
-            )
-            self.assertIn(
-                '<span>Object incidents</span><strong>3</strong>', page
-            )
+            self.assertNotIn('Average incidents per race', page)
+            self.assertNotIn('Vehicle incidents</span>', page)
+            self.assertNotIn('Object incidents</span>', page)
+            self.assertIn('Vehicle: 5 (62.5%)', page)
+            self.assertIn('Object: 3 (37.5%)', page)
             self.assertIn('101.25%', page)
             self.assertIn('Category ELO', page)
             self.assertIn('1,612.3', page)
