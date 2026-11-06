@@ -32,8 +32,16 @@
         "lmp3": 74.452,
         "gt3": 77.893
       }
+    },
+    "s6-sc5.xml":{
+      "name": "Qatar",
+      "reference_times": {
+        "lmp3": 107.268,
+        "gt3": 114.622
+      }
     }
-  },
+  }
+  ,
   "sprint_races": {
     "s6-sc1-r.xml": {
       "name": "Fuji",
@@ -61,6 +69,13 @@
       "reference_times": {
         "lmp3": 75.801,
         "gt3": 78.772
+      }
+    },
+    "s6-sc5-r.xml": {
+      "name": "Qatar",
+      "reference_times": {
+        "lmp3": 108.303,
+        "gt3": 115.804
       }
     }
   },
@@ -92,6 +107,13 @@
         "hyper": 68.529,
         "gt3": 77.893
       }
+    },
+    "s6-mc5.xml": {
+      "name": "Qatar",
+      "reference_times": {
+        "hyper": 99.15,
+        "gt3": 114.622
+      }
     }
   },
   "multiclass_races": {
@@ -122,6 +144,14 @@
         "hyper": 70.746,
         "gt3": 78.772
       }
+    },
+    "s6-mc5-r.xml": {
+      "name": "Qatar",
+      "reference_times": {
+        "hyper": 99.65,
+        "gt3": 115.804
+      }
     }
   }
 }
+

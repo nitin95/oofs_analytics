@@ -13,7 +13,7 @@
             <span></span>
             <span></span>
         </button>
-        <aside class="sidebar elo-sidebar"><div class="sidebar-content"><a href="index.html"><img class="header-logo" src="logo.png" alt="OOFS Analytics"></a><div class="section-group"><h4>Driver Rankings</h4><ul><li><a class="" href="elo.html">Sprint GT3</a></li><li><a class="" href="elo_multiclass_gt3.html">Multiclass GT3</a></li><li><a class="" href="elo_multiclass_prototype.html">Multiclass Prototype</a></li><li><a class="active" href="elo_sprint_lmp3.html">Sprint LMP3</a></li></ul></div></div></aside>
+        <aside class="sidebar elo-sidebar"><div class="sidebar-content"><a href="index.html"><img class="header-logo" src="logo.png" alt="OOFS Analytics"></a><div class="section-group"><h4>Driver Rankings</h4><ul><li><a class="" href="elo.html">Sprint GT3</a></li><li><a class="" href="elo_multiclass_gt3.html">Endurance GT3</a></li><li><a class="" href="elo_multiclass_prototype.html">Endurance Prototype</a></li><li><a class="active" href="elo_sprint_lmp3.html">Sprint LMP3</a></li><li><a href="elo_overall.html">OOFS per-class rankings</a></li></ul></div></div></aside>
         <main class="container">
             <header>
                 <h1>Sprint LMP3 Elo Rankings</h1>
@@ -22,52 +22,30 @@
                 <section class="section">
                     <h2>Current Standings</h2>
                     <p class="elo-method">1500 starting rating · K=64 in a driver's first category season, then K=32 · ELO difference = Race ELO minus Quali ELO</p>
-                    <div class="table-container">
-                        <table class="elo-table">
-                            <thead>
-                                <tr>
-                                    <th scope="col" aria-sort="none"><button class="elo-sort" type="button" data-sort-column="0" data-sort-type="number" aria-label="Sort by Rank ascending">Rank <span class="elo-sort-indicator" aria-hidden="true">&#8597;</span></button></th>
-                                    <th scope="col" aria-sort="none"><button class="elo-sort" type="button" data-sort-column="1" data-sort-type="text" aria-label="Sort by Driver ascending">Driver <span class="elo-sort-indicator" aria-hidden="true">&#8597;</span></button></th>
-                                    <th scope="col" aria-sort="none"><button class="elo-sort" type="button" data-sort-column="2" data-sort-type="number" aria-label="Sort by Race ELO ascending">Race ELO <span class="elo-sort-indicator" aria-hidden="true">&#8597;</span></button></th>
-                                    <th scope="col" aria-sort="none"><button class="elo-sort" type="button" data-sort-column="3" data-sort-type="number" aria-label="Sort by Quali ELO ascending">Quali ELO <span class="elo-sort-indicator" aria-hidden="true">&#8597;</span></button></th>
-                                    <th scope="col" aria-sort="none"><button class="elo-sort" type="button" data-sort-column="4" data-sort-type="number" aria-label="Sort by ELO Diff ascending">ELO Diff <span class="elo-sort-indicator" aria-hidden="true">&#8597;</span></button></th>
-                                    <th scope="col" aria-sort="none"><button class="elo-sort" type="button" data-sort-column="5" data-sort-type="number" aria-label="Sort by Starts ascending">Starts <span class="elo-sort-indicator" aria-hidden="true">&#8597;</span></button></th>
-                                    <th scope="col" aria-sort="none"><button class="elo-sort" type="button" data-sort-column="6" data-sort-type="number" aria-label="Sort by Avg Finish ascending">Avg Finish <span class="elo-sort-indicator" aria-hidden="true">&#8597;</span></button></th>
-                                    <th scope="col" aria-sort="none"><button class="elo-sort" type="button" data-sort-column="7" data-sort-type="number" aria-label="Sort by DNFs ascending">DNFs <span class="elo-sort-indicator" aria-hidden="true">&#8597;</span></button></th>
-                                    <th scope="col" aria-sort="none"><button class="elo-sort" type="button" data-sort-column="8" data-sort-type="number" aria-label="Sort by Wins ascending">Wins <span class="elo-sort-indicator" aria-hidden="true">&#8597;</span></button></th>
-                                    <th scope="col" aria-sort="none"><button class="elo-sort" type="button" data-sort-column="9" data-sort-type="number" aria-label="Sort by Pole Positions ascending">Pole Positions <span class="elo-sort-indicator" aria-hidden="true">&#8597;</span></button></th>
-                                    <th scope="col" aria-sort="none"><button class="elo-sort" type="button" data-sort-column="10" data-sort-type="number" aria-label="Sort by Podiums ascending">Podiums <span class="elo-sort-indicator" aria-hidden="true">&#8597;</span></button></th>
-                                    <th scope="col">Last Event</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr><td>1</td><td>James R.</td><td>1614.5</td><td>1586.1</td><td>+28.4</td><td>6</td><td>2.00</td><td>0</td><td>1</td><td>1</td><td>6</td><td>Season 5 · Spa</td></tr>
-<tr><td>2</td><td>Philippe B.</td><td>1575.1</td><td>1541.6</td><td>+33.6</td><td>4</td><td>2.25</td><td>0</td><td>1</td><td>1</td><td>4</td><td>Season 6 · Road Atlanta</td></tr>
-<tr><td>3</td><td>William N.</td><td>1569.6</td><td>1582.3</td><td>-12.7</td><td>10</td><td>4.00</td><td>2</td><td>2</td><td>2</td><td>6</td><td>Season 6 · Road Atlanta</td></tr>
-<tr><td>4</td><td>Hans M.</td><td>1525.5</td><td>1438.7</td><td>+86.8</td><td>4</td><td>4.50</td><td>0</td><td>1</td><td>0</td><td>1</td><td>Season 6 · Road Atlanta</td></tr>
+                    <div class="table-container"><table class="elo-table"><thead><tr><th scope="col" aria-sort="none"><button class="elo-sort" type="button" data-sort-column="0" data-sort-type="number" aria-label="Sort by Rank ascending">Rank <span class="elo-sort-indicator" aria-hidden="true">&#8597;</span></button></th><th scope="col" aria-sort="none"><button class="elo-sort" type="button" data-sort-column="1" data-sort-type="text" aria-label="Sort by Driver ascending">Driver <span class="elo-sort-indicator" aria-hidden="true">&#8597;</span></button></th><th scope="col" aria-sort="none"><button class="elo-sort" type="button" data-sort-column="2" data-sort-type="number" aria-label="Sort by Race ELO ascending">Race ELO <span class="elo-sort-indicator" aria-hidden="true">&#8597;</span></button></th><th scope="col" aria-sort="none"><button class="elo-sort" type="button" data-sort-column="3" data-sort-type="number" aria-label="Sort by Quali ELO ascending">Quali ELO <span class="elo-sort-indicator" aria-hidden="true">&#8597;</span></button></th><th scope="col" aria-sort="none"><button class="elo-sort" type="button" data-sort-column="4" data-sort-type="number" aria-label="Sort by ELO Diff ascending">ELO Diff <span class="elo-sort-indicator" aria-hidden="true">&#8597;</span></button></th><th scope="col" aria-sort="none"><button class="elo-sort" type="button" data-sort-column="5" data-sort-type="number" aria-label="Sort by Starts ascending">Starts <span class="elo-sort-indicator" aria-hidden="true">&#8597;</span></button></th><th scope="col" aria-sort="none"><button class="elo-sort" type="button" data-sort-column="6" data-sort-type="number" aria-label="Sort by Avg Finish ascending">Avg Finish <span class="elo-sort-indicator" aria-hidden="true">&#8597;</span></button></th><th scope="col" aria-sort="none"><button class="elo-sort" type="button" data-sort-column="7" data-sort-type="number" aria-label="Sort by DNFs ascending">DNFs <span class="elo-sort-indicator" aria-hidden="true">&#8597;</span></button></th><th scope="col" aria-sort="none"><button class="elo-sort" type="button" data-sort-column="8" data-sort-type="number" aria-label="Sort by Wins ascending">Wins <span class="elo-sort-indicator" aria-hidden="true">&#8597;</span></button></th><th scope="col" aria-sort="none"><button class="elo-sort" type="button" data-sort-column="9" data-sort-type="number" aria-label="Sort by Pole Positions ascending">Pole Positions <span class="elo-sort-indicator" aria-hidden="true">&#8597;</span></button></th><th scope="col" aria-sort="none"><button class="elo-sort" type="button" data-sort-column="10" data-sort-type="number" aria-label="Sort by Podiums ascending">Podiums <span class="elo-sort-indicator" aria-hidden="true">&#8597;</span></button></th><th scope="col">Last Event</th></tr></thead><tbody><tr><td>1</td><td>James R.</td><td>1614.5</td><td>1586.1</td><td>+28.4</td><td>6</td><td>2.00</td><td>0</td><td>1</td><td>1</td><td>6</td><td>Season 5 · Spa</td></tr>
+<tr><td>2</td><td>Philippe B.</td><td>1582.7</td><td>1532.7</td><td>+50.0</td><td>5</td><td>2.40</td><td>0</td><td>1</td><td>1</td><td>5</td><td>Season 6 · Qatar</td></tr>
+<tr><td>3</td><td>William N.</td><td>1559.9</td><td>1589.5</td><td>-29.6</td><td>11</td><td>4.18</td><td>2</td><td>2</td><td>2</td><td>6</td><td>Season 6 · Qatar</td></tr>
+<tr><td>4</td><td>Ily B.</td><td>1523.7</td><td>1496.5</td><td>+27.2</td><td>11</td><td>4.55</td><td>3</td><td>2</td><td>1</td><td>5</td><td>Season 6 · Qatar</td></tr>
 <tr><td>5</td><td>Edriel L.</td><td>1519.6</td><td>1551.9</td><td>-32.3</td><td>4</td><td>4.75</td><td>0</td><td>0</td><td>0</td><td>1</td><td>Season 5 · Daytona</td></tr>
-<tr><td>6</td><td>Nitin M.</td><td>1512.2</td><td>1458.3</td><td>+53.8</td><td>3</td><td>4.33</td><td>0</td><td>0</td><td>0</td><td>0</td><td>Season 6 · Laguna Seca</td></tr>
-<tr><td>7</td><td>Willie M.</td><td>1509.7</td><td>1527.2</td><td>-17.5</td><td>5</td><td>5.00</td><td>1</td><td>1</td><td>1</td><td>2</td><td>Season 5 · Spa</td></tr>
-<tr><td>8</td><td>Ily B.</td><td>1507.3</td><td>1479.4</td><td>+27.9</td><td>10</td><td>4.90</td><td>3</td><td>1</td><td>0</td><td>4</td><td>Season 6 · Road Atlanta</td></tr>
-<tr><td>9</td><td>Nick J.</td><td>1503.8</td><td>1544.2</td><td>-40.4</td><td>8</td><td>5.50</td><td>2</td><td>0</td><td>0</td><td>1</td><td>Season 6 · Road Atlanta</td></tr>
-<tr><td>10</td><td>Irail S.</td><td>1502.4</td><td>1569.4</td><td>-67.0</td><td>4</td><td>4.75</td><td>1</td><td>1</td><td>3</td><td>1</td><td>Season 6 · Road Atlanta</td></tr>
-<tr><td>11</td><td>Owen B.</td><td>1500.7</td><td>1533.0</td><td>-32.3</td><td>1</td><td>5.00</td><td>0</td><td>0</td><td>1</td><td>0</td><td>Season 5 · Spa</td></tr>
-<tr><td>12</td><td>Guillermo P.</td><td>1497.3</td><td>1519.6</td><td>-22.3</td><td>1</td><td>6.00</td><td>1</td><td>0</td><td>0</td><td>0</td><td>Season 6 · Road Atlanta</td></tr>
-<tr><td>13</td><td>Chris W.</td><td>1484.5</td><td>1523.7</td><td>-39.2</td><td>9</td><td>5.56</td><td>3</td><td>2</td><td>1</td><td>3</td><td>Season 6 · Road Atlanta</td></tr>
+<tr><td>6</td><td>Willie M.</td><td>1509.7</td><td>1527.2</td><td>-17.5</td><td>5</td><td>5.00</td><td>1</td><td>1</td><td>1</td><td>2</td><td>Season 5 · Spa</td></tr>
+<tr><td>7</td><td>Nick J.</td><td>1503.8</td><td>1544.2</td><td>-40.4</td><td>8</td><td>5.50</td><td>2</td><td>0</td><td>0</td><td>1</td><td>Season 6 · Road Atlanta</td></tr>
+<tr><td>8</td><td>Guillermo P.</td><td>1503.7</td><td>1522.1</td><td>-18.4</td><td>2</td><td>5.00</td><td>1</td><td>0</td><td>0</td><td>0</td><td>Season 6 · Qatar</td></tr>
+<tr><td>9</td><td>Irail S.</td><td>1502.4</td><td>1569.4</td><td>-67.0</td><td>4</td><td>4.75</td><td>1</td><td>1</td><td>3</td><td>1</td><td>Season 6 · Road Atlanta</td></tr>
+<tr><td>10</td><td>Owen B.</td><td>1500.7</td><td>1533.0</td><td>-32.3</td><td>1</td><td>5.00</td><td>0</td><td>0</td><td>1</td><td>0</td><td>Season 5 · Spa</td></tr>
+<tr><td>11</td><td>Chris W.</td><td>1497.5</td><td>1529.3</td><td>-31.8</td><td>10</td><td>5.20</td><td>3</td><td>2</td><td>1</td><td>4</td><td>Season 6 · Qatar</td></tr>
+<tr><td>12</td><td>Hans M.</td><td>1492.4</td><td>1413.0</td><td>+79.5</td><td>5</td><td>5.20</td><td>0</td><td>1</td><td>0</td><td>1</td><td>Season 6 · Qatar</td></tr>
+<tr><td>13</td><td>Nitin M.</td><td>1489.6</td><td>1448.9</td><td>+40.7</td><td>4</td><td>5.00</td><td>0</td><td>0</td><td>0</td><td>0</td><td>Season 6 · Qatar</td></tr>
 <tr><td>14</td><td>Ethan G.</td><td>1480.2</td><td>1557.1</td><td>-76.9</td><td>3</td><td>6.33</td><td>1</td><td>0</td><td>0</td><td>1</td><td>Season 6 · Road Atlanta</td></tr>
 <tr><td>15</td><td>Shae L.</td><td>1476.2</td><td>1416.7</td><td>+59.5</td><td>6</td><td>6.00</td><td>0</td><td>0</td><td>0</td><td>0</td><td>Season 5 · Spa</td></tr>
 <tr><td>16</td><td>Glenn J.</td><td>1458.4</td><td>1424.8</td><td>+33.6</td><td>2</td><td>9.00</td><td>1</td><td>0</td><td>0</td><td>0</td><td>Season 5 · Sebring</td></tr>
-<tr><td>17</td><td>Dave H.</td><td>1449.6</td><td>1456.1</td><td>-6.5</td><td>3</td><td>8.67</td><td>2</td><td>0</td><td>0</td><td>0</td><td>Season 6 · Road Atlanta</td></tr>
+<tr><td>17</td><td>Dave H.</td><td>1450.7</td><td>1446.9</td><td>+3.8</td><td>4</td><td>7.75</td><td>2</td><td>0</td><td>0</td><td>0</td><td>Season 6 · Qatar</td></tr>
 <tr><td>18</td><td>Timo W.</td><td>1447.0</td><td>1409.3</td><td>+37.6</td><td>6</td><td>7.00</td><td>0</td><td>0</td><td>0</td><td>0</td><td>Season 5 · Spa</td></tr>
-<tr><td>19</td><td>Dave C.</td><td>1412.7</td><td>1422.9</td><td>-10.2</td><td>4</td><td>9.50</td><td>2</td><td>0</td><td>0</td><td>0</td><td>Season 5 · Daytona</td></tr>
-                            </tbody>
-                        </table>
-                    </div>
+<tr><td>19</td><td>Dave C.</td><td>1412.7</td><td>1422.9</td><td>-10.2</td><td>4</td><td>9.50</td><td>2</td><td>0</td><td>0</td><td>0</td><td>Season 5 · Daytona</td></tr></tbody></table></div>
                 </section>
             </div>
             <div class="footer">
                 <p>Generated from OOFS event data</p>
-                <p class="elo-updated">Last updated: 2026-11-02 16:45:24</p>
+                <p class="elo-updated">Last updated: 2026-11-05 23:10:56</p>
             </div>
         </main>
     </div>
@@ -79,110 +57,116 @@
             link.addEventListener('click', () => sidebar.classList.remove('active'));
         });
 
-        const eloTable = document.querySelector('.elo-table');
-        const eloBody = eloTable.querySelector('tbody');
-        const tableContainer = eloTable.closest('.table-container');
-        const sortButtons = eloTable.querySelectorAll('.elo-sort');
+        document.querySelectorAll('.elo-table').forEach(eloTable => {
+            const eloBody = eloTable.querySelector('tbody');
+            const tableContainer = eloTable.closest('.table-container');
+            const sortButtons = eloTable.querySelectorAll('.elo-sort');
 
-        const fixedHeader = document.createElement('div');
-        fixedHeader.className = 'elo-fixed-header';
-        fixedHeader.setAttribute('aria-hidden', 'true');
-        const fixedTable = document.createElement('table');
-        fixedTable.className = 'elo-table elo-fixed-table';
-        const fixedHead = eloTable.tHead.cloneNode(true);
-        fixedTable.appendChild(fixedHead);
-        fixedHeader.appendChild(fixedTable);
-        document.body.appendChild(fixedHeader);
+            const fixedHeader = document.createElement('div');
+            fixedHeader.className = 'elo-fixed-header';
+            fixedHeader.setAttribute('aria-hidden', 'true');
+            const fixedTable = document.createElement('table');
+            fixedTable.className = 'elo-table elo-fixed-table';
+            const fixedHead = eloTable.tHead.cloneNode(true);
+            fixedTable.appendChild(fixedHead);
+            fixedHeader.appendChild(fixedTable);
+            document.body.appendChild(fixedHeader);
 
-        function updateSortControls(column, direction) {
-            document.querySelectorAll('.elo-sort').forEach(sortButton => {
-                const sortHeader = sortButton.closest('th');
-                const isActive = Number(sortButton.dataset.sortColumn) === column;
-                sortHeader.setAttribute('aria-sort', isActive ? direction : 'none');
-                sortButton.querySelector('.elo-sort-indicator').textContent = isActive
-                    ? direction === 'ascending' ? '\u25b2' : '\u25bc'
-                    : '\u2195';
-                const label = sortButton.textContent.trim().replace(/[\u25b2\u25bc\u2195]/g, '').trim();
-                sortButton.setAttribute(
-                    'aria-label',
-                    `Sort by ${label} ${isActive && direction === 'ascending' ? 'descending' : 'ascending'}`,
-                );
+            function updateSortControls(column, direction) {
+                const buttons = [
+                    ...eloTable.querySelectorAll('.elo-sort'),
+                    ...fixedHead.querySelectorAll('.elo-sort'),
+                ];
+                buttons.forEach(sortButton => {
+                    const sortHeader = sortButton.closest('th');
+                    const isActive = Number(sortButton.dataset.sortColumn) === column;
+                    sortHeader.setAttribute('aria-sort', isActive ? direction : 'none');
+                    sortButton.querySelector('.elo-sort-indicator').textContent = isActive
+                        ? direction === 'ascending' ? '\u25b2' : '\u25bc'
+                        : '\u2195';
+                    const label = sortButton.textContent.trim()
+                        .replace(/[\u25b2\u25bc\u2195]/g, '').trim();
+                    sortButton.setAttribute(
+                        'aria-label',
+                        `Sort by ${label} ${isActive && direction === 'ascending' ? 'descending' : 'ascending'}`,
+                    );
+                });
+            }
+
+            function sortByColumn(column, type) {
+                const isSameColumn = eloTable.dataset.sortColumn === String(column);
+                const direction = isSameColumn
+                    && eloTable.dataset.sortDirection === 'ascending'
+                    ? 'descending'
+                    : 'ascending';
+                const rows = Array.from(eloBody.rows).map((row, index) => ({
+                    row,
+                    index,
+                    value: type === 'text'
+                        ? row.cells[column].textContent.trim()
+                        : Number.parseFloat(row.cells[column].textContent.trim()),
+                }));
+
+                rows.sort((left, right) => {
+                    const leftMissing = type === 'text' ? false : Number.isNaN(left.value);
+                    const rightMissing = type === 'text' ? false : Number.isNaN(right.value);
+                    if (leftMissing !== rightMissing) return leftMissing ? 1 : -1;
+                    if (leftMissing || left.value === right.value) return left.index - right.index;
+                    return direction === 'ascending'
+                        ? type === 'text'
+                            ? left.value.localeCompare(right.value, undefined, {numeric: true, sensitivity: 'base'})
+                            : left.value - right.value
+                        : type === 'text'
+                            ? right.value.localeCompare(left.value, undefined, {numeric: true, sensitivity: 'base'})
+                            : right.value - left.value;
+                });
+                rows.forEach(({row}) => eloBody.appendChild(row));
+
+                eloTable.dataset.sortColumn = String(column);
+                eloTable.dataset.sortDirection = direction;
+                updateSortControls(column, direction);
+            }
+
+            function pinHeader() {
+                const headerRect = eloTable.tHead.getBoundingClientRect();
+                const tableRect = eloTable.getBoundingClientRect();
+                const containerRect = tableContainer.getBoundingClientRect();
+                const style = getComputedStyle(tableContainer);
+                const paddingLeft = Number.parseFloat(style.paddingLeft) || 0;
+                const paddingRight = Number.parseFloat(style.paddingRight) || 0;
+                const borderLeft = Number.parseFloat(style.borderLeftWidth) || 0;
+                const headerHeight = eloTable.tHead.offsetHeight;
+                const isPinned = headerRect.top < 0 && tableRect.bottom > headerHeight;
+
+                fixedHeader.style.display = isPinned ? 'block' : 'none';
+                eloTable.classList.toggle('elo-header-pinned', isPinned);
+                if (!isPinned) return;
+
+                fixedHeader.style.left = `${containerRect.left + borderLeft + paddingLeft}px`;
+                fixedHeader.style.width = `${tableContainer.clientWidth - paddingLeft - paddingRight}px`;
+                fixedTable.style.width = `${eloTable.offsetWidth}px`;
+                fixedTable.style.transform = `translateX(-${tableContainer.scrollLeft}px)`;
+                Array.from(eloTable.tHead.rows[0].cells).forEach((cell, index) => {
+                    fixedHead.rows[0].cells[index].style.width = `${cell.getBoundingClientRect().width}px`;
+                });
+            }
+
+            sortButtons.forEach(button => {
+                button.addEventListener('click', () => sortByColumn(
+                    Number(button.dataset.sortColumn), button.dataset.sortType
+                ));
             });
-        }
-
-        function sortByColumn(column, type) {
-            const isSameColumn = eloTable.dataset.sortColumn === String(column);
-            const direction = isSameColumn
-                && eloTable.dataset.sortDirection === 'ascending'
-                ? 'descending'
-                : 'ascending';
-            const rows = Array.from(eloBody.rows).map((row, index) => ({
-                row,
-                index,
-                value: type === 'text'
-                    ? row.cells[column].textContent.trim()
-                    : Number.parseFloat(row.cells[column].textContent.trim()),
-            }));
-
-            rows.sort((left, right) => {
-                const leftMissing = type === 'text' ? false : Number.isNaN(left.value);
-                const rightMissing = type === 'text' ? false : Number.isNaN(right.value);
-                if (leftMissing !== rightMissing) return leftMissing ? 1 : -1;
-                if (leftMissing || left.value === right.value) return left.index - right.index;
-                return direction === 'ascending'
-                    ? type === 'text'
-                        ? left.value.localeCompare(right.value, undefined, {numeric: true, sensitivity: 'base'})
-                        : left.value - right.value
-                    : type === 'text'
-                        ? right.value.localeCompare(left.value, undefined, {numeric: true, sensitivity: 'base'})
-                        : right.value - left.value;
+            fixedHead.querySelectorAll('.elo-sort').forEach(button => {
+                button.tabIndex = -1;
+                button.addEventListener('click', () => sortByColumn(
+                    Number(button.dataset.sortColumn), button.dataset.sortType
+                ));
             });
-            rows.forEach(({row}) => eloBody.appendChild(row));
-
-            eloTable.dataset.sortColumn = String(column);
-            eloTable.dataset.sortDirection = direction;
-            updateSortControls(column, direction);
-        }
-
-        function pinHeader() {
-            const headerRect = eloTable.tHead.getBoundingClientRect();
-            const tableRect = eloTable.getBoundingClientRect();
-            const containerRect = tableContainer.getBoundingClientRect();
-            const style = getComputedStyle(tableContainer);
-            const paddingLeft = Number.parseFloat(style.paddingLeft) || 0;
-            const paddingRight = Number.parseFloat(style.paddingRight) || 0;
-            const borderLeft = Number.parseFloat(style.borderLeftWidth) || 0;
-            const headerHeight = eloTable.tHead.offsetHeight;
-            const isPinned = headerRect.top < 0 && tableRect.bottom > headerHeight;
-
-            fixedHeader.style.display = isPinned ? 'block' : 'none';
-            eloTable.classList.toggle('elo-header-pinned', isPinned);
-            if (!isPinned) return;
-
-            fixedHeader.style.left = `${containerRect.left + borderLeft + paddingLeft}px`;
-            fixedHeader.style.width = `${tableContainer.clientWidth - paddingLeft - paddingRight}px`;
-            fixedTable.style.width = `${eloTable.offsetWidth}px`;
-            fixedTable.style.transform = `translateX(-${tableContainer.scrollLeft}px)`;
-            Array.from(eloTable.tHead.rows[0].cells).forEach((cell, index) => {
-                fixedHead.rows[0].cells[index].style.width = `${cell.getBoundingClientRect().width}px`;
-            });
-        }
-
-        sortButtons.forEach(button => {
-            button.addEventListener('click', () => sortByColumn(
-                Number(button.dataset.sortColumn), button.dataset.sortType
-            ));
+            window.addEventListener('scroll', pinHeader, {passive: true});
+            window.addEventListener('resize', pinHeader);
+            tableContainer.addEventListener('scroll', pinHeader, {passive: true});
+            requestAnimationFrame(pinHeader);
         });
-        fixedHead.querySelectorAll('.elo-sort').forEach(button => {
-            button.tabIndex = -1;
-            button.addEventListener('click', () => sortByColumn(
-                Number(button.dataset.sortColumn), button.dataset.sortType
-            ));
-        });
-        window.addEventListener('scroll', pinHeader, {passive: true});
-        window.addEventListener('resize', pinHeader);
-        tableContainer.addEventListener('scroll', pinHeader, {passive: true});
-        requestAnimationFrame(pinHeader);
     </script>
 </body>
 </html>

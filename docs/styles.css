@@ -130,6 +130,17 @@ body {
     max-width: none;
 }
 
+.elo-sidebar .section-group .elo-subnav {
+    margin: 4px 0 0 12px;
+    padding-left: 10px;
+    border-left: 1px solid rgba(255,255,255,0.2);
+}
+
+.elo-sidebar .section-group .elo-subnav a {
+    padding: 6px 10px;
+    font-size: 0.9em;
+}
+
 .elo-sidebar .section-group li {
     min-width: 0;
 }
@@ -137,6 +148,15 @@ body {
 .elo-method {
     color: rgba(255,255,255,0.65);
     margin: -8px 0 16px;
+}
+
+.elo-class-ranking {
+    margin-bottom: 32px;
+}
+
+.elo-class-ranking h3 {
+    color: #ccfc00;
+    margin: 0 0 12px;
 }
 
 .elo-table {

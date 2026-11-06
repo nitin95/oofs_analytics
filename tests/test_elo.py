@@ -229,6 +229,55 @@ class EloRankingTests(unittest.TestCase):
         self.assertIn('>DNFs <span class="elo-sort-indicator"', page)
         self.assertIn('<td>1.00</td>', page)
         self.assertIn('active', page)
+        self.assertNotIn('class="elo-subnav"', page)
+
+    def test_overall_page_renders_independent_tables_per_car_class(self):
+        self.write_season('season1', 'Season 3', {
+            'sprint_races': {'s3-sc1-r.xml': {'name': 'Portimao'}},
+            'multiclass_races': {'s3-mc1-r.xml': {'name': 'Fuji'}},
+        })
+        self.write_event('season1', 'sprint', 's3-sc1-r.xml', [
+            {'Driver_name': 'Driver A', 'CarClass': 'GT3', 'Position': 1},
+            {'Driver_name': 'Driver B', 'CarClass': 'GT3', 'Position': 2},
+            {'Driver_name': 'Driver A', 'CarClass': 'LMP3', 'Position': 2},
+            {'Driver_name': 'Driver B', 'CarClass': 'LMP3', 'Position': 1},
+        ])
+        self.write_event('season1', 'multiclass', 's3-mc1-r.xml', [
+            {'Driver_name': 'Driver B', 'CarClass': 'GT3', 'Position': 1},
+            {'Driver_name': 'Driver A', 'CarClass': 'GT3', 'Position': 2},
+            {'Driver_name': 'Driver B', 'CarClass': 'LMP2_ELMS', 'Position': 2},
+            {'Driver_name': 'Driver A', 'CarClass': 'LMP2_ELMS', 'Position': 1},
+        ])
+
+        output_root = os.path.join(self.root, 'docs')
+        generated = elo_lib.generate_pages(
+            output_root=output_root,
+            config_root=self.config_root,
+            csv_root=self.csv_root,
+        )
+
+        self.assertEqual(os.path.basename(generated[-1]), 'elo_overall.html')
+        with open(generated[-1], encoding='utf-8') as page_file:
+            page = page_file.read()
+        self.assertIn('OOFS overall rankings', page)
+        self.assertIn('href="elo_overall.html"', page)
+        self.assertEqual(page.count('class="elo-class-ranking"'), 3)
+        self.assertEqual(page.count('<table class="elo-table">'), 3)
+        self.assertNotIn('>Car Class<', page)
+        self.assertIn('<h3>GT3</h3>', page)
+        self.assertIn('<h3>LMP3</h3>', page)
+        self.assertIn('<h3>LMP2/P2UR</h3>', page)
+        self.assertIn('<ul class="elo-subnav">', page)
+        self.assertIn('href="#overall-class-0">GT3</a>', page)
+        self.assertIn('href="#overall-class-1">LMP3</a>', page)
+        self.assertIn('href="#overall-class-2">LMP2/P2UR</a>', page)
+        for index in range(3):
+            self.assertIn(
+                f'<section class="elo-class-ranking" id="overall-class-{index}">',
+                page,
+            )
+        self.assertIn('<td>1481.1</td>', page)
+        self.assertIn('<td>1516.0</td>', page)
 
 
 if __name__ == '__main__':
