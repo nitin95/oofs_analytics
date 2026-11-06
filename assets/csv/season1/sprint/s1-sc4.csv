@@ -1,11 +1,11 @@
-Driver,Car,CarClass,CarNumber,Position,FinishStatus,Laps,laptime_sec,laptime_pct,laptime_pct_alien,avg_laptime,avg_pace_pct_alien,stdev_laptime,stdev_pace_pct,lap_count,race_pace,pct_race_pace,consistency,reliability,n_tracklimits,n_inchidents,n_incidents_vehicle,n_incidents_object,pct_laps,n_stops,pit_lane_pct_times,Driver_name,season_id,series_type,session_type
-Zachary Martin,Aston Martin Vantage AMR LMGT3,GT3,101,1,None,11,110.7009,100.0,102.22,110.89698571428572,102.4,0.23905371382858198,0.22,7,,,,,,,,,,,,Zachary Martin,season1,sprint,quali
-Kasi Jackman,Lexus RCF LMGT3,GT3,404,2,Finished Normally,12,111.0311,99.7,102.52,111.57998,103.03,0.5286653922851402,0.49,5,,,,,,,,,,,,Kasi Jackman,season1,sprint,quali
-Greg Kach,Ford Mustang LMGT3,GT3,123,3,Finished Normally,10,111.0912,99.65,102.58,111.28620000000001,102.76,0.1903816167595994,0.18,3,,,,,,,,,,,,Greg Kachadurian,season1,sprint,quali
-Elliott Brown,Mercedes-AMG LMGT3,GT3,258,4,None,6,111.1996,99.55,102.68,111.54005000000001,102.99,0.481469007309916,0.44,2,,,,,,,,,,,,Elliott Brown,season1,sprint,quali
-Abe Wozniak,Aston Martin Vantage AMR LMGT3,GT3,25,5,None,10,111.3264,99.44,102.79,111.8069,103.24,0.5752023528000038,0.53,4,,,,,,,,,,,,Abe Wozniak,season1,sprint,quali
-Nick Johnson,BMW M4 LMGT3,GT3,696,6,None,11,111.3591,99.41,102.82,111.72912500000001,103.17,0.2726223930029722,0.25,4,,,,,,,,,,,,Nick Johnson,season1,sprint,quali
-Jesse Olsen,Aston Martin Vantage AMR LMGT3,GT3,16,7,Finished Normally,10,111.4862,99.3,102.94,112.26688333333334,103.66,0.6184591285337034,0.57,6,,,,,,,,,,,,Jesse Olsen,season1,sprint,quali
-p thomas,Aston Martin Vantage AMR LMGT3,GT3,69,8,Finished Normally,12,111.9728,98.87,103.39,112.2903,103.68,0.278379465238846,0.26,4,,,,,,,,,,,,Parker Thomas,season1,sprint,quali
-Dustin Rand,Aston Martin Vantage AMR LMGT3,GT3,18,9,None,3,112.8654,98.08,104.22,112.8654,104.22,0.0,0.0,1,,,,,,,,,,,,Dustin Rand,season1,sprint,quali
-Kimi Sombrox,BMW M4 LMGT3,GT3,31,10,Finished Normally,10,113.3138,97.69,104.63,113.85194000000001,105.13,0.6102690701649565,0.56,5,,,,,,,,,,,,Kimi Sombrox,season1,sprint,quali
+Driver,Car,CarClass,CarNumber,Position,FinishStatus,Laps,laptime_sec,laptime_pct,laptime_pct_alien,avg_laptime,avg_pace_pct_alien,stdev_laptime,stdev_pace_pct,lap_count,race_pace,pct_race_pace,consistency,reliability,n_tracklimits,track_limit_points,n_inchidents,n_incidents_vehicle,n_incidents_object,pct_laps,n_stops,pit_lane_pct_times,Driver_name,season_id,series_type,session_type
+Zachary Martin,Aston Martin Vantage AMR LMGT3,GT3,101,1,None,11,110.7009,100.0,102.22,110.89698571428572,102.4,0.23905371382858198,0.22,7,,,,,,,,,,,,,Zachary Martin,season1,sprint,quali
+Kasi Jackman,Lexus RCF LMGT3,GT3,404,2,Finished Normally,12,111.0311,99.7,102.52,111.57998,103.03,0.5286653922851402,0.49,5,,,,,,,,,,,,,Kasi Jackman,season1,sprint,quali
+Greg Kach,Ford Mustang LMGT3,GT3,123,3,Finished Normally,10,111.0912,99.65,102.58,111.28620000000001,102.76,0.1903816167595994,0.18,3,,,,,,,,,,,,,Greg Kachadurian,season1,sprint,quali
+Elliott Brown,Mercedes-AMG LMGT3,GT3,258,4,None,6,111.1996,99.55,102.68,111.54005000000001,102.99,0.481469007309916,0.44,2,,,,,,,,,,,,,Elliott Brown,season1,sprint,quali
+Abe Wozniak,Aston Martin Vantage AMR LMGT3,GT3,25,5,None,10,111.3264,99.44,102.79,111.8069,103.24,0.5752023528000038,0.53,4,,,,,,,,,,,,,Abe Wozniak,season1,sprint,quali
+Nick Johnson,BMW M4 LMGT3,GT3,696,6,None,11,111.3591,99.41,102.82,111.72912500000001,103.17,0.2726223930029722,0.25,4,,,,,,,,,,,,,Nick Johnson,season1,sprint,quali
+Jesse Olsen,Aston Martin Vantage AMR LMGT3,GT3,16,7,Finished Normally,10,111.4862,99.3,102.94,112.26688333333334,103.66,0.6184591285337034,0.57,6,,,,,,,,,,,,,Jesse Olsen,season1,sprint,quali
+p thomas,Aston Martin Vantage AMR LMGT3,GT3,69,8,Finished Normally,12,111.9728,98.87,103.39,112.2903,103.68,0.278379465238846,0.26,4,,,,,,,,,,,,,Parker Thomas,season1,sprint,quali
+Dustin Rand,Aston Martin Vantage AMR LMGT3,GT3,18,9,None,3,112.8654,98.08,104.22,112.8654,104.22,0.0,0.0,1,,,,,,,,,,,,,Dustin Rand,season1,sprint,quali
+Kimi Sombrox,BMW M4 LMGT3,GT3,31,10,Finished Normally,10,113.3138,97.69,104.63,113.85194000000001,105.13,0.6102690701649565,0.56,5,,,,,,,,,,,,,Kimi Sombrox,season1,sprint,quali

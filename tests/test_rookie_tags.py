@@ -375,13 +375,18 @@ class RookieTagTests(unittest.TestCase):
             'Driver': 'A Driver', 'Lap': '2', 'WarningPoints': '0.5',
             'CurrentPoints': '0.5', 'Resolution': '4', 'et': '300.0',
         }
+        paired_awarded_limits = dict(awarded_limits, et='300.1')
         track_limits = [
             (awarded_limits, 'Warning'),
-            (dict(awarded_limits), 'Warning'),
+            (paired_awarded_limits, 'Warning'),
             ({
                 'Driver': 'A Driver', 'Lap': '2', 'WarningPoints': '0.25',
-                'CurrentPoints': '0', 'Resolution': '2', 'et': '301.0',
+                'CurrentPoints': '0.75', 'Resolution': '2', 'et': '301.0',
             }, 'Drive Through Penalty'),
+            ({
+                'Driver': 'A Driver', 'Lap': '3', 'WarningPoints': '0.25',
+                'CurrentPoints': '0.75', 'Resolution': '4', 'et': '302.0',
+            }, 'Warning'),
             ({
                 'Driver': 'B Driver', 'Lap': '2', 'WarningPoints': '0',
                 'CurrentPoints': '0.5', 'Resolution': '5', 'et': '302.0',
@@ -397,7 +402,9 @@ class RookieTagTests(unittest.TestCase):
         driver_b = race_data[race_data['Driver'] == 'B Driver'].iloc[0]
 
         self.assertEqual(driver_a['n_tracklimits'], 2)
+        self.assertAlmostEqual(driver_a['track_limit_points'], 0.75)
         self.assertEqual(driver_b['n_tracklimits'], 0)
+        self.assertEqual(driver_b['track_limit_points'], 0)
         self.assertEqual(driver_a['n_incidents_vehicle'], 2)
         self.assertEqual(driver_a['n_incidents_object'], 1)
         self.assertEqual(driver_a['n_inchidents'], 3)
@@ -574,6 +581,7 @@ class RookieTagTests(unittest.TestCase):
             'consistency_sc1': 0.99,
             'reliability_sc1': 0.95,
             'n_tracklimits_sc1': 2,
+            'track_limit_points_sc1': 0.75,
             'n_inchidents_sc1': 1,
             'n_incidents_vehicle_sc1': 1,
             'n_incidents_object_sc1': 0,
@@ -598,6 +606,8 @@ class RookieTagTests(unittest.TestCase):
         quali_hover = quali_plot['traces'][0]['customdata'][0]
 
         self.assertIn('<h3>Reliability (%)</h3>', tables)
+        self.assertIn('<h3>Track Limits (track limit points)</h3>', tables)
+        self.assertIn('<td>2 (0.75)</td>', tables)
         self.assertNotIn('<h3>Finishing Position</h3>', tables)
         self.assertNotIn('<h3>Race Pace vs Class Leader (%)</h3>', tables)
         self.assertIn('data-driver="A Driver"', tables)

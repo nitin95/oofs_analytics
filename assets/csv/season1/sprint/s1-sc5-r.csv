@@ -1,19 +1,19 @@
-Driver,Car,CarClass,CarNumber,Position,FinishStatus,Laps,laptime_sec,laptime_pct,laptime_pct_alien,avg_laptime,avg_pace_pct_alien,stdev_laptime,stdev_pace_pct,lap_count,race_pace,pct_race_pace,consistency,reliability,n_tracklimits,n_inchidents,n_incidents_vehicle,n_incidents_object,pct_laps,n_stops,pit_lane_pct_times,Driver_name,season_id,series_type,session_type
-Abe Wozniak,Aston Martin Vantage AMR LMGT3,GT3,25,3,Finished Normally,21,130.851,100.0,101.91,131.88135384615387,102.71,0.7364585048453052,0.57,13,102.71133477114783,100.21351867184546,0.9946348257446992,0.8076923076923077,4,1,0,1,100.0,1,0.40752078091636723,Abe Wozniak,season1,sprint,race
-Kasi Jackman,Lexus RCF LMGT3,GT3,404,1,Finished Normally,21,130.9428,99.93,101.98,131.6003625,102.49,0.6080352707697088,0.47,16,102.4924941588785,100.00000000000001,0.9955263981936262,0.9375,2,0,0,0,100.0,1,,Kasi Jackman,season1,sprint,race
-Greg Kach,Ford Mustang LMGT3,GT3,123,2,Finished Normally,21,131.0189,99.87,102.04,131.7490117647059,102.61,0.5481050000711012,0.43,17,102.6082646142569,100.11295505717612,0.9959639928376784,0.9411764705882353,1,1,1,0,100.0,1,0.3623273968524465,Greg Kachadurian,season1,sprint,race
-Jesse Olsen,Mercedes-AMG LMGT3,GT3,16,5,Finished Normally,21,131.6223,99.41,102.51,132.36046875,103.08,0.4466214395790559,0.35,16,103.08447721962617,100.57758674486935,0.9967328662895264,0.90625,2,1,1,0,100.0,1,0.5178590189905172,Jesse Olsen,season1,sprint,race
-Zachary Martin,Aston Martin Vantage AMR LMGT3,GT3,101,4,Finished Normally,21,131.7166,99.35,102.58,132.7066529411765,103.35,0.5996561109478139,0.47,17,103.3540910756826,100.84064391629353,0.9956162568657337,1.0,0,0,0,0,100.0,1,0.3983047793472476,Zachary Martin,season1,sprint,race
-Nick Johnson,BMW M4 LMGT3,GT3,696,8,DNF,11,131.8316,99.26,102.67,133.1368,103.69,1.4339251096204384,1.12,5,103.68909657320872,101.16750248313336,0.9903667385133033,0.0,5,6,0,6,52.38095238095238,1,,Nick Johnson,season1,sprint,race
-Dustin Rand,Aston Martin Vantage AMR LMGT3,GT3,18,7,Finished Normally,20,132.9469,98.42,103.54,134.52733636363635,104.77,1.104403501690145,0.86,11,104.77206881903143,102.22413814675956,0.9921725394201887,0.8636363636363636,0,3,0,3,95.23809523809524,2,1.0081850887082289,Dustin Rand,season1,sprint,race
-Michael Quandt,Chevrolet Corvette Z06 LMGT3.R,GT3,106,9,DNF,6,132.9715,98.41,103.56,132.9715,103.56,0.0,0.0,1,103.5603582554517,101.04189492639125,1.0,0.0,2,2,0,2,28.571428571428573,1,,Michael Quandt,season1,sprint,race
-Brian Crane,Ford Mustang LMGT3,GT3,223,6,Finished Normally,21,133.0264,98.37,103.6,134.94278333333335,105.1,1.2242409186796914,0.95,12,105.09562564901348,102.5398264638772,0.9913139375592016,0.875,2,1,0,1,100.0,1,0.3455222441807748,Brian Crane,season1,sprint,race
-Grayson Head,Chevrolet Corvette Z06 LMGT3.R,GT3,43,10,DNF,4,,,,,,,,0,,,,,0,2,0,2,,1,,Grayson Head,season1,sprint,race
-Jeremy Goeringer,McLaren 720S LMGT3 Evo,GT3,70,11,DNF,0,,,,,,,,0,,,,,0,0,0,0,,0,,Jeremy Goeringer,season1,sprint,race
-Anthony Brown,Lamborghini Huracan LMGT3 Evo2,GT3,34,12,DNF,0,,,,,,,,0,,,,,0,0,0,0,,0,,Anthony Brown,season1,sprint,race
-Kimi Sombrox,BMW M4 LMGT3,GT3,31,13,DNF,0,,,,,,,,0,,,,,0,0,0,0,,0,,Kimi Sombrox,season1,sprint,race
-Oleksii Rozhkov,McLaren 720S LMGT3 Evo,GT3,13,14,DNF,0,,,,,,,,0,,,,,0,0,0,0,,0,,Oleksii Rozhkov,season1,sprint,race
-Nitin Murthy,Lexus RCF LMGT3,GT3,95,15,DNF,0,,,,,,,,0,,,,,0,0,0,0,,0,,Nitin Murthy,season1,sprint,race
-Elliott Brown,Mercedes-AMG LMGT3,GT3,258,16,DNF,0,,,,,,,,0,,,,,0,0,0,0,,0,,Elliott Brown,season1,sprint,race
-king jordan,Ford Mustang LMGT3,GT3,222,17,DNF,0,,,,,,,,0,,,,,0,0,0,0,,0,,king jordan,season1,sprint,race
-Harry Ricker,BMW M4 LMGT3,GT3,8,18,DNF,0,,,,,,,,0,,,,,0,0,0,0,,0,,Harry Ricker,season1,sprint,race
+Driver,Car,CarClass,CarNumber,Position,FinishStatus,Laps,laptime_sec,laptime_pct,laptime_pct_alien,avg_laptime,avg_pace_pct_alien,stdev_laptime,stdev_pace_pct,lap_count,race_pace,pct_race_pace,consistency,reliability,n_tracklimits,track_limit_points,n_inchidents,n_incidents_vehicle,n_incidents_object,pct_laps,n_stops,pit_lane_pct_times,Driver_name,season_id,series_type,session_type
+Abe Wozniak,Aston Martin Vantage AMR LMGT3,GT3,25,3,Finished Normally,21,130.851,100.0,101.91,131.88135384615387,102.71,0.7364585048453052,0.57,13,102.71133477114783,100.21351867184546,0.9946348257446992,0.8076923076923077,4,1.5,1,0,1,100.0,1,0.40752078091636723,Abe Wozniak,season1,sprint,race
+Kasi Jackman,Lexus RCF LMGT3,GT3,404,1,Finished Normally,21,130.9428,99.93,101.98,131.6003625,102.49,0.6080352707697088,0.47,16,102.4924941588785,100.00000000000001,0.9955263981936262,0.9375,2,1.25,0,0,0,100.0,1,,Kasi Jackman,season1,sprint,race
+Greg Kach,Ford Mustang LMGT3,GT3,123,2,Finished Normally,21,131.0189,99.87,102.04,131.7490117647059,102.61,0.5481050000711012,0.43,17,102.6082646142569,100.11295505717612,0.9959639928376784,0.9411764705882353,1,0.25,1,1,0,100.0,1,0.3623273968524465,Greg Kachadurian,season1,sprint,race
+Jesse Olsen,Mercedes-AMG LMGT3,GT3,16,5,Finished Normally,21,131.6223,99.41,102.51,132.36046875,103.08,0.4466214395790559,0.35,16,103.08447721962617,100.57758674486935,0.9967328662895264,0.90625,2,0.75,1,1,0,100.0,1,0.5178590189905172,Jesse Olsen,season1,sprint,race
+Zachary Martin,Aston Martin Vantage AMR LMGT3,GT3,101,4,Finished Normally,21,131.7166,99.35,102.58,132.7066529411765,103.35,0.5996561109478139,0.47,17,103.3540910756826,100.84064391629353,0.9956162568657337,1.0,0,0.0,0,0,0,100.0,1,0.3983047793472476,Zachary Martin,season1,sprint,race
+Nick Johnson,BMW M4 LMGT3,GT3,696,8,DNF,11,131.8316,99.26,102.67,133.1368,103.69,1.4339251096204384,1.12,5,103.68909657320872,101.16750248313336,0.9903667385133033,0.0,5,2.25,6,0,6,52.38095238095238,1,,Nick Johnson,season1,sprint,race
+Dustin Rand,Aston Martin Vantage AMR LMGT3,GT3,18,7,Finished Normally,20,132.9469,98.42,103.54,134.52733636363635,104.77,1.104403501690145,0.86,11,104.77206881903143,102.22413814675956,0.9921725394201887,0.8636363636363636,0,0.0,3,0,3,95.23809523809524,2,1.0081850887082289,Dustin Rand,season1,sprint,race
+Michael Quandt,Chevrolet Corvette Z06 LMGT3.R,GT3,106,9,DNF,6,132.9715,98.41,103.56,132.9715,103.56,0.0,0.0,1,103.5603582554517,101.04189492639125,1.0,0.0,2,1.0,2,0,2,28.571428571428573,1,,Michael Quandt,season1,sprint,race
+Brian Crane,Ford Mustang LMGT3,GT3,223,6,Finished Normally,21,133.0264,98.37,103.6,134.94278333333335,105.1,1.2242409186796914,0.95,12,105.09562564901348,102.5398264638772,0.9913139375592016,0.875,2,0.5,1,0,1,100.0,1,0.3455222441807748,Brian Crane,season1,sprint,race
+Grayson Head,Chevrolet Corvette Z06 LMGT3.R,GT3,43,10,DNF,4,,,,,,,,0,,,,,0,0.0,2,0,2,,1,,Grayson Head,season1,sprint,race
+Jeremy Goeringer,McLaren 720S LMGT3 Evo,GT3,70,11,DNF,0,,,,,,,,0,,,,,0,0.0,0,0,0,,0,,Jeremy Goeringer,season1,sprint,race
+Anthony Brown,Lamborghini Huracan LMGT3 Evo2,GT3,34,12,DNF,0,,,,,,,,0,,,,,0,0.0,0,0,0,,0,,Anthony Brown,season1,sprint,race
+Kimi Sombrox,BMW M4 LMGT3,GT3,31,13,DNF,0,,,,,,,,0,,,,,0,0.0,0,0,0,,0,,Kimi Sombrox,season1,sprint,race
+Oleksii Rozhkov,McLaren 720S LMGT3 Evo,GT3,13,14,DNF,0,,,,,,,,0,,,,,0,0.0,0,0,0,,0,,Oleksii Rozhkov,season1,sprint,race
+Nitin Murthy,Lexus RCF LMGT3,GT3,95,15,DNF,0,,,,,,,,0,,,,,0,0.0,0,0,0,,0,,Nitin Murthy,season1,sprint,race
+Elliott Brown,Mercedes-AMG LMGT3,GT3,258,16,DNF,0,,,,,,,,0,,,,,0,0.0,0,0,0,,0,,Elliott Brown,season1,sprint,race
+king jordan,Ford Mustang LMGT3,GT3,222,17,DNF,0,,,,,,,,0,,,,,0,0.0,0,0,0,,0,,king jordan,season1,sprint,race
+Harry Ricker,BMW M4 LMGT3,GT3,8,18,DNF,0,,,,,,,,0,,,,,0,0.0,0,0,0,,0,,Harry Ricker,season1,sprint,race

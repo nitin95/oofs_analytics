@@ -14,6 +14,7 @@ PACE_COLUMNS = [
 ]
 RACE_DESCRIPTOR_COLUMNS = [
     'race_pace', 'pct_race_pace', 'consistency', 'reliability', 'n_tracklimits',
+    'track_limit_points',
     'n_inchidents', 'n_incidents_vehicle', 'n_incidents_object', 'pct_laps',
     'n_stops', 'pit_lane_pct_times',
 ]
@@ -151,6 +152,7 @@ class LMUDescriptor:
                     + incident_metrics['object_incidents']
                 )
                 row['n_tracklimits'] = tracklimits
+                row['track_limit_points'] = incident_metrics['track_limit_points']
                 row['n_inchidents'] = incidents
                 row['n_incidents_vehicle'] = incident_metrics['vehicle_incidents']
                 row['n_incidents_object'] = incident_metrics['object_incidents']
@@ -432,27 +434,46 @@ class LMUDescriptor:
         metrics = {
             self._event_name_key(entry['row']['Driver']): {
                 'tracklimits': 0,
+                'track_limit_points': 0.0,
                 'vehicle_incidents': 0,
                 'object_incidents': 0,
             }
             for entry in drivers
         }
 
-        seen_tracklimits = set()
+        seen_tracklimits = {}
+        seen_current_points = {}
         for element in root.iter('TrackLimits'):
             driver_key = self._event_name_key(element.get('Driver', ''))
             warning_points = self._to_float(element.get('WarningPoints'))
             if driver_key not in metrics or warning_points is None or warning_points <= 0:
                 continue
+            current_points = self._to_float(element.get('CurrentPoints'))
 
             signature = (
-                tuple(sorted(element.attrib.items())),
+                tuple(sorted(
+                    (key, value) for key, value in element.attrib.items()
+                    if key != 'et'
+                )),
                 (element.text or '').strip(),
             )
-            if signature in seen_tracklimits:
+            event_time = self._to_float(element.get('et'))
+            previous_times = seen_tracklimits.setdefault(signature, [])
+            if any(
+                previous_time is None
+                or event_time is None
+                or abs(event_time - previous_time) <= 0.2
+                for previous_time in previous_times
+            ) or (
+                current_points is not None
+                and current_points in seen_current_points.get(driver_key, set())
+            ):
                 continue
-            seen_tracklimits.add(signature)
+            previous_times.append(event_time)
+            if current_points is not None:
+                seen_current_points.setdefault(driver_key, set()).add(current_points)
             metrics[driver_key]['tracklimits'] += 1
+            metrics[driver_key]['track_limit_points'] += warning_points
 
         driver_keys = set(metrics)
         reports = []

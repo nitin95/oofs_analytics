@@ -1,22 +1,22 @@
-Driver,Car,CarClass,CarNumber,Position,FinishStatus,Laps,laptime_sec,laptime_pct,laptime_pct_alien,avg_laptime,avg_pace_pct_alien,stdev_laptime,stdev_pace_pct,lap_count,race_pace,pct_race_pace,consistency,reliability,n_tracklimits,n_inchidents,n_incidents_vehicle,n_incidents_object,pct_laps,n_stops,pit_lane_pct_times,Driver_name,season_id,series_type,session_type
-Hayden Baker,Porsche 911 GT3 R LMGT3,GT3,58,1,Finished Normally,6,127.1241,100.0,101.23,127.4994,101.53,0.6410971377256298,0.51,4,,,,,,,,,,,,Hayden Baker,season3,sprint,quali
-Avinash Ganti,Lexus RCF LMGT3,GT3,46,2,Finished Normally,6,127.5991,99.63,101.61,128.2512,102.13,0.9222086640234913,0.73,2,,,,,,,,,,,,Avinash Ganti,season3,sprint,quali
-Jeffrey Aroyan,Ferrari 296 LMGT3,GT3,233,3,Finished Normally,5,127.6386,99.6,101.64,128.61716666666666,102.42,1.1195355927049975,0.89,3,,,,,,,,,,,,Jeffrey Aroyan,season3,sprint,quali
-Greg Kach,Ford Mustang LMGT3,GT3,123,4,Finished Normally,5,127.6451,99.6,101.64,128.35623333333334,102.21,0.9721562648737775,0.77,3,,,,,,,,,,,,Greg Kachadurian,season3,sprint,quali
-Josh Popov,Ferrari 296 LMGT3,GT3,6,5,Finished Normally,6,128.1129,99.23,102.02,128.4025,102.25,0.4095562476632585,0.33,2,,,,,,,,,,,,Josh Popov,season3,sprint,quali
-William Neron,Lexus RCF LMGT3,GT3,94,6,Finished Normally,5,128.1294,99.22,102.03,129.2386,102.91,1.1680400991975146,0.93,4,,,,,,,,,,,,William Neron,season3,sprint,quali
-Cyril Fortin,Porsche 911 GT3 R LMGT3,GT3,99,7,Finished Normally,5,128.3971,99.01,102.24,129.56320000000002,103.17,1.0219650042932003,0.81,3,,,,,,,,,,,,Cyril Fortin,season3,sprint,quali
-Guillermo Paret,Chevrolet Corvette Z06 LMGT3.R,GT3,52,8,Finished Normally,6,128.5101,98.92,102.33,129.29459999999997,102.96,1.0403871619097798,0.83,4,,,,,,,,,,,,Guillermo Paret,season3,sprint,quali
-Willie Mangram,Porsche 911 GT3 R LMGT3,GT3,2,9,Finished Normally,6,128.6826,98.79,102.47,129.41653333333332,103.06,0.9739802889860398,0.78,3,,,,,,,,,,,,Willie Mangram,season3,sprint,quali
-Richie Wood,Lamborghini Huracan LMGT3 Evo2,GT3,101,10,Finished Normally,6,128.6977,98.78,102.48,129.680925,103.27,1.3047645007816575,1.04,4,,,,,,,,,,,,Richie Wood,season3,sprint,quali
-Philippe Brazeau,McLaren 720S LMGT3 Evo,GT3,88,11,Finished Normally,6,128.9913,98.55,102.72,130.009725,103.53,1.2639533703819996,1.01,4,,,,,,,,,,,,Philippe Brazeau,season3,sprint,quali
-Preston Parenti,Lexus RCF LMGT3,GT3,32,12,Finished Normally,5,129.0699,98.49,102.78,130.06843333333333,103.57,1.1273064593682292,0.9,3,,,,,,,,,,,,Preston Parenti,season3,sprint,quali
-Louis Gendron,Porsche 911 GT3 R LMGT3,GT3,26,13,Finished Normally,6,129.1335,98.44,102.83,130.55106666666666,103.96,1.605433008049021,1.28,3,,,,,,,,,,,,Louis Gendron,season3,sprint,quali
-p thomas,Lamborghini Huracan LMGT3 Evo2,GT3,69,14,Finished Normally,4,129.4231,98.22,103.06,129.97375,103.5,0.7787366981207512,0.62,2,,,,,,,,,,,,Parker Thomas,season3,sprint,quali
-Nick Johnson,Lamborghini Huracan LMGT3 Evo2,GT3,696,15,Finished Normally,6,129.6414,98.06,103.23,130.996475,104.31,1.6535625668537621,1.32,4,,,,,,,,,,,,Nick Johnson,season3,sprint,quali
-Dan Gomez,McLaren 720S LMGT3 Evo,GT3,242,16,Finished Normally,6,130.8262,97.17,104.18,131.56847499999998,104.77,1.3106704884015175,1.04,4,,,,,,,,,,,,Dan Gomez,season3,sprint,quali
-John P,McLaren 720S LMGT3 Evo,GT3,4,17,Finished Normally,6,130.8471,97.16,104.19,131.58550000000002,104.78,1.0442552944562915,0.83,2,,,,,,,,,,,,John Pflibsen,season3,sprint,quali
-Hans Montes,Chevrolet Corvette Z06 LMGT3.R,GT3,345,18,Finished Normally,6,130.9568,97.07,104.28,131.7231,104.89,1.0837118528465042,0.86,2,,,,,,,,,,,,Hans Montes,season3,sprint,quali
-R McLean,Porsche 911 GT3 R LMGT3,GT3,93,19,Finished Normally,5,131.207,96.89,104.48,131.207,104.48,0.0,0.0,1,,,,,,,,,,,,Ross McLean,season3,sprint,quali
-Dustin Rand,BMW M4 LMGT3,GT3,5,20,Finished Normally,3,132.4766,95.96,105.49,132.4766,105.49,0.0,0.0,1,,,,,,,,,,,,Dustin Rand,season3,sprint,quali
-Maximum Angry,BMW M4 LMGT3,GT3,15,21,Finished Normally,5,132.97,95.61,105.88,133.10250000000002,105.99,0.18738329701444556,0.15,2,,,,,,,,,,,,Maximum Angry,season3,sprint,quali
+Driver,Car,CarClass,CarNumber,Position,FinishStatus,Laps,laptime_sec,laptime_pct,laptime_pct_alien,avg_laptime,avg_pace_pct_alien,stdev_laptime,stdev_pace_pct,lap_count,race_pace,pct_race_pace,consistency,reliability,n_tracklimits,track_limit_points,n_inchidents,n_incidents_vehicle,n_incidents_object,pct_laps,n_stops,pit_lane_pct_times,Driver_name,season_id,series_type,session_type
+Hayden Baker,Porsche 911 GT3 R LMGT3,GT3,58,1,Finished Normally,6,127.1241,100.0,101.23,127.4994,101.53,0.6410971377256298,0.51,4,,,,,,,,,,,,,Hayden Baker,season3,sprint,quali
+Avinash Ganti,Lexus RCF LMGT3,GT3,46,2,Finished Normally,6,127.5991,99.63,101.61,128.2512,102.13,0.9222086640234913,0.73,2,,,,,,,,,,,,,Avinash Ganti,season3,sprint,quali
+Jeffrey Aroyan,Ferrari 296 LMGT3,GT3,233,3,Finished Normally,5,127.6386,99.6,101.64,128.61716666666666,102.42,1.1195355927049975,0.89,3,,,,,,,,,,,,,Jeffrey Aroyan,season3,sprint,quali
+Greg Kach,Ford Mustang LMGT3,GT3,123,4,Finished Normally,5,127.6451,99.6,101.64,128.35623333333334,102.21,0.9721562648737775,0.77,3,,,,,,,,,,,,,Greg Kachadurian,season3,sprint,quali
+Josh Popov,Ferrari 296 LMGT3,GT3,6,5,Finished Normally,6,128.1129,99.23,102.02,128.4025,102.25,0.4095562476632585,0.33,2,,,,,,,,,,,,,Josh Popov,season3,sprint,quali
+William Neron,Lexus RCF LMGT3,GT3,94,6,Finished Normally,5,128.1294,99.22,102.03,129.2386,102.91,1.1680400991975146,0.93,4,,,,,,,,,,,,,William Neron,season3,sprint,quali
+Cyril Fortin,Porsche 911 GT3 R LMGT3,GT3,99,7,Finished Normally,5,128.3971,99.01,102.24,129.56320000000002,103.17,1.0219650042932003,0.81,3,,,,,,,,,,,,,Cyril Fortin,season3,sprint,quali
+Guillermo Paret,Chevrolet Corvette Z06 LMGT3.R,GT3,52,8,Finished Normally,6,128.5101,98.92,102.33,129.29459999999997,102.96,1.0403871619097798,0.83,4,,,,,,,,,,,,,Guillermo Paret,season3,sprint,quali
+Willie Mangram,Porsche 911 GT3 R LMGT3,GT3,2,9,Finished Normally,6,128.6826,98.79,102.47,129.41653333333332,103.06,0.9739802889860398,0.78,3,,,,,,,,,,,,,Willie Mangram,season3,sprint,quali
+Richie Wood,Lamborghini Huracan LMGT3 Evo2,GT3,101,10,Finished Normally,6,128.6977,98.78,102.48,129.680925,103.27,1.3047645007816575,1.04,4,,,,,,,,,,,,,Richie Wood,season3,sprint,quali
+Philippe Brazeau,McLaren 720S LMGT3 Evo,GT3,88,11,Finished Normally,6,128.9913,98.55,102.72,130.009725,103.53,1.2639533703819996,1.01,4,,,,,,,,,,,,,Philippe Brazeau,season3,sprint,quali
+Preston Parenti,Lexus RCF LMGT3,GT3,32,12,Finished Normally,5,129.0699,98.49,102.78,130.06843333333333,103.57,1.1273064593682292,0.9,3,,,,,,,,,,,,,Preston Parenti,season3,sprint,quali
+Louis Gendron,Porsche 911 GT3 R LMGT3,GT3,26,13,Finished Normally,6,129.1335,98.44,102.83,130.55106666666666,103.96,1.605433008049021,1.28,3,,,,,,,,,,,,,Louis Gendron,season3,sprint,quali
+p thomas,Lamborghini Huracan LMGT3 Evo2,GT3,69,14,Finished Normally,4,129.4231,98.22,103.06,129.97375,103.5,0.7787366981207512,0.62,2,,,,,,,,,,,,,Parker Thomas,season3,sprint,quali
+Nick Johnson,Lamborghini Huracan LMGT3 Evo2,GT3,696,15,Finished Normally,6,129.6414,98.06,103.23,130.996475,104.31,1.6535625668537621,1.32,4,,,,,,,,,,,,,Nick Johnson,season3,sprint,quali
+Dan Gomez,McLaren 720S LMGT3 Evo,GT3,242,16,Finished Normally,6,130.8262,97.17,104.18,131.56847499999998,104.77,1.3106704884015175,1.04,4,,,,,,,,,,,,,Dan Gomez,season3,sprint,quali
+John P,McLaren 720S LMGT3 Evo,GT3,4,17,Finished Normally,6,130.8471,97.16,104.19,131.58550000000002,104.78,1.0442552944562915,0.83,2,,,,,,,,,,,,,John Pflibsen,season3,sprint,quali
+Hans Montes,Chevrolet Corvette Z06 LMGT3.R,GT3,345,18,Finished Normally,6,130.9568,97.07,104.28,131.7231,104.89,1.0837118528465042,0.86,2,,,,,,,,,,,,,Hans Montes,season3,sprint,quali
+R McLean,Porsche 911 GT3 R LMGT3,GT3,93,19,Finished Normally,5,131.207,96.89,104.48,131.207,104.48,0.0,0.0,1,,,,,,,,,,,,,Ross McLean,season3,sprint,quali
+Dustin Rand,BMW M4 LMGT3,GT3,5,20,Finished Normally,3,132.4766,95.96,105.49,132.4766,105.49,0.0,0.0,1,,,,,,,,,,,,,Dustin Rand,season3,sprint,quali
+Maximum Angry,BMW M4 LMGT3,GT3,15,21,Finished Normally,5,132.97,95.61,105.88,133.10250000000002,105.99,0.18738329701444556,0.15,2,,,,,,,,,,,,,Maximum Angry,season3,sprint,quali

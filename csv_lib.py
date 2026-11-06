@@ -294,7 +294,7 @@ def process_races_into_comparison_df(
     ]
     descriptor_columns = [
         'Position', 'race_pace', 'pct_race_pace', 'consistency', 'reliability',
-        'n_tracklimits', 'n_inchidents', 'n_incidents_vehicle',
+        'n_tracklimits', 'track_limit_points', 'n_inchidents', 'n_incidents_vehicle',
         'n_incidents_object', 'pct_laps', 'n_stops',
         'pit_lane_pct_times',
     ]

@@ -224,7 +224,7 @@ def generate_descriptor_tables(comparison_df, race_codes, track_names):
         ('race_pace', 'Clean Race Pace (%)', 'number'),
         ('consistency', 'Consistency (%)', 'fraction'),
         ('reliability', 'Reliability (%)', 'fraction'),
-        ('n_tracklimits', 'Track Limits', 'integer'),
+        ('n_tracklimits', 'Track Limits (track limit points)', 'tracklimits'),
         ('n_inchidents', 'Incidents', 'integer'),
         ('n_incidents_vehicle', 'Vehicle Incidents', 'integer'),
         ('n_incidents_object', 'Object Incidents', 'integer'),
@@ -243,10 +243,33 @@ def generate_descriptor_tables(comparison_df, race_codes, track_names):
         if not available:
             continue
 
-        table_df = comparison_df[['Driver_name'] + available].copy()
+        point_columns = {
+            column: column.replace('n_tracklimits_', 'track_limit_points_', 1)
+            for column in available
+        } if format_type == 'tracklimits' else {}
+        table_columns = ['Driver_name'] + available + [
+            point_column for point_column in point_columns.values()
+            if point_column in comparison_df.columns
+        ]
+        table_df = comparison_df[table_columns].copy()
         table_df = table_df.dropna(subset=available, how='all').reset_index(drop=True)
         if table_df.empty:
             continue
+
+        if format_type == 'tracklimits':
+            for count_column, point_column in point_columns.items():
+                if point_column not in table_df.columns:
+                    continue
+                table_df[count_column] = table_df.apply(
+                    lambda row: (
+                        f'{int(row[count_column])} ({float(row[point_column]):.2f})'
+                        if pd.notna(row[count_column]) and pd.notna(row[point_column])
+                        else f'{int(row[count_column])}'
+                        if pd.notna(row[count_column]) else ''
+                    ),
+                    axis=1,
+                )
+                table_df = table_df.drop(columns=point_column)
 
         full_driver_names = table_df['Driver_name'].tolist()
         table_df['Driver_name'] = table_df['Driver_name'].apply(
