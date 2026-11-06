@@ -140,6 +140,10 @@ def _finish_positions(records):
     return [record['position'] for record in records if record['position'] is not None]
 
 
+def _is_dns(record):
+    return record['laps'] == 0
+
+
 def _build_elo_lookup(config_root, data_root):
     """Return final category ratings and ranks indexed by canonical driver name."""
     category_by_slug = {
@@ -161,16 +165,21 @@ def _build_elo_lookup(config_root, data_root):
 
 
 def _category_stats(races, qualis):
-    positions = _finish_positions(races)
+    started_races = [record for record in races if not _is_dns(record)]
+    positions = _finish_positions(started_races)
     qualifying_positions = _finish_positions(qualis)
     return {
-        'starts': len(races),
+        'starts': len(started_races),
         'wins': sum(position == 1 for position in positions),
         'podiums': sum(position <= 3 for position in positions),
         'poles': sum(position == 1 for position in qualifying_positions),
-        'dnfs': sum('dnf' in record['finish_status'].lower() for record in races),
+        'dnfs': sum(
+            not _is_dns(record) and 'dnf' in record['finish_status'].lower()
+            for record in races
+        ),
+        'dns': sum(_is_dns(record) for record in races),
         'best_finish': min(positions) if positions else None,
-        'average_finish': _mean(races, 'position'),
+        'average_finish': _mean(started_races, 'position'),
         'average_qualifying': _mean(qualis, 'position'),
         'average_quali_pace': _mean(qualis, 'avg_pace_pct_alien'),
         'laps': sum(record['laps'] or 0 for record in races),
@@ -310,30 +319,38 @@ def _render_results(records):
     )
 
 
-def _dnf_metric(records, identifier):
-    dnfs = [
-        record for record in records
-        if 'dnf' in record['finish_status'].lower()
-    ][-5:]
-    dnfs.reverse()
+def _result_metric(label, records, identifier, predicate, empty_message):
+    matching_records = [record for record in records if predicate(record)]
+    recent = matching_records[-5:]
+    recent.reverse()
     items = ''.join(
         '<li>'
         f'{html.escape(record["season_name"])} · {html.escape(record["event"])}'
         f'<small>{html.escape(record["category_label"])} · '
         f'{html.escape(record["finish_status"])}</small></li>'
-        for record in dnfs
+        for record in recent
     )
     if not items:
-        items = '<li>No DNFs recorded.</li>'
-    count = sum('dnf' in record['finish_status'].lower() for record in records)
+        items = f'<li>{html.escape(empty_message)}</li>'
     return (
         '<div class="metric detail-metric">'
         f'<button class="detail-trigger" type="button" aria-describedby="{identifier}-details">'
-        f'<span>DNFs</span><strong>{count}</strong>'
+        f'<span>{html.escape(label)}</span><strong>{len(matching_records)}</strong>'
         '</button>'
-        f'<div class="metric-popover" id="{identifier}-details" role="dialog" aria-label="Previous DNF races">'
-        f'<h3>Previous DNF races</h3><ul>{items}</ul></div>'
+        f'<div class="metric-popover" id="{identifier}-details" role="dialog" '
+        f'aria-label="Previous {html.escape(label)} races">'
+        f'<h3>Previous {html.escape(label)} races</h3><ul>{items}</ul></div>'
         '</div>'
+    )
+
+
+def _dnf_metric(records, identifier):
+    return _result_metric(
+        'DNFs', records, identifier,
+        lambda record: (
+            not _is_dns(record) and 'dnf' in record['finish_status'].lower()
+        ),
+        'No DNFs recorded.',
     )
 
 
@@ -397,14 +414,32 @@ def render_driver_page(name, profile, generated_date, elo_lookup=None):
             f'<h2>{html.escape(category_label)}</h2>'
             + _metric_grid([
                 ('Starts', category_stats['starts']),
-                ('Wins', category_stats['wins']),
-                ('Podiums', category_stats['podiums']),
+                _result_metric(
+                    'Wins', category_races, f'{series}-{category}-wins',
+                    lambda record: (
+                        not _is_dns(record) and record['position'] == 1
+                    ),
+                    'No wins recorded.',
+                ),
+                _result_metric(
+                    'Podiums', category_races, f'{series}-{category}-podiums',
+                    lambda record: (
+                        not _is_dns(record)
+                        and record['position'] is not None
+                        and record['position'] <= 3
+                    ),
+                    'No podiums recorded.',
+                ),
                 ('Poles', category_stats['poles']),
                 ('Best finish', 'P'+_format_number(category_stats['best_finish'])),
                 ('Average finish', _format_number(category_stats['average_finish'], 2)),
                 ('Average qualifying', _format_number(category_stats['average_qualifying'], 2)),
                 ('Average quali pace vs alien', _format_number(category_stats['average_quali_pace'], 2) + '%'),
                 _dnf_metric(category_races, f'{series}-{category}-dnfs'),
+                _result_metric(
+                    'DNS', category_races, f'{series}-{category}-dns',
+                    _is_dns, 'No DNS recorded.',
+                ),
                 ('Laps completed', _format_number(category_stats['laps'])),
                 ('Average race pace vs alien', _format_number(category_stats['average_pace'], 2) + '%'),
                 ('Average consistency', _format_number(category_stats['average_consistency'], 3)),
@@ -433,12 +468,30 @@ def render_driver_page(name, profile, generated_date, elo_lookup=None):
         '<section class="profile-section"><h2>Overall career stats</h2>'
         + _metric_grid([
             ('Race starts', stats['starts']),
-            ('Wins', stats['wins']),
-            ('Podiums', stats['podiums']),
+            _result_metric(
+                'Wins', races, 'career-wins',
+                lambda record: (
+                    not _is_dns(record) and record['position'] == 1
+                ),
+                'No wins recorded.',
+            ),
+            _result_metric(
+                'Podiums', races, 'career-podiums',
+                lambda record: (
+                    not _is_dns(record)
+                    and record['position'] is not None
+                    and record['position'] <= 3
+                ),
+                'No podiums recorded.',
+            ),
             ('Pole positions', stats['poles']),
             ('Best finish', 'P'+_format_number(stats['best_finish'])),
             ('Average finish', _format_number(stats['average_finish'], 2)),
             _dnf_metric(races, 'career-dnfs'),
+            _result_metric(
+                'DNS', races, 'career-dns',
+                _is_dns, 'No DNS recorded.',
+            ),
             ('Categories', len(categories)),
             ('Seasons raced', len({record['season_id'] for record in races})),
             ('Laps completed', _format_number(stats['laps'])),
@@ -469,6 +522,10 @@ def generate_driver_pages(output_dir=OUTPUT_DIR, data_root=DATA_ROOT,
 
     generated_date = generated_date or date.today().isoformat()
     profiles = collect_driver_records(data_root, config_root)
+    profiles = {
+        name: profile for name, profile in profiles.items()
+        if any(not _is_dns(record) for record in profile['race'])
+    }
     elo_lookup = _build_elo_lookup(config_root, data_root)
     os.makedirs(output_dir, exist_ok=True)
 

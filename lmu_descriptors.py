@@ -200,7 +200,9 @@ class LMUDescriptor:
                 row['pct_race_pace'] = max(
                     100.0, 100 * entry['race_mean'] / class_race_pace[class_key]
                 )
-            if not any(lap['time'] is not None for lap in entry['laps']):
+            if not include_race and not any(
+                lap['time'] is not None for lap in entry['laps']
+            ):
                 continue
             output.append(row)
 

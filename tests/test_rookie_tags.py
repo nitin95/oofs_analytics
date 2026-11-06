@@ -66,13 +66,19 @@ class RookieTagTests(unittest.TestCase):
             ET.SubElement(driver, 'CarNumber').text = '1'
             ET.SubElement(driver, 'Position').text = str(driver_data['position'])
             ET.SubElement(driver, 'ClassPosition').text = str(driver_data['position'])
-            ET.SubElement(driver, 'FinishStatus').text = 'Finished'
+            ET.SubElement(driver, 'FinishStatus').text = driver_data.get(
+                'finish_status', 'Finished'
+            )
             times = driver_data['times']
-            ET.SubElement(driver, 'Laps').text = str(len(times) + 1)
-            first_lap_attributes = driver_data.get('lap_attributes', {}).get(1, {})
-            ET.SubElement(
-                driver, 'Lap', {'num': '1', 'et': '--.---', **first_lap_attributes}
-            ).text = '--.----'
+            lap_count = driver_data.get('laps', len(times) + 1)
+            ET.SubElement(driver, 'Laps').text = str(lap_count)
+            if lap_count:
+                first_lap_attributes = driver_data.get('lap_attributes', {}).get(1, {})
+                ET.SubElement(
+                    driver, 'Lap', {
+                        'num': '1', 'et': '--.---', **first_lap_attributes
+                    }
+                ).text = '--.----'
             for lap_num, lap_time in enumerate(times, start=2):
                 elapsed = driver_data.get('elapsed', {}).get(lap_num, (lap_num - 1) * 100)
                 value = '--.----' if lap_time is None else str(lap_time)
@@ -337,6 +343,24 @@ class RookieTagTests(unittest.TestCase):
         self.assertEqual(prototype['pct_race_pace'], 100.0)
         self.assertTrue(quali_data['reliability'].isna().all())
         self.assertTrue(quali_data['pct_race_pace'].isna().all())
+
+    def test_zero_lap_race_driver_is_retained_for_dns_stats(self):
+        xml_path = self.write_descriptor_xml('dns-race.xml', [
+            {
+                'name': 'DNS Driver', 'class': 'GT3', 'position': 2,
+                'times': [], 'laps': 0, 'finish_status': 'DNF',
+            },
+            {
+                'name': 'Finishing Driver', 'class': 'GT3', 'position': 1,
+                'times': [100],
+            },
+        ])
+
+        race_data = LMUDescriptor().get_descriptors(xml_path, {'gt3': 100})
+        dns_driver = race_data[race_data['Driver'] == 'DNS Driver'].iloc[0]
+
+        self.assertEqual(dns_driver['Laps'], 0)
+        self.assertEqual(dns_driver['FinishStatus'], 'DNF')
 
     def test_race_incidents_and_track_limits_come_from_event_tags(self):
         incidents = [
