@@ -338,8 +338,8 @@ def _result_metric(label, records, identifier, predicate, empty_message):
         f'<span>{html.escape(label)}</span><strong>{len(matching_records)}</strong>'
         '</button>'
         f'<div class="metric-popover" id="{identifier}-details" role="dialog" '
-        f'aria-label="Previous {html.escape(label)} races">'
-        f'<h3>Previous {html.escape(label)} races</h3><ul>{items}</ul></div>'
+        f'aria-label="Previous {html.escape(label)}">'
+        f'<h3>Previous {html.escape(label)}</h3><ul>{items}</ul></div>'
         '</div>'
     )
 
