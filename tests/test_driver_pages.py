@@ -213,6 +213,10 @@ class DriverPagesTests(unittest.TestCase):
                 Position=2,
                 Laps=20,
                 n_tracklimits=4,
+                n_tracklimits_025=2,
+                n_tracklimits_05=1,
+                n_tracklimits_075=0,
+                n_tracklimits_1plus=1,
                 n_inchidents=3,
                 n_incidents_vehicle=2,
                 n_incidents_object=1,
@@ -222,6 +226,10 @@ class DriverPagesTests(unittest.TestCase):
                 Position=3,
                 Laps=18,
                 n_tracklimits=2,
+                n_tracklimits_025=0,
+                n_tracklimits_05=1,
+                n_tracklimits_075=1,
+                n_tracklimits_1plus=0,
                 n_inchidents=5,
                 n_incidents_vehicle=3,
                 n_incidents_object=2,
@@ -263,10 +271,11 @@ class DriverPagesTests(unittest.TestCase):
             self.assertIn('Sprint GT3', page)
             self.assertIn('Average quali pace vs alien', page)
             self.assertIn('<span>Track limits</span><strong>6</strong>', page)
-            self.assertIn(
-                '<span>Average track limits per race</span><strong>3.00</strong>',
-                page,
-            )
+            self.assertIn('Average per race: 3.00', page)
+            self.assertIn('0.25 points: 2', page)
+            self.assertIn('0.5 points: 2', page)
+            self.assertIn('0.75 points: 1', page)
+            self.assertIn('1+ points: 1', page)
             self.assertNotIn('Average incidents per race', page)
             self.assertNotIn('Vehicle incidents</span>', page)
             self.assertNotIn('Object incidents</span>', page)

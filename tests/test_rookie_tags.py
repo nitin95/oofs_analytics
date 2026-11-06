@@ -403,6 +403,10 @@ class RookieTagTests(unittest.TestCase):
 
         self.assertEqual(driver_a['n_tracklimits'], 2)
         self.assertAlmostEqual(driver_a['track_limit_points'], 0.75)
+        self.assertEqual(driver_a['n_tracklimits_025'], 1)
+        self.assertEqual(driver_a['n_tracklimits_05'], 1)
+        self.assertEqual(driver_a['n_tracklimits_075'], 0)
+        self.assertEqual(driver_a['n_tracklimits_1plus'], 0)
         self.assertEqual(driver_b['n_tracklimits'], 0)
         self.assertEqual(driver_b['track_limit_points'], 0)
         self.assertEqual(driver_a['n_incidents_vehicle'], 2)

@@ -1,26 +1,26 @@
-Driver,Car,CarClass,CarNumber,Position,FinishStatus,Laps,laptime_sec,laptime_pct,laptime_pct_alien,avg_laptime,avg_pace_pct_alien,stdev_laptime,stdev_pace_pct,lap_count,race_pace,pct_race_pace,consistency,reliability,n_tracklimits,track_limit_points,n_inchidents,n_incidents_vehicle,n_incidents_object,pct_laps,n_stops,pit_lane_pct_times,Driver_name,season_id,series_type,session_type
-Julian Munoz#7588,Peugeot 9x8,Hyper,55,1,Finished Normally,7,,,,,,,,0,,,,,,,,,,,,,Julian Munoz#7588,season4,multiclass,quali
-Joris Butkus,Glickenhaus SCG007,Hyper,11,2,Finished Normally,9,,,,,,,,0,,,,,,,,,,,,,Joris Butkus,season4,multiclass,quali
-Greg Kach,Porsche 963,Hyper,123,3,Finished Normally,6,,,,,,,,0,,,,,,,,,,,,,Greg Kachadurian,season4,multiclass,quali
-Andrew Canelli,Alpine A424,Hyper,44,4,Finished Normally,6,,,,,,,,0,,,,,,,,,,,,,Andrew Canelli,season4,multiclass,quali
-Wesley Ambrose,BMW M Hybrid V8,Hyper,332,5,Finished Normally,6,,,,,,,,0,,,,,,,,,,,,,Wesley Ambrose,season4,multiclass,quali
-Michael Landry,Peugeot 9x8,Hyper,710,6,Finished Normally,7,,,,,,,,0,,,,,,,,,,,,,Michael Landry,season4,multiclass,quali
-Nathan Sides,Peugeot 9x8,Hyper,12,7,Finished Normally,9,,,,,,,,0,,,,,,,,,,,,,Nathan Sides,season4,multiclass,quali
-Jeffrey Aroyan,Porsche 963,Hyper,233,8,Finished Normally,6,,,,,,,,0,,,,,,,,,,,,,Jeffrey Aroyan,season4,multiclass,quali
-Grayson Head,Cadillac V-Series.R,Hyper,34,9,Finished Normally,10,,,,,,,,0,,,,,,,,,,,,,Grayson Head,season4,multiclass,quali
-James Rubio,Peugeot 9x8,Hyper,27,10,Finished Normally,7,,,,,,,,0,,,,,,,,,,,,,James Rubio,season4,multiclass,quali
-Chris MacLennan,Genesis GMR001,Hyper,114,11,Finished Normally,7,,,,,,,,0,,,,,,,,,,,,,Chris MacLennan,season4,multiclass,quali
-Daniel Valasco,BMW M Hybrid V8,Hyper,477,12,Finished Normally,9,,,,,,,,0,,,,,,,,,,,,,Daniel Valasco,season4,multiclass,quali
-Willie Mangram,Ferrari 499P,Hyper,2,13,Finished Normally,10,,,,,,,,0,,,,,,,,,,,,,Willie Mangram,season4,multiclass,quali
-Josh Popov,Lexus RCF LMGT3,GT3,6,1,Finished Normally,7,,,,,,,,0,,,,,,,,,,,,,Josh Popov,season4,multiclass,quali
-Guillermo Paret,Lexus RCF LMGT3,GT3,52,2,None,8,,,,,,,,0,,,,,,,,,,,,,Guillermo Paret,season4,multiclass,quali
-Kasi Jackman,Chevrolet Corvette Z06 LMGT3.R,GT3,868,3,Finished Normally,9,,,,,,,,0,,,,,,,,,,,,,Kasi Jackman,season4,multiclass,quali
-Richie Wood,Aston Martin Vantage AMR LMGT3,GT3,101,4,Finished Normally,8,,,,,,,,0,,,,,,,,,,,,,Richie Wood,season4,multiclass,quali
-p thom,Lexus RCF LMGT3,GT3,69,5,Finished Normally,8,,,,,,,,0,,,,,,,,,,,,,Parker Thomas,season4,multiclass,quali
-Mathieu Murray,BMW M4 LMGT3,GT3,14,6,Finished Normally,8,,,,,,,,0,,,,,,,,,,,,,Mathieu Murray,season4,multiclass,quali
-Lewis M Smith,Porsche 911 GT3 R LMGT3,GT3,28,7,Finished Normally,9,,,,,,,,0,,,,,,,,,,,,,Lewis M Smith,season4,multiclass,quali
-Dan Jr Poulin,Ford Mustang LMGT3,GT3,514,8,Finished Normally,7,,,,,,,,0,,,,,,,,,,,,,Dan Jr Poulin,season4,multiclass,quali
-C M Wilson,Porsche 911 GT3 R LMGT3,GT3,177,9,Finished Normally,8,,,,,,,,0,,,,,,,,,,,,,Chris Wilson,season4,multiclass,quali
-Logan Breakey,Porsche 911 GT3 R LMGT3,GT3,229,10,Finished Normally,8,,,,,,,,0,,,,,,,,,,,,,Logan Breakey,season4,multiclass,quali
-Dave Carter,Lexus RCF LMGT3,GT3,420,11,Finished Normally,5,,,,,,,,0,,,,,,,,,,,,,Dave Carter,season4,multiclass,quali
-Kevin Sakamoto,Lexus RCF LMGT3,GT3,72,12,Finished Normally,8,,,,,,,,0,,,,,,,,,,,,,Kevin Sakamoto,season4,multiclass,quali
+Driver,Car,CarClass,CarNumber,Position,FinishStatus,Laps,laptime_sec,laptime_pct,laptime_pct_alien,avg_laptime,avg_pace_pct_alien,stdev_laptime,stdev_pace_pct,lap_count,race_pace,pct_race_pace,consistency,reliability,n_tracklimits,track_limit_points,n_tracklimits_025,n_tracklimits_05,n_tracklimits_075,n_tracklimits_1plus,n_inchidents,n_incidents_vehicle,n_incidents_object,pct_laps,n_stops,pit_lane_pct_times,Driver_name,season_id,series_type,session_type
+Julian Munoz#7588,Peugeot 9x8,Hyper,55,1,Finished Normally,7,,,,,,,,0,,,,,,,,,,,,,,,,,Julian Munoz#7588,season4,multiclass,quali
+Joris Butkus,Glickenhaus SCG007,Hyper,11,2,Finished Normally,9,,,,,,,,0,,,,,,,,,,,,,,,,,Joris Butkus,season4,multiclass,quali
+Greg Kach,Porsche 963,Hyper,123,3,Finished Normally,6,,,,,,,,0,,,,,,,,,,,,,,,,,Greg Kachadurian,season4,multiclass,quali
+Andrew Canelli,Alpine A424,Hyper,44,4,Finished Normally,6,,,,,,,,0,,,,,,,,,,,,,,,,,Andrew Canelli,season4,multiclass,quali
+Wesley Ambrose,BMW M Hybrid V8,Hyper,332,5,Finished Normally,6,,,,,,,,0,,,,,,,,,,,,,,,,,Wesley Ambrose,season4,multiclass,quali
+Michael Landry,Peugeot 9x8,Hyper,710,6,Finished Normally,7,,,,,,,,0,,,,,,,,,,,,,,,,,Michael Landry,season4,multiclass,quali
+Nathan Sides,Peugeot 9x8,Hyper,12,7,Finished Normally,9,,,,,,,,0,,,,,,,,,,,,,,,,,Nathan Sides,season4,multiclass,quali
+Jeffrey Aroyan,Porsche 963,Hyper,233,8,Finished Normally,6,,,,,,,,0,,,,,,,,,,,,,,,,,Jeffrey Aroyan,season4,multiclass,quali
+Grayson Head,Cadillac V-Series.R,Hyper,34,9,Finished Normally,10,,,,,,,,0,,,,,,,,,,,,,,,,,Grayson Head,season4,multiclass,quali
+James Rubio,Peugeot 9x8,Hyper,27,10,Finished Normally,7,,,,,,,,0,,,,,,,,,,,,,,,,,James Rubio,season4,multiclass,quali
+Chris MacLennan,Genesis GMR001,Hyper,114,11,Finished Normally,7,,,,,,,,0,,,,,,,,,,,,,,,,,Chris MacLennan,season4,multiclass,quali
+Daniel Valasco,BMW M Hybrid V8,Hyper,477,12,Finished Normally,9,,,,,,,,0,,,,,,,,,,,,,,,,,Daniel Valasco,season4,multiclass,quali
+Willie Mangram,Ferrari 499P,Hyper,2,13,Finished Normally,10,,,,,,,,0,,,,,,,,,,,,,,,,,Willie Mangram,season4,multiclass,quali
+Josh Popov,Lexus RCF LMGT3,GT3,6,1,Finished Normally,7,,,,,,,,0,,,,,,,,,,,,,,,,,Josh Popov,season4,multiclass,quali
+Guillermo Paret,Lexus RCF LMGT3,GT3,52,2,None,8,,,,,,,,0,,,,,,,,,,,,,,,,,Guillermo Paret,season4,multiclass,quali
+Kasi Jackman,Chevrolet Corvette Z06 LMGT3.R,GT3,868,3,Finished Normally,9,,,,,,,,0,,,,,,,,,,,,,,,,,Kasi Jackman,season4,multiclass,quali
+Richie Wood,Aston Martin Vantage AMR LMGT3,GT3,101,4,Finished Normally,8,,,,,,,,0,,,,,,,,,,,,,,,,,Richie Wood,season4,multiclass,quali
+p thom,Lexus RCF LMGT3,GT3,69,5,Finished Normally,8,,,,,,,,0,,,,,,,,,,,,,,,,,Parker Thomas,season4,multiclass,quali
+Mathieu Murray,BMW M4 LMGT3,GT3,14,6,Finished Normally,8,,,,,,,,0,,,,,,,,,,,,,,,,,Mathieu Murray,season4,multiclass,quali
+Lewis M Smith,Porsche 911 GT3 R LMGT3,GT3,28,7,Finished Normally,9,,,,,,,,0,,,,,,,,,,,,,,,,,Lewis M Smith,season4,multiclass,quali
+Dan Jr Poulin,Ford Mustang LMGT3,GT3,514,8,Finished Normally,7,,,,,,,,0,,,,,,,,,,,,,,,,,Dan Jr Poulin,season4,multiclass,quali
+C M Wilson,Porsche 911 GT3 R LMGT3,GT3,177,9,Finished Normally,8,,,,,,,,0,,,,,,,,,,,,,,,,,Chris Wilson,season4,multiclass,quali
+Logan Breakey,Porsche 911 GT3 R LMGT3,GT3,229,10,Finished Normally,8,,,,,,,,0,,,,,,,,,,,,,,,,,Logan Breakey,season4,multiclass,quali
+Dave Carter,Lexus RCF LMGT3,GT3,420,11,Finished Normally,5,,,,,,,,0,,,,,,,,,,,,,,,,,Dave Carter,season4,multiclass,quali
+Kevin Sakamoto,Lexus RCF LMGT3,GT3,72,12,Finished Normally,8,,,,,,,,0,,,,,,,,,,,,,,,,,Kevin Sakamoto,season4,multiclass,quali

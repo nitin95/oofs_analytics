@@ -15,6 +15,8 @@ PACE_COLUMNS = [
 RACE_DESCRIPTOR_COLUMNS = [
     'race_pace', 'pct_race_pace', 'consistency', 'reliability', 'n_tracklimits',
     'track_limit_points',
+    'n_tracklimits_025', 'n_tracklimits_05', 'n_tracklimits_075',
+    'n_tracklimits_1plus',
     'n_inchidents', 'n_incidents_vehicle', 'n_incidents_object', 'pct_laps',
     'n_stops', 'pit_lane_pct_times',
 ]
@@ -153,6 +155,10 @@ class LMUDescriptor:
                 )
                 row['n_tracklimits'] = tracklimits
                 row['track_limit_points'] = incident_metrics['track_limit_points']
+                row['n_tracklimits_025'] = incident_metrics['tracklimits_025']
+                row['n_tracklimits_05'] = incident_metrics['tracklimits_05']
+                row['n_tracklimits_075'] = incident_metrics['tracklimits_075']
+                row['n_tracklimits_1plus'] = incident_metrics['tracklimits_1plus']
                 row['n_inchidents'] = incidents
                 row['n_incidents_vehicle'] = incident_metrics['vehicle_incidents']
                 row['n_incidents_object'] = incident_metrics['object_incidents']
@@ -435,6 +441,10 @@ class LMUDescriptor:
             self._event_name_key(entry['row']['Driver']): {
                 'tracklimits': 0,
                 'track_limit_points': 0.0,
+                'tracklimits_025': 0,
+                'tracklimits_05': 0,
+                'tracklimits_075': 0,
+                'tracklimits_1plus': 0,
                 'vehicle_incidents': 0,
                 'object_incidents': 0,
             }
@@ -474,6 +484,13 @@ class LMUDescriptor:
                 seen_current_points.setdefault(driver_key, set()).add(current_points)
             metrics[driver_key]['tracklimits'] += 1
             metrics[driver_key]['track_limit_points'] += warning_points
+            magnitude = (
+                'tracklimits_025' if warning_points <= 0.25 else
+                'tracklimits_05' if warning_points <= 0.5 else
+                'tracklimits_075' if warning_points <= 0.75 else
+                'tracklimits_1plus'
+            )
+            metrics[driver_key][magnitude] += 1
 
         driver_keys = set(metrics)
         reports = []

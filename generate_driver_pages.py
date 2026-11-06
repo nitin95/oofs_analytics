@@ -113,6 +113,10 @@ def collect_driver_records(data_root=DATA_ROOT, config_root=CONFIG_ROOT):
                                 row.get('n_incidents_object')
                             ),
                             'track_limits': _as_number(row.get('n_tracklimits')),
+                            'track_limits_025': _as_number(row.get('n_tracklimits_025')),
+                            'track_limits_05': _as_number(row.get('n_tracklimits_05')),
+                            'track_limits_075': _as_number(row.get('n_tracklimits_075')),
+                            'track_limits_1plus': _as_number(row.get('n_tracklimits_1plus')),
                             '_season_order': season_order,
                             '_event_order': event_order,
                             '_session_order': session_order,
@@ -196,6 +200,18 @@ def _category_stats(races, qualis):
         ),
         'track_limits': sum(record['track_limits'] or 0 for record in races),
         'average_track_limits': _mean(races, 'track_limits'),
+        'track_limits_025': sum(
+            record.get('track_limits_025') or 0 for record in races
+        ),
+        'track_limits_05': sum(
+            record.get('track_limits_05') or 0 for record in races
+        ),
+        'track_limits_075': sum(
+            record.get('track_limits_075') or 0 for record in races
+        ),
+        'track_limits_1plus': sum(
+            record.get('track_limits_1plus') or 0 for record in races
+        ),
     }
 
 
@@ -378,6 +394,31 @@ def _incident_metric(label, value, stats, identifier):
     )
 
 
+def _track_limits_metric(stats, identifier):
+    details = [
+        f'<li>Average per race: {_format_number(stats["average_track_limits"], 2)}</li>'
+    ]
+    for magnitude, key in (
+        ('0.25 points', 'track_limits_025'),
+        ('0.5 points', 'track_limits_05'),
+        ('0.75 points', 'track_limits_075'),
+        ('1+ points', 'track_limits_1plus'),
+    ):
+        details.append(
+            f'<li>{magnitude}: {_format_number(stats[key])}</li>'
+        )
+    return (
+        '<div class="metric detail-metric">'
+        f'<button class="detail-trigger" type="button" aria-describedby="{identifier}-details">'
+        f'<span>Track limits</span><strong>{_format_number(stats["track_limits"])}</strong>'
+        '</button>'
+        f'<div class="metric-popover" id="{identifier}-details" role="dialog" '
+        'aria-label="Track limits breakdown"><h3>Track limits breakdown</h3><ul>'
+        + ''.join(details)
+        + '</ul></div></div>'
+    )
+
+
 def render_driver_page(name, profile, generated_date, elo_lookup=None):
     display_name = html_lib.format_driver_name(name)
     races = profile['race']
@@ -444,8 +485,7 @@ def render_driver_page(name, profile, generated_date, elo_lookup=None):
                 ('Average race pace vs alien', _format_number(category_stats['average_pace'], 2) + '%'),
                 ('Average consistency', _format_number(category_stats['average_consistency'], 3)),
                 ('Average reliability', _format_number(category_stats['average_reliability'], 3)),
-                ('Track limits', _format_number(category_stats['track_limits'])),
-                ('Average track limits per race', _format_number(category_stats['average_track_limits'], 2)),
+                _track_limits_metric(category_stats, f'{series}-{category}-track-limits'),
                 _incident_metric(
                     'Incidents', _format_number(category_stats['incidents']),
                     category_stats, f'{series}-{category}-incidents',

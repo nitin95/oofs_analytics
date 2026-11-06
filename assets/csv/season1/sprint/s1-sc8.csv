@@ -1,14 +1,14 @@
-Driver,Car,CarClass,CarNumber,Position,FinishStatus,Laps,laptime_sec,laptime_pct,laptime_pct_alien,avg_laptime,avg_pace_pct_alien,stdev_laptime,stdev_pace_pct,lap_count,race_pace,pct_race_pace,consistency,reliability,n_tracklimits,track_limit_points,n_inchidents,n_incidents_vehicle,n_incidents_object,pct_laps,n_stops,pit_lane_pct_times,Driver_name,season_id,series_type,session_type
-Kasi Jackman,Lexus RCF LMGT3,GT3,404,1,None,9,141.0856,100.0,102.09,141.62695,102.48,0.7655845119906668,0.55,2,,,,,,,,,,,,,Kasi Jackman,season1,sprint,quali
-Greg Kach,Ford Mustang LMGT3,GT3,123,2,None,8,141.9651,99.38,102.72,142.491125,103.11,0.40749266148810903,0.29,4,,,,,,,,,,,,,Greg Kachadurian,season1,sprint,quali
-Nathan Sides,Lexus RCF LMGT3,GT3,12,3,Finished Normally,6,142.0783,99.3,102.81,142.5036,103.11,0.6014650280772673,0.44,2,,,,,,,,,,,,,Nathan Sides,season1,sprint,quali
-Nick Johnson,BMW M4 LMGT3,GT3,696,4,None,8,142.1614,99.24,102.87,142.43096666666665,103.06,0.2865985054624975,0.21,3,,,,,,,,,,,,,Nick Johnson,season1,sprint,quali
-Jesse Olsen,Mercedes-AMG LMGT3,GT3,16,5,Finished Normally,9,142.9977,98.66,103.47,143.34411666666668,103.72,0.4239081807026866,0.31,6,,,,,,,,,,,,,Jesse Olsen,season1,sprint,quali
-Nitin Murthy,Lexus RCF LMGT3,GT3,95,6,None,8,143.1029,98.59,103.55,143.389,103.75,0.4306869396673173,0.31,4,,,,,,,,,,,,,Nitin Murthy,season1,sprint,quali
-Dave Paccagnini,Mercedes-AMG LMGT3,GT3,808,7,None,9,143.2189,98.51,103.63,143.814175,104.06,0.7102242339571405,0.51,4,,,,,,,,,,,,,Dave Paccagnini,season1,sprint,quali
-Josh Popov,Mercedes-AMG LMGT3,GT3,661,8,None,5,143.3752,98.41,103.74,143.47385,103.82,0.1395121679280947,0.1,2,,,,,,,,,,,,,Josh Popov,season1,sprint,quali
-Elliott Brown,Mercedes-AMG LMGT3,GT3,258,9,None,8,143.6748,98.2,103.96,143.71105,103.99,0.05126524163601826,0.04,2,,,,,,,,,,,,,Elliott Brown,season1,sprint,quali
-Dustin Rand,McLaren 720S LMGT3 Evo,GT3,18,10,Finished Normally,9,143.7373,98.15,104.01,144.77988333333334,104.76,1.066318810519007,0.77,6,,,,,,,,,,,,,Dustin Rand,season1,sprint,quali
-Artyom Kasianov,Porsche 911 GT3 R LMGT3,GT3,434,11,Finished Normally,8,144.3082,97.77,104.42,144.3082,104.42,0.0,0.0,1,,,,,,,,,,,,,Artyom Kasianov,season1,sprint,quali
-Brian Crane,Ford Mustang LMGT3,GT3,223,12,None,8,145.2209,97.15,105.08,145.2209,105.08,0.0,0.0,1,,,,,,,,,,,,,Brian Crane,season1,sprint,quali
-Justin Fortuna,Ford Mustang LMGT3,GT3,8,13,None,6,,,,,,,,0,,,,,,,,,,,,,Justin Fortuna,season1,sprint,quali
+Driver,Car,CarClass,CarNumber,Position,FinishStatus,Laps,laptime_sec,laptime_pct,laptime_pct_alien,avg_laptime,avg_pace_pct_alien,stdev_laptime,stdev_pace_pct,lap_count,race_pace,pct_race_pace,consistency,reliability,n_tracklimits,track_limit_points,n_tracklimits_025,n_tracklimits_05,n_tracklimits_075,n_tracklimits_1plus,n_inchidents,n_incidents_vehicle,n_incidents_object,pct_laps,n_stops,pit_lane_pct_times,Driver_name,season_id,series_type,session_type
+Kasi Jackman,Lexus RCF LMGT3,GT3,404,1,None,9,141.0856,100.0,102.09,141.62695,102.48,0.7655845119906668,0.55,2,,,,,,,,,,,,,,,,,Kasi Jackman,season1,sprint,quali
+Greg Kach,Ford Mustang LMGT3,GT3,123,2,None,8,141.9651,99.38,102.72,142.491125,103.11,0.40749266148810903,0.29,4,,,,,,,,,,,,,,,,,Greg Kachadurian,season1,sprint,quali
+Nathan Sides,Lexus RCF LMGT3,GT3,12,3,Finished Normally,6,142.0783,99.3,102.81,142.5036,103.11,0.6014650280772673,0.44,2,,,,,,,,,,,,,,,,,Nathan Sides,season1,sprint,quali
+Nick Johnson,BMW M4 LMGT3,GT3,696,4,None,8,142.1614,99.24,102.87,142.43096666666665,103.06,0.2865985054624975,0.21,3,,,,,,,,,,,,,,,,,Nick Johnson,season1,sprint,quali
+Jesse Olsen,Mercedes-AMG LMGT3,GT3,16,5,Finished Normally,9,142.9977,98.66,103.47,143.34411666666668,103.72,0.4239081807026866,0.31,6,,,,,,,,,,,,,,,,,Jesse Olsen,season1,sprint,quali
+Nitin Murthy,Lexus RCF LMGT3,GT3,95,6,None,8,143.1029,98.59,103.55,143.389,103.75,0.4306869396673173,0.31,4,,,,,,,,,,,,,,,,,Nitin Murthy,season1,sprint,quali
+Dave Paccagnini,Mercedes-AMG LMGT3,GT3,808,7,None,9,143.2189,98.51,103.63,143.814175,104.06,0.7102242339571405,0.51,4,,,,,,,,,,,,,,,,,Dave Paccagnini,season1,sprint,quali
+Josh Popov,Mercedes-AMG LMGT3,GT3,661,8,None,5,143.3752,98.41,103.74,143.47385,103.82,0.1395121679280947,0.1,2,,,,,,,,,,,,,,,,,Josh Popov,season1,sprint,quali
+Elliott Brown,Mercedes-AMG LMGT3,GT3,258,9,None,8,143.6748,98.2,103.96,143.71105,103.99,0.05126524163601826,0.04,2,,,,,,,,,,,,,,,,,Elliott Brown,season1,sprint,quali
+Dustin Rand,McLaren 720S LMGT3 Evo,GT3,18,10,Finished Normally,9,143.7373,98.15,104.01,144.77988333333334,104.76,1.066318810519007,0.77,6,,,,,,,,,,,,,,,,,Dustin Rand,season1,sprint,quali
+Artyom Kasianov,Porsche 911 GT3 R LMGT3,GT3,434,11,Finished Normally,8,144.3082,97.77,104.42,144.3082,104.42,0.0,0.0,1,,,,,,,,,,,,,,,,,Artyom Kasianov,season1,sprint,quali
+Brian Crane,Ford Mustang LMGT3,GT3,223,12,None,8,145.2209,97.15,105.08,145.2209,105.08,0.0,0.0,1,,,,,,,,,,,,,,,,,Brian Crane,season1,sprint,quali
+Justin Fortuna,Ford Mustang LMGT3,GT3,8,13,None,6,,,,,,,,0,,,,,,,,,,,,,,,,,Justin Fortuna,season1,sprint,quali
