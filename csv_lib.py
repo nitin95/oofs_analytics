@@ -293,7 +293,8 @@ def process_races_into_comparison_df(
         'avg_pace_pct_alien', 'stdev_laptime', 'stdev_pace_pct',
     ]
     descriptor_columns = [
-        'Position', 'race_pace', 'pct_race_pace', 'consistency', 'reliability',
+        'Position', 'is_DNS', 'is_DNF', 'race_pace', 'pct_race_pace',
+        'consistency', 'reliability',
         'n_tracklimits', 'track_limit_points', 'n_tracklimits_025',
         'n_tracklimits_05', 'n_tracklimits_075', 'n_tracklimits_1plus',
         'n_inchidents', 'n_incidents_vehicle',

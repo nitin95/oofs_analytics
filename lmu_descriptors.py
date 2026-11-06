@@ -13,7 +13,8 @@ PACE_COLUMNS = [
     'avg_pace_pct_alien', 'stdev_laptime', 'stdev_pace_pct', 'lap_count',
 ]
 RACE_DESCRIPTOR_COLUMNS = [
-    'race_pace', 'pct_race_pace', 'consistency', 'reliability', 'n_tracklimits',
+    'is_DNS', 'is_DNF', 'race_pace', 'pct_race_pace', 'consistency', 'reliability',
+    'n_tracklimits',
     'track_limit_points',
     'n_tracklimits_025', 'n_tracklimits_05', 'n_tracklimits_075',
     'n_tracklimits_1plus',
@@ -146,6 +147,11 @@ class LMUDescriptor:
                 )
 
             if include_race:
+                is_dns = row['Laps'] == 0
+                row['is_DNS'] = is_dns
+                row['is_DNF'] = (
+                    not is_dns and 'dnf' in str(row['FinishStatus']).lower()
+                )
                 race_values = [sample['pct'] for sample in pace_samples]
                 incident_metrics = event_metrics[self._event_name_key(row['Driver'])]
                 tracklimits = incident_metrics['tracklimits']

@@ -33,6 +33,15 @@ def _category_mask(classes, category):
     return class_names.str.contains('hyper|lmp2|p2ur', regex=True)
 
 
+def _descriptor_flag_mask(frame, column):
+    values = frame.get(column)
+    if values is None:
+        return pd.Series(False, index=frame.index)
+    return values.fillna(False).astype(str).str.strip().str.lower().isin(
+        ('true', '1')
+    )
+
+
 def _overall_class_name(value):
     if pd.isna(value):
         return ''
@@ -153,12 +162,10 @@ def _build_rankings(config_root='assets/json', csv_root='assets/csv'):
                         continue
 
                     dns_rows = event_data.iloc[0:0]
-                    if rating_type == 'race' and 'Laps' in event_data:
-                        completed_laps = pd.to_numeric(
-                            event_data['Laps'], errors='coerce'
-                        )
-                        dns_rows = event_data.loc[completed_laps.eq(0)].copy()
-                        event_data = event_data.loc[completed_laps.ne(0)]
+                    if rating_type == 'race':
+                        dns_mask = _descriptor_flag_mask(event_data, 'is_DNS')
+                        dns_rows = event_data.loc[dns_mask].copy()
+                        event_data = event_data.loc[~dns_mask]
 
                     if 'CarClass' not in event_data or 'Position' not in event_data:
                         continue
@@ -229,10 +236,9 @@ def _build_rankings(config_root='assets/json', csv_root='assets/csv'):
                             .to_dict()
                         )
                         dnf_drivers = set()
-                        if rating_type == 'race' and 'FinishStatus' in class_rows:
+                        if rating_type == 'race':
                             dnf_drivers = set(class_rows.loc[
-                                class_rows['FinishStatus'].fillna('').astype(str)
-                                .str.contains('DNF', case=False),
+                                _descriptor_flag_mask(class_rows, 'is_DNF'),
                                 '_driver',
                             ])
                         overall_class_events.setdefault(
@@ -278,10 +284,9 @@ def _build_rankings(config_root='assets/json', csv_root='assets/csv'):
                             .to_dict()
                         )
                         dnf_drivers = set()
-                        if rating_type == 'race' and 'FinishStatus' in category_rows:
+                        if rating_type == 'race':
                             dnf_drivers = set(category_rows.loc[
-                                category_rows['FinishStatus'].fillna('').astype(str)
-                                .str.contains('DNF', case=False),
+                                _descriptor_flag_mask(category_rows, 'is_DNF'),
                                 '_driver',
                             ])
                         category_events[slug][rating_type].append({

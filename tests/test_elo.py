@@ -95,15 +95,16 @@ class EloRankingTests(unittest.TestCase):
         self.write_event('season1', 'sprint', 's3-sc1-r.xml', [
             {
                 'Driver_name': 'Started Winner', 'CarClass': 'GT3',
-                'Position': 1, 'Laps': 20,
+                'Position': 1, 'Laps': 20, 'is_DNS': False, 'is_DNF': False,
             },
             {
                 'Driver_name': 'Started Runner-up', 'CarClass': 'GT3',
-                'Position': 2, 'Laps': 19,
+                'Position': 2, 'Laps': 19, 'is_DNS': False, 'is_DNF': False,
             },
             {
                 'Driver_name': 'DNS Driver', 'CarClass': 'GT3',
-                'Position': 3, 'Laps': 0, 'FinishStatus': 'DNF',
+                'Position': 3, 'Laps': 20, 'FinishStatus': 'Finished Normally',
+                'is_DNS': True, 'is_DNF': False,
             },
         ])
 
@@ -122,13 +123,13 @@ class EloRankingTests(unittest.TestCase):
             },
         })
         self.write_event('season1', 'sprint', 's3-sc1-r.xml', [
-            {'Driver_name': 'Driver A', 'CarClass': 'GT3', 'Position': 1, 'Laps': 2},
-            {'Driver_name': 'Driver B', 'CarClass': 'GT3', 'Position': 2, 'Laps': 2},
+            {'Driver_name': 'Driver A', 'CarClass': 'GT3', 'Position': 1, 'Laps': 2, 'is_DNS': False},
+            {'Driver_name': 'Driver B', 'CarClass': 'GT3', 'Position': 2, 'Laps': 2, 'is_DNS': False},
         ])
         self.write_event('season1', 'sprint', 's3-sc2-r.xml', [
-            {'Driver_name': 'Driver A', 'CarClass': 'GT3', 'Position': 3, 'Laps': 0},
-            {'Driver_name': 'Driver B', 'CarClass': 'GT3', 'Position': 1, 'Laps': 2},
-            {'Driver_name': 'Driver C', 'CarClass': 'GT3', 'Position': 2, 'Laps': 2},
+            {'Driver_name': 'Driver A', 'CarClass': 'GT3', 'Position': 3, 'Laps': 2, 'is_DNS': True},
+            {'Driver_name': 'Driver B', 'CarClass': 'GT3', 'Position': 1, 'Laps': 2, 'is_DNS': False},
+            {'Driver_name': 'Driver C', 'CarClass': 'GT3', 'Position': 2, 'Laps': 2, 'is_DNS': False},
         ])
 
         ranking = elo_lib.build_rankings(self.config_root, self.csv_root)[0]
@@ -163,10 +164,10 @@ class EloRankingTests(unittest.TestCase):
             {'Driver_name': 'Proto B', 'CarClass': 'LMP2_ELMS', 'Position': 2},
         ])
         self.write_event('season2', 'sprint', 's4-sc1-r.xml', [
-            {'Driver_name': 'Sprint Runner-up', 'CarClass': 'GT3', 'Position': 1, 'FinishStatus': 'Finished Normally'},
-            {'Driver_name': 'Sprint Winner', 'CarClass': 'GT3', 'Position': 2, 'FinishStatus': 'DNF'},
-            {'Driver_name': 'Prototype A', 'CarClass': 'LMP3', 'Position': 3},
-            {'Driver_name': 'Prototype B', 'CarClass': 'LMP3', 'Position': 4},
+            {'Driver_name': 'Sprint Runner-up', 'CarClass': 'GT3', 'Position': 1, 'FinishStatus': 'DNF', 'is_DNF': False},
+            {'Driver_name': 'Sprint Winner', 'CarClass': 'GT3', 'Position': 2, 'FinishStatus': 'Finished Normally', 'is_DNF': True},
+            {'Driver_name': 'Prototype A', 'CarClass': 'LMP3', 'Position': 3, 'is_DNF': False},
+            {'Driver_name': 'Prototype B', 'CarClass': 'LMP3', 'Position': 4, 'is_DNF': False},
         ])
 
         rankings = elo_lib.build_rankings(self.config_root, self.csv_root)

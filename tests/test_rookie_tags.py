@@ -296,6 +296,11 @@ class RookieTagTests(unittest.TestCase):
             {
                 'Driver_name': 'Allowed Driver', 'avg_pace_pct_alien': 102.0,
                 'n_incidents_vehicle': 2, 'n_incidents_object': 1,
+                'is_DNS': True, 'is_DNF': False,
+            },
+            {
+                'Driver_name': 'Started DNF', 'avg_pace_pct_alien': 103.0,
+                'is_DNS': False, 'is_DNF': True,
             },
         ])
         with patch.object(
@@ -307,9 +312,20 @@ class RookieTagTests(unittest.TestCase):
                 {'Test Track': event_df}, ['sc1'], {'sc1': 'Test Track'}
             )
 
-        self.assertEqual(comparison_df['Driver_name'].tolist(), ['Allowed Driver'])
+        self.assertEqual(
+            comparison_df['Driver_name'].tolist(), ['Allowed Driver', 'Started DNF']
+        )
         self.assertEqual(comparison_df.loc[0, 'n_incidents_vehicle_sc1'], 2)
         self.assertEqual(comparison_df.loc[0, 'n_incidents_object_sc1'], 1)
+        self.assertTrue(comparison_df.loc[0, 'is_dns_sc1'])
+        self.assertTrue(comparison_df.loc[1, 'is_dnf_sc1'])
+        status_html = html_lib.generate_descriptor_tables(
+            comparison_df, ['sc1'], ['Test Track']
+        )
+        self.assertIn('Did Not Start', status_html)
+        self.assertIn('<td>DNS</td>', status_html)
+        self.assertIn('Did Not Finish', status_html)
+        self.assertIn('<td>DNF</td>', status_html)
 
     def test_race_descriptors_are_class_scoped_and_qualifying_is_pace_only(self):
         xml_path = self.write_descriptor_xml('race.xml', [
@@ -354,6 +370,10 @@ class RookieTagTests(unittest.TestCase):
                 'name': 'Finishing Driver', 'class': 'GT3', 'position': 1,
                 'times': [100],
             },
+            {
+                'name': 'DNF Driver', 'class': 'GT3', 'position': 3,
+                'times': [100], 'finish_status': 'DNF',
+            },
         ])
 
         race_data = LMUDescriptor().get_descriptors(xml_path, {'gt3': 100})
@@ -361,6 +381,11 @@ class RookieTagTests(unittest.TestCase):
 
         self.assertEqual(dns_driver['Laps'], 0)
         self.assertEqual(dns_driver['FinishStatus'], 'DNF')
+        self.assertTrue(dns_driver['is_DNS'])
+        self.assertFalse(dns_driver['is_DNF'])
+        dnf_driver = race_data[race_data['Driver'] == 'DNF Driver'].iloc[0]
+        self.assertFalse(dnf_driver['is_DNS'])
+        self.assertTrue(dnf_driver['is_DNF'])
 
     def test_race_incidents_and_track_limits_come_from_event_tags(self):
         incidents = [

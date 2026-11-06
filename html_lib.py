@@ -231,6 +231,8 @@ def generate_descriptor_tables(comparison_df, race_codes, track_names):
         ('pct_laps', 'Laps Completed (%)', 'number'),
         ('n_stops', 'Pit Stops', 'integer'),
         ('pit_lane_pct_times', 'Pit Lane Loss (lap equivalents)', 'number'),
+        ('is_dns', 'Did Not Start', 'status'),
+        ('is_dnf', 'Did Not Finish', 'status'),
     ]
     rookie_names = set(
         comparison_df.loc[comparison_df['is_rookie'], 'Driver_name']
@@ -252,6 +254,12 @@ def generate_descriptor_tables(comparison_df, race_codes, track_names):
             if point_column in comparison_df.columns
         ]
         table_df = comparison_df[table_columns].copy()
+        if format_type == 'status':
+            status_label = 'DNS' if metric == 'is_dns' else 'DNF'
+            for column in available:
+                table_df[column] = table_df[column].map(
+                    {True: status_label, False: np.nan}
+                )
         table_df = table_df.dropna(subset=available, how='all').reset_index(drop=True)
         if table_df.empty:
             continue
@@ -361,11 +369,6 @@ def create_plotly_json(df_display_renamed, comparison_df, avg_pace_cols, stdev_p
     plot_df['best'] = plot_df[avg_pace_cols].min(axis=1, skipna=True)
     plot_df = plot_df.sort_values('best').reset_index(drop=True)
 
-    # Calculate consistency metric (inverse of stdev: 100 - stdev_pct)
-    for sd_col in stdev_pace_cols:
-        consistency_col = sd_col.replace('stdev_pace_pct_', 'consistency_')
-        if consistency_col not in plot_df:
-            plot_df[consistency_col] = 1 - plot_df[sd_col] / 100
     # print(plot_df.head(3))  # Debug: Show first 3 rows of plot_df
     # exit(0)  # Debug: Exit after showing plot_df to inspect the data
     # plot_df.to_csv('debug_plot_df.csv', index=False)  # Debug: Save plot_df to CSV for inspection
@@ -416,7 +419,7 @@ def create_plotly_json(df_display_renamed, comparison_df, avg_pace_cols, stdev_p
             pts = []
             hover_data = []
 
-            for xi, (avg_col, sd_col, fastest_col) in enumerate(zip(avg_pace_cols, stdev_pace_cols, fastest_lap_cols)):
+            for xi, (avg_col, fastest_col) in enumerate(zip(avg_pace_cols, fastest_lap_cols)):
                 avg_val = row.get(avg_col)
                 fastest_val = row.get(fastest_col)
 
@@ -434,10 +437,6 @@ def create_plotly_json(df_display_renamed, comparison_df, avg_pace_cols, stdev_p
                 race_code = avg_col.replace('avg_pace_pct_alien_', '')
                 consistency_col = f'consistency_{race_code}'
                 consistency_value = row.get(consistency_col)
-                if pd.isna(consistency_value):
-                    consistency_value = (
-                        1 - row.get(sd_col, np.nan) / avg_val if avg_val else np.nan
-                    )
                 hover_text = f"{display_driver_name}<br>Avg Pace: {avg_val:.2f}%<br>Fastest Lap: {fastest_lap_str}"
 
                 if pd.notna(consistency_value):
