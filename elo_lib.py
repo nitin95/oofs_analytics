@@ -119,6 +119,8 @@ def _build_rankings(config_root='assets/json', csv_root='assets/csv'):
     category_events = {
         spec[3]: {'race': [], 'quali': []} for spec in CATEGORY_SPECS
     }
+    category_dns_counts = {spec[3]: {} for spec in CATEGORY_SPECS}
+    overall_dns_counts = {}
     overall_class_events = {}
     category_by_key = {spec[3]: spec for spec in CATEGORY_SPECS}
     event_order = 0
@@ -150,10 +152,12 @@ def _build_rankings(config_root='assets/json', csv_root='assets/csv'):
                     except (OSError, pd.errors.ParserError):
                         continue
 
+                    dns_rows = event_data.iloc[0:0]
                     if rating_type == 'race' and 'Laps' in event_data:
                         completed_laps = pd.to_numeric(
                             event_data['Laps'], errors='coerce'
                         )
+                        dns_rows = event_data.loc[completed_laps.eq(0)].copy()
                         event_data = event_data.loc[completed_laps.ne(0)]
 
                     if 'CarClass' not in event_data or 'Position' not in event_data:
@@ -163,6 +167,39 @@ def _build_rankings(config_root='assets/json', csv_root='assets/csv'):
                     )
                     if driver_column not in event_data:
                         continue
+
+                    if not dns_rows.empty:
+                        dns_rows['_driver'] = (
+                            dns_rows[driver_column].fillna('').astype(str).str.strip()
+                        )
+                        dns_rows['_car_class'] = dns_rows['CarClass'].map(
+                            _overall_class_name
+                        )
+                        dns_rows = dns_rows[
+                            dns_rows['_driver'].ne('')
+                            & dns_rows['_car_class'].ne('')
+                        ]
+                        dns_rows = dns_rows.loc[
+                            ~dns_rows['_driver'].map(
+                                csv_lib.normalize_driver_name
+                            ).isin(blacklisted_names)
+                        ]
+                        for car_class, class_rows in dns_rows.groupby(
+                            '_car_class', sort=False
+                        ):
+                            counts = overall_dns_counts.setdefault(car_class, {})
+                            for driver in set(class_rows['_driver']):
+                                counts[driver] = counts.get(driver, 0) + 1
+
+                        for _, category_series, class_name, slug in CATEGORY_SPECS:
+                            if category_series != series:
+                                continue
+                            category_dns_rows = dns_rows.loc[
+                                _category_mask(dns_rows['CarClass'], class_name)
+                            ]
+                            counts = category_dns_counts[slug]
+                            for driver in set(category_dns_rows['_driver']):
+                                counts[driver] = counts.get(driver, 0) + 1
 
                     positions = pd.to_numeric(event_data['Position'], errors='coerce')
                     driver_names = event_data[driver_column].fillna('').astype(str).str.strip()
@@ -287,6 +324,7 @@ def _build_rankings(config_root='assets/json', csv_root='assets/csv'):
                     'starts': 0,
                     'position_total': 0.0,
                     'dnfs': 0,
+                    'dns': 0,
                     'wins': 0,
                     'pole_positions': 0,
                     'podiums': 0,
@@ -302,6 +340,7 @@ def _build_rankings(config_root='assets/json', csv_root='assets/csv'):
                     'starts': 0,
                     'position_total': 0.0,
                     'dnfs': 0,
+                    'dns': 0,
                     'wins': 0,
                     'pole_positions': 0,
                     'podiums': 0,
@@ -312,6 +351,18 @@ def _build_rankings(config_root='assets/json', csv_root='assets/csv'):
                 stats['wins'] += position_index == 1
                 stats['podiums'] += position_index <= 3
                 stats['last_event'] = f"{event['season']} · {event['track']}"
+
+        for driver, dns_count in category_dns_counts[slug].items():
+            stats = driver_stats.setdefault(driver, {
+                'starts': 0,
+                'position_total': 0.0,
+                'dnfs': 0,
+                'dns': 0,
+                'wins': 0,
+                'pole_positions': 0,
+                'podiums': 0,
+            })
+            stats['dns'] += dns_count
 
         all_drivers = race_ratings.keys() | quali_ratings.keys()
         standings = [
@@ -328,6 +379,7 @@ def _build_rankings(config_root='assets/json', csv_root='assets/csv'):
                     'starts': 0,
                     'position_total': 0.0,
                     'dnfs': 0,
+                    'dns': 0,
                     'wins': 0,
                     'pole_positions': 0,
                     'podiums': 0,
@@ -372,6 +424,7 @@ def _build_rankings(config_root='assets/json', csv_root='assets/csv'):
                     'starts': 0,
                     'position_total': 0.0,
                     'dnfs': 0,
+                    'dns': 0,
                     'wins': 0,
                     'pole_positions': 0,
                     'podiums': 0,
@@ -387,6 +440,7 @@ def _build_rankings(config_root='assets/json', csv_root='assets/csv'):
                     'starts': 0,
                     'position_total': 0.0,
                     'dnfs': 0,
+                    'dns': 0,
                     'wins': 0,
                     'pole_positions': 0,
                     'podiums': 0,
@@ -397,6 +451,18 @@ def _build_rankings(config_root='assets/json', csv_root='assets/csv'):
                 stats['wins'] += position_index == 1
                 stats['podiums'] += position_index <= 3
                 stats['last_event'] = f"{event['season']} · {event['track']}"
+
+        for driver, dns_count in overall_dns_counts.get(car_class, {}).items():
+            stats = driver_stats.setdefault(driver, {
+                'starts': 0,
+                'position_total': 0.0,
+                'dnfs': 0,
+                'dns': 0,
+                'wins': 0,
+                'pole_positions': 0,
+                'podiums': 0,
+            })
+            stats['dns'] += dns_count
 
         for driver in race_ratings.keys() | quali_ratings.keys():
             stats = driver_stats.get(driver, {})
@@ -413,6 +479,7 @@ def _build_rankings(config_root='assets/json', csv_root='assets/csv'):
                 'starts': stats.get('starts', 0),
                 'position_total': stats.get('position_total', 0.0),
                 'dnfs': stats.get('dnfs', 0),
+                'dns': stats.get('dns', 0),
                 'wins': stats.get('wins', 0),
                 'pole_positions': stats.get('pole_positions', 0),
                 'podiums': stats.get('podiums', 0),
@@ -468,6 +535,7 @@ def _render_table(standings):
             f'<td>{average_finish:.2f}</td>'
             if average_finish is not None else '<td>&mdash;</td>',
             f'<td>{standing["dnfs"]}</td>',
+            f'<td>{standing["dns"]}</td>',
             f'<td>{standing["wins"]}</td>',
             f'<td>{standing["pole_positions"]}</td>',
             f'<td>{standing["podiums"]}</td>',
@@ -481,7 +549,8 @@ def _render_table_html(standings):
     headers = (
         ('Rank', 'number'), ('Driver', 'text'), ('Race ELO', 'number'),
         ('Quali ELO', 'number'), ('ELO Diff', 'number'), ('Starts', 'number'),
-        ('Avg Finish', 'number'), ('DNFs', 'number'), ('Wins', 'number'),
+        ('Avg Finish', 'number'), ('DNFs', 'number'), ('DNS', 'number'),
+        ('Wins', 'number'),
         ('Pole Positions', 'number'), ('Podiums', 'number'),
     )
     header_html = ''.join(

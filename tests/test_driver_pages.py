@@ -206,6 +206,7 @@ class DriverPagesTests(unittest.TestCase):
                 'Car': 'GT3 car', 'CarClass': 'GT3', 'CarNumber': 44,
                 'Position': 1, 'FinishStatus': 'Finished Normally', 'Laps': 1,
                 'avg_pace_pct_alien': 101.25, 'consistency': 1, 'reliability': 1,
+                'stdev_pace_pct': 0,
                 'n_inchidents': 0, 'n_tracklimits': 0, 'n_stops': 0,
             }
             race = dict(
@@ -270,6 +271,13 @@ class DriverPagesTests(unittest.TestCase):
             self.assertIn('<h1>Greg K.</h1>', page)
             self.assertIn('Sprint GT3', page)
             self.assertIn('Average quali pace vs alien', page)
+            self.assertIn('id="sprint-GT3-consistency-details"', page)
+            self.assertIn('Average lap-pace standard deviation: 0.00 percentage points.', page)
+            self.assertIn('Average race pace: 101.25% of alien pace.', page)
+            self.assertIn('id="sprint-GT3-reliability-details"', page)
+            self.assertIn('Track-limit events: 6.', page)
+            self.assertIn('Incidents: 8.', page)
+            self.assertIn('2 x valid pace laps', page)
             self.assertIn('<span>Track limits</span><strong>6</strong>', page)
             self.assertIn('Average per race: 3.00', page)
             self.assertIn('0.25 points: 2', page)

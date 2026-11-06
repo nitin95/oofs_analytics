@@ -35,6 +35,7 @@ class EloRankingTests(unittest.TestCase):
             'starts': 0,
             'average_finish_position': None,
             'dnfs': 0,
+            'dns': 0,
             'wins': 0,
             'pole_positions': 1,
             'podiums': 0,
@@ -43,6 +44,7 @@ class EloRankingTests(unittest.TestCase):
         rendered = elo_lib._render_table([standing])
 
         self.assertIn('<td>—</td>', rendered)
+        self.assertIn('<td>0</td>', rendered)
 
     def write_season(self, season_id, name, races):
         with open(
@@ -85,6 +87,56 @@ class EloRankingTests(unittest.TestCase):
         self.assertNotIn('Excluded Driver', by_name)
         self.assertEqual(by_name['Allowed Winner']['race_rating'], 1532.0)
         self.assertEqual(by_name['Allowed Runner-up']['race_rating'], 1468.0)
+
+    def test_dns_driver_is_excluded_from_race_elo(self):
+        self.write_season('season1', 'Season 3', {
+            'sprint_races': {'s3-sc1-r.xml': {'name': 'Portimao'}},
+        })
+        self.write_event('season1', 'sprint', 's3-sc1-r.xml', [
+            {
+                'Driver_name': 'Started Winner', 'CarClass': 'GT3',
+                'Position': 1, 'Laps': 20,
+            },
+            {
+                'Driver_name': 'Started Runner-up', 'CarClass': 'GT3',
+                'Position': 2, 'Laps': 19,
+            },
+            {
+                'Driver_name': 'DNS Driver', 'CarClass': 'GT3',
+                'Position': 3, 'Laps': 0, 'FinishStatus': 'DNF',
+            },
+        ])
+
+        rankings = elo_lib.build_rankings(self.config_root, self.csv_root)
+        standings = {row['driver']: row for row in rankings[0]['standings']}
+
+        self.assertNotIn('DNS Driver', standings)
+        self.assertEqual(standings['Started Winner']['race_rating'], 1532.0)
+        self.assertEqual(standings['Started Runner-up']['race_rating'], 1468.0)
+
+    def test_dns_count_is_shown_without_affecting_race_rating(self):
+        self.write_season('season1', 'Season 3', {
+            'sprint_races': {
+                's3-sc1-r.xml': {'name': 'Portimao'},
+                's3-sc2-r.xml': {'name': 'Le Mans'},
+            },
+        })
+        self.write_event('season1', 'sprint', 's3-sc1-r.xml', [
+            {'Driver_name': 'Driver A', 'CarClass': 'GT3', 'Position': 1, 'Laps': 2},
+            {'Driver_name': 'Driver B', 'CarClass': 'GT3', 'Position': 2, 'Laps': 2},
+        ])
+        self.write_event('season1', 'sprint', 's3-sc2-r.xml', [
+            {'Driver_name': 'Driver A', 'CarClass': 'GT3', 'Position': 3, 'Laps': 0},
+            {'Driver_name': 'Driver B', 'CarClass': 'GT3', 'Position': 1, 'Laps': 2},
+            {'Driver_name': 'Driver C', 'CarClass': 'GT3', 'Position': 2, 'Laps': 2},
+        ])
+
+        ranking = elo_lib.build_rankings(self.config_root, self.csv_root)[0]
+        standings = {row['driver']: row for row in ranking['standings']}
+
+        self.assertEqual(standings['Driver A']['starts'], 1)
+        self.assertEqual(standings['Driver A']['dns'], 1)
+        self.assertEqual(standings['Driver A']['race_rating'], 1532.0)
 
     def test_rankings_follow_first_race_and_separate_classes(self):
         self.write_season('season1', 'Season 3', {
@@ -214,10 +266,11 @@ class EloRankingTests(unittest.TestCase):
         self.assertIn('>Quali ELO <span class="elo-sort-indicator"', page)
         self.assertIn('>ELO Diff <span class="elo-sort-indicator"', page)
         self.assertIn('>Pole Positions <span class="elo-sort-indicator"', page)
-        self.assertEqual(page.count('class="elo-sort"'), 11)
-        for column in range(11):
+        self.assertIn('>DNS <span class="elo-sort-indicator"', page)
+        self.assertEqual(page.count('class="elo-sort"'), 12)
+        for column in range(12):
             self.assertIn(f'data-sort-column="{column}"', page)
-        self.assertNotIn('data-sort-column="11"', page)
+        self.assertNotIn('data-sort-column="12"', page)
         self.assertIn('aria-sort="none"', page)
         self.assertIn('data-sort-type="text"', page)
         with open(
@@ -227,6 +280,7 @@ class EloRankingTests(unittest.TestCase):
             self.assertIn('position: fixed', styles_file.read())
         self.assertIn('>Avg Finish <span class="elo-sort-indicator"', page)
         self.assertIn('>DNFs <span class="elo-sort-indicator"', page)
+        self.assertIn('>DNS <span class="elo-sort-indicator"', page)
         self.assertIn('<td>1.00</td>', page)
         self.assertIn('active', page)
         self.assertNotIn('class="elo-subnav"', page)
