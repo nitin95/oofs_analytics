@@ -150,6 +150,12 @@ def _build_rankings(config_root='assets/json', csv_root='assets/csv'):
                     except (OSError, pd.errors.ParserError):
                         continue
 
+                    if rating_type == 'race' and 'Laps' in event_data:
+                        completed_laps = pd.to_numeric(
+                            event_data['Laps'], errors='coerce'
+                        )
+                        event_data = event_data.loc[completed_laps.ne(0)]
+
                     if 'CarClass' not in event_data or 'Position' not in event_data:
                         continue
                     driver_column = (
