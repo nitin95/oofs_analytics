@@ -103,6 +103,7 @@ def collect_driver_records(data_root=DATA_ROOT, config_root=CONFIG_ROOT):
                             'avg_pace_pct_alien': _as_number(
                                 row.get('avg_pace_pct_alien')
                             ),
+                            'stdev_pace_pct': _as_number(row.get('stdev_pace_pct')),
                             'consistency': _as_number(row.get('consistency')),
                             'reliability': _as_number(row.get('reliability')),
                             'incidents': _as_number(row.get('n_inchidents')),
@@ -419,6 +420,53 @@ def _track_limits_metric(stats, identifier):
     )
 
 
+def _descriptor_metric(label, value, identifier, details):
+    items = ''.join(f'<li>{detail}</li>' for detail in details)
+    return (
+        '<div class="metric detail-metric">'
+        f'<button class="detail-trigger" type="button" aria-describedby="{identifier}-details">'
+        f'<span>{html.escape(label)}</span><strong>{html.escape(str(value))}</strong>'
+        '</button>'
+        f'<div class="metric-popover" id="{identifier}-details" role="dialog" '
+        f'aria-label="{html.escape(label)} factors"><h3>{html.escape(label)} factors</h3>'
+        f'<ul>{items}</ul></div></div>'
+    )
+
+
+def _consistency_metric(records, stats, identifier):
+    contributing = [
+        record for record in records
+        if record.get('consistency') is not None
+    ]
+    average_pace = _mean(contributing, 'avg_pace_pct_alien')
+    average_stdev = _mean(contributing, 'stdev_pace_pct')
+    return _descriptor_metric(
+        'Average consistency', _format_number(stats['average_consistency'], 3),
+        identifier, [
+            'Calculated per race as 1 minus lap-pace standard deviation divided by average lap pace; race scores are then averaged.',
+            f'Average race pace: {_format_number(average_pace, 2)}% of alien pace.',
+            f'Average lap-pace standard deviation: {_format_number(average_stdev, 2)} percentage points.',
+        ],
+    )
+
+
+def _reliability_metric(records, stats, identifier):
+    contributing = [
+        record for record in records
+        if record.get('reliability') is not None
+    ]
+    track_limits = sum(record.get('track_limits') or 0 for record in contributing)
+    incidents = sum(record.get('incidents') or 0 for record in contributing)
+    return _descriptor_metric(
+        'Average reliability', _format_number(stats['average_reliability'], 3),
+        identifier, [
+            'Calculated per race as max(0, 1 - (track limits + incidents) / (2 x valid pace laps)); race scores are then averaged.',
+            f'Track-limit events: {_format_number(track_limits)}.',
+            f'Incidents: {_format_number(incidents)}.',
+        ],
+    )
+
+
 def render_driver_page(name, profile, generated_date, elo_lookup=None):
     display_name = html_lib.format_driver_name(name)
     races = profile['race']
@@ -483,8 +531,14 @@ def render_driver_page(name, profile, generated_date, elo_lookup=None):
                 ),
                 ('Laps completed', _format_number(category_stats['laps'])),
                 ('Average race pace vs alien', _format_number(category_stats['average_pace'], 2) + '%'),
-                ('Average consistency', _format_number(category_stats['average_consistency'], 3)),
-                ('Average reliability', _format_number(category_stats['average_reliability'], 3)),
+                _consistency_metric(
+                    category_races, category_stats,
+                    f'{series}-{category}-consistency',
+                ),
+                _reliability_metric(
+                    category_races, category_stats,
+                    f'{series}-{category}-reliability',
+                ),
                 _track_limits_metric(category_stats, f'{series}-{category}-track-limits'),
                 _incident_metric(
                     'Incidents', _format_number(category_stats['incidents']),
