@@ -65,6 +65,21 @@ class EloRankingTests(unittest.TestCase):
 
         self.assertEqual(ratings, {'Winner': 1516.0, 'Loser': 1484.0})
 
+    def test_first_season_uses_higher_gain_and_lower_loss_k_factors(self):
+        self.write_season('season1', 'Season 3', {
+            'sprint_races': {'s3-sc1-r.xml': {'name': 'Portimao'}},
+        })
+        self.write_event('season1', 'sprint', 's3-sc1-r.xml', [
+            {'Driver_name': 'Rookie Winner', 'CarClass': 'GT3', 'Position': 1},
+            {'Driver_name': 'Rookie Loser', 'CarClass': 'GT3', 'Position': 2},
+        ])
+
+        standings = elo_lib.build_rankings(self.config_root, self.csv_root)[0]['standings']
+        ratings = {standing['driver']: standing['race_rating'] for standing in standings}
+
+        self.assertEqual(ratings['Rookie Winner'], 1520.0)
+        self.assertEqual(ratings['Rookie Loser'], 1488.0)
+
     def test_blacklisted_driver_is_removed_before_elo_updates(self):
         self.write_season('season1', 'Season 3', {
             'sprint_races': {'s3-sc1-r.xml': {'name': 'Portimao'}},
@@ -85,8 +100,8 @@ class EloRankingTests(unittest.TestCase):
         standings = rankings[0]['standings']
         by_name = {standing['driver']: standing for standing in standings}
         self.assertNotIn('Excluded Driver', by_name)
-        self.assertEqual(by_name['Allowed Winner']['race_rating'], 1532.0)
-        self.assertEqual(by_name['Allowed Runner-up']['race_rating'], 1468.0)
+        self.assertEqual(by_name['Allowed Winner']['race_rating'], 1520.0)
+        self.assertEqual(by_name['Allowed Runner-up']['race_rating'], 1488.0)
 
     def test_dns_driver_is_excluded_from_race_elo(self):
         self.write_season('season1', 'Season 3', {
@@ -112,8 +127,8 @@ class EloRankingTests(unittest.TestCase):
         standings = {row['driver']: row for row in rankings[0]['standings']}
 
         self.assertNotIn('DNS Driver', standings)
-        self.assertEqual(standings['Started Winner']['race_rating'], 1532.0)
-        self.assertEqual(standings['Started Runner-up']['race_rating'], 1468.0)
+        self.assertEqual(standings['Started Winner']['race_rating'], 1520.0)
+        self.assertEqual(standings['Started Runner-up']['race_rating'], 1488.0)
 
     def test_dns_count_is_shown_without_affecting_race_rating(self):
         self.write_season('season1', 'Season 3', {
@@ -137,7 +152,7 @@ class EloRankingTests(unittest.TestCase):
 
         self.assertEqual(standings['Driver A']['starts'], 1)
         self.assertEqual(standings['Driver A']['dns'], 1)
-        self.assertEqual(standings['Driver A']['race_rating'], 1532.0)
+        self.assertEqual(standings['Driver A']['race_rating'], 1520.0)
 
     def test_rankings_follow_first_race_and_separate_classes(self):
         self.write_season('season1', 'Season 3', {
@@ -177,10 +192,10 @@ class EloRankingTests(unittest.TestCase):
             ['sprint_gt3', 'multiclass_gt3', 'multiclass_prototype', 'sprint_lmp3'],
         )
         sprint_standings = rankings[0]['standings']
-        self.assertEqual(sprint_standings[0]['driver'], 'Sprint Winner')
+        self.assertEqual(sprint_standings[0]['driver'], 'Sprint Runner-up')
         self.assertEqual(sprint_standings[0]['starts'], 2)
         self.assertEqual(sprint_standings[0]['average_finish_position'], 1.5)
-        self.assertAlmostEqual(sprint_standings[0]['race_rating'], 1513.1, places=1)
+        self.assertAlmostEqual(sprint_standings[0]['race_rating'], 1505.5, places=1)
         sprint_winner = next(row for row in sprint_standings if row['driver'] == 'Sprint Winner')
         self.assertEqual(sprint_winner['dnfs'], 1)
         self.assertNotIn('GT3 A', [row['driver'] for row in sprint_standings])
@@ -204,8 +219,8 @@ class EloRankingTests(unittest.TestCase):
         rankings = elo_lib.build_rankings(self.config_root, self.csv_root)
         standings = {row['driver']: row for row in rankings[0]['standings']}
 
-        self.assertAlmostEqual(standings['Driver B']['race_rating'], 1505.8, places=1)
-        self.assertAlmostEqual(standings['Driver A']['race_rating'], 1494.2, places=1)
+        self.assertAlmostEqual(standings['Driver B']['race_rating'], 1509.8, places=1)
+        self.assertAlmostEqual(standings['Driver A']['race_rating'], 1506.9, places=1)
 
     def test_race_and_quali_elo_differential(self):
         self.write_season('season1', 'Season 3', {
@@ -224,10 +239,10 @@ class EloRankingTests(unittest.TestCase):
         rankings = elo_lib.build_rankings(self.config_root, self.csv_root)
         standings = {row['driver']: row for row in rankings[0]['standings']}
 
-        self.assertEqual(standings['Driver A']['race_rating'], 1532.0)
-        self.assertEqual(standings['Driver A']['quali_rating'], 1468.0)
-        self.assertEqual(standings['Driver A']['elo_differential'], 64.0)
-        self.assertEqual(standings['Driver B']['elo_differential'], -64.0)
+        self.assertEqual(standings['Driver A']['race_rating'], 1520.0)
+        self.assertEqual(standings['Driver A']['quali_rating'], 1488.0)
+        self.assertEqual(standings['Driver A']['elo_differential'], 32.0)
+        self.assertEqual(standings['Driver B']['elo_differential'], -32.0)
         self.assertEqual(standings['Driver B']['pole_positions'], 1)
         self.assertEqual(standings['Driver A']['pole_positions'], 0)
         output_root = os.path.join(self.root, 'docs')
@@ -238,8 +253,8 @@ class EloRankingTests(unittest.TestCase):
         )
         with open(generated[0], encoding='utf-8') as page_file:
             page = page_file.read()
-        self.assertIn('<td>+64.0</td>', page)
-        self.assertIn('<td>-64.0</td>', page)
+        self.assertIn('<td>+32.0</td>', page)
+        self.assertIn('<td>-32.0</td>', page)
 
     def test_first_category_uses_elo_html_and_sidebar_links_all_pages(self):
         self.write_season('season1', 'Season 3', {

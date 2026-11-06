@@ -14,7 +14,8 @@ import html_lib
 
 INITIAL_RATING = 1500.0
 K_FACTOR = 32.0
-FIRST_SEASON_K_FACTOR = 64.0
+FIRST_SEASON_GAIN_K_FACTOR = 40.0
+FIRST_SEASON_LOSS_K_FACTOR = 24.0
 SERIES_ORDER = ('sprint', 'multiclass')
 CATEGORY_SPECS = (
     ('Sprint GT3', 'sprint', 'gt3', 'sprint_gt3'),
@@ -63,7 +64,7 @@ def _expected_score(rating, opponent_rating):
 
 
 def update_event_ratings(ratings, finish_positions, k_factors=None):
-    """Apply simultaneous pairwise Elo updates with optional per-driver K values."""
+    """Apply simultaneous pairwise Elo updates with per-driver gain/loss K values."""
     if len(finish_positions) < 2:
         return dict(ratings)
 
@@ -87,7 +88,12 @@ def update_event_ratings(ratings, finish_positions, k_factors=None):
             score_delta += actual_score - _expected_score(
                 starting_ratings[driver], starting_ratings[opponent]
             )
-        k_factor = (k_factors or {}).get(driver, K_FACTOR)
+        driver_k_factors = (k_factors or {}).get(driver, K_FACTOR)
+        if isinstance(driver_k_factors, tuple):
+            gain_k_factor, loss_k_factor = driver_k_factors
+        else:
+            gain_k_factor = loss_k_factor = driver_k_factors
+        k_factor = gain_k_factor if score_delta > 0 else loss_k_factor
         updates[driver] = k_factor * score_delta / opponents_count
 
     return {
@@ -109,9 +115,9 @@ def _calculate_ratings(events):
             ratings.setdefault(driver, INITIAL_RATING)
         k_factors = {
             driver: (
-                FIRST_SEASON_K_FACTOR
+                (FIRST_SEASON_GAIN_K_FACTOR, FIRST_SEASON_LOSS_K_FACTOR)
                 if first_season_by_driver[driver] == event['season_id']
-                else K_FACTOR
+                else (K_FACTOR, K_FACTOR)
             )
             for driver in finish_positions
         }
@@ -659,8 +665,8 @@ def generate_pages(
             '{sidebar}': _render_sidebar(rankings, ranking['slug'], page_names),
             '{tables}': _render_table_html(ranking['standings']),
             '{method}': (
-                "1500 starting rating · K=64 in a driver's first category season, "
-                'then K=32 · ELO difference = Race ELO minus Quali ELO'
+                "1500 starting rating · first category season K=40 for gains and "
+                'K=24 for losses, then K=32 · ELO difference = Race ELO minus Quali ELO'
             ),
             '{generated_at}': generated_at,
         }

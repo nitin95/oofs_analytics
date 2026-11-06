@@ -1,32 +1,32 @@
-Driver,Car,CarClass,CarNumber,Position,FinishStatus,Laps,laptime_sec,laptime_pct,laptime_pct_alien,avg_laptime,avg_pace_pct_alien,stdev_laptime,stdev_pace_pct,lap_count,race_pace,pct_race_pace,consistency,reliability,n_tracklimits,track_limit_points,n_tracklimits_025,n_tracklimits_05,n_tracklimits_075,n_tracklimits_1plus,n_inchidents,n_incidents_vehicle,n_incidents_object,pct_laps,n_stops,pit_lane_pct_times,Driver_name,season_id,series_type,session_type
-Greg Kach,Oreca 07,LMP2_ELMS,123,1,Finished Normally,4,211.7913,100.0,101.05,212.1724,101.23,0.5389567886203915,0.26,2,,,,,,,,,,,,,,,,,Greg Kachadurian,season2,multiclass,quali
-Kasi Jackman,Oreca 07,LMP2_ELMS,868,2,None,3,212.9393,99.46,101.59,212.9393,101.59,0.0,0.0,1,,,,,,,,,,,,,,,,,Kasi Jackman,season2,multiclass,quali
-Jeremy Wade,Oreca 07,LMP2_ELMS,619,3,None,4,213.3997,99.25,101.81,213.5251,101.87,0.17734238072158479,0.08,2,,,,,,,,,,,,,,,,,Jeremy Wade,season2,multiclass,quali
-Donovan Bailey,Oreca 07,LMP2_ELMS,397,4,None,3,214.101,98.92,102.15,217.8887,103.95,5.356616710200574,2.56,2,,,,,,,,,,,,,,,,,Donovan Bailey,season2,multiclass,quali
-Brian Crane,Oreca 07,LMP2_ELMS,223,5,None,3,215.2831,98.38,102.71,215.2831,102.71,0.0,0.0,1,,,,,,,,,,,,,,,,,Brian Crane,season2,multiclass,quali
-Dick Garcia,Oreca 07,LMP2_ELMS,57,6,None,3,215.4829,98.28,102.81,215.4829,102.81,0.0,0.0,1,,,,,,,,,,,,,,,,,Dick Garcia,season2,multiclass,quali
-James Rubio,Oreca 07,LMP2_ELMS,27,7,Finished Normally,4,215.9274,98.08,103.02,215.9274,103.02,0.0,0.0,1,,,,,,,,,,,,,,,,,James Rubio,season2,multiclass,quali
-p thomas,Oreca 07,LMP2_ELMS,69,8,None,4,216.0342,98.04,103.07,216.0342,103.07,0.0,0.0,1,,,,,,,,,,,,,,,,,Parker Thomas,season2,multiclass,quali
-Russell Dame,Oreca 07,LMP2_ELMS,14,9,None,3,217.2013,97.51,103.63,217.2013,103.63,0.0,0.0,1,,,,,,,,,,,,,,,,,Russell Dame,season2,multiclass,quali
-Gage Galvin,Oreca 07,LMP2_ELMS,93,10,None,4,220.475,96.06,105.19,220.475,105.19,0.0,0.0,1,,,,,,,,,,,,,,,,,Gage Galvin,season2,multiclass,quali
-Chris MacLennan,Oreca 07,LMP2_ELMS,114,11,None,4,221.8275,95.48,105.83,221.8275,105.83,0.0,0.0,1,,,,,,,,,,,,,,,,,Chris MacLennan,season2,multiclass,quali
-Abe Wozniak,Aston Martin Vantage AMR LMGT3,GT3,25,1,None,4,242.7317,100.0,102.2,242.97395,102.3,0.3425932354848802,0.14,2,,,,,,,,,,,,,,,,,Abe Wozniak,season2,multiclass,quali
-Nitin Murthy,Mercedes-AMG LMGT3,GT3,95,2,None,3,242.7549,99.99,102.21,242.7549,102.21,0.0,0.0,1,,,,,,,,,,,,,,,,,Nitin Murthy,season2,multiclass,quali
-Andrew Canelli,McLaren 720S LMGT3 Evo,GT3,44,3,None,3,242.7791,99.98,102.22,242.7791,102.22,0.0,0.0,1,,,,,,,,,,,,,,,,,Andrew Canelli,season2,multiclass,quali
-Nathan Sides,Lexus RCF LMGT3,GT3,12,4,None,4,242.8753,99.94,102.26,243.82785,102.66,1.3471091288384747,0.57,2,,,,,,,,,,,,,,,,,Nathan Sides,season2,multiclass,quali
-Dave Paccagnini,Mercedes-AMG LMGT3,GT3,13,5,None,3,243.3224,99.76,102.45,243.3224,102.45,0.0,0.0,1,,,,,,,,,,,,,,,,,Dave Paccagnini,season2,multiclass,quali
-Grayson Head,Mercedes-AMG LMGT3,GT3,34,6,None,4,243.3827,99.73,102.48,243.87715,102.69,0.6992578959153776,0.29,2,,,,,,,,,,,,,,,,,Grayson Head,season2,multiclass,quali
-Harrison Miller,Ford Mustang LMGT3,GT3,42,7,None,5,244.0367,99.47,102.75,244.0367,102.75,0.0,0.0,1,,,,,,,,,,,,,,,,,Harrison Miller,season2,multiclass,quali
-Jesse Olsen,McLaren 720S LMGT3 Evo,GT3,16,8,None,4,244.187,99.4,102.82,244.2716,102.85,0.11964246737675632,0.05,2,,,,,,,,,,,,,,,,,Jesse Olsen,season2,multiclass,quali
-Ayrton Torres,Lexus RCF LMGT3,GT3,4,9,None,3,244.261,99.37,102.85,244.261,102.85,0.0,0.0,1,,,,,,,,,,,,,,,,,Ayrton Torres,season2,multiclass,quali
-Chase Kark,BMW M4 LMGT3,GT3,18,10,None,3,244.3553,99.33,102.89,244.3553,102.89,0.0,0.0,1,,,,,,,,,,,,,,,,,Chase Kark,season2,multiclass,quali
-Justin Fortuna,Ford Mustang LMGT3,GT3,888,11,None,4,244.6438,99.22,103.01,244.6438,103.01,0.0,0.0,1,,,,,,,,,,,,,,,,,Justin Fortuna,season2,multiclass,quali
-Javier Tellez,Ford Mustang LMGT3,GT3,71,12,None,4,244.8416,99.14,103.09,244.8416,103.09,0.0,0.0,1,,,,,,,,,,,,,,,,,Javier Tellez,season2,multiclass,quali
-Macaronie Tout Garni,BMW M4 LMGT3,GT3,8,13,None,4,245.7002,98.79,103.45,245.723,103.46,0.03224406922211181,0.01,2,,,,,,,,,,,,,,,,,Macaronie Tout Garni,season2,multiclass,quali
-Matthew Canelli,BMW M4 LMGT3,GT3,33,14,None,4,246.1337,98.61,103.64,246.1337,103.64,0.0,0.0,1,,,,,,,,,,,,,,,,,Matthew Canelli,season2,multiclass,quali
-J P#2423,BMW M4 LMGT3,GT3,249,15,None,3,246.19,98.59,103.66,246.19,103.66,0.0,0.0,1,,,,,,,,,,,,,,,,,J.P.,season2,multiclass,quali
-Donnie Greathouse,BMW M4 LMGT3,GT3,11,16,None,4,247.0371,98.25,104.02,247.0371,104.02,0.0,0.0,1,,,,,,,,,,,,,,,,,Donnie Greathouse,season2,multiclass,quali
-David Carter#4131,McLaren 720S LMGT3 Evo,GT3,969,17,None,4,247.0475,98.25,104.02,247.0475,104.02,0.0,0.0,1,,,,,,,,,,,,,,,,,Dave Carter,season2,multiclass,quali
-Rich Spoon,Ford Mustang LMGT3,GT3,735,18,None,4,247.5988,98.04,104.25,247.6456,104.27,0.06618519471904728,0.03,2,,,,,,,,,,,,,,,,,Rich Spoon,season2,multiclass,quali
-Ron Heslop,McLaren 720S LMGT3 Evo,GT3,99,19,None,4,248.7782,97.57,104.75,249.79285,105.18,1.4349317910618653,0.6,2,,,,,,,,,,,,,,,,,Ron Heslop,season2,multiclass,quali
-Dustin Rand,Aston Martin Vantage AMR LMGT3,GT3,5,20,None,4,248.9962,97.48,104.84,249.37759999999997,105.0,0.5393810526890974,0.23,2,,,,,,,,,,,,,,,,,Dustin Rand,season2,multiclass,quali
+Driver,Car,CarClass,CarNumber,Position,FinishStatus,Laps,laptime_sec,laptime_pct,laptime_pct_alien,avg_laptime,avg_pace_pct_alien,stdev_laptime,stdev_pace_pct,lap_count,is_DNS,is_DNF,race_pace,pct_race_pace,consistency,reliability,n_tracklimits,track_limit_points,n_tracklimits_025,n_tracklimits_05,n_tracklimits_075,n_tracklimits_1plus,n_inchidents,n_incidents_vehicle,n_incidents_object,pct_laps,n_stops,pit_lane_pct_times,Driver_name,season_id,series_type,session_type
+Greg Kach,Oreca 07,LMP2_ELMS,123,1,Finished Normally,4,211.7913,100.0,101.05,212.1724,101.23,0.5389567886203915,0.26,2,,,,,,,,,,,,,,,,,,,Greg Kachadurian,season2,multiclass,quali
+Kasi Jackman,Oreca 07,LMP2_ELMS,868,2,None,3,212.9393,99.46,101.59,212.9393,101.59,0.0,0.0,1,,,,,,,,,,,,,,,,,,,Kasi Jackman,season2,multiclass,quali
+Jeremy Wade,Oreca 07,LMP2_ELMS,619,3,None,4,213.3997,99.25,101.81,213.5251,101.87,0.17734238072158479,0.08,2,,,,,,,,,,,,,,,,,,,Jeremy Wade,season2,multiclass,quali
+Donovan Bailey,Oreca 07,LMP2_ELMS,397,4,None,3,214.101,98.92,102.15,217.8887,103.95,5.356616710200574,2.56,2,,,,,,,,,,,,,,,,,,,Donovan Bailey,season2,multiclass,quali
+Brian Crane,Oreca 07,LMP2_ELMS,223,5,None,3,215.2831,98.38,102.71,215.2831,102.71,0.0,0.0,1,,,,,,,,,,,,,,,,,,,Brian Crane,season2,multiclass,quali
+Dick Garcia,Oreca 07,LMP2_ELMS,57,6,None,3,215.4829,98.28,102.81,215.4829,102.81,0.0,0.0,1,,,,,,,,,,,,,,,,,,,Dick Garcia,season2,multiclass,quali
+James Rubio,Oreca 07,LMP2_ELMS,27,7,Finished Normally,4,215.9274,98.08,103.02,215.9274,103.02,0.0,0.0,1,,,,,,,,,,,,,,,,,,,James Rubio,season2,multiclass,quali
+p thomas,Oreca 07,LMP2_ELMS,69,8,None,4,216.0342,98.04,103.07,216.0342,103.07,0.0,0.0,1,,,,,,,,,,,,,,,,,,,Parker Thomas,season2,multiclass,quali
+Russell Dame,Oreca 07,LMP2_ELMS,14,9,None,3,217.2013,97.51,103.63,217.2013,103.63,0.0,0.0,1,,,,,,,,,,,,,,,,,,,Russell Dame,season2,multiclass,quali
+Gage Galvin,Oreca 07,LMP2_ELMS,93,10,None,4,220.475,96.06,105.19,220.475,105.19,0.0,0.0,1,,,,,,,,,,,,,,,,,,,Gage Galvin,season2,multiclass,quali
+Chris MacLennan,Oreca 07,LMP2_ELMS,114,11,None,4,221.8275,95.48,105.83,221.8275,105.83,0.0,0.0,1,,,,,,,,,,,,,,,,,,,Chris MacLennan,season2,multiclass,quali
+Abe Wozniak,Aston Martin Vantage AMR LMGT3,GT3,25,1,None,4,242.7317,100.0,102.2,242.97395,102.3,0.3425932354848802,0.14,2,,,,,,,,,,,,,,,,,,,Abe Wozniak,season2,multiclass,quali
+Nitin Murthy,Mercedes-AMG LMGT3,GT3,95,2,None,3,242.7549,99.99,102.21,242.7549,102.21,0.0,0.0,1,,,,,,,,,,,,,,,,,,,Nitin Murthy,season2,multiclass,quali
+Andrew Canelli,McLaren 720S LMGT3 Evo,GT3,44,3,None,3,242.7791,99.98,102.22,242.7791,102.22,0.0,0.0,1,,,,,,,,,,,,,,,,,,,Andrew Canelli,season2,multiclass,quali
+Nathan Sides,Lexus RCF LMGT3,GT3,12,4,None,4,242.8753,99.94,102.26,243.82785,102.66,1.3471091288384747,0.57,2,,,,,,,,,,,,,,,,,,,Nathan Sides,season2,multiclass,quali
+Dave Paccagnini,Mercedes-AMG LMGT3,GT3,13,5,None,3,243.3224,99.76,102.45,243.3224,102.45,0.0,0.0,1,,,,,,,,,,,,,,,,,,,Dave Paccagnini,season2,multiclass,quali
+Grayson Head,Mercedes-AMG LMGT3,GT3,34,6,None,4,243.3827,99.73,102.48,243.87715,102.69,0.6992578959153776,0.29,2,,,,,,,,,,,,,,,,,,,Grayson Head,season2,multiclass,quali
+Harrison Miller,Ford Mustang LMGT3,GT3,42,7,None,5,244.0367,99.47,102.75,244.0367,102.75,0.0,0.0,1,,,,,,,,,,,,,,,,,,,Harrison Miller,season2,multiclass,quali
+Jesse Olsen,McLaren 720S LMGT3 Evo,GT3,16,8,None,4,244.187,99.4,102.82,244.2716,102.85,0.11964246737675632,0.05,2,,,,,,,,,,,,,,,,,,,Jesse Olsen,season2,multiclass,quali
+Ayrton Torres,Lexus RCF LMGT3,GT3,4,9,None,3,244.261,99.37,102.85,244.261,102.85,0.0,0.0,1,,,,,,,,,,,,,,,,,,,Ayrton Torres,season2,multiclass,quali
+Chase Kark,BMW M4 LMGT3,GT3,18,10,None,3,244.3553,99.33,102.89,244.3553,102.89,0.0,0.0,1,,,,,,,,,,,,,,,,,,,Chase Kark,season2,multiclass,quali
+Justin Fortuna,Ford Mustang LMGT3,GT3,888,11,None,4,244.6438,99.22,103.01,244.6438,103.01,0.0,0.0,1,,,,,,,,,,,,,,,,,,,Justin Fortuna,season2,multiclass,quali
+Javier Tellez,Ford Mustang LMGT3,GT3,71,12,None,4,244.8416,99.14,103.09,244.8416,103.09,0.0,0.0,1,,,,,,,,,,,,,,,,,,,Javier Tellez,season2,multiclass,quali
+Macaronie Tout Garni,BMW M4 LMGT3,GT3,8,13,None,4,245.7002,98.79,103.45,245.723,103.46,0.03224406922211181,0.01,2,,,,,,,,,,,,,,,,,,,Macaronie Tout Garni,season2,multiclass,quali
+Matthew Canelli,BMW M4 LMGT3,GT3,33,14,None,4,246.1337,98.61,103.64,246.1337,103.64,0.0,0.0,1,,,,,,,,,,,,,,,,,,,Matthew Canelli,season2,multiclass,quali
+J P#2423,BMW M4 LMGT3,GT3,249,15,None,3,246.19,98.59,103.66,246.19,103.66,0.0,0.0,1,,,,,,,,,,,,,,,,,,,J.P.,season2,multiclass,quali
+Donnie Greathouse,BMW M4 LMGT3,GT3,11,16,None,4,247.0371,98.25,104.02,247.0371,104.02,0.0,0.0,1,,,,,,,,,,,,,,,,,,,Donnie Greathouse,season2,multiclass,quali
+David Carter#4131,McLaren 720S LMGT3 Evo,GT3,969,17,None,4,247.0475,98.25,104.02,247.0475,104.02,0.0,0.0,1,,,,,,,,,,,,,,,,,,,Dave Carter,season2,multiclass,quali
+Rich Spoon,Ford Mustang LMGT3,GT3,735,18,None,4,247.5988,98.04,104.25,247.6456,104.27,0.06618519471904728,0.03,2,,,,,,,,,,,,,,,,,,,Rich Spoon,season2,multiclass,quali
+Ron Heslop,McLaren 720S LMGT3 Evo,GT3,99,19,None,4,248.7782,97.57,104.75,249.79285,105.18,1.4349317910618653,0.6,2,,,,,,,,,,,,,,,,,,,Ron Heslop,season2,multiclass,quali
+Dustin Rand,Aston Martin Vantage AMR LMGT3,GT3,5,20,None,4,248.9962,97.48,104.84,249.37759999999997,105.0,0.5393810526890974,0.23,2,,,,,,,,,,,,,,,,,,,Dustin Rand,season2,multiclass,quali
