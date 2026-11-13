@@ -39,6 +39,13 @@
         "lmp3": 107.268,
         "gt3": 114.622
       }
+    },
+    "s6-sc6.xml":{
+      "name": "Monza",
+      "reference_times": {
+        "lmp3": 103.117,
+        "gt3": 108.656
+      }
     }
   }
   ,
@@ -77,6 +84,13 @@
         "lmp3": 108.303,
         "gt3": 115.804
       }
+    },
+    "s6-sc6-r.xml": {
+      "name": "Monza",
+      "reference_times": {
+        "lmp3": 103.627,
+        "gt3": 109.288
+      }
     }
   },
   "multiclass_qualis": {
@@ -114,6 +128,13 @@
         "hyper": 99.15,
         "gt3": 114.622
       }
+    },
+    "s6-mc6.xml": {
+      "name": "Monza",
+      "reference_times": {
+        "hyper": 94.365,
+        "gt3": 108.656
+      }
     }
   },
   "multiclass_races": {
@@ -150,6 +171,13 @@
       "reference_times": {
         "hyper": 99.65,
         "gt3": 115.804
+      }
+    },
+    "s6-mc6-r.xml": {
+      "name": "Monza",
+      "reference_times": {
+        "hyper": 95.264,
+        "gt3": 109.288
       }
     }
   }

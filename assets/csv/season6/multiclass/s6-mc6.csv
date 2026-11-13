@@ -1,0 +1,23 @@
+Driver,Car,CarClass,CarNumber,Position,FinishStatus,Laps,laptime_sec,laptime_pct,laptime_pct_alien,avg_laptime,avg_pace_pct_alien,stdev_laptime,stdev_pace_pct,lap_count,is_DNS,is_DNF,race_pace,pct_race_pace,consistency,reliability,n_tracklimits,track_limit_points,n_tracklimits_025,n_tracklimits_05,n_tracklimits_075,n_tracklimits_1plus,n_inchidents,n_incidents_vehicle,n_incidents_object,pct_laps,n_stops,pit_lane_pct_times,Driver_name,season_id,series_type,session_type
+Dakota Botello,Ferrari 499P,Hyper,33,1,Finished Normally,10,96.1423,100.0,101.88,97.39145999999998,103.21,0.9537378691233733,1.01,5,,,,,,,,,,,,,,,,,,,Dakota Botello,season6,multiclass,quali
+Dan Jr Poulin,BMW M Hybrid V8,Hyper,418,2,Finished Normally,9,96.2647,99.88,102.01,96.80904,102.59,0.8787110548980237,0.93,5,,,,,,,,,,,,,,,,,,,Dan Jr Poulin,season6,multiclass,quali
+C M Wilson,Genesis GMR-001,Hyper,177,3,Finished Normally,7,96.3849,99.75,102.14,97.21655000000001,103.02,0.9700947496679542,1.03,4,,,,,,,,,,,,,,,,,,,Chris Wilson,season6,multiclass,quali
+Owen Beerkircher,Porsche 963,Hyper,997,4,Finished Normally,9,96.7853,99.34,102.56,96.7853,102.56,0.0,0.0,1,,,,,,,,,,,,,,,,,,,Owen Beerkircher,season6,multiclass,quali
+Owen LaMarra,Alpine A424,Hyper,811,5,Finished Normally,6,99.3417,96.78,105.27,99.8965,105.86,0.7846056844045933,0.83,2,,,,,,,,,,,,,,,,,,,Owen LaMarra,season6,multiclass,quali
+Keith Drury,Ferrari 296 LMGT3 Evo,GT3,86,1,Finished Normally,9,109.855,100.0,101.1,111.08956,102.24,1.3537047658186019,1.25,5,,,,,,,,,,,,,,,,,,,Keith Drury,season6,multiclass,quali
+Ily Bordiyan,Porsche 911 GT3 R LMGT3,GT3,3,2,Finished Normally,8,110.0585,99.82,101.29,110.76723999999999,101.94,0.678049620603095,0.62,5,,,,,,,,,,,,,,,,,,,Ily Bordiyan,season6,multiclass,quali
+Joe Marsiglia,Ferrari 296 LMGT3 Evo,GT3,517,3,Finished Normally,8,110.1246,99.76,101.35,111.072875,102.22,0.6556153413651428,0.6,4,,,,,,,,,,,,,,,,,,,Joe Marsiglia,season6,multiclass,quali
+Mike Dougherty,Ferrari 296 LMGT3 Evo,GT3,26,4,Finished Normally,8,110.2252,99.67,101.44,111.35919999999999,102.49,1.0932727253526442,1.01,6,,,,,,,,,,,,,,,,,,,Mike Dougherty,season6,multiclass,quali
+Josh Popov,Porsche 911 GT3 R LMGT3,GT3,6,5,Finished Normally,7,110.2689,99.63,101.48,111.25742500000001,102.39,1.2694943543920685,1.17,4,,,,,,,,,,,,,,,,,,,Josh Popov,season6,multiclass,quali
+Ryan Dangler,Lamborghini Huracan LMGT3 Evo2,GT3,11,6,Finished Normally,8,110.2826,99.61,101.5,111.20671999999999,102.35,0.7724361831245329,0.71,5,,,,,,,,,,,,,,,,,,,Ryan Dangler,season6,multiclass,quali
+Grayson Head,Porsche 911 GT3 R LMGT3,GT3,34,7,Finished Normally,10,110.3203,99.58,101.53,111.11442500000001,102.26,0.8672351098942737,0.8,4,,,,,,,,,,,,,,,,,,,Grayson Head,season6,multiclass,quali
+Alex Laplante,Porsche 911 GT3 R LMGT3,GT3,71,8,Finished Normally,9,110.3879,99.52,101.59,111.54211428571428,102.66,1.077987171272727,0.99,7,,,,,,,,,,,,,,,,,,,Alex Laplante,season6,multiclass,quali
+Holden Gawehn,BMW M4 LMGT3,GT3,420,9,Finished Normally,9,110.5001,99.41,101.7,111.54551666666667,102.66,0.8516648881259966,0.78,6,,,,,,,,,,,,,,,,,,,Holden Gawehn,season6,multiclass,quali
+Guillermo Paret,Lexus RCF LMGT3,GT3,52,10,Finished Normally,7,110.7164,99.22,101.9,112.40469999999999,103.45,1.9942284238939818,1.84,4,,,,,,,,,,,,,,,,,,,Guillermo Paret,season6,multiclass,quali
+Harrison Miller,Ford Mustang LMGT3,GT3,17,11,Finished Normally,8,110.7244,99.22,101.9,111.51882,102.63,0.9914582704279599,0.91,5,,,,,,,,,,,,,,,,,,,Harrison Miller,season6,multiclass,quali
+Richie Wood,Aston Martin Vantage AMR LMGT3,GT3,101,12,Finished Normally,8,111.019,98.96,102.17,112.20511666666665,103.27,1.383917584853469,1.27,6,,,,,,,,,,,,,,,,,,,Richie Wood,season6,multiclass,quali
+Dustin Rand,BMW M4 LMGT3,GT3,5,13,Finished Normally,7,111.2368,98.75,102.38,111.779825,102.87,0.5956833407944172,0.55,4,,,,,,,,,,,,,,,,,,,Dustin Rand,season6,multiclass,quali
+Jesse Olsen,BMW M4 LMGT3,GT3,16,14,Finished Normally,8,111.8011,98.26,102.89,113.1038,104.09,1.658583666867606,1.53,5,,,,,,,,,,,,,,,,,,,Jesse Olsen,season6,multiclass,quali
+Dave Carter,Ferrari 296 LMGT3 Evo,GT3,390,15,Finished Normally,7,112.1033,98.0,103.17,112.906475,103.91,1.0239207403407744,0.94,4,,,,,,,,,,,,,,,,,,,Dave Carter,season6,multiclass,quali
+Justin Jackson,Porsche 911 GT3 R LMGT3,GT3,13,16,Finished Normally,8,112.5796,97.58,103.61,113.61995,104.57,0.9814570408326596,0.9,6,,,,,,,,,,,,,,,,,,,Justin Jackson,season6,multiclass,quali
+Brian Harris,Ferrari 296 LMGT3 Evo,GT3,74,17,Finished Normally,4,113.0616,97.17,104.05,114.01035,104.93,1.3417351173014795,1.23,2,,,,,,,,,,,,,,,,,,,Brian Harris,season6,multiclass,quali
